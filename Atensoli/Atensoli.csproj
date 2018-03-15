@@ -249,7 +249,6 @@
     <Content Include="Vista\Autocomplete.aspx" />
     <Content Include="Vista\Empresa.aspx" />
     <Content Include="Vista\Logout.aspx" />
-    <Content Include="Vista\Main.aspx" />
     <Content Include="Vista\Principal.aspx" />
     <Content Include="Vista\RecepcionEquipo.aspx" />
     <Content Include="Vista\Seguridad.aspx" />
@@ -326,13 +325,6 @@
     </Compile>
     <Compile Include="Vista\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\Main.aspx.cs">
-      <DependentUpon>Main.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vista\Main.aspx.designer.cs">
-      <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>

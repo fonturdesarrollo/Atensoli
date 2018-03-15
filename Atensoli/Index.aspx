@@ -9,7 +9,7 @@
 
 <html>
 	<head>
-		<title>Cellper Entrada al Sistema</title>
+		<title>Atensoli Entrada al Sistema</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="loginassets/css/main.css" />
@@ -30,7 +30,7 @@
 					<section id="main">
 						<header>
 							<span class="avatar"><img src="images/avatar.png" alt="" /></span>
-							<h1>BIenvenido al sistema Cellper</h1>
+							<h1>Bienvenido al sistema Atensoli</h1>
 							<p>Indique sus credenciales de acceso</p>
 						</header>
 
@@ -69,7 +69,7 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
-							<li>&copy; Cellper</li>
+							<li>&copy; Atensoli</li>
 						</ul>
 					</footer>
 

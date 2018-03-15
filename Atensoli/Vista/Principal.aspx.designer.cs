@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Cellper {
+namespace Atensoli {
     
     
     public partial class Principal {
