@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCNavegacion.ascx.cs" Inherits="Cellper.Vista.UCNavegacion" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCNavegacion.ascx.cs" Inherits="Atensoli.Vista.UCNavegacion" %>
 
 <!DOCTYPE HTML>
 
@@ -29,18 +29,22 @@
 										<li>
 											<span class="opener">Solicitudes</span>
 											<ul>
-												<li><ASP:HyperLink runat="server" ID ="lnkRecepcionEquipo"  navigateurl ="~/Vista/RecepcionEquipo.aspx"  Text ="Registrar solicitud"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkColaDeEquipos"  navigateurl ="~/Vista/ColaDeEquipos.aspx"  Text ="Cola de equipos Pendientes"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudes"  navigateurl ="~/Vista/EnConstruccion.aspx"  Text ="Registrar solicitud"></ASP:HyperLink></li>
 											</ul>
 										</li>
 
 										<li>
 											<span class="opener">Opciones especiales</span>
 											<ul>
-												<li><ASP:HyperLink runat="server" ID ="lnkInventario"  navigateurl ="~/Vista/Inventario.aspx" Text ="Inventario de piezas, partes y servicios"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkMarcaEquipo"  navigateurl ="~/Vista/MarcaEquipo.aspx" Text ="Registrar Marca de Equipos"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkModeloEquipo"  navigateurl ="~/Vista/ModeloEquipo.aspx" Text ="Registrar Modelo de Equipos"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkFallasEquipo"  navigateurl ="~/Vista/FallaEquipo.aspx" Text ="Registrar Tipo de Fallas"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkSolicitante"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Solicitante"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkOrganismo"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Organismo"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoSolicitante"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de solicitante"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoSolicitud"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de solicitud"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoOrganismo"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de organismo"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoAtencion"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de atención"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkReferido"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de referencia"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoUnidad"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de unidad transporte"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoInsumo"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de insumo"></ASP:HyperLink></li>
 											</ul>
 										</li>
 										<li>

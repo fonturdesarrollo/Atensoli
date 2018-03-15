@@ -1,11 +1,12 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Seguridad.aspx.cs" Inherits="Seguridad.Seguridad" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EnConstruccion.aspx.cs" Inherits="Atensoli.Vista.EnConstruccion" %>
+
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %> 
 
 <!DOCTYPE HTML>
 
 <html>
 	<head>
-		<title>Cellper | Agregar usuario</title>
+		<title>Atensoli | En Construcción</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -36,7 +37,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Agregar usuario</strong></a>
+									<a class="logo"><strong>En Construcción</strong></a>
 									<ul class="icons">
 
 									</ul>
@@ -47,28 +48,10 @@
 								<section>
 										<p></p>
 										<div class="row uniform">
-
 											<div class="12u$">
-												<ul class="actions">
-													<li><asp:Button Text="Agregar / modificar usuario" runat="server" ID ="btnAgregarUsuario"   CssClass ="special" OnClick="btnAgregarUsuario_Click"/></li>
-												</ul>
-												<hr />
-												<div class="content">
-													<h3><asp:Label runat ="server" ID ="lblOpcionesSeguridad" Text ="Opciones adicionales de seguridad"></asp:Label></h3>
-												</div>
-												 <ul class="actions">
-													<li><asp:Button Text="Grupos" runat="server" ID ="btnAgregarGrupo"    OnClick="btnAgregarGrupo_Click"/></li>
-													<li><asp:Button Text="Objetos" runat="server" ID ="btnAgregarObjeto"  OnClick="btnAgregarObjeto_Click"/></li>
-													<li><asp:Button Text="Objetos/Grupos" runat="server" ID ="btmAgregarGrupoObjeto"  OnClick="btmAgregarGrupoObjeto_Click"/></li>
-												 </ul>
-												<hr />
-												<div class="content">
-													<h3><asp:Label runat ="server" ID ="lblOpcionesEmpresa" Text ="Opciones de Empresa"></asp:Label></h3>
-												</div>
-												<ul class="actions">
-													<li><asp:Button Text="Agregar Empresa" runat="server" ID ="btnAgregarEmpresa" OnClick="btnAgregarEmpresa_Click" /></li>
-													<li><asp:Button Text="Agregar Sucursal" runat="server" ID ="btnAgregarSucrusal" /></li>
-												</ul>
+												<span class="image object">
+													<img src="../images/Logo-Fontur.png" />
+												</span>
 											</div>
 										</div>
 								</section>
@@ -89,5 +72,6 @@
 
 	</body>
 </html>
+
 
 

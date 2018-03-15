@@ -1,13 +1,9 @@
-﻿using Admin;
-using Seguridad.Clases;
+﻿using Seguridad.Clases;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Cellper.Vista
+namespace Atensoli.Vista
 {
     public partial class UCNavegacion : System.Web.UI.UserControl
     {
@@ -22,55 +18,66 @@ namespace Cellper.Vista
             if (objetoSeguridad.EsUsuarioAdministrador() == false)
             {
                 ColocarEnlacesInvisibles();
+                lnkCambiarClave.Visible = true;
                 if (objetoSeguridad.EsAccesoPermitido(9) == true)
                 {
-                    lnkRecepcionEquipo.Visible = true;
+                    lnkSolicitudes.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(10) == true)
                 {
-                    lnkColaDeEquipos.Visible = true;
+                    lnkSolicitante.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(11) == true)
                 {
-                    lnkColaReparacionEquipos.Visible = true;
+                    lnkOrganismo.Visible = true;
                 }
+
                 if (objetoSeguridad.EsAccesoPermitido(12) == true)
                 {
-                    lnkColaEquiposEntregados.Visible = true;
+                    lnkTipoSolicitante.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(13) == true)
                 {
-                    lnkInventario.Visible = true;
+                    lnkTipoSolicitud.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(14) == true)
                 {
-                    lnkMarcaEquipo.Visible = true;
+                    lnkTipoOrganismo.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(15) == true)
                 {
-                    lnkModeloEquipo.Visible = true;
+                    lnkTipoAtencion.Visible = true;
+
                 }
+
                 if (objetoSeguridad.EsAccesoPermitido(16) == true)
                 {
-                    lnkFallasEquipo.Visible = true;
+                    lnkReferido.Visible = true;
+
                 }
+
                 if (objetoSeguridad.EsAccesoPermitido(17) == true)
                 {
-                    lnkSeguridad.Visible = true;
+                    lnkTipoUnidad.Visible = true;
+
+                }
+                if (objetoSeguridad.EsAccesoPermitido(18) == true)
+                {
+                    lnkTipoInsumo.Visible = true;
+
                 }
             }
         }
         private void ColocarEnlacesInvisibles()
         {
-            lnkRecepcionEquipo.Visible = false;
-            lnkColaDeEquipos.Visible = false;
-            lnkColaReparacionEquipos.Visible = false;
-            lnkColaEquiposEntregados.Visible = false;
-            lnkInventario.Visible = false;
-            lnkMarcaEquipo.Visible = false;
-            lnkModeloEquipo.Visible = false;
-            lnkFallasEquipo.Visible = false;
-            lnkSeguridad.Visible = false;
+            foreach (Control ctrl in Controls)
+            {
+                if (ctrl.GetType().Name == "HyperLink")
+                {
+                    HyperLink hl = (HyperLink)ctrl;
+                    hl.Visible = false;
+                }
+            }
         }
     }
 }

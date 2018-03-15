@@ -7,64 +7,100 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Cellper.Vista {
+namespace Atensoli.Vista {
     
     
     public partial class UCNavegacion {
         
         /// <summary>
-        /// lnkRecepcionEquipo control.
+        /// lnkSolicitudes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkRecepcionEquipo;
+        protected global::System.Web.UI.WebControls.HyperLink lnkSolicitudes;
         
         /// <summary>
-        /// lnkColaDeEquipos control.
+        /// lnkSolicitante control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkColaDeEquipos;
+        protected global::System.Web.UI.WebControls.HyperLink lnkSolicitante;
         
         /// <summary>
-        /// lnkInventario control.
+        /// lnkOrganismo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkInventario;
+        protected global::System.Web.UI.WebControls.HyperLink lnkOrganismo;
         
         /// <summary>
-        /// lnkMarcaEquipo control.
+        /// lnkTipoSolicitante control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkMarcaEquipo;
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoSolicitante;
         
         /// <summary>
-        /// lnkModeloEquipo control.
+        /// lnkTipoSolicitud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkModeloEquipo;
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoSolicitud;
         
         /// <summary>
-        /// lnkFallasEquipo control.
+        /// lnkTipoOrganismo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkFallasEquipo;
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoOrganismo;
+        
+        /// <summary>
+        /// lnkTipoAtencion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoAtencion;
+        
+        /// <summary>
+        /// lnkReferido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkReferido;
+        
+        /// <summary>
+        /// lnkTipoUnidad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoUnidad;
+        
+        /// <summary>
+        /// lnkTipoInsumo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoInsumo;
         
         /// <summary>
         /// lnkSeguridad control.

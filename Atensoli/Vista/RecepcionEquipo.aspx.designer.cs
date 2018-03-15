@@ -271,7 +271,7 @@ namespace Cellper {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Cellper.Vista.UCNavegacion ControlMenu;
+        protected global::Atensoli.Vista.UCNavegacion ControlMenu;
         
         /// <summary>
         /// Label5 control.

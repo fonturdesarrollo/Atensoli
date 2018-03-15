@@ -27,174 +27,174 @@
 <%--------------------------%>
 
 	<script type="text/javascript">
-		        $(function () {
-			        $('#txtCedula').simpleAutoComplete('Autocomplete.aspx', {
-				        autoCompleteClassName: 'autocomplete',
-				        selectedClassName: 'sel',
-				        attrCallBack: 'rel',
-				        identifier: 'Clientes'
-			        }, fnPersonalCallBack);
+				$(function () {
+					$('#txtCedula').simpleAutoComplete('Autocomplete.aspx', {
+						autoCompleteClassName: 'autocomplete',
+						selectedClassName: 'sel',
+						attrCallBack: 'rel',
+						identifier: 'Clientes'
+					}, fnPersonalCallBack);
 
-		        });
+				});
 
-		        function fnPersonalCallBack(par) {
-			        document.getElementById("hdnCedula").value = par[0]; 
-			        document.getElementById("txtCedula").value = par[0]; 
-			        document.getElementById("txtNombre").value = par[1];
-			        document.getElementById("txtTelefono").value = par[3];
-			        document.getElementById("txtDireccion").value = par[4]; 
-			        document.getElementById("hdnClienteID").value = par[6];
+				function fnPersonalCallBack(par) {
+					document.getElementById("hdnCedula").value = par[0]; 
+					document.getElementById("txtCedula").value = par[0]; 
+					document.getElementById("txtNombre").value = par[1];
+					document.getElementById("txtTelefono").value = par[3];
+					document.getElementById("txtDireccion").value = par[4]; 
+					document.getElementById("hdnClienteID").value = par[6];
 
 
-			        var bt = document.getElementById("ButtonTest");
-			        bt.click();
-		        }
+					var bt = document.getElementById("ButtonTest");
+					bt.click();
+				}
 
-		        function Confirmacion() {
+				function Confirmacion() {
 
-			        return confirm("¿Realmente desea eliminar este registro?, no podrá deshacer");
-		        }
-		        function ConfirmacionGarantia() {
+					return confirm("¿Realmente desea eliminar este registro?, no podrá deshacer");
+				}
+				function ConfirmacionGarantia() {
 
-			        //return confirm("¿Desea enviar este equipo a garantía?, no podrá deshacer");
-			        return document.write("<a href=´#openModal´></a>");
+					//return confirm("¿Desea enviar este equipo a garantía?, no podrá deshacer");
+					return document.write("<a href=´#openModal´></a>");
 			
-		        }
-		        function Recibo() {
-			        document.write("<a href=´#openModal´></a>");
+				}
+				function Recibo() {
+					document.write("<a href=´#openModal´></a>");
 			
-		        }
-		        function LimpiarTextos() {
-			        document.getElementById("hdnCedula").value = "0";
-			        document.getElementById("txtCedula").value = "";
-			        document.getElementById("txtNombre").value = "";
-			        document.getElementById("txtTelefono").value = "";
-		        }
+				}
+				function LimpiarTextos() {
+					document.getElementById("hdnCedula").value = "0";
+					document.getElementById("txtCedula").value = "";
+					document.getElementById("txtNombre").value = "";
+					document.getElementById("txtTelefono").value = "";
+				}
 
-	     </script>
+		 </script>
 		
-         <script type="text/javascript">
-		        $(function () {
-		        $('#txtCedula').keydown(function (e) {
-		        if (e.shiftKey || e.ctrlKey || e.altKey) {
-		        e.preventDefault();
-		        } else {
-		        var key = e.keyCode;
-		        if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-		        e.preventDefault();
-		        }
-		        }
-		        });
-	        });
-        </script>
-         <script type="text/javascript">
-		        $(function () {
-		        $('#txtTelefono').keydown(function (e) {
-		        if (e.shiftKey || e.ctrlKey || e.altKey) {
-		        e.preventDefault();
-		        } else {
-		        var key = e.keyCode;
-		        if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-		        e.preventDefault();
-		        }
-		        }
-		        });
-	        });
-        </script>
-         <script type="text/javascript">
-		        $(function () {
-			        $('#txtCostoRevision').keydown(function (e) {
-		        if (e.shiftKey || e.ctrlKey || e.altKey) {
-		        e.preventDefault();
-		        } else {
-		        var key = e.keyCode;
-		        if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-		        e.preventDefault();
-		        }
-		        }
-		        });
-	        });
-        </script>
-        
+		 <script type="text/javascript">
+				$(function () {
+				$('#txtCedula').keydown(function (e) {
+				if (e.shiftKey || e.ctrlKey || e.altKey) {
+				e.preventDefault();
+				} else {
+				var key = e.keyCode;
+				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
+				e.preventDefault();
+				}
+				}
+				});
+			});
+		</script>
+		 <script type="text/javascript">
+				$(function () {
+				$('#txtTelefono').keydown(function (e) {
+				if (e.shiftKey || e.ctrlKey || e.altKey) {
+				e.preventDefault();
+				} else {
+				var key = e.keyCode;
+				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
+				e.preventDefault();
+				}
+				}
+				});
+			});
+		</script>
+		 <script type="text/javascript">
+				$(function () {
+					$('#txtCostoRevision').keydown(function (e) {
+				if (e.shiftKey || e.ctrlKey || e.altKey) {
+				e.preventDefault();
+				} else {
+				var key = e.keyCode;
+				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
+				e.preventDefault();
+				}
+				}
+				});
+			});
+		</script>
+		
 
-       <%----------------------------------------------------------------------------------------------------------------------------------------------%>
-       <%-- PROCESO PARA COMBOS ANIDADOS DESDE EL CLIENTE CON AJAX  JSON Y JAVASRCIPT--%>
-        <%--COMBO ANIDADO 2--%>
-        <script type = "text/javascript">
-            var pageUrl = '<%=ResolveUrl("RecepcionEquipo.aspx")%>'
-            function CargarMarcaCelular() {
-                $("#<%=ddlTipoCelular.ClientID%>").attr("disabled", "disabled");
-                $("#<%=ddlModeloCelular.ClientID%>").attr("disabled", "disabled");
-                if ($('#<%=ddlTipoEquipo.ClientID%>').val() == "0") {
-                    $('#<%=ddlTipoCelular.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione la marca del equipo</option>');
-                    $('#<%=ddlModeloCelular.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione el modelo del equipo</option>');
-                }
-                else {
+	   <%----------------------------------------------------------------------------------------------------------------------------------------------%>
+	   <%-- PROCESO PARA COMBOS ANIDADOS DESDE EL CLIENTE CON AJAX  JSON Y JAVASRCIPT--%>
+		<%--COMBO ANIDADO 2--%>
+		<script type = "text/javascript">
+			var pageUrl = '<%=ResolveUrl("RecepcionEquipo.aspx")%>'
+			function CargarMarcaCelular() {
+				$("#<%=ddlTipoCelular.ClientID%>").attr("disabled", "disabled");
+				$("#<%=ddlModeloCelular.ClientID%>").attr("disabled", "disabled");
+				if ($('#<%=ddlTipoEquipo.ClientID%>').val() == "0") {
+					$('#<%=ddlTipoCelular.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione la marca del equipo</option>');
+					$('#<%=ddlModeloCelular.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione el modelo del equipo</option>');
+				}
+				else {
 
-                    $('#<%=ddlTipoCelular.ClientID %>').empty().append('<option selected="selected" value="0">Cargando...</option>');
-                    $.ajax({
-                        type: "POST",
-                        url: pageUrl + '/CargarTipoCelular',
-                        data: '{tipoEquipoID: ' + $('#<%=ddlTipoEquipo.ClientID%>').val() + '}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: EnMarcasCargadas,
-                        failure: function(response) {
-                            alert(response.d);
-                        }
-                    });
-                }
-            }
+					$('#<%=ddlTipoCelular.ClientID %>').empty().append('<option selected="selected" value="0">Cargando...</option>');
+					$.ajax({
+						type: "POST",
+						url: pageUrl + '/CargarTipoCelular',
+						data: '{tipoEquipoID: ' + $('#<%=ddlTipoEquipo.ClientID%>').val() + '}',
+						contentType: "application/json; charset=utf-8",
+						dataType: "json",
+						success: EnMarcasCargadas,
+						failure: function(response) {
+							alert(response.d);
+						}
+					});
+				}
+			}
  
-            function EnMarcasCargadas(response) {
-                CargarControl(response.d, $("#<%=ddlTipoCelular.ClientID %>"));
-            }
-        </script>
-        <%----------------------------------------------------------------------------------------------------------------------------------------------%>
+			function EnMarcasCargadas(response) {
+				CargarControl(response.d, $("#<%=ddlTipoCelular.ClientID %>"));
+			}
+		</script>
+		<%----------------------------------------------------------------------------------------------------------------------------------------------%>
 
-        <%--COMBO ANIDADO 3--%>
-        <script type = "text/javascript">
-            function CargarModeloCelular() {
-                $("#<%=ddlModeloCelular.ClientID%>").attr("disabled", "disabled");
-                if ($('#<%=ddlTipoCelular.ClientID%>').val() == "0") {
-                    $('#<%=ddlModeloCelular.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione el modelo del equipo</option>');
-                }
-                else {
-                    $('#<%=ddlModeloCelular.ClientID %>').empty().append('<option selected="selected" value="0">Cargando...</option>');
-                    $.ajax({
-                        type: "POST",
-                        url: pageUrl + '/CargarModeloCelular',
-                        data: '{tipoCelularID: ' + $('#<%=ddlTipoCelular.ClientID%>').val() + '}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: EnModelosCargados,
-                        failure: function(response) {
-                            alert(response.d);
-                        }
-                    });
-                }
-            }
+		<%--COMBO ANIDADO 3--%>
+		<script type = "text/javascript">
+			function CargarModeloCelular() {
+				$("#<%=ddlModeloCelular.ClientID%>").attr("disabled", "disabled");
+				if ($('#<%=ddlTipoCelular.ClientID%>').val() == "0") {
+					$('#<%=ddlModeloCelular.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione el modelo del equipo</option>');
+				}
+				else {
+					$('#<%=ddlModeloCelular.ClientID %>').empty().append('<option selected="selected" value="0">Cargando...</option>');
+					$.ajax({
+						type: "POST",
+						url: pageUrl + '/CargarModeloCelular',
+						data: '{tipoCelularID: ' + $('#<%=ddlTipoCelular.ClientID%>').val() + '}',
+						contentType: "application/json; charset=utf-8",
+						dataType: "json",
+						success: EnModelosCargados,
+						failure: function(response) {
+							alert(response.d);
+						}
+					});
+				}
+			}
  
-            function EnModelosCargados(response) {
-                CargarControl(response.d, $("#<%=ddlModeloCelular.ClientID %>"));
-            }
-        </script>
-            <script type = "text/javascript">
-              function CargarControl(list, control) {
-                if (list.length > 0) {
-                    control.removeAttr("disabled");
-                    control.empty().append('<option selected="selected" value="0">Por favor seleccione</option>');
-                    $.each(list, function() {
-                        control.append($("<option></option>").val(this['Value']).html(this['Text']));
-                    });
-                }
-                else {
-                    control.empty().append('<option selected="selected" value="0">No disponible<option>');
-                }
-            }
-        </script>
-        <%--FIN DE COMBOS ANIDADOS--%>
-        <%----------------------------------------------------------------------------------------------------------------------------------------------%>
+			function EnModelosCargados(response) {
+				CargarControl(response.d, $("#<%=ddlModeloCelular.ClientID %>"));
+			}
+		</script>
+			<script type = "text/javascript">
+			  function CargarControl(list, control) {
+				if (list.length > 0) {
+					control.removeAttr("disabled");
+					control.empty().append('<option selected="selected" value="0">Por favor seleccione</option>');
+					$.each(list, function() {
+						control.append($("<option></option>").val(this['Value']).html(this['Text']));
+					});
+				}
+				else {
+					control.empty().append('<option selected="selected" value="0">No disponible<option>');
+				}
+			}
+		</script>
+		<%--FIN DE COMBOS ANIDADOS--%>
+		<%----------------------------------------------------------------------------------------------------------------------------------------------%>
 	</head>
 	<body>
 		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
@@ -234,22 +234,22 @@
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
-                                                    <asp:DropDownList ID="ddlTipoEquipo" runat="server" AppendDataBoundItems="true"
-                                                                 onchange = "CargarMarcaCelular();">
-                                                        <asp:ListItem Text = "Seleccione el tipo de equipo" Value = "0"></asp:ListItem>                
-                                                    </asp:DropDownList>
+													<asp:DropDownList ID="ddlTipoEquipo" runat="server" AppendDataBoundItems="true"
+																 onchange = "CargarMarcaCelular();">
+														<asp:ListItem Text = "Seleccione el tipo de equipo" Value = "0"></asp:ListItem>                
+													</asp:DropDownList>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
-                                            <asp:DropDownList ID="ddlTipoCelular" runat="server"
-                                                         onchange = "CargarModeloCelular();">
-                                                <asp:ListItem Text = "Seleccione la marca del equipo" Value = "0"></asp:ListItem>                
-                                            </asp:DropDownList>
+											<asp:DropDownList ID="ddlTipoCelular" runat="server"
+														 onchange = "CargarModeloCelular();">
+												<asp:ListItem Text = "Seleccione la marca del equipo" Value = "0"></asp:ListItem>                
+											</asp:DropDownList>
 											</div>
 											<div class="6u 12u$(xsmall)">
-                                            <asp:DropDownList ID="ddlModeloCelular" runat="server">
-                                                <asp:ListItem Text = "Seleccione el modelo del equipo" Value = "0"></asp:ListItem>                
-                                            </asp:DropDownList>
+											<asp:DropDownList ID="ddlModeloCelular" runat="server">
+												<asp:ListItem Text = "Seleccione el modelo del equipo" Value = "0"></asp:ListItem>                
+											</asp:DropDownList>
 
 												<asp:HiddenField runat ="server" ID ="hdnCodigoModelo"  Value="0"/>
 											</div>
@@ -289,7 +289,7 @@
 													<li><asp:Button Text="Enviar a servicio" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click" /></li>
 													<li><asp:Button Text="Nuevo registro" runat="server" ID ="btnLimpiar"   CausesValidation="False" OnClick="btnLimpiar_Click"  /></li>
 													<li><asp:Button Text="TEST" runat="server" ID ="ButtonTest"  style="display:none"  CausesValidation="False" OnClick="ButtonTest_Click" /></li>
-                                                   
+												   
 												</ul>
 											</div>
 											<div class="table-wrapper">

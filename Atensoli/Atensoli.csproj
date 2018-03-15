@@ -249,6 +249,7 @@
     <Content Include="Styles\Site.css" />
     <Content Include="Vista\Autocomplete.aspx" />
     <Content Include="Vista\Empresa.aspx" />
+    <Content Include="Vista\EnConstruccion.aspx" />
     <Content Include="Vista\Logout.aspx" />
     <Content Include="Vista\Principal.aspx" />
     <Content Include="Vista\RecepcionEquipo.aspx" />
@@ -319,6 +320,13 @@
     </Compile>
     <Compile Include="Vista\Empresa.aspx.designer.cs">
       <DependentUpon>Empresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EnConstruccion.aspx.cs">
+      <DependentUpon>EnConstruccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\EnConstruccion.aspx.designer.cs">
+      <DependentUpon>EnConstruccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
