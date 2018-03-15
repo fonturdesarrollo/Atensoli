@@ -31,24 +31,6 @@ namespace Cellper.Vista {
         protected global::System.Web.UI.WebControls.HyperLink lnkColaDeEquipos;
         
         /// <summary>
-        /// lnkColaReparacionEquipos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkColaReparacionEquipos;
-        
-        /// <summary>
-        /// lnkColaEquiposEntregados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkColaEquiposEntregados;
-        
-        /// <summary>
         /// lnkInventario control.
         /// </summary>
         /// <remarks>

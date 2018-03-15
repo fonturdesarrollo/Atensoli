@@ -35,13 +35,6 @@
 										</li>
 
 										<li>
-											<span class="opener">Consultas</span>
-											<ul>
-												<li><ASP:HyperLink runat="server" ID ="lnkColaReparacionEquipos"  navigateurl ="~/Vista/ColaReparacionEquipo.aspx" Text ="Equipos por Facturar"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkColaEquiposEntregados"  navigateurl ="~/Vista/EquiposEntregados.aspx" Text ="Equipos Entregados"></ASP:HyperLink></li>
-											</ul>
-										</li>
-										<li>
 											<span class="opener">Opciones especiales</span>
 											<ul>
 												<li><ASP:HyperLink runat="server" ID ="lnkInventario"  navigateurl ="~/Vista/Inventario.aspx" Text ="Inventario de piezas, partes y servicios"></ASP:HyperLink></li>
