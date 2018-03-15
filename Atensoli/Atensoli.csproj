@@ -67,6 +67,83 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\sass\base\_page.scss" />
+    <Content Include="assets\sass\base\_typography.scss" />
+    <Content Include="assets\sass\components\_box.scss" />
+    <Content Include="assets\sass\components\_button.scss" />
+    <Content Include="assets\sass\components\_features.scss" />
+    <Content Include="assets\sass\components\_form.scss" />
+    <Content Include="assets\sass\components\_icon.scss" />
+    <Content Include="assets\sass\components\_image.scss" />
+    <Content Include="assets\sass\components\_list.scss" />
+    <Content Include="assets\sass\components\_mini-posts.scss" />
+    <Content Include="assets\sass\components\_posts.scss" />
+    <Content Include="assets\sass\components\_section.scss" />
+    <Content Include="assets\sass\components\_table.scss" />
+    <Content Include="assets\sass\ie8.scss" />
+    <Content Include="assets\sass\ie9.scss" />
+    <Content Include="assets\sass\layout\_banner.scss" />
+    <Content Include="assets\sass\layout\_footer.scss" />
+    <Content Include="assets\sass\layout\_header.scss" />
+    <Content Include="assets\sass\layout\_main.scss" />
+    <Content Include="assets\sass\layout\_menu.scss" />
+    <Content Include="assets\sass\layout\_sidebar.scss" />
+    <Content Include="assets\sass\layout\_wrapper.scss" />
+    <Content Include="assets\sass\libs\_functions.scss" />
+    <Content Include="assets\sass\libs\_mixins.scss" />
+    <Content Include="assets\sass\libs\_skel.scss" />
+    <Content Include="assets\sass\libs\_vars.scss" />
+    <Content Include="assets\sass\main.scss" />
+    <Content Include="consultaassets\fonts\fontawesome-webfont.eot" />
+    <Content Include="consultaassets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="consultaassets\fonts\fontawesome-webfont.woff" />
+    <Content Include="consultaassets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="consultaassets\fonts\FontAwesome.otf" />
+    <Content Include="consultaassets\sass\base\_bg.scss" />
+    <Content Include="consultaassets\sass\base\_page.scss" />
+    <Content Include="consultaassets\sass\base\_typography.scss" />
+    <Content Include="consultaassets\sass\components\_button.scss" />
+    <Content Include="consultaassets\sass\components\_form.scss" />
+    <Content Include="consultaassets\sass\components\_icon.scss" />
+    <Content Include="consultaassets\sass\components\_list.scss" />
+    <Content Include="consultaassets\sass\components\_section.scss" />
+    <Content Include="consultaassets\sass\ie8.scss" />
+    <Content Include="consultaassets\sass\ie9.scss" />
+    <Content Include="consultaassets\sass\layout\_footer.scss" />
+    <Content Include="consultaassets\sass\layout\_header.scss" />
+    <Content Include="consultaassets\sass\layout\_signup-form.scss" />
+    <Content Include="consultaassets\sass\libs\_functions.scss" />
+    <Content Include="consultaassets\sass\libs\_mixins.scss" />
+    <Content Include="consultaassets\sass\libs\_skel.scss" />
+    <Content Include="consultaassets\sass\libs\_vars.scss" />
+    <Content Include="consultaassets\sass\main.scss" />
+    <Content Include="loginassets\fonts\fontawesome-webfont.eot" />
+    <Content Include="loginassets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="loginassets\fonts\fontawesome-webfont.woff" />
+    <Content Include="loginassets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="loginassets\fonts\FontAwesome.otf" />
+    <Content Include="loginassets\sass\base\_page.scss" />
+    <Content Include="loginassets\sass\base\_typography.scss" />
+    <Content Include="loginassets\sass\components\_button.scss" />
+    <Content Include="loginassets\sass\components\_form.scss" />
+    <Content Include="loginassets\sass\components\_icon.scss" />
+    <Content Include="loginassets\sass\components\_list.scss" />
+    <Content Include="loginassets\sass\ie8.scss" />
+    <Content Include="loginassets\sass\ie9.scss" />
+    <Content Include="loginassets\sass\layout\_footer.scss" />
+    <Content Include="loginassets\sass\layout\_main.scss" />
+    <Content Include="loginassets\sass\layout\_wrapper.scss" />
+    <Content Include="loginassets\sass\libs\_functions.scss" />
+    <Content Include="loginassets\sass\libs\_mixins.scss" />
+    <Content Include="loginassets\sass\libs\_skel.scss" />
+    <Content Include="loginassets\sass\libs\_vars.scss" />
+    <Content Include="loginassets\sass\main.scss" />
+    <Content Include="loginassets\sass\noscript.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -75,10 +152,265 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\ie8.css" />
+    <Content Include="assets\css\ie9.css" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\js\ie\html5shiv.js" />
+    <Content Include="assets\js\ie\respond.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\skel.min.js" />
+    <Content Include="assets\js\util.js" />
+    <Content Include="consultaassets\css\font-awesome.min.css" />
+    <Content Include="consultaassets\css\ie8.css" />
+    <Content Include="consultaassets\css\ie9.css" />
+    <Content Include="consultaassets\css\main.css" />
+    <Content Include="consultaassets\fonts\fontawesome-webfont.svg" />
+    <Content Include="consultaassets\js\ie\html5shiv.js" />
+    <Content Include="consultaassets\js\ie\respond.min.js" />
+    <Content Include="consultaassets\js\jquery.min.js" />
+    <Content Include="consultaassets\js\main.js" />
+    <Content Include="images\1.gif" />
+    <Content Include="images\asignar_estatus_icono.png" />
+    <Content Include="images\asignar_tecnico_icono.png" />
+    <Content Include="images\avatar.png" />
+    <Content Include="images\avatar2.png" />
+    <Content Include="images\background.jpg" />
+    <Content Include="images\ball.gif" />
+    <Content Include="images\ball2.gif" />
+    <Content Include="images\banner_img.jpg" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bg2.jpg" />
+    <Content Include="images\bienvenida.jpg" />
+    <Content Include="images\boton.jpg" />
+    <Content Include="images\configuration.gif" />
+    <Content Include="images\consultabg01.jpg" />
+    <Content Include="images\consultabg01_.jpg" />
+    <Content Include="images\consultabg02.jpg" />
+    <Content Include="images\consultabg02_.jpg" />
+    <Content Include="images\consultabg03.jpg" />
+    <Content Include="images\consultabg03_.jpg" />
+    <Content Include="images\crm.gif" />
+    <Content Include="images\crm_top.gif" />
+    <Content Include="images\detail.png" />
+    <Content Include="images\download.png" />
+    <Content Include="images\edit-icon.gif" />
+    <Content Include="images\edit.png" />
+    <Content Include="images\eliminar.gif" />
+    <Content Include="images\eliminar.png" />
+    <Content Include="images\error-32x32.png" />
+    <Content Include="images\fondo.jpg" />
+    <Content Include="images\fondo2.jpg" />
+    <Content Include="images\fondo_3.png" />
+    <Content Include="images\fondo_bk.jpg" />
+    <Content Include="images\google.jpg" />
+    <Content Include="images\icon-garantia.png" />
+    <Content Include="images\imprimir.jpg" />
+    <Content Include="images\information-32x32.png" />
+    <Content Include="images\Invisible.png" />
+    <Content Include="images\ira25.gif" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\logo_javi.jpg" />
+    <Content Include="images\mdt.jpg" />
+    <Content Include="images\minus.png" />
+    <Content Include="images\plus.png" />
+    <Content Include="images\pregunta.JPG" />
+    <Content Include="images\ReciboMDT.png" />
+    <Content Include="images\reporting.gif" />
+    <Content Include="images\reporting_top.gif" />
+    <Content Include="images\select.PNG" />
+    <Content Include="images\top_helper_1.png" />
+    <Content Include="images\top_helper_2.png" />
+    <Content Include="images\top_helper_3.png" />
+    <Content Include="Index.aspx" />
+    <Content Include="js\EnterAsTab.js" />
+    <Content Include="js\jquery-ui-1.8rc3.custom.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\simpleAutoComplete.js" />
+    <Content Include="js\Util.js" />
+    <Content Include="loginassets\css\font-awesome.min.css" />
+    <Content Include="loginassets\css\ie8.css" />
+    <Content Include="loginassets\css\ie9.css" />
+    <Content Include="loginassets\css\images\overlay.png" />
+    <Content Include="loginassets\css\main.css" />
+    <Content Include="loginassets\css\noscript.css" />
+    <Content Include="loginassets\fonts\fontawesome-webfont.svg" />
+    <Content Include="loginassets\js\html5shiv.js" />
+    <Content Include="loginassets\js\PIE.htc" />
+    <Content Include="loginassets\js\respond.min.js" />
+    <Content Include="Styles\estilo.css" />
+    <Content Include="Styles\estiloindex.css" />
+    <Content Include="Styles\estilos.css" />
+    <Content Include="Styles\jquery-ui-1.8rc3.custom.css" />
+    <Content Include="Styles\simpleAutoComplete.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Vista\Autocomplete.aspx" />
+    <Content Include="Vista\Empresa.aspx" />
+    <Content Include="Vista\Logout.aspx" />
+    <Content Include="Vista\Main.aspx" />
+    <Content Include="Vista\Principal.aspx" />
+    <Content Include="Vista\RecepcionEquipo.aspx" />
+    <Content Include="Vista\Seguridad.aspx" />
+    <Content Include="Vista\SeguridadCambiarClave.aspx" />
+    <Content Include="Vista\SeguridadGrupo.aspx" />
+    <Content Include="Vista\SeguridadObjeto.aspx" />
+    <Content Include="Vista\SeguridadObjetoGrupo.aspx" />
+    <Content Include="Vista\SeguridadUsuario.aspx" />
+    <Content Include="Vista\UCMessageBox.ascx" />
+    <Content Include="Vista\UCNavegacion.ascx" />
+    <Content Include="Vista\UCNavigation.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlador\Autocomplete.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\DBHelper.cs" />
+    <Compile Include="Controlador\Empresa.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\Login.cs" />
+    <Compile Include="Controlador\paginaBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\Parametros.cs" />
+    <Compile Include="Controlador\Recepcion.cs" />
+    <Compile Include="Controlador\SeguridadCambiarClave.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\SeguridadGrupo.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\SeguridadObjeto.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\SeguridadObjetoGrupo.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\SeguridadUsuario.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\Utils.cs" />
+    <Compile Include="Controlador\XmlUtils.cs" />
+    <Compile Include="Index.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\CCliente.cs" />
+    <Compile Include="Modelo\CEmpresa.cs" />
+    <Compile Include="Modelo\CRecepcion.cs" />
+    <Compile Include="Modelo\CSeguridad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\Autocomplete.aspx.cs">
+      <DependentUpon>Autocomplete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Autocomplete.aspx.designer.cs">
+      <DependentUpon>Autocomplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Empresa.aspx.cs">
+      <DependentUpon>Empresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Empresa.aspx.designer.cs">
+      <DependentUpon>Empresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Principal.aspx.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Principal.aspx.designer.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\RecepcionEquipo.aspx.cs">
+      <DependentUpon>RecepcionEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\RecepcionEquipo.aspx.designer.cs">
+      <DependentUpon>RecepcionEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Seguridad.aspx.cs">
+      <DependentUpon>Seguridad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Seguridad.aspx.designer.cs">
+      <DependentUpon>Seguridad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SeguridadCambiarClave.aspx.cs">
+      <DependentUpon>SeguridadCambiarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguridadCambiarClave.aspx.designer.cs">
+      <DependentUpon>SeguridadCambiarClave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SeguridadGrupo.aspx.cs">
+      <DependentUpon>SeguridadGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguridadGrupo.aspx.designer.cs">
+      <DependentUpon>SeguridadGrupo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SeguridadObjeto.aspx.cs">
+      <DependentUpon>SeguridadObjeto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguridadObjeto.aspx.designer.cs">
+      <DependentUpon>SeguridadObjeto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SeguridadObjetoGrupo.aspx.cs">
+      <DependentUpon>SeguridadObjetoGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguridadObjetoGrupo.aspx.designer.cs">
+      <DependentUpon>SeguridadObjetoGrupo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SeguridadUsuario.aspx.cs">
+      <DependentUpon>SeguridadUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguridadUsuario.aspx.designer.cs">
+      <DependentUpon>SeguridadUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\UCMessageBox.ascx.cs">
+      <DependentUpon>UCMessageBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\UCMessageBox.ascx.designer.cs">
+      <DependentUpon>UCMessageBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\UCNavegacion.ascx.cs">
+      <DependentUpon>UCNavegacion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\UCNavegacion.ascx.designer.cs">
+      <DependentUpon>UCNavegacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\UCNavigation.ascx.cs">
+      <DependentUpon>UCNavigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\UCNavigation.ascx.designer.cs">
+      <DependentUpon>UCNavigation.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
