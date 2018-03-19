@@ -23,7 +23,7 @@ namespace Admin
                         foreach (DataRow dr in ds.Tables[0].Rows)
                         {
                             item = new paginaBase.AutoCompleteResult();
-                            item.value = dr["CedulaSolicitante"].ToString();
+                            item.value = dr["DescripcionSolicitante"].ToString();
                             item.id = dr["SolicitanteID"].ToString();
                             item.value = item.value.Replace(Request.QueryString["query"].ToString(), "<span style='font-weight:bold;'>" + Request.QueryString["query"].ToString() + "</span>");
                             Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["CedulaSolicitante"].ToString() + "_" + dr["SolicitanteID"].ToString() + "_" + dr["NombreSolicitante"].ToString() + "_" + dr["ApellidoSolicitante"].ToString() + "_" + dr["Sexo"].ToString() + "'>" + item.value + "</li>" + "\n");

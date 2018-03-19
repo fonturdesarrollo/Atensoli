@@ -1,11 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarSolicitante.aspx.cs" Inherits="Atensoli.Vista.BuscarSolicitante" %>
-<%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %> 
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarSolicitante.aspx.cs" Inherits="Atensoli.Vista.SeleccionarSolicitante" %>
+
+<%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
+<%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
+
+
 
 <!DOCTYPE HTML>
 
 <html>
 	<head>
-		<title>Cellper | Agregar usuario</title>
+		<title>Atensoli | Seleccionar Solicitante</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -23,10 +27,11 @@
 		<script src="../assets/js/main.js"></script>      
 
 <%--------------------------%>
-	  <script type="text/javascript">
+
+	<script type="text/javascript">
 
 		$(function () {
-		    $('#txtCedulaSolicitante').simpleAutoComplete('Autocomplete.aspx', {
+			$('#txtCedula').simpleAutoComplete('Autocomplete.aspx', {
 				autoCompleteClassName: 'autocomplete',
 				selectedClassName: 'sel',
 				attrCallBack: 'rel',
@@ -37,14 +42,14 @@
 
 		function fnPersonalCallBack(par) {
 			document.getElementById("hdnSolicitanteID").value = par[0]; //par[0] id
-			document.getElementById("txtCedulaSolicitante").value = par[1];
-			//document.getElementById("txtDescripcion").value = par[2];
+			document.getElementById("hdnCedulaSolicitante").value = par[1];
+			document.getElementById("hdnNombreSolicitante").value = par[3] + " " + par[4];
 		}
 
 	</script>
-
 	</head>
 	<body>
+		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -54,7 +59,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Buscar solicitante</strong></a>
+									<a class="logo"><strong>Seleccionar Solicitante</strong></a>
 									<ul class="icons">
 
 									</ul>
@@ -66,13 +71,16 @@
 										<p></p>
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox ID="txtCedulaSolicitante" runat="server" placeholder="Indique el numero de cedula del solicitante" ></asp:TextBox>
+												<asp:TextBox runat="server" ID="txtCedula" MaxLength="100" onkeypress="return event.keyCode!=13;" placeholder ="Indique el número de cedula del solicitante"/> 
 												<asp:HiddenField runat ="server" ID ="hdnSolicitanteID"  Value="0"/>
-												<ASP:RequiredFieldValidator id="rqrValidaCedula" runat="server" errormessage="Debe colocar el numero de cedula"  controltovalidate="txtCedulaSolicitante" display="Dynamic"></ASP:RequiredFieldValidator>
+												<asp:HiddenField runat ="server" ID ="hdnCedulaSolicitante"  Value="0"/>
+												<asp:HiddenField runat ="server" ID ="hdnNombreSolicitante"  Value=""/>
+												<ASP:RequiredFieldValidator id="rqrValidaNombre" runat="server" errormessage="Debe colocar la cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic"></ASP:RequiredFieldValidator>
 											</div>
+
 											<div class="12u$">
 												<ul class="actions">
-													<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special"  /></li>
+													<asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special" OnClick="btnSiguiente_Click" />
 												</ul>
 											</div>
 										</div>
@@ -94,3 +102,5 @@
 
 	</body>
 </html>
+
+

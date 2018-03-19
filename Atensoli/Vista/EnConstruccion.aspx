@@ -2,6 +2,7 @@
 
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %> 
 
+<%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
 <!DOCTYPE HTML>
 
 <html>
@@ -28,6 +29,7 @@
 
 	</head>
 	<body>
+	<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
 		<!-- Wrapper -->
 			<div id="wrapper">
 

@@ -14,10 +14,10 @@ namespace Atensoli.Vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarGrupos();
+            CargarTipoSolicitud();
 
         }
-        private void CargarGrupos()
+        private void CargarTipoSolicitud()
         {
             String strConnString = ConfigurationManager
             .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
@@ -50,7 +50,7 @@ namespace Atensoli.Vista
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Response.Redirect("SeleccionarSolicitante.aspx");
+            Response.Redirect("~/Vista/SeleccionarSolicitante.aspx");
         }
     }
 }

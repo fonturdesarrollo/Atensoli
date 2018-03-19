@@ -248,8 +248,8 @@
     <Content Include="Styles\simpleAutoComplete.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Vista\Autocomplete.aspx" />
-    <Content Include="Vista\SeleccionarTipoSolicitud.aspx" />
     <Content Include="Vista\SeleccionarSolicitante.aspx" />
+    <Content Include="Vista\SeleccionarTipoSolicitud.aspx" />
     <Content Include="Vista\Empresa.aspx" />
     <Content Include="Vista\EnConstruccion.aspx" />
     <Content Include="Vista\Logout.aspx" />
@@ -318,19 +318,19 @@
     <Compile Include="Vista\Autocomplete.aspx.designer.cs">
       <DependentUpon>Autocomplete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vista\SeleccionarTipoSolicitud.aspx.cs">
-      <DependentUpon>SeleccionarTipoSolicitud.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vista\SeleccionarTipoSolicitud.aspx.designer.cs">
-      <DependentUpon>SeleccionarTipoSolicitud.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vista\SeleccionarSolicitante.aspx.cs">
       <DependentUpon>SeleccionarSolicitante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vista\SeleccionarSolicitante.aspx.designer.cs">
       <DependentUpon>SeleccionarSolicitante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SeleccionarTipoSolicitud.aspx.cs">
+      <DependentUpon>SeleccionarTipoSolicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeleccionarTipoSolicitud.aspx.designer.cs">
+      <DependentUpon>SeleccionarTipoSolicitud.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Empresa.aspx.cs">
       <DependentUpon>Empresa.aspx</DependentUpon>

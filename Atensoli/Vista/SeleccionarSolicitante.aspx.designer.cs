@@ -10,7 +10,16 @@
 namespace Atensoli.Vista {
     
     
-    public partial class BuscarSolicitante {
+    public partial class SeleccionarSolicitante {
+        
+        /// <summary>
+        /// messageBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Teach.UCMessageBox messageBox;
         
         /// <summary>
         /// principal control.
@@ -22,13 +31,13 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.HtmlControls.HtmlForm principal;
         
         /// <summary>
-        /// txtCedulaSolicitante control.
+        /// txtCedula control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCedulaSolicitante;
+        protected global::System.Web.UI.WebControls.TextBox txtCedula;
         
         /// <summary>
         /// hdnSolicitanteID control.
@@ -40,13 +49,31 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HiddenField hdnSolicitanteID;
         
         /// <summary>
-        /// rqrValidaCedula control.
+        /// hdnCedulaSolicitante control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaCedula;
+        protected global::System.Web.UI.WebControls.HiddenField hdnCedulaSolicitante;
+        
+        /// <summary>
+        /// hdnNombreSolicitante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnNombreSolicitante;
+        
+        /// <summary>
+        /// rqrValidaNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaNombre;
         
         /// <summary>
         /// btnSiguiente control.

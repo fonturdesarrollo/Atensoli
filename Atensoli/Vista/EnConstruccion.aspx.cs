@@ -11,7 +11,13 @@ namespace Atensoli.Vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                if(Request.QueryString.Keys.Count > 0)
+                {
+                    messageBox.ShowMessage("Hola " + Request.QueryString["Cedula"] + " " + Request.QueryString["Nombre"]);
+                }
+            }
         }
     }
 }
