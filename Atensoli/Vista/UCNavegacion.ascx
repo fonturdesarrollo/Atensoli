@@ -29,7 +29,7 @@
 										<li>
 											<span class="opener">Solicitudes</span>
 											<ul>
-												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudes"  navigateurl ="~/Vista/EnConstruccion.aspx"  Text ="Registrar solicitud"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudes"  navigateurl ="~/Vista/BuscarTipoSolicitud.aspx"  Text ="Registrar solicitud"></ASP:HyperLink></li>
 											</ul>
 										</li>
 

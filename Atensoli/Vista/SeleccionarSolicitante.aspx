@@ -1,12 +1,11 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeguridadObjeto.aspx.cs" Inherits="Seguridad.SeguridadObjeto" %>
-<%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
-<%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarSolicitante.aspx.cs" Inherits="Atensoli.Vista.BuscarSolicitante" %>
+<%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %> 
 
 <!DOCTYPE HTML>
 
 <html>
 	<head>
-		<title>Seguridad | Objetos</title>
+		<title>Cellper | Agregar usuario</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -24,29 +23,28 @@
 		<script src="../assets/js/main.js"></script>      
 
 <%--------------------------%>
-
-	<script type="text/javascript">
-
+	  <script type="text/javascript">
 
 		$(function () {
 			$('#txtNombre').simpleAutoComplete('Autocomplete.aspx', {
 				autoCompleteClassName: 'autocomplete',
 				selectedClassName: 'sel',
 				attrCallBack: 'rel',
-				identifier: 'Objetos'
+				identifier: 'BuscarSolicitante'
 			}, fnPersonalCallBack);
 
 		});
 
 		function fnPersonalCallBack(par) {
-			document.getElementById("hdnSeguridadObjetoID").value = par[0]; //par[0] id
+			document.getElementById("hdnSeguridadGrupoID").value = par[0]; //par[0] id
 			document.getElementById("txtNombre").value = par[1];
+			document.getElementById("txtDescripcion").value = par[2];
 		}
 
 	</script>
+
 	</head>
 	<body>
-		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -56,7 +54,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Objetos</strong></a>
+									<a class="logo"><strong>Buscar solicitante</strong></a>
 									<ul class="icons">
 
 									</ul>
@@ -67,16 +65,22 @@
 								<section>
 										<p></p>
 										<div class="row uniform">
-											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtNombre" MaxLength="100" onkeypress="return event.keyCode!=13;" placeholder ="Nombre Objeto"/> 
-												<asp:HiddenField runat ="server" ID ="hdnSeguridadObjetoID"  Value="0"/>
-												<ASP:RequiredFieldValidator id="rqrValidaNombre" runat="server" errormessage="Debe colocar el nombre del objeto"  controltovalidate="txtNombre" display="Dynamic"></ASP:RequiredFieldValidator>	
-											</div>
+
 											<div class="12u$">
 												<ul class="actions">
-													<asp:Button Text="Guardar" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click"/>
-													<li><asp:Button Text="Nuevo registro" runat="server" ID ="btnNuevo" CausesValidation="False" OnClick="btnNuevo_Click"  /></li>
+													
 												</ul>
+												<hr />
+												<div class="content">
+													<h3><asp:Label runat ="server" ID ="lblOpcionesSeguridad" Text ="indique numero de cedula del solicitante"></asp:Label></h3>
+												</div>
+												 <ul class="actions">
+													<li><asp:TextBox   runat="server" ID ="txtBuscarSolicitante" placeholder="numero de cedula"   </li>
+													
+												 </ul>
+												<hr />
+												
+												
 											</div>
 										</div>
 								</section>
@@ -97,5 +101,3 @@
 
 	</body>
 </html>
-
-

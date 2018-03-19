@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarSolicitante.aspx.cs" Inherits="Atensoli.Vista.BuscarSolicitante" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarTipoSolicitud.aspx.cs" Inherits="Atensoli.Vista.BuscarTipoSolicitud" %>
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %> 
 
 <!DOCTYPE HTML>
 
 <html>
 	<head>
-		<title>Cellper | Agregar usuario</title>
+		<title>Atensoli | Tipo de solicitud</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -23,25 +23,7 @@
 		<script src="../assets/js/main.js"></script>      
 
 <%--------------------------%>
-	  <script type="text/javascript">
-
-		$(function () {
-			$('#txtNombre').simpleAutoComplete('Autocomplete.aspx', {
-				autoCompleteClassName: 'autocomplete',
-				selectedClassName: 'sel',
-				attrCallBack: 'rel',
-				identifier: 'BuscarSolicitante'
-			}, fnPersonalCallBack);
-
-		});
-
-		function fnPersonalCallBack(par) {
-			document.getElementById("hdnSeguridadGrupoID").value = par[0]; //par[0] id
-			document.getElementById("txtNombre").value = par[1];
-			document.getElementById("txtDescripcion").value = par[2];
-		}
-
-	</script>
+	
 
 	</head>
 	<body>
@@ -54,7 +36,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Buscar solicitante</strong></a>
+									<a class="logo"><strong>Tipo de solicitud</strong></a>
 									<ul class="icons">
 
 									</ul>
@@ -65,22 +47,13 @@
 								<section>
 										<p></p>
 										<div class="row uniform">
-
+											<div class="6u 12u$(xsmall)">
+												<asp:DropDownList ID="ddTipoSolicitud" runat="server"  AppendDataBoundItems="True" AutoPostBack = "false" ></asp:DropDownList>
+											</div>
 											<div class="12u$">
 												<ul class="actions">
-													
+													<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special" OnClick="btnSiguiente_Click" /></li>
 												</ul>
-												<hr />
-												<div class="content">
-													<h3><asp:Label runat ="server" ID ="lblOpcionesSeguridad" Text ="indique numero de cedula del solicitante"></asp:Label></h3>
-												</div>
-												 <ul class="actions">
-													<li><asp:TextBox   runat="server" ID ="txtBuscarSolicitante" placeholder="numero de cedula"   </li>
-													
-												 </ul>
-												<hr />
-												
-												
 											</div>
 										</div>
 								</section>
