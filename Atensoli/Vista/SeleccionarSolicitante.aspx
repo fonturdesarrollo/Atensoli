@@ -26,19 +26,19 @@
 	  <script type="text/javascript">
 
 		$(function () {
-			$('#txtNombre').simpleAutoComplete('Autocomplete.aspx', {
+		    $('#txtCedulaSolicitante').simpleAutoComplete('Autocomplete.aspx', {
 				autoCompleteClassName: 'autocomplete',
 				selectedClassName: 'sel',
 				attrCallBack: 'rel',
-				identifier: 'BuscarSolicitante'
+				identifier: 'Solicitante'
 			}, fnPersonalCallBack);
 
 		});
 
 		function fnPersonalCallBack(par) {
-			document.getElementById("hdnSeguridadGrupoID").value = par[0]; //par[0] id
-			document.getElementById("txtNombre").value = par[1];
-			document.getElementById("txtDescripcion").value = par[2];
+			document.getElementById("hdnSolicitanteID").value = par[0]; //par[0] id
+			document.getElementById("txtCedulaSolicitante").value = par[1];
+			//document.getElementById("txtDescripcion").value = par[2];
 		}
 
 	</script>
@@ -65,22 +65,15 @@
 								<section>
 										<p></p>
 										<div class="row uniform">
-
+											<div class="6u 12u$(xsmall)">
+												<asp:TextBox ID="txtCedulaSolicitante" runat="server" placeholder="Indique el numero de cedula del solicitante" ></asp:TextBox>
+												<asp:HiddenField runat ="server" ID ="hdnSolicitanteID"  Value="0"/>
+												<ASP:RequiredFieldValidator id="rqrValidaCedula" runat="server" errormessage="Debe colocar el numero de cedula"  controltovalidate="txtCedulaSolicitante" display="Dynamic"></ASP:RequiredFieldValidator>
+											</div>
 											<div class="12u$">
 												<ul class="actions">
-													
+													<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special"  /></li>
 												</ul>
-												<hr />
-												<div class="content">
-													<h3><asp:Label runat ="server" ID ="lblOpcionesSeguridad" Text ="indique numero de cedula del solicitante"></asp:Label></h3>
-												</div>
-												 <ul class="actions">
-													<li><asp:TextBox   runat="server" ID ="txtBuscarSolicitante" placeholder="numero de cedula"   </li>
-													
-												 </ul>
-												<hr />
-												
-												
 											</div>
 										</div>
 								</section>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarTipoSolicitud.aspx.cs" Inherits="Atensoli.Vista.BuscarTipoSolicitud" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarTipoSolicitud.aspx.cs" Inherits="Atensoli.Vista.BuscarTipoSolicitud" %>
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %> 
 
 <!DOCTYPE HTML>
