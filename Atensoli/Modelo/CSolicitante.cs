@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Atensoli.Modelo
+namespace Atensoli
 {
     public class CSolicitante
     {
@@ -11,6 +11,7 @@ namespace Atensoli.Modelo
         {
         }
         private int _solicitanteID;
+        private string _cedulaSolicitante;
         private string _nombresolicitante;
         private string _apellidoSolicitante;
         private string _sexo;
@@ -19,15 +20,15 @@ namespace Atensoli.Modelo
         private string _telefonoOficinalSolicitante;
         private string _correoElectronicoSolicitante;
         private int _parroquiaID;
-        private int _ciudadID;
         private int _indicaCarnetPatria;
         private string _serialCarnetPatria;
         private string _codigoCarnetPatria;
         private string _fechaRegistroSolicitante;
         private int _seguridadUsuarioDatosID;
-        public CSolicitante(int _solicitanteID, string _nombresolicitante, string _apellidoSolicitante, string _sexo, string _celularSolicitante, string _telefonoLocalSolicitante, string _telefonoOficinalSolicitante, string _correoElectronicoSolicitante, int _parroquiaID, int _ciudadID, int _indicaCarnetPatria, string _serialCarnetPatria, string _codigoCarnetPatria, string _fechaRegistroSolicitante, int _seguridadUsuarioDatosID)
+        public CSolicitante(int _solicitanteID, string _cedulaSolicitante ,string _nombresolicitante, string _apellidoSolicitante, string _sexo, string _celularSolicitante, string _telefonoLocalSolicitante, string _telefonoOficinalSolicitante, string _correoElectronicoSolicitante, int _parroquiaID,  int _indicaCarnetPatria, string _serialCarnetPatria, string _codigoCarnetPatria, string _fechaRegistroSolicitante, int _seguridadUsuarioDatosID)
         {
             this.SolicitanteID = _solicitanteID;
+            this.CedulaSolicitante = _cedulaSolicitante;
             this.Nombresolicitante = _nombresolicitante;
             this.ApellidoSolicitante = _apellidoSolicitante;
             this.Sexo = _sexo;
@@ -36,7 +37,6 @@ namespace Atensoli.Modelo
             this.TelefonoOficinalSolicitante = _telefonoOficinalSolicitante;
             this.CorreoElectronicoSolicitante = _correoElectronicoSolicitante;
             this.ParroquiaID = _parroquiaID;
-            this.CiudadID = _ciudadID;
             this.IndicaCarnetPatria = _indicaCarnetPatria;
             this.SerialCarnetPatria = _serialCarnetPatria;
             this.CodigoCarnetPatria = _codigoCarnetPatria;
@@ -56,6 +56,18 @@ namespace Atensoli.Modelo
             set
             {
                 _solicitanteID = value;
+            }
+        }
+        public string CedulaSolicitante
+        {
+            get
+            {
+                return _cedulaSolicitante;
+            }
+
+            set
+            {
+                _cedulaSolicitante = value;
             }
         }
 
@@ -160,19 +172,6 @@ namespace Atensoli.Modelo
             set
             {
                 _parroquiaID = value;
-            }
-        }
-
-        public int CiudadID
-        {
-            get
-            {
-                return _ciudadID;
-            }
-
-            set
-            {
-                _ciudadID = value;
             }
         }
 

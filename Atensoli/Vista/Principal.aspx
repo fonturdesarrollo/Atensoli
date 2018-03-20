@@ -56,15 +56,15 @@
                                         <article>
                                             <span class="icon fa-diamond"></span>
                                             <div class="content">
-                                                <h3>Recepción de equipos</h3>
-                                                <p>Ingrese al cliente, los datos del equipo el tipo de falla y envíe a la cola de servicios para su reparación.</p>
+                                                <h3>Registro de solicitudes</h3>
+                                                <p>Seleccione el tipo de necesidad de atención ingrese al solicitante y registre según sea requerido.</p>
                                             </div>
                                         </article>
                                         <article>
                                             <span class="icon fa-paper-plane"></span>
                                             <div class="content">
-                                                <h3>Cola de soporte técnico</h3>
-                                                <p>Los técnicos podrán consultar en tiempo real sus asignaciones y asignarán los estatus correspondientes al equipo que estén reparando.</p>
+                                                <h3>Seguimiento de solicitudes</h3>
+                                                <p>Mantenga el control de estatus de las necesidades del solicitante.</p>
                                             </div>
                                         </article>
                                     </div>

@@ -16,9 +16,9 @@ namespace Atensoli.Vista
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            
 
-            Response.Redirect("EnConstruccion.aspx?" + "Cedula=" + hdnCedulaSolicitante.Value + "&Nombre="+ hdnNombreSolicitante.Value,true);
+            Response.Redirect("Solicitante.aspx");
+            //Response.Redirect("EnConstruccion.aspx?" + "Cedula=" + hdnCedulaSolicitante.Value + "&Nombre="+ hdnNombreSolicitante.Value + "&ID=" + hdnSolicitanteID.Value, true);
         }
     }
 }

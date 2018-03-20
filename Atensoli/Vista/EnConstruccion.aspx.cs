@@ -15,7 +15,7 @@ namespace Atensoli.Vista
             {
                 if(Request.QueryString.Keys.Count > 0)
                 {
-                    messageBox.ShowMessage("Hola " + Request.QueryString["Cedula"] + " " + Request.QueryString["Nombre"]);
+                    messageBox.ShowMessage("Hola " + Request.QueryString["Cedula"] + " " + Request.QueryString["Nombre"] + " " + Request.QueryString["ID"]);
                 }
             }
         }

@@ -5,13 +5,10 @@
 <html>
 
 	<body>
-
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Main -->
-
-
 				<!-- Sidebar -->
 					<div id="sidebar">
 						<div class="inner">
@@ -65,16 +62,11 @@
 							<!-- Footer -->
 								<footer id="footer">
 									<p><%:Session["NombreCompletoUsuario"]%> <%:Session["NombreEmpresa"]%></p>
-									<p class="copyright">&copy; Cellper. Todos los derechos reservados.</p>
+									<p class="copyright">&copy; <%= DateTime.Now.ToString("yyy") %> Desarrollado por la Gerencia de Tecnología de la Información, División de Desarrollo. Todos los derechos reservados.</p>
 								</footer>
-
 						</div>
 					</div>
-
 			</div>
-
 		<!-- Scripts -->
- 
-
 	</body>
 </html>

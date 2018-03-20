@@ -296,6 +296,9 @@
     <Compile Include="Controlador\SeguridadUsuario.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controlador\Solicitante.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controlador\Utils.cs" />
     <Compile Include="Controlador\XmlUtils.cs" />
     <Compile Include="Index.aspx.cs">

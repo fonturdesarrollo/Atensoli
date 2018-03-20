@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Atensoli.Vista {
+namespace Atensoli {
     
     
     public partial class Solicitante {
@@ -58,15 +58,6 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HiddenField hdnCedula;
         
         /// <summary>
-        /// hdnClienteID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnClienteID;
-        
-        /// <summary>
         /// txtNombre control.
         /// </summary>
         /// <remarks>
@@ -85,49 +76,94 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaNombreVisitante;
         
         /// <summary>
-        /// txtTelefono control.
+        /// txtApellido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
         
         /// <summary>
-        /// txtDireccion control.
+        /// rqrvalidaApellido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDireccion;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaApellido;
         
         /// <summary>
-        /// ddlTipoEquipo control.
+        /// ddlSexo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEquipo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
         
         /// <summary>
-        /// ddlTipoCelular control.
+        /// txtCelular control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoCelular;
+        protected global::System.Web.UI.WebControls.TextBox txtCelular;
         
         /// <summary>
-        /// ddlModeloCelular control.
+        /// txtTelefonoLocal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlModeloCelular;
+        protected global::System.Web.UI.WebControls.TextBox txtTelefonoLocal;
+        
+        /// <summary>
+        /// txtTelefonoOficina control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelefonoOficina;
+        
+        /// <summary>
+        /// txtCorreo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCorreo;
+        
+        /// <summary>
+        /// ddlPadre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPadre;
+        
+        /// <summary>
+        /// ddlHijo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlHijo;
+        
+        /// <summary>
+        /// ddlNieto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlNieto;
         
         /// <summary>
         /// hdnCodigoModelo control.
@@ -139,94 +175,31 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HiddenField hdnCodigoModelo;
         
         /// <summary>
-        /// txtIMEI control.
+        /// chkPatria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIMEI;
+        protected global::System.Web.UI.WebControls.CheckBox chkPatria;
         
         /// <summary>
-        /// rqrvalidaIMEI control.
+        /// txtSerialCarnetPatria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaIMEI;
+        protected global::System.Web.UI.WebControls.TextBox txtSerialCarnetPatria;
         
         /// <summary>
-        /// ddlFalla control.
+        /// txtCodigoCarnetPatria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFalla;
-        
-        /// <summary>
-        /// ddlCondicionEquipo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCondicionEquipo;
-        
-        /// <summary>
-        /// txtAccesorios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAccesorios;
-        
-        /// <summary>
-        /// txtObservaciones control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
-        
-        /// <summary>
-        /// rqrvalidaObservaciones control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaObservaciones;
-        
-        /// <summary>
-        /// ddlTecnico control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTecnico;
-        
-        /// <summary>
-        /// txtCostoRevision control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCostoRevision;
-        
-        /// <summary>
-        /// rqrvalidaCostoReviison control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaCostoReviison;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoCarnetPatria;
         
         /// <summary>
         /// btnGuardar control.
@@ -256,15 +229,6 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.Button ButtonTest;
         
         /// <summary>
-        /// gridDetalle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridDetalle;
-        
-        /// <summary>
         /// ControlMenu control.
         /// </summary>
         /// <remarks>
@@ -272,41 +236,5 @@ namespace Atensoli.Vista {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Atensoli.Vista.UCNavegacion ControlMenu;
-        
-        /// <summary>
-        /// Label5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
-        
-        /// <summary>
-        /// txtObservacionesGarantia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObservacionesGarantia;
-        
-        /// <summary>
-        /// hdnEquipoRecepcionGarantiaID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnEquipoRecepcionGarantiaID;
-        
-        /// <summary>
-        /// btnEnviarGarantia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEnviarGarantia;
     }
 }
