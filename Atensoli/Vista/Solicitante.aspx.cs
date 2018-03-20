@@ -148,36 +148,51 @@ namespace Atensoli
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            CargarCombosAlEnviarFormulario();
-            CSolicitante objetoSolicitante = new CSolicitante();
-            objetoSolicitante.SolicitanteID = codigoSolicitante;
-            objetoSolicitante.CedulaSolicitante = txtCedula.Text;
-            objetoSolicitante.Nombresolicitante = txtNombre.Text.ToUpper();
-            objetoSolicitante.ApellidoSolicitante = txtApellido.Text.ToUpper();
-            objetoSolicitante.Sexo = ddlSexo.SelectedValue;
-            objetoSolicitante.CelularSolicitante = txtCelular.Text;
-            objetoSolicitante.TelefonoLocalSolicitante = txtTelefonoLocal.Text;
-            objetoSolicitante.TelefonoOficinalSolicitante = txtTelefonoOficina.Text;
-            objetoSolicitante.CorreoElectronicoSolicitante = txtCorreo.Text.ToUpper();
-            objetoSolicitante.ParroquiaID = Convert.ToInt32(ddlNieto.SelectedValue);
-            objetoSolicitante.IndicaCarnetPatria = chkPatria.Checked ? 1 : 0;
-            if (chkPatria.Checked == true)
+            ProcesoSolicitante();
+        }
+        private void ProcesoSolicitante()
+        {
+            try
             {
-                objetoSolicitante.SerialCarnetPatria = txtSerialCarnetPatria.Text.ToUpper();
-                objetoSolicitante.CodigoCarnetPatria = txtCodigoCarnetPatria.Text.ToUpper();
-            }
-            else
-            {
-                objetoSolicitante.SerialCarnetPatria = "";
-                objetoSolicitante.CodigoCarnetPatria = "";
-            }
+                CSolicitante objetoSolicitante = new CSolicitante();
+                CargarCombosAlEnviarFormulario();
+                objetoSolicitante.SolicitanteID = codigoSolicitante;
+                objetoSolicitante.CedulaSolicitante = txtCedula.Text;
+                objetoSolicitante.Nombresolicitante = txtNombre.Text.ToUpper();
+                objetoSolicitante.ApellidoSolicitante = txtApellido.Text.ToUpper();
+                objetoSolicitante.Sexo = ddlSexo.SelectedValue;
+                objetoSolicitante.CelularSolicitante = txtCelular.Text;
+                objetoSolicitante.TelefonoLocalSolicitante = txtTelefonoLocal.Text;
+                objetoSolicitante.TelefonoOficinalSolicitante = txtTelefonoOficina.Text;
+                objetoSolicitante.CorreoElectronicoSolicitante = txtCorreo.Text.ToUpper();
+                objetoSolicitante.ParroquiaID = Convert.ToInt32(ddlNieto.SelectedValue);
+                objetoSolicitante.IndicaCarnetPatria = chkPatria.Checked ? 1 : 0;
+                if (chkPatria.Checked == true)
+                {
+                    objetoSolicitante.SerialCarnetPatria = txtSerialCarnetPatria.Text.ToUpper();
+                    objetoSolicitante.CodigoCarnetPatria = txtCodigoCarnetPatria.Text.ToUpper();
+                }
+                else
+                {
+                    objetoSolicitante.SerialCarnetPatria = "";
+                    objetoSolicitante.CodigoCarnetPatria = "";
+                }
 
-            codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante, Convert.ToInt32(Session["UserId"]), Convert.ToInt32(Session["CodigoSucursalEmpresa"]));
-            if (codigoSolicitante > 0)
+                codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante, Convert.ToInt32(Session["UserId"]), Convert.ToInt32(Session["CodigoSucursalEmpresa"]));
+                if (codigoSolicitante > 0)
+                {
+                    messageBox.ShowMessage("Registro actualizado.");
+                }
+            }
+            catch (Exception ex)
             {
-                messageBox.ShowMessage("Registro actualizado.");
+                messageBox.ShowMessage(ex.Message);
             }
         }
 
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SeleccionarTipoSolicitante.aspx");
+        }
     }
 }

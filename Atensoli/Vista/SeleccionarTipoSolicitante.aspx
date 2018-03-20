@@ -1,11 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarTipoSolicitud.aspx.cs" Inherits="Atensoli.Vista.BuscarTipoSolicitud" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarTipoSolicitante.aspx.cs" Inherits="Atensoli.SeleccionarTipoSolicitante" %>
+
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %> 
 
 <!DOCTYPE HTML>
 
 <html>
 	<head>
-		<title>Atensoli | Tipo de solicitud</title>
+		<title>Atensoli | Tipo de solicitante</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -36,7 +37,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Tipo de solicitud</strong></a>
+									<a class="logo"><strong>Tipo de solicitante</strong></a>
 									<ul class="icons">
 
 									</ul>
@@ -46,15 +47,18 @@
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
+										<div class="row uniform">
+
 										<div class="6u 12u$(xsmall)">
 											<div class="select-wrapper">
-												<asp:DropDownList ID="ddTipoSolicitud" runat="server"  AppendDataBoundItems="True" AutoPostBack = "false" ></asp:DropDownList>         
+												<asp:DropDownList ID="ddlTipoSolicitante" runat="server"  AppendDataBoundItems="True" AutoPostBack = "false" ></asp:DropDownList>    
 											</div>
 										</div>
 										<div class="12u$">
 											<ul class="actions">
-												<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special" OnClick="btnSiguiente_Click" /></li>
+												<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special"  /></li>
 											</ul>
+										</div>
 										</div>
 								</section>
 							</form>
@@ -74,3 +78,4 @@
 
 	</body>
 </html>
+
