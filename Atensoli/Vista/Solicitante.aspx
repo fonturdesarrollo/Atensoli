@@ -226,7 +226,7 @@
 												<ASP:RequiredFieldValidator id="rqrvalidaNombreVisitante" runat="server" errormessage="Debe colocar el nombre"  controltovalidate="txtNombre" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)"> 
-												<asp:TextBox runat="server" ID="txtApellido"  MaxLength="80"  placeholder="Apellidio Solicitante" />
+												<asp:TextBox runat="server" ID="txtApellido"  MaxLength="80"  placeholder="Apellido Solicitante" />
 												<ASP:RequiredFieldValidator id="rqrvalidaApellido" runat="server" errormessage="Debe colocar el Apellido"  controltovalidate="txtApellido" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
@@ -239,6 +239,7 @@
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtCelular"  MaxLength="100" placeholder ="Celular"/>
+												<ASP:RequiredFieldValidator id="rqrvalidaCelular" runat="server" errormessage="Debe colocar el Celular"  controltovalidate="txtCelular" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtTelefonoLocal"  MaxLength="100" placeholder ="Teléfono local"/>
@@ -248,6 +249,7 @@
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtCorreo"  MaxLength="100" placeholder ="Correo"/>
+												<ASP:RequiredFieldValidator id="rqrCorreo" runat="server" errormessage="Debe colocar el Correo"  controltovalidate="txtCorreo" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 
 											<div class="6u 12u$(xsmall)">

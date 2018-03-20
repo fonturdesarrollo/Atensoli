@@ -112,6 +112,15 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.TextBox txtCelular;
         
         /// <summary>
+        /// rqrvalidaCelular control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaCelular;
+        
+        /// <summary>
         /// txtTelefonoLocal control.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,15 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCorreo;
+        
+        /// <summary>
+        /// rqrCorreo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrCorreo;
         
         /// <summary>
         /// ddlPadre control.
