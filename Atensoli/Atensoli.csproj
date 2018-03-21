@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\Organizacion.aspx" />
     <Content Include="packages.config" />
     <Content Include="assets\fonts\fontawesome-webfont.eot" />
     <Content Include="assets\fonts\fontawesome-webfont.ttf" />
@@ -302,6 +303,7 @@
     </Compile>
     <Compile Include="Controlador\Utils.cs" />
     <Compile Include="Controlador\XmlUtils.cs" />
+    <Compile Include="Modelo\COrganizacion.cs" />
     <Compile Include="Index.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Index.aspx</DependentUpon>
@@ -314,6 +316,13 @@
     <Compile Include="Modelo\CRecepcion.cs" />
     <Compile Include="Modelo\CSeguridad.cs" />
     <Compile Include="Modelo\CSolicitante.cs" />
+    <Compile Include="Vista\Organizacion.aspx.cs">
+      <DependentUpon>Organizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Organizacion.aspx.designer.cs">
+      <DependentUpon>Organizacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vista\SeleccionarTipoSolicitante.aspx.cs">
       <DependentUpon>SeleccionarTipoSolicitante.aspx</DependentUpon>
