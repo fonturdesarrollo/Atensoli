@@ -32,6 +32,25 @@ namespace Admin
                         Response.End();
                     }
                 }
+                if (Request.QueryString["identifier"] == "Organizacion")
+                {
+                    DataSet ds = Autocomplete.ObtenerRifOrganizacion(Request.QueryString["query"], Convert.ToInt32(Session["CodigoSucursalEmpresa"]));
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Response.Write("<ul>" + "\n");
+                        paginaBase.AutoCompleteResult item;
+                        foreach (DataRow dr in ds.Tables[0].Rows)
+                        {
+                            item = new paginaBase.AutoCompleteResult();
+                            item.value = dr["NombreCompuestoOrganizacion"].ToString();
+                            item.id = dr["OrganizacionID"].ToString();
+                            item.value = item.value.Replace(Request.QueryString["query"].ToString(), "<span style='font-weight:bold;'>" + Request.QueryString["query"].ToString() + "</span>");
+                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["RifOrganizacion"].ToString() + "_" + dr["OrganizacionID"].ToString() + "_" + dr["NombreOrganizacion"].ToString() + "_" + dr["NombreTipoOrganizacion"].ToString() + "_" + dr["NombreEstado"].ToString() + "'>" + item.value + "</li>" + "\n");
+                        }
+                        Response.Write("</ul>");
+                        Response.End();
+                    }
+                }
                 if (Request.QueryString["identifier"] == "Empresas")
                 {
                     DataSet ds = Autocomplete.ObtenerEmpresas(Request.QueryString["query"]);

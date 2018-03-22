@@ -17,6 +17,7 @@ namespace Atensoli.Vista
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
 
+            Session["SolicitanteID"] = Convert.ToInt32(hdnSolicitanteID.Value);
             Response.Redirect("Solicitante.aspx");
             //Response.Redirect("EnConstruccion.aspx?" + "Cedula=" + hdnCedulaSolicitante.Value + "&Nombre="+ hdnNombreSolicitante.Value + "&ID=" + hdnSolicitanteID.Value, true);
         }

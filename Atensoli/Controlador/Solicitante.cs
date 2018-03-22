@@ -8,7 +8,7 @@ namespace Atensoli
 {
     public partial class Solicitante
     {
-        public static int InsertarSolicitante( CSolicitante objetoSolicitante, int codigoUsuario, int codigoEmpresaSucursal)
+        public static int InsertarSolicitante( CSolicitante objetoSolicitante)
         {
             SqlParameter[] dbParams = new SqlParameter[]
             {
@@ -25,13 +25,21 @@ namespace Atensoli
                     DBHelper.MakeParam("@IndicaCarnetPatria", SqlDbType.Int, 0,objetoSolicitante.IndicaCarnetPatria),
                     DBHelper.MakeParam("@SerialCarnetPatria", SqlDbType.VarChar, 0,objetoSolicitante.SerialCarnetPatria),
                     DBHelper.MakeParam("@CodigoCarnetPatria", SqlDbType.VarChar, 0,objetoSolicitante.CodigoCarnetPatria),
-                    DBHelper.MakeParam("@SeguridadUsuarioDatosID", SqlDbType.Int, 0,codigoUsuario),
-                    DBHelper.MakeParam("@EmpresaSucursalID", SqlDbType.Int, 0,codigoEmpresaSucursal)
+                    DBHelper.MakeParam("@SeguridadUsuarioDatosID", SqlDbType.Int, 0,objetoSolicitante.SeguridadUsuarioDatosID),
+                    DBHelper.MakeParam("@EmpresaSucursalID", SqlDbType.Int, 0,objetoSolicitante.EmpresaSucursalID)
 
             };
 
            return Convert.ToInt32(DBHelper.ExecuteScalar("[usp_Solicitante_Insertar]", dbParams));
 
        }
+        public static SqlDataReader ObtenerDatosSolicitante(int solicitanteID)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@SolicitanteID", SqlDbType.Int, 0, solicitanteID)
+                };
+            return DBHelper.ExecuteDataReader("usp_Solicitante_ObtenerSolicitante", dbParams);
+        }
     }
 }

@@ -121,7 +121,7 @@
 	   <%-- PROCESO PARA COMBOS ANIDADOS DESDE EL CLIENTE CON AJAX  JSON Y JAVASRCIPT--%>
 		<%--COMBO ANIDADO 2--%>
 		<script type = "text/javascript">
-			var pageUrl = '<%=ResolveUrl("Solicitante.aspx")%>'
+			var pageUrl = '<%=ResolveUrl("Solicitud.aspx")%>'
 			function CargarHijos() {
 				$("#<%=ddlHijo.ClientID%>").attr("disabled", "disabled");
 				$("#<%=ddlNieto.ClientID%>").attr("disabled", "disabled");
@@ -151,34 +151,6 @@
 			}
 		</script>
 		<%----------------------------------------------------------------------------------------------------------------------------------------------%>
-
-		<%--COMBO ANIDADO 3--%>
-		<script type = "text/javascript">
-			function CargarNieto() {
-				$("#<%=ddlNieto.ClientID%>").attr("disabled", "disabled");
-				if ($('#<%=ddlHijo.ClientID%>').val() == "0") {
-					$('#<%=ddlNieto.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione el modelo del equipo</option>');
-				}
-				else {
-					$('#<%=ddlNieto.ClientID %>').empty().append('<option selected="selected" value="0">Cargando...</option>');
-					$.ajax({
-						type: "POST",
-						url: pageUrl + '/CargarNieto',
-						data: '{nietoID: ' + $('#<%=ddlHijo.ClientID%>').val() + '}',
-						contentType: "application/json; charset=utf-8",
-						dataType: "json",
-						success: EnModelosCargados,
-						failure: function(response) {
-							alert(response.d);
-						}
-					});
-				}
-			}
- 
-			function EnModelosCargados(response) {
-				CargarControl(response.d, $("#<%=ddlNieto.ClientID %>"));
-			}
-		</script>
 			<script type = "text/javascript">
 			  function CargarControl(list, control) {
 				if (list.length > 0) {

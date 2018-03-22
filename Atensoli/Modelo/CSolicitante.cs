@@ -25,7 +25,8 @@ namespace Atensoli
         private string _codigoCarnetPatria;
         private string _fechaRegistroSolicitante;
         private int _seguridadUsuarioDatosID;
-        public CSolicitante(int _solicitanteID, string _cedulaSolicitante ,string _nombresolicitante, string _apellidoSolicitante, string _sexo, string _celularSolicitante, string _telefonoLocalSolicitante, string _telefonoOficinalSolicitante, string _correoElectronicoSolicitante, int _parroquiaID,  int _indicaCarnetPatria, string _serialCarnetPatria, string _codigoCarnetPatria, string _fechaRegistroSolicitante, int _seguridadUsuarioDatosID)
+        private int _empresaSucursalID;
+        public CSolicitante(int _solicitanteID, string _cedulaSolicitante ,string _nombresolicitante, string _apellidoSolicitante, string _sexo, string _celularSolicitante, string _telefonoLocalSolicitante, string _telefonoOficinalSolicitante, string _correoElectronicoSolicitante, int _parroquiaID,  int _indicaCarnetPatria, string _serialCarnetPatria, string _codigoCarnetPatria, string _fechaRegistroSolicitante, int _seguridadUsuarioDatosID, int _empresaSucursalID)
         {
             this.SolicitanteID = _solicitanteID;
             this.CedulaSolicitante = _cedulaSolicitante;
@@ -42,10 +43,10 @@ namespace Atensoli
             this.CodigoCarnetPatria = _codigoCarnetPatria;
             this.FechaRegistroSolicitante = _fechaRegistroSolicitante;
             this.SeguridadUsuarioDatosID = _seguridadUsuarioDatosID;
+            this.EmpresaSucursalID = _empresaSucursalID;
         }
 
-       
-
+ 
         public int SolicitanteID
         {
             get
@@ -237,6 +238,18 @@ namespace Atensoli
             set
             {
                 _seguridadUsuarioDatosID = value;
+            }
+        }
+        public int EmpresaSucursalID
+        {
+            get
+            {
+                return _empresaSucursalID;
+            }
+
+            set
+            {
+                _empresaSucursalID = value;
             }
         }
     }

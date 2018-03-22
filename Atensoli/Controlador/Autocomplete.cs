@@ -18,6 +18,15 @@ namespace Admin
                 };
             return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerCedulaSolicitante", dbParams);
         }
+        public static DataSet ObtenerRifOrganizacion(string sQuery, int codigoSucursal)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery),
+                    DBHelper.MakeParam("@EmpresaSucursalID", SqlDbType.Int, 0, codigoSucursal)
+                };
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerRifOrganizacion", dbParams);
+        }
         public static DataSet ObtenerEmpresas(string sQuery)
         {
             SqlParameter[] dbParams = new SqlParameter[]

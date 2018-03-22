@@ -3,6 +3,7 @@ using System.Collections;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Atensoli
@@ -15,6 +16,8 @@ namespace Atensoli
             if(!IsPostBack)
             {
                 CargarPadre();
+                EstablecerSolicitante();
+                SoloLectura();
             }
 
         }
@@ -150,6 +153,51 @@ namespace Atensoli
         {
             ProcesoSolicitante();
         }
+        private void EstablecerSolicitante()
+        {
+            if(Convert.ToInt32(Session["SolicitanteID"] ) > 0)
+            {
+                SqlDataReader dr = Solicitante.ObtenerDatosSolicitante(Convert.ToInt32(Session["SolicitanteID"]));
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        txtCedula.Text = dr["CedulaSolicitante"].ToString();
+                        txtNombre.Text = dr["NombreSolicitante"].ToString();
+                        txtApellido.Text = dr["ApellidoSolicitante"].ToString();
+                        ddlSexo.SelectedValue= dr["Sexo"].ToString();
+                        txtCelular.Text = dr["CelularSolicitante"].ToString();
+                        txtTelefonoLocal.Text = dr["TelefonoLocalSolicitante"].ToString();
+                        txtTelefonoOficina.Text = dr["TelefonoOficinalSolicitante"].ToString();
+                        txtCorreo.Text = dr["CorreoElectronicoSolicitante"].ToString();
+                        txtSerialCarnetPatria.Text = dr["SerialCarnetPatria"].ToString();
+                        txtCodigoCarnetPatria.Text = dr["CodigoCarnetPatria"].ToString();
+                    }
+                }
+                dr.Close();
+            }
+
+        }
+        private void SoloLectura()
+        {
+            if (Convert.ToInt32(Session["SolicitanteID"]) > 0)
+            {
+                txtCedula.Enabled = false;
+                txtNombre.Enabled = false;
+                txtApellido.Enabled = false;
+                ddlSexo.Enabled = false;
+                txtCelular.Enabled = false;
+                txtTelefonoLocal.Enabled = false;
+                txtTelefonoOficina.Enabled = false;
+                txtCorreo.Enabled = false;
+                ddlPadre.Enabled = false;
+                ddlHijo.Enabled = false;
+                ddlNieto.Enabled = false;
+                txtSerialCarnetPatria.Enabled = false;
+                txtCodigoCarnetPatria.Enabled = false;
+            }
+
+        }
         private void ProcesoSolicitante()
         {
             try
@@ -167,6 +215,8 @@ namespace Atensoli
                 objetoSolicitante.CorreoElectronicoSolicitante = txtCorreo.Text.ToUpper();
                 objetoSolicitante.ParroquiaID = Convert.ToInt32(ddlNieto.SelectedValue);
                 objetoSolicitante.IndicaCarnetPatria = chkPatria.Checked ? 1 : 0;
+                objetoSolicitante.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"]);
+                objetoSolicitante.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
                 if (chkPatria.Checked == true)
                 {
                     objetoSolicitante.SerialCarnetPatria = txtSerialCarnetPatria.Text.ToUpper();
@@ -178,7 +228,7 @@ namespace Atensoli
                     objetoSolicitante.CodigoCarnetPatria = "";
                 }
 
-                codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante, Convert.ToInt32(Session["UserId"]), Convert.ToInt32(Session["CodigoSucursalEmpresa"]));
+                codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante);
                 if (codigoSolicitante > 0)
                 {
                     messageBox.ShowMessage("Registro actualizado.");

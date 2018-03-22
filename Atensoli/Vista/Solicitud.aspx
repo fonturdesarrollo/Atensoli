@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Organizacion.aspx.cs" Inherits="Atensoli.Vista.Organizacion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Solicitud.aspx.cs" Inherits="Atensoli.Solicitud" %>
+
 <%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
 
@@ -7,7 +8,7 @@
 
 <html>
 	<head>
-		<title>Atensoli | Organización</title>
+		<title>Atensoli | Solicitud</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -116,17 +117,16 @@
 			});
 		</script>
 		
+
 	   <%----------------------------------------------------------------------------------------------------------------------------------------------%>
 	   <%-- PROCESO PARA COMBOS ANIDADOS DESDE EL CLIENTE CON AJAX  JSON Y JAVASRCIPT--%>
 		<%--COMBO ANIDADO 2--%>
 		<script type = "text/javascript">
-			var pageUrl = '<%=ResolveUrl("Organizacion.aspx")%>'
+			var pageUrl = '<%=ResolveUrl("Solicitante.aspx")%>'
 			function CargarHijos() {
 				$("#<%=ddlHijo.ClientID%>").attr("disabled", "disabled");
-				$("#<%=ddlNieto.ClientID%>").attr("disabled", "disabled");
 				if ($('#<%=ddlPadre.ClientID%>').val() == "0") {
 					$('#<%=ddlHijo.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione la marca del equipo</option>');
-					$('#<%=ddlNieto.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione el modelo del equipo</option>');
 				}
 				else {
 
@@ -151,33 +151,6 @@
 		</script>
 		<%----------------------------------------------------------------------------------------------------------------------------------------------%>
 
-		<%--COMBO ANIDADO 3--%>
-		<script type = "text/javascript">
-			function CargarNieto() {
-				$("#<%=ddlNieto.ClientID%>").attr("disabled", "disabled");
-				if ($('#<%=ddlHijo.ClientID%>').val() == "0") {
-					$('#<%=ddlNieto.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione el modelo del equipo</option>');
-				}
-				else {
-					$('#<%=ddlNieto.ClientID %>').empty().append('<option selected="selected" value="0">Cargando...</option>');
-					$.ajax({
-						type: "POST",
-						url: pageUrl + '/CargarNieto',
-						data: '{nietoID: ' + $('#<%=ddlHijo.ClientID%>').val() + '}',
-						contentType: "application/json; charset=utf-8",
-						dataType: "json",
-						success: EnModelosCargados,
-						failure: function(response) {
-							alert(response.d);
-						}
-					});
-				}
-			}
- 
-			function EnModelosCargados(response) {
-				CargarControl(response.d, $("#<%=ddlNieto.ClientID %>"));
-			}
-		</script>
 			<script type = "text/javascript">
 			  function CargarControl(list, control) {
 				if (list.length > 0) {
@@ -194,7 +167,6 @@
 		</script>
 		<%--FIN DE COMBOS ANIDADOS--%>
 		<%----------------------------------------------------------------------------------------------------------------------------------------------%>
-	  
 	</head>
 	<body>
 		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
@@ -206,7 +178,7 @@
 						<div class="inner">
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Datos de la Organización</strong></a>
+									<a class="logo"><strong>Datos de la Solicitud</strong></a>
 									<ul class="icons">
 
 									</ul>
@@ -217,17 +189,25 @@
 									<p></p>
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtRifOrganizacion"    MaxLength="12" placeholder="RIF de la organización" />
-												<ASP:RequiredFieldValidator id="rqrvalidaRifOrganizacion" runat="server" errormessage="Debe colocar el RIF de la organización" controltovalidate="txtRifOrganizacion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
-												<asp:HiddenField runat ="server" ID ="hdnRifOrganizacion"  Value="0"/> 
+												<asp:TextBox runat="server" ID="txtNombreCargoSolicitante"    MaxLength="12" placeholder="Nombre cargo solicitante" />
 											</div>
-											<div class="6u 12u$(xsmall)"> 
-												<asp:TextBox runat="server" ID="txtNombreOrganizacion"  MaxLength="80"  placeholder="Nombre de la organización" />
-												<ASP:RequiredFieldValidator id="rqrvalidaNombreOrganizacion" runat="server" errormessage="Debe colocar el nombre de la organización"  controltovalidate="txtNombreOrganizacion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+
+											<div class="6u 12u$(xsmall)">
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlTipoAtencionBrindada" runat="server"  AppendDataBoundItems="True"  >
+													</asp:DropDownList>
+												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
-													<asp:DropDownList ID="ddTipoOrganizacion" runat="server" AppendDataBoundItems="true"></asp:DropDownList>      
+													<asp:DropDownList ID="ddlTipoReferenciaSolicitud" runat="server"  AppendDataBoundItems="True"  >
+													</asp:DropDownList>
+												</div>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlTipoUnidad" runat="server"  AppendDataBoundItems="True"  >
+													</asp:DropDownList>
 												</div>
 											</div>
 
@@ -235,29 +215,40 @@
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlPadre" runat="server" AppendDataBoundItems="true"
 																 onchange = "CargarHijos();">
-														<asp:ListItem Text = "Seleccione el estado" Value = "0"></asp:ListItem>                
+														<asp:ListItem Text = "Seleccione el tipo de insumo" Value = "0"></asp:ListItem>                
 													</asp:DropDownList>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:DropDownList ID="ddlHijo" runat="server"
-															 onchange = "CargarNieto();">
-													<asp:ListItem Text = "Seleccione el municipio" Value = "0"></asp:ListItem>                
+												<asp:DropDownList ID="ddlHijo" runat="server">
+													<asp:ListItem Text = "Seleccione detalle de insumo" Value = "0"></asp:ListItem>                
 												</asp:DropDownList>
 											</div>
+
 											<div class="6u 12u$(xsmall)">
-												<asp:DropDownList ID="ddlNieto" runat="server">
-													<asp:ListItem Text = "Seleccione la parroquia" Value = "0"></asp:ListItem>                
-												</asp:DropDownList>
-												<asp:HiddenField runat ="server" ID ="hdnCodigoModelo"  Value="0"/>
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlTipoEstatus" runat="server"  AppendDataBoundItems="True"  >
+													</asp:DropDownList>
+												</div>
+											</div>
+
+											<div class="6u 12u$(xsmall)">
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlTipoFormaAtencion" runat="server"  AppendDataBoundItems="True"  >
+													</asp:DropDownList>
+												</div>
+											</div>
+
+											<div class="6u 12u$(xsmall)">
+												<asp:TextBox runat="server" ID="txtObservacionesSolicitante" TextMode="MultiLine" Rows="1" MaxLength="300"  placeholder="Observaciones del solictante"/> 
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtTelefonoOrganizacion"  MaxLength="100" placeholder ="Teléfono de la organización" />
+												<asp:TextBox runat="server" ID="TextBox1txtObservacionesAnalista" TextMode="MultiLine" Rows="1" MaxLength="300"  placeholder="Observaciones del analista"/> 
 											</div>
+
 											<div class="12u$">
 												<ul class="actions">
-													<li><asp:Button Text="Registrar solicitante" runat="server" ID ="btnGuardar"  CssClass ="special" /></li>
-													<li><asp:Button Text="Siguiente" runat="server" ID ="btnLimpiar"   CausesValidation="False" OnClick="btnLimpiar_Click"    /></li>
+													<li><asp:Button Text="Registrar solicitud" runat="server" ID ="btnGuardar"  CssClass ="special"/></li>
 													<li><asp:Button Text="TEST" runat="server" ID ="ButtonTest"  style="display:none"  CausesValidation="False"  /></li>
 												   
 												</ul>

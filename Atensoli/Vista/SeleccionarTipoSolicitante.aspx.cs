@@ -46,5 +46,22 @@ namespace Atensoli
                 con.Dispose();
             }
         }
+        protected void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            ProcesoTipoSolicitante();
+        }
+        private void ProcesoTipoSolicitante()
+        {
+            switch (Convert.ToInt32(ddlTipoSolicitante.SelectedValue))
+            {
+                case 1:
+                    Response.Redirect("Solicitud.aspx");
+                    break;
+                default:
+                    Response.Redirect("SeleccionarOrganizacion.aspx");
+                    break;
+            }
+        }
+
     }
 }

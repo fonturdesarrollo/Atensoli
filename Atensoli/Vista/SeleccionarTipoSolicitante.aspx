@@ -56,7 +56,7 @@
 										</div>
 										<div class="12u$">
 											<ul class="actions">
-												<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special"  /></li>
+												<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special" OnClick="btnSiguiente_Click"  /></li>
 											</ul>
 										</div>
 										</div>
