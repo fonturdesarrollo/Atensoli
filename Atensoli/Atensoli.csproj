@@ -305,6 +305,7 @@
     </Compile>
     <Compile Include="Controlador\Utils.cs" />
     <Compile Include="Controlador\XmlUtils.cs" />
+    <Compile Include="Modelo\CSolicitud.cs" />
     <Compile Include="Modelo\COrganizacion.cs" />
     <Compile Include="Index.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -319,6 +320,9 @@
     <Compile Include="Modelo\CSeguridad.cs" />
     <Compile Include="Modelo\CSolicitante.cs" />
     <Compile Include="Controlador\Organizacion.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\Solicitud.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vista\Solicitud.aspx.cs">
