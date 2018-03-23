@@ -65,7 +65,7 @@ namespace Seguridad
                     this.Session["CodigoSucursalEmpresa"] = ddlEmpresa.SelectedValue;
                     this.Session["NombreEmpresa"] = ddlEmpresa.SelectedItem;
                     this.Session["LogoEmpresa"] = LogoEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue));
-                    Response.Redirect("/Vista/Principal.aspx");
+                    Response.Redirect("~/Vista/Principal.aspx");
                 }
 
             }
@@ -97,7 +97,7 @@ namespace Seguridad
                         this.Session["CodigoSucursalEmpresa"] = codigoDeEmpresa;
                         this.Session["LogoEmpresa"] = LogoEmpresa(codigoDeEmpresa);
                         this.Session["NombreEmpresa"] = ddlEmpresa.SelectedItem;
-                        Response.Redirect("/Vista/Principal.aspx");
+                        Response.Redirect("~/Vista/Principal.aspx");
                     }
                     else if (CantidadEmpresasPorUsuario(codigoUsuario, false) > 1)
                     {

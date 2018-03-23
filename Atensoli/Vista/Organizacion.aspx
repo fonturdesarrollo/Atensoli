@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Organizacion.aspx.cs" Inherits="Atensoli.Vista.Organizacion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Organizacion.aspx.cs" EnableEventValidation="false" Inherits="Atensoli.Organizacion" %>
 <%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
 
@@ -256,8 +256,8 @@
 											</div>
 											<div class="12u$">
 												<ul class="actions">
-													<li><asp:Button Text="Registrar solicitante" runat="server" ID ="btnGuardar"  CssClass ="special" /></li>
-													<li><asp:Button Text="Siguiente" runat="server" ID ="btnLimpiar"   CausesValidation="False" OnClick="btnLimpiar_Click"    /></li>
+													<li><asp:Button Text="Registrar solicitante" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click" /></li>
+													<li><asp:Button Text="Siguiente" runat="server" ID ="btnLimpiar"   CausesValidation="False" OnClick="btnLimpiar_Click1"  /></li>
 													<li><asp:Button Text="TEST" runat="server" ID ="ButtonTest"  style="display:none"  CausesValidation="False"  /></li>
 												   
 												</ul>

@@ -9,16 +9,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Atensoli.Vista
+namespace Atensoli
 {
     public partial class Organizacion : System.Web.UI.Page
     {
+        public static int codigoOrganizacion = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
                 CargarPadre();
                 CargarTipoOrganizacion();
+                EstablecerOrganizacion();
+
             }
         }
         //***********************************************************************************
@@ -148,6 +151,7 @@ namespace Atensoli.Vista
         }
         //FIN DE COMBOS ANIDADOS
         //*********************************************************************************
+
         private void CargarTipoOrganizacion()
         {
             String strConnString = ConfigurationManager
@@ -180,14 +184,64 @@ namespace Atensoli.Vista
                 con.Dispose();
             }
         }
-        protected void btnSiguiente_Click(object sender, EventArgs e)
+        private void EstablecerOrganizacion()
         {
-            Response.Redirect("~/Vista/Organizacion.aspx");
+            if (Convert.ToInt32(Session["OrganizacionID"]) > 0)
+            {
+                SqlDataReader dr = Organizacion.ObtenerDatosOrganizacion(Convert.ToInt32(Session["OrganizacionID"]));
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        txtRifOrganizacion.Text = dr["RifOrganizacion"].ToString();
+                        txtNombreOrganizacion.Text = dr["NombreOrganizacion"].ToString();
+                        ddTipoOrganizacion.SelectedValue = dr["TipoOrganizacionID"].ToString();
+                        txtTelefonoOrganizacion.Text = dr["TelefonoOrganizacion"].ToString();
+                    }
+                }
+                dr.Close();
+            }
+
         }
 
+        private void ProcesoOrganizacion()
+        {
+            try
+            {
+                COrganizacion objetoOrganizaicon = new COrganizacion();
+                CargarCombosAlEnviarFormulario();
+                objetoOrganizaicon.OrganizacionID = codigoOrganizacion;
+                objetoOrganizaicon.RifOrganizacion = txtRifOrganizacion.Text.ToUpper();
+                objetoOrganizaicon.NombreOrganizacion = txtNombreOrganizacion.Text.ToUpper();
+                objetoOrganizaicon.TipoOrganizacionID = Convert.ToInt32(ddTipoOrganizacion.SelectedValue);
+                objetoOrganizaicon.ParroquiaID = Convert.ToInt32(ddlNieto.SelectedValue);
+                objetoOrganizaicon.TelefonoOrganizacion = txtTelefonoOrganizacion.Text;
+                objetoOrganizaicon.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"]);
+                objetoOrganizaicon.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
+                codigoOrganizacion = Organizacion.InsertarOrganizacion(objetoOrganizaicon);
+                if (codigoOrganizacion > 0)
+                {
+                    messageBox.ShowMessage("Registro actualizado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                messageBox.ShowMessage(ex.Message);
+            }
+        }
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Solicitud.aspx");
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            ProcesoOrganizacion();
+        }
+
+        protected void btnLimpiar_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Vista/Solicitud.aspx");
         }
     }
 }

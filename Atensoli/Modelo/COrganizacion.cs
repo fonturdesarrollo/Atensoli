@@ -13,20 +13,23 @@ namespace Atensoli
         private int _organizacionID;
         private string _rifOrganizacion;
         private string _nombreOrganizacion;
-        private int _tipoOrganizacion;
+        private int _tipoOrganizacionID;
         private int _parroquiaID;
         private string _telefonoOrganizacion;
         private int _seguridadUsuarioDatosID;
         private string _fechaRegistroOrganizacion;
-        public COrganizacion(int _organizacionID, string _rifOrganizacion, string _nombreOrganizacion, int _tipoOrganizacion, int _parroquiaID, string _telefonoOrganizacion, int _seguridadUsuarioDatosID, string _fechaRegistroOrganizacion)
+        private int _empresaSucursalID;
+        public COrganizacion(int _organizacionID, string _rifOrganizacion, string _nombreOrganizacion, int _tipoOrganizacionID, int _parroquiaID, string _telefonoOrganizacion, int _seguridadUsuarioDatosID, string _fechaRegistroOrganizacion, int _empresaSucursalID)
         {
             this.OrganizacionID = _organizacionID;
             this.RifOrganizacion = _rifOrganizacion;
             this.NombreOrganizacion = _nombreOrganizacion;
+            this.TipoOrganizacionID = _tipoOrganizacionID;
             this.TelefonoOrganizacion = _telefonoOrganizacion;
             this.ParroquiaID = _parroquiaID;
             this.SeguridadUsuarioDatosID = _seguridadUsuarioDatosID;
             this.FechaRegistroOrganizacion = _fechaRegistroOrganizacion;
+            this.EmpresaSucursalID = _empresaSucursalID;
         }
         public int OrganizacionID
         {
@@ -67,16 +70,16 @@ namespace Atensoli
             }
         }
 
-        public int TipoOrganizacion
+        public int TipoOrganizacionID
         {
             get
             {
-                return _tipoOrganizacion;
+                return _tipoOrganizacionID;
             }
 
             set
             {
-                _tipoOrganizacion = value;
+                _tipoOrganizacionID = value;
             }
         }
 
@@ -129,6 +132,19 @@ namespace Atensoli
             set
             {
                 _fechaRegistroOrganizacion = value;
+            }
+        }
+
+        public int EmpresaSucursalID
+        {
+            get
+            {
+                return _empresaSucursalID;
+            }
+
+            set
+            {
+                _empresaSucursalID = value;
             }
         }
     }

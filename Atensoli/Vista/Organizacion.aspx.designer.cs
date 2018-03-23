@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Atensoli.Vista {
+namespace Atensoli {
     
     
     public partial class Organizacion {

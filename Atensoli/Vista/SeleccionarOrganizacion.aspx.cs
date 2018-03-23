@@ -16,6 +16,7 @@ namespace Atensoli
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
+            Session["OrganizacionID"] = Convert.ToInt32(hdnOrganizacionID.Value);
             Response.Redirect("Organizacion.aspx");
         }
     }

@@ -318,6 +318,9 @@
     <Compile Include="Modelo\CRecepcion.cs" />
     <Compile Include="Modelo\CSeguridad.cs" />
     <Compile Include="Modelo\CSolicitante.cs" />
+    <Compile Include="Controlador\Organizacion.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Vista\Solicitud.aspx.cs">
       <DependentUpon>Solicitud.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -23,6 +23,7 @@ namespace Atensoli.Vista
                 {
                     lnkSolicitudes.Visible = true;
                 }
+
                 if (objetoSeguridad.EsAccesoPermitido(10) == true)
                 {
                     lnkSolicitante.Visible = true;
@@ -64,7 +65,10 @@ namespace Atensoli.Vista
                 if (objetoSeguridad.EsAccesoPermitido(18) == true)
                 {
                     lnkTipoInsumo.Visible = true;
-
+                }
+                if (objetoSeguridad.EsAccesoPermitido(22) == true)
+                {
+                    lnkConsultarSolicitud.Visible = true;
                 }
             }
         }

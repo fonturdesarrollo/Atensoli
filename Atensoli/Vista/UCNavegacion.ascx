@@ -24,9 +24,10 @@
 									<ul>
 										<li><a href="Principal.aspx">Inicio</a></li>
 										<li>
-											<span class="opener">Solicitudes</span>
+											<span class="opener">Atención al Ciudadano</span>
 											<ul>
 												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudes"  navigateurl ="~/Vista/SeleccionarTipoSolicitud.aspx"  Text ="Registrar solicitud"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkConsultarSolicitud"  navigateurl ="~/Vista/EnConstruccion.aspx"  Text ="Consultar solicitud"></ASP:HyperLink></li>
 											</ul>
 										</li>
 
