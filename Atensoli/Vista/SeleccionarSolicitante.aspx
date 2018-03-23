@@ -71,7 +71,7 @@
 										<p></p>
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtCedula" MaxLength="100" onkeypress="return event.keyCode!=13;" placeholder ="Indique el número de cedula del solicitante"/> 
+												<asp:TextBox runat="server" ID="txtCedula" MaxLength="9" placeholder ="Indique el número de cedula del solicitante"/> 
 												<asp:HiddenField runat ="server" ID ="hdnSolicitanteID"  Value="0"/>
 												<asp:HiddenField runat ="server" ID ="hdnCedulaSolicitante"  Value="0"/>
 												<asp:HiddenField runat ="server" ID ="hdnNombreSolicitante"  Value=""/>
@@ -80,7 +80,7 @@
 
 											<div class="12u$">
 												<ul class="actions">
-													<asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special" OnClick="btnSiguiente_Click" />
+													<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special" OnClick="btnSiguiente_Click" /></li>
 												</ul>
 											</div>
 										</div>

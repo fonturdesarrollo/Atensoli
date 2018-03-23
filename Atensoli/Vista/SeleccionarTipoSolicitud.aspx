@@ -46,16 +46,19 @@
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
-										<div class="6u 12u$(xsmall)">
-											<div class="select-wrapper">
-												<asp:DropDownList ID="ddTipoSolicitud" runat="server"  AppendDataBoundItems="True" AutoPostBack = "false" ></asp:DropDownList>         
+										<div class="row uniform">
+											<div class="6u 12u$(xsmall)">
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddTipoSolicitud" runat="server"  AppendDataBoundItems="True" AutoPostBack = "false" ></asp:DropDownList>         
+												</div>
+											</div>
+											<div class="12u$">
+												<ul class="actions">
+													<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special" OnClick="btnSiguiente_Click" /></li>
+												</ul>
 											</div>
 										</div>
-										<div class="12u$">
-											<ul class="actions">
-												<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"  CssClass ="special" OnClick="btnSiguiente_Click" /></li>
-											</ul>
-										</div>
+
 								</section>
 							</form>
 						</div>
