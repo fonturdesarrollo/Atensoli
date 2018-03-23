@@ -16,7 +16,8 @@ namespace Atensoli
             if(!IsPostBack)
             {
                 CargarPadre();
-                EstablecerSolicitante();
+                //EstablecerSolicitante();
+                EstablecerSolicitanteNuevo();
                 SoloLectura();
             }
 
@@ -177,6 +178,15 @@ namespace Atensoli
                 dr.Close();
             }
 
+        }
+        private void EstablecerSolicitanteNuevo()
+        {
+            txtCedula.Text = Session["CedulaSaime"].ToString();
+            txtNombre.Text = Session["NombreSaime"].ToString();
+            txtApellido.Text = Session["ApellidoSaime"].ToString();
+            txtCedula.Enabled = false;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
         }
         private void SoloLectura()
         {
