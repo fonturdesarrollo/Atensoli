@@ -29,24 +29,21 @@
 <%--------------------------%>
 
 	<script type="text/javascript">
-
-		$(function () {
-			$('#txtCedula').simpleAutoComplete('Autocomplete.aspx', {
-				autoCompleteClassName: 'autocomplete',
-				selectedClassName: 'sel',
-				attrCallBack: 'rel',
-				identifier: 'Solicitante'
-			}, fnPersonalCallBack);
-
-		});
-
-		function fnPersonalCallBack(par) {
-			document.getElementById("hdnSolicitanteID").value = par[0]; //par[0] id
-			document.getElementById("hdnCedulaSolicitante").value = par[1];
-			document.getElementById("hdnNombreSolicitante").value = par[3] + " " + par[4];
-		}
-
 	</script>
+		 <script type="text/javascript">
+				$(function () {
+				$('#txtCedula').keydown(function (e) {
+				if (e.shiftKey || e.ctrlKey || e.altKey) {
+				e.preventDefault();
+				} else {
+				var key = e.keyCode;
+				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
+				e.preventDefault();
+				}
+				}
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
@@ -71,11 +68,8 @@
 										<p></p>
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtCedula" MaxLength="9" placeholder ="Indique el número de cedula del solicitante"/> 
-												<asp:HiddenField runat ="server" ID ="hdnSolicitanteID"  Value="0"/>
-												<asp:HiddenField runat ="server" ID ="hdnCedulaSolicitante"  Value="0"/>
-												<asp:HiddenField runat ="server" ID ="hdnNombreSolicitante"  Value=""/>
-												<ASP:RequiredFieldValidator id="rqrValidaNombre" runat="server" errormessage="Debe colocar la cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic"></ASP:RequiredFieldValidator>
+												<asp:TextBox runat="server" ID="txtCedula" MaxLength="9" placeholder ="Indique el número de cedula del solicitante"/>  
+												<ASP:RequiredFieldValidator id="rqrValidaCedula" runat="server" errormessage="Debe colocar el número de cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 
 											<div class="12u$">

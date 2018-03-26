@@ -20,14 +20,14 @@ namespace Atensoli
         private int _tipoReferenciaSolicitud;
         private int _tipoUnidadID;
         private int _tipoInsumoDetalleID;
-        private int _tipoEstatusID;
+        private int _tipoRemitidoID;
         private int _tipoFormaAtencionID;
         private string _observacionesSolicitante;
         private string _observacionesAnalista;
         private int _seguridadUsuarioDatosID;
         private string _fechaRegistroSolicitante;
         private int _empresaSucursalID;
-        public CSolicitud(int _solicitudID, int _tipoSolicitudID, int _tipoSolicitanteID, int _solicitanteID, string _nombreCargoSolicitante, int _organizacionID, int _tipoAtencionBrindadaID, int _tipoReferenciaSolicitud, int _tipoUnidadID, int _tipoInsumoDetalleID, int _tipoEstatusID, int _tipoFormaAtencionID, string _observacionesSolicitante, string _observacionesAnalista, int _seguridadUsuarioDatosID, int _empresaSucursalID)
+        public CSolicitud(int _solicitudID, int _tipoSolicitudID, int _tipoSolicitanteID, int _solicitanteID, string _nombreCargoSolicitante, int _organizacionID, int _tipoAtencionBrindadaID, int _tipoReferenciaSolicitud, int _tipoUnidadID, int _tipoInsumoDetalleID, int _tipoRemitidoID, int _tipoFormaAtencionID, string _observacionesSolicitante, string _observacionesAnalista, int _seguridadUsuarioDatosID, int _empresaSucursalID)
         {
             this.TipoSolicitudID = _tipoSolicitudID;
             this.TipoSolicitanteID = _tipoSolicitanteID;
@@ -38,7 +38,7 @@ namespace Atensoli
             this.TipoReferenciaSolicitud = _tipoReferenciaSolicitud;
             this.TipoUnidadID = _tipoUnidadID;
             this.TipoInsumoDetalleID = _tipoInsumoDetalleID;
-            this.TipoEstatusID = _tipoEstatusID;
+            this.TipoRemitidoID = _tipoRemitidoID;
             this.TipoFormaAtencionID = _tipoFormaAtencionID;
             this.ObservacionesSolicitante = _observacionesSolicitante;
             this.ObservacionesAnalista = _observacionesAnalista;
@@ -176,16 +176,16 @@ namespace Atensoli
             }
         }
 
-        public int TipoEstatusID
+        public int TipoRemitidoID
         {
             get
             {
-                return _tipoEstatusID;
+                return _tipoRemitidoID;
             }
 
             set
             {
-                _tipoEstatusID = value;
+                _tipoRemitidoID = value;
             }
         }
 

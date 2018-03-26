@@ -235,19 +235,18 @@
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlPadre" runat="server" AppendDataBoundItems="true"
 																 onchange = "CargarHijos();">
-														<asp:ListItem Text = "Seleccione el estado" Value = "0"></asp:ListItem>                
 													</asp:DropDownList>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:DropDownList ID="ddlHijo" runat="server"
 															 onchange = "CargarNieto();">
-													<asp:ListItem Text = "Seleccione el municipio" Value = "0"></asp:ListItem>                
+		
 												</asp:DropDownList>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:DropDownList ID="ddlNieto" runat="server">
-													<asp:ListItem Text = "Seleccione la parroquia" Value = "0"></asp:ListItem>                
+	   
 												</asp:DropDownList>
 												<asp:HiddenField runat ="server" ID ="hdnCodigoModelo"  Value="0"/>
 											</div>
@@ -256,10 +255,8 @@
 											</div>
 											<div class="12u$">
 												<ul class="actions">
-													<li><asp:Button Text="Registrar solicitante" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click" /></li>
-													<li><asp:Button Text="Siguiente" runat="server" ID ="btnLimpiar"   CausesValidation="False" OnClick="btnLimpiar_Click1"  /></li>
-													<li><asp:Button Text="TEST" runat="server" ID ="ButtonTest"  style="display:none"  CausesValidation="False"  /></li>
-												   
+													<li><asp:Button Text="Registrar organización" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click" /></li>
+													<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"   CausesValidation="False" OnClick="btnSiguiente_Click"  /></li>
 												</ul>
 										  </div>
 									</div>

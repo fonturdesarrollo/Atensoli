@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Atensoli
 {
-    public partial class Solicitante : System.Web.UI.Page
+    public partial class Solicitantes  : Seguridad.SeguridadAuditoria
     {
-        public static int codigoSolicitante=0;
-        protected void Page_Load(object sender, EventArgs e)
+        public static int codigoSolicitante = 0;
+        protected new void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                CargarPadre();
-                //EstablecerSolicitante();
-                EstablecerSolicitanteNuevo();
-                SoloLectura();
+                EstablecerEstadoInicial();
             }
-
         }
+
         //***********************************************************************************
         //PROCESO PARA COMBOS ANIDADOS:
 
@@ -149,64 +149,115 @@ namespace Atensoli
         }
         //FIN DE COMBOS ANIDADOS
         //*********************************************************************************
+        private void EstablecerEstadoInicial()
+        {
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
-        {
-            ProcesoSolicitante();
-        }
-        private void EstablecerSolicitante()
-        {
-            if(Convert.ToInt32(Session["SolicitanteID"] ) > 0)
+            if (EstablecerSolicitante() == false && EstablecerSolicitanteNuevo() == false)
             {
-                SqlDataReader dr = Solicitante.ObtenerDatosSolicitante(Convert.ToInt32(Session["SolicitanteID"]));
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-                        txtCedula.Text = dr["CedulaSolicitante"].ToString();
-                        txtNombre.Text = dr["NombreSolicitante"].ToString();
-                        txtApellido.Text = dr["ApellidoSolicitante"].ToString();
-                        ddlSexo.SelectedValue= dr["Sexo"].ToString();
-                        txtCelular.Text = dr["CelularSolicitante"].ToString();
-                        txtTelefonoLocal.Text = dr["TelefonoLocalSolicitante"].ToString();
-                        txtTelefonoOficina.Text = dr["TelefonoOficinalSolicitante"].ToString();
-                        txtCorreo.Text = dr["CorreoElectronicoSolicitante"].ToString();
-                        txtSerialCarnetPatria.Text = dr["SerialCarnetPatria"].ToString();
-                        txtCodigoCarnetPatria.Text = dr["CodigoCarnetPatria"].ToString();
-                    }
-                }
-                dr.Close();
+                Response.Redirect("SeleccionarSolicitante.aspx");
             }
+        }
+        private bool EstablecerSolicitante()
+        {
+            bool resultado = false;
+            try
+            {
+                if (Convert.ToInt32(Session["SolicitanteID"]) > 0)
+                {
+                    SqlDataReader dr = Solicitante.ObtenerDatosSolicitante(Convert.ToInt32(Session["SolicitanteID"]));
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            txtCedula.Text = dr["CedulaSolicitante"].ToString();
+                            txtNombre.Text = dr["NombreSolicitante"].ToString();
+                            txtApellido.Text = dr["ApellidoSolicitante"].ToString();
+                            ddlSexo.SelectedValue = dr["Sexo"].ToString();
+                            txtCelular.Text = dr["CelularSolicitante"].ToString();
+                            txtTelefonoLocal.Text = dr["TelefonoLocalSolicitante"].ToString();
+                            txtTelefonoOficina.Text = dr["TelefonoOficinalSolicitante"].ToString();
+                            txtCorreo.Text = dr["CorreoElectronicoSolicitante"].ToString();
+                            ddlPadre.Items.Add(new ListItem(dr["NombreEstado"].ToString(), ""));
+                            ddlHijo.Items.Add(new ListItem(dr["NombreMunicipio"].ToString(), ""));
+                            ddlNieto.Items.Add(new ListItem(dr["NombreParroquia"].ToString(), ""));
+                            if (dr["IndicaCarnetPatria"].ToString() == "0")
+                            {
+                                chkPatria.Checked = false;
+                            }
+                            else
+                            {
+                                chkPatria.Checked = true;
+                            }
+                            txtSerialCarnetPatria.Text = dr["SerialCarnetPatria"].ToString();
+                            txtCodigoCarnetPatria.Text = dr["CodigoCarnetPatria"].ToString();
+                            SoloLecturaRegistrado();
+                            resultado = true;
+                        }
+                    }
+                    dr.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                messageBox.ShowMessage(ex.Message);
+            }
+            return resultado;
+        }
+        private bool EstablecerSolicitanteNuevo()
+        {
+            bool resultado = false;
+            try
+            {
+                if (Session["CedulaSaime"] != null && Session["CedulaSaime"].ToString() != "")
+                {
+                    CargarPadre();
+                    txtCedula.Text = Session["CedulaSaime"].ToString();
+                    txtNombre.Text = Session["NombreSaime"].ToString();
+                    txtApellido.Text = Session["ApellidoSaime"].ToString();
+                    txtCedula.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtApellido.Enabled = false;
+                    SoloLecturaNuevo();
+                    resultado = true;
+                }
+                else
+                {
+                    resultado = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                messageBox.ShowMessage(ex.Message);
+            }
+            return resultado;
 
         }
-        private void EstablecerSolicitanteNuevo()
+        private void SoloLecturaRegistrado()
         {
-            txtCedula.Text = Session["CedulaSaime"].ToString();
-            txtNombre.Text = Session["NombreSaime"].ToString();
-            txtApellido.Text = Session["ApellidoSaime"].ToString();
             txtCedula.Enabled = false;
             txtNombre.Enabled = false;
             txtApellido.Enabled = false;
+            ddlSexo.Enabled = false;
+            txtCelular.Enabled = false;
+            txtTelefonoLocal.Enabled = false;
+            txtTelefonoOficina.Enabled = false;
+            txtCorreo.Enabled = false;
+            ddlPadre.Enabled = false;
+            ddlHijo.Enabled = false;
+            ddlNieto.Enabled = false;
+            txtSerialCarnetPatria.Enabled = false;
+            txtCodigoCarnetPatria.Enabled = false;
+            chkPatria.Enabled = false;
+            btnGuardar.Text = "Solicitante registrado";
+            btnGuardar.Enabled = false;
         }
-        private void SoloLectura()
+        private void SoloLecturaNuevo()
         {
-            if (Convert.ToInt32(Session["SolicitanteID"]) > 0)
-            {
-                txtCedula.Enabled = false;
-                txtNombre.Enabled = false;
-                txtApellido.Enabled = false;
-                ddlSexo.Enabled = false;
-                txtCelular.Enabled = false;
-                txtTelefonoLocal.Enabled = false;
-                txtTelefonoOficina.Enabled = false;
-                txtCorreo.Enabled = false;
-                ddlPadre.Enabled = false;
-                ddlHijo.Enabled = false;
-                ddlNieto.Enabled = false;
-                txtSerialCarnetPatria.Enabled = false;
-                txtCodigoCarnetPatria.Enabled = false;
-            }
-
+            txtCedula.Enabled = false;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
         }
         private void ProcesoSolicitante()
         {
@@ -250,7 +301,12 @@ namespace Atensoli
             }
         }
 
-        protected void btnLimpiar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            ProcesoSolicitante();
+        }
+
+        protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             Response.Redirect("SeleccionarTipoSolicitante.aspx");
         }

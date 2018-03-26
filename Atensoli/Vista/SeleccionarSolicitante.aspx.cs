@@ -8,72 +8,89 @@ using System.Configuration;
 
 namespace Atensoli.Vista
 {
-    public partial class SeleccionarSolicitante : System.Web.UI.Page
+    public partial class SeleccionarSolicitante : Seguridad.SeguridadAuditoria
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)
         {
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetExpires(DateTime.Now.AddDays(-1));
-            Response.Cache.SetNoStore();
             if (!IsPostBack)
             {
-                hdnSolicitanteID.Value = "0";
+                Session.Remove("SolicitanteID");
+                Session.Remove("CedulaSaime");
+                Session.Remove("NombreSaime");
+                Session.Remove("ApellidoSaime");
             }
         }
-        
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-
-            if(Convert.ToInt32(hdnSolicitanteID.Value) == 0)
+            SiguientePaso();
+        }
+        private void SiguientePaso()
+        {
+            if (EsSolicitanteValido())
             {
-                if (EsSolicitanteValido())
-                {
-                    Session["SolicitanteID"] = null;
-                    Response.Redirect("Solicitante.aspx");
-                }
-                else 
-                {
-                    Session["SolicitanteID"] = null;
-                    messageBox.ShowMessage("El número de cedula no corresponde a alguien valido.");
-                }
-            }
+                Response.Redirect("Solicitante.aspx");
+             }
             else
             {
-                Session["SolicitanteID"] = Convert.ToInt32(hdnSolicitanteID.Value);
-                Response.Redirect("Solicitante.aspx");
+                messageBox.ShowMessage("El número de cedula no corresponde a alguien válido.");
             }
-             //Response.Redirect("EnConstruccion.aspx?" + "Cedula=" + hdnCedulaSolicitante.Value + "&Nombre="+ hdnNombreSolicitante.Value + "&ID=" + hdnSolicitanteID.Value, true);
+            //Response.Redirect("EnConstruccion.aspx?" + "Cedula=" + hdnCedulaSolicitante.Value + "&Nombre="+ hdnNombreSolicitante.Value + "&ID=" + hdnSolicitanteID.Value, true);
         }
         private bool EsSolicitanteValido()
         {
-
-            int contador = 0;
+            int codigoSolicitanteRegistrado;
             bool resultado = false;
+
+            //Paso 1
+            //Verificar que la cedula este registrada en el sistema
+            codigoSolicitanteRegistrado = Solicitante.CodigoSolicitanteRegistrado(txtCedula.Text);
+            if (codigoSolicitanteRegistrado > 0)
+            {
+                Session["SolicitanteID"] = codigoSolicitanteRegistrado;
+                resultado = true;
+            }
+            //Paso 2
+            //Si no está registrado en el sistema, verificar que la cedula este registrada en el SAIME
+            else
+            {
+                if(EsSolicitanteEnsaime())
+                {
+                    resultado = true;
+                }
+            }
+            return resultado;
+        }
+        private bool EsSolicitanteEnsaime()
+        {
+            bool resultado = false;
+            int contador = 0;
             foreach (var saime in Saime.ObtenerDatosSaime(txtCedula.Text))
             {
+                //Si ocurre algún error de conexión en la BD SAIME se sale de la busqueda
+                if (saime.Contains("ERROR "))
+                {
+                    break;
+                }
                 switch (contador)
                 {
                     case 0:
-                        this.Session["CedulaSaime"] = saime;
+                        Session["CedulaSaime"] = saime;
                         contador = 1;
                         resultado = true;
                         break;
                     case 1:
-                        this.Session["NombreSaime"] = saime;
+                        Session["NombreSaime"] = saime;
                         contador = 2;
                         resultado = true;
                         break;
                     case 2:
-                        this.Session["ApellidoSaime"] = saime;
+                        Session["ApellidoSaime"] = saime;
                         contador = 3;
                         resultado = true;
                         break;
                 }
-                
-
             }
             return resultado;
         }
-       
     }
 }

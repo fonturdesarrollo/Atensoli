@@ -10,11 +10,15 @@ using System.Web.UI.WebControls;
 
 namespace Atensoli
 {
-    public partial class SeleccionarTipoSolicitante : System.Web.UI.Page
+    public partial class SeleccionarTipoSolicitante : Seguridad.SeguridadAuditoria
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)
         {
-            CargarTipoSolicitante();
+            if(!IsPostBack)
+            {
+                Session.Remove("TipoSolicitanteID");
+                CargarTipoSolicitante();
+            }
         }
         private void CargarTipoSolicitante()
         {
@@ -52,9 +56,11 @@ namespace Atensoli
         }
         private void ProcesoTipoSolicitante()
         {
+            Session["TipoSolicitanteID"] = ddlTipoSolicitante.SelectedValue;
             switch (Convert.ToInt32(ddlTipoSolicitante.SelectedValue))
             {
                 case 1:
+                    Session["OrganizacionID"] = "0";
                     Response.Redirect("Solicitud.aspx");
                     break;
                 default:

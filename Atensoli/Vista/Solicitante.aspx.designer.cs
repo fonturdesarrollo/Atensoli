@@ -10,7 +10,7 @@
 namespace Atensoli {
     
     
-    public partial class Solicitante {
+    public partial class Solicitantes {
         
         /// <summary>
         /// messageBox control.
@@ -229,22 +229,13 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// btnLimpiar control.
+        /// btnSiguiente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLimpiar;
-        
-        /// <summary>
-        /// ButtonTest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonTest;
+        protected global::System.Web.UI.WebControls.Button btnSiguiente;
         
         /// <summary>
         /// ControlMenu control.

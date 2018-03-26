@@ -36,5 +36,32 @@ namespace Atensoli
                 };
             return DBHelper.ExecuteDataReader("usp_Organizacion_ObtenerOrganizacion", dbParams);
         }
+        public static int CodigoOrganizacionRegistrada(string rifOrganizacion)
+        {
+            int resultado = 0;
+            SqlDataReader dr;
+            try
+            {
+                SqlParameter[] dbParams = new SqlParameter[]
+                    {
+                    DBHelper.MakeParam("@RifOrganizacion", SqlDbType.VarChar, 0, rifOrganizacion)
+                    };
+
+                dr = DBHelper.ExecuteDataReader("usp_Solicitante_ObtenerCodigoOrganizacionRegistrada", dbParams);
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        resultado = Convert.ToInt32(dr["OrganizacionID"]);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return resultado;
+        }
     }
 }

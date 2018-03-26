@@ -11,19 +11,18 @@ using System.Web.UI.WebControls;
 
 namespace Atensoli
 {
-    public partial class Organizacion : System.Web.UI.Page
+    public partial class Organizacion : Seguridad.SeguridadAuditoria
     {
         public static int codigoOrganizacion = 0;
-        protected void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                CargarPadre();
+                EstablecerEstadoInicial();
                 CargarTipoOrganizacion();
-                EstablecerOrganizacion();
-
             }
         }
+ 
         //***********************************************************************************
         //PROCESO PARA COMBOS ANIDADOS:
 
@@ -151,7 +150,90 @@ namespace Atensoli
         }
         //FIN DE COMBOS ANIDADOS
         //*********************************************************************************
+        private void EstablecerEstadoInicial()
+        {
 
+            if (EstablecerOrganizacion() == false && EstablecerOrganizacionNueva() == false)
+            {
+                Response.Redirect("SeleccionarOrganizacion.aspx");
+            }
+        }
+        private bool EstablecerOrganizacion()
+        {
+            bool resultado = false;
+            try
+            {
+                if (Convert.ToInt32(Session["OrganizacionID"]) > 0)
+                {
+                    SqlDataReader dr = Organizacion.ObtenerDatosOrganizacion(Convert.ToInt32(Session["OrganizacionID"]));
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            codigoOrganizacion = Convert.ToInt32(Session["OrganizacionID"]);
+                            txtRifOrganizacion.Text = dr["RifOrganizacion"].ToString();
+                            txtNombreOrganizacion.Text = dr["NombreOrganizacion"].ToString();
+                            ddTipoOrganizacion.SelectedValue = dr["TipoOrganizacionID"].ToString();
+                            txtTelefonoOrganizacion.Text = dr["TelefonoOrganizacion"].ToString();
+                            ddlPadre.Items.Add(new ListItem(dr["NombreEstado"].ToString(), ""));
+                            ddlHijo.Items.Add(new ListItem(dr["NombreMunicipio"].ToString(), ""));
+                            ddlNieto.Items.Add(new ListItem(dr["NombreParroquia"].ToString(), ""));
+                            SoloLecturaRegistrado();
+                            resultado = true;
+                        }
+                    }
+                    dr.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                messageBox.ShowMessage(ex.Message);
+            }
+            return resultado;
+        }
+        private bool EstablecerOrganizacionNueva()
+        {
+            bool resultado = false;
+            try
+            {
+                if (Session["RifOrganizacion"] != null && Session["RifOrganizacion"].ToString() != "")
+                {
+                    CargarPadre();
+                    codigoOrganizacion = 0;
+                    txtRifOrganizacion.Text = Session["RifOrganizacion"].ToString();
+                    SoloLecturaNuevo();
+                    resultado = true;
+                }
+                else
+                {
+                    resultado = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                messageBox.ShowMessage(ex.Message);
+            }
+            return resultado;
+
+        }
+        private void SoloLecturaRegistrado()
+        {
+            txtRifOrganizacion.Enabled = false;
+            txtNombreOrganizacion.Enabled = false;
+            ddTipoOrganizacion.Enabled = false;
+            txtTelefonoOrganizacion.Enabled = false;
+            ddlPadre.Enabled = false;
+            ddlHijo.Enabled = false;
+            ddlNieto.Enabled = false;
+            btnGuardar.Text = "Organización registrada";
+            btnGuardar.Enabled = false;
+        }
+        private void SoloLecturaNuevo()
+        {
+            txtRifOrganizacion.Enabled = false;
+        }
         private void CargarTipoOrganizacion()
         {
             String strConnString = ConfigurationManager
@@ -166,9 +248,7 @@ namespace Atensoli
 
             try
             {
-             
                 con.Open();
-                
                 ddTipoOrganizacion.DataSource = cmd.ExecuteReader();
                 ddTipoOrganizacion.DataTextField = "NombreTipoOrganizacion";
                 ddTipoOrganizacion.DataValueField = "TipoOrganizacionID";
@@ -184,26 +264,6 @@ namespace Atensoli
                 con.Dispose();
             }
         }
-        private void EstablecerOrganizacion()
-        {
-            if (Convert.ToInt32(Session["OrganizacionID"]) > 0)
-            {
-                SqlDataReader dr = Organizacion.ObtenerDatosOrganizacion(Convert.ToInt32(Session["OrganizacionID"]));
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-                        txtRifOrganizacion.Text = dr["RifOrganizacion"].ToString();
-                        txtNombreOrganizacion.Text = dr["NombreOrganizacion"].ToString();
-                        ddTipoOrganizacion.SelectedValue = dr["TipoOrganizacionID"].ToString();
-                        txtTelefonoOrganizacion.Text = dr["TelefonoOrganizacion"].ToString();
-                    }
-                }
-                dr.Close();
-            }
-
-        }
-
         private void ProcesoOrganizacion()
         {
             try
@@ -229,19 +289,18 @@ namespace Atensoli
                 messageBox.ShowMessage(ex.Message);
             }
         }
-        protected void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Solicitud.aspx");
-        }
-
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             ProcesoOrganizacion();
         }
 
-        protected void btnLimpiar_Click1(object sender, EventArgs e)
+        protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Vista/Solicitud.aspx");
+            if(codigoOrganizacion > 0)
+            {
+                Session["OrganizacionID"] = codigoOrganizacion;
+                Response.Redirect("~/Vista/Solicitud.aspx");
+            }
         }
     }
 }

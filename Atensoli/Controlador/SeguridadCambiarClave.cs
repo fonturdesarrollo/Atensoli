@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-namespace WebVisita
+namespace Seguridad
 {
     public partial class SeguridadCambiarClave
     {

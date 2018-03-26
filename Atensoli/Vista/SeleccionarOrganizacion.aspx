@@ -27,21 +27,6 @@
 
 	<script type="text/javascript">
 
-		$(function () {
-		    $('#txtRifOrganzacion').simpleAutoComplete('Autocomplete.aspx', {
-				autoCompleteClassName: 'autocomplete',
-				selectedClassName: 'sel',
-				attrCallBack: 'rel',
-				identifier: 'Organizacion'
-			}, fnPersonalCallBack);
-
-		});
-
-		function fnPersonalCallBack(par) {
-			document.getElementById("hdnOrganizacionID").value = par[0]; 
-			document.getElementById("hdnRifOrganizacion").value = par[1];
-		}
-
 	</script>
 	</head>
 	<body>
@@ -68,9 +53,7 @@
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtRifOrganzacion" MaxLength="20" onkeypress="return event.keyCode!=13;" placeholder ="Indique el RIF de la organización"/> 
-												<asp:HiddenField runat ="server" ID ="hdnOrganizacionID"  Value="0"/>
-												<asp:HiddenField runat ="server" ID ="hdnRifOrganizacion"  Value="0"/>
-												<ASP:RequiredFieldValidator id="rqrValidaRif" runat="server" errormessage="Debe colocar el RIF de la organización"  controltovalidate="txtRifOrganzacion" display="Dynamic"></ASP:RequiredFieldValidator>
+												<ASP:RequiredFieldValidator id="rqrValidaRif" runat="server" errormessage="Debe colocar el RIF de la organización"  controltovalidate="txtRifOrganzacion" ForeColor ="Red" display="Dynamic"></ASP:RequiredFieldValidator>
 											</div>
 
 											<div class="12u$">

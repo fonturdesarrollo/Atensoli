@@ -84,7 +84,7 @@ namespace Atensoli
             }
             catch (Exception ex)
             {
-                datosSaime.Add(ex.Message);
+                datosSaime.Add("ERROR " + ex.Message);
                 return datosSaime;
             }
             return datosSaime;

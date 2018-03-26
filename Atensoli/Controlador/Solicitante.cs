@@ -41,5 +41,32 @@ namespace Atensoli
                 };
             return DBHelper.ExecuteDataReader("usp_Solicitante_ObtenerSolicitante", dbParams);
         }
+        public static int CodigoSolicitanteRegistrado(string cedulaSolicitante)
+        {
+            int resultado = 0;
+            SqlDataReader dr;
+            try
+            {
+                SqlParameter[] dbParams = new SqlParameter[]
+                    {
+                    DBHelper.MakeParam("@CedulaSolicitante", SqlDbType.VarChar, 0, cedulaSolicitante)
+                    };
+
+                dr = DBHelper.ExecuteDataReader("usp_Solicitante_ObtenerCodigoSolicitanteRegistrado", dbParams);
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        resultado = Convert.ToInt32(dr["SolicitanteID"]);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return resultado;
+        }
     }
 }

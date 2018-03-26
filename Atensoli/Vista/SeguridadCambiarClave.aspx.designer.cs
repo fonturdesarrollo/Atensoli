@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebVisita {
+namespace Seguridad {
     
     
     public partial class SeguridadCambiarClave {

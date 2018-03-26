@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -7,11 +11,302 @@ using System.Web.UI.WebControls;
 
 namespace Atensoli
 {
-    public partial class Solicitud : System.Web.UI.Page
+    public partial class Solicitud : Seguridad.SeguridadAuditoria
     {
-        protected void Page_Load(object sender, EventArgs e)
+        private static int codigoSolicitud = 0;
+        protected new void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+                CargarPadre();
+                CargarTipoAtencionBrindada();
+                CargarTipoReferencia();
+                CargarTipoUnidad();
+                CargarTipoRemitido();
+                CargarFormaAtencion();
+            }
+        }
+        //***********************************************************************************
+        //PROCESO PARA COMBOS ANIDADOS:
 
+        //COMBO ANIDADO NUMERO 1 (SE CARGA DESDE EL SERVIDOR)
+        private void CargarPadre()
+        {
+            ddlPadre.Items.Clear();
+            ddlPadre.Items.Add(new ListItem("--Seleccione el tipo de insumo--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            strQuery = "select * From TipoInsumo ORDER BY TipoInsumoID";
+
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlPadre.DataSource = cmd.ExecuteReader();
+                    ddlPadre.DataTextField = "NombreTipoInsumo";
+                    ddlPadre.DataValueField = "TipoInsumoID";
+                    ddlPadre.DataBind();
+                    con.Close();
+                }
+            }
+        }
+        //*********************************************************************************
+
+        //COMBO ANIDADO NUMERO 2 (SE CARGA EN EL CLIENTE CON JSON MEDIANTE LA FUNCION CargarHijo())
+        [System.Web.Services.WebMethod]
+        public static ArrayList CargarHijo(int padreID)
+        {
+            ArrayList list = new ArrayList();
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            if (padreID != 0)
+            {
+                strQuery = "select * From TipoInsumoDetalle  WHERE TipoInsumoID   = @padreID  ORDER BY NombreTipoInsumoDetalle";
+            }
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@padreID", padreID);
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        list.Add(new ListItem(
+                       sdr["NombreTipoInsumoDetalle"].ToString(),
+                       sdr["TipoInsumoDetalleID"].ToString()
+                        ));
+                    }
+                    con.Close();
+                    return list;
+                }
+            }
+        }
+        //*********************************************************************************
+        //FIN COMBO ANIDADO
+
+        private void CargarTipoAtencionBrindada()
+        {
+            ddlTipoAtencionBrindada.Items.Clear();
+            ddlTipoAtencionBrindada.Items.Add(new ListItem("--Seleccione el tipo de atención--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            strQuery = "select * From TipoAtencionBrindada ORDER BY TipoAtencionBrindadaID";
+
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlTipoAtencionBrindada.DataSource = cmd.ExecuteReader();
+                    ddlTipoAtencionBrindada.DataTextField = "NombreTipoAtencionBrindada";
+                    ddlTipoAtencionBrindada.DataValueField = "TipoAtencionBrindadaID";
+                    ddlTipoAtencionBrindada.DataBind();
+                    con.Close();
+                }
+            }
+        }
+        private void CargarTipoReferencia()
+        {
+            ddlTipoReferenciaSolicitud.Items.Clear();
+            ddlTipoReferenciaSolicitud.Items.Add(new ListItem("--Seleccione el tipo de referencia--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            strQuery = "select * From TipoReferenciaSolicitud ORDER BY TipoReferenciaSolicitudID";
+
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlTipoReferenciaSolicitud.DataSource = cmd.ExecuteReader();
+                    ddlTipoReferenciaSolicitud.DataTextField = "NombreTipoReferenciaSolicitud";
+                    ddlTipoReferenciaSolicitud.DataValueField = "TipoReferenciaSolicitudID";
+                    ddlTipoReferenciaSolicitud.DataBind();
+                    con.Close();
+                }
+            }
+        }
+        private void CargarTipoUnidad()
+        {
+            ddlTipoUnidad.Items.Clear();
+            ddlTipoUnidad.Items.Add(new ListItem("--Seleccione el tipo de unidad--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            strQuery = "select * From TipoUnidad ORDER BY TipoUnidadID";
+
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlTipoUnidad.DataSource = cmd.ExecuteReader();
+                    ddlTipoUnidad.DataTextField = "NombreTipoUnidad";
+                    ddlTipoUnidad.DataValueField = "TipoUnidadID";
+                    ddlTipoUnidad.DataBind();
+                    con.Close();
+                }
+            }
+        }
+        private void CargarTipoRemitido()
+        {
+            ddlTipoRemitido.Items.Clear();
+            ddlTipoRemitido.Items.Add(new ListItem("--Seleccione a quien será remitido--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            strQuery = "select * From TipoRemitido ORDER BY TipoRemitidoID";
+
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlTipoRemitido.DataSource = cmd.ExecuteReader();
+                    ddlTipoRemitido.DataTextField = "NombreTipoRemitido";
+                    ddlTipoRemitido.DataValueField = "TipoRemitidoID";
+                    ddlTipoRemitido.DataBind();
+                    con.Close();
+                }
+            }
+        }
+        private void CargarFormaAtencion()
+        {
+            ddlTipoFormaAtencion.Items.Clear();
+            ddlTipoFormaAtencion.Items.Add(new ListItem("--Seleccione la forma de atención--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            strQuery = "select * From TipoFormaAtencion ORDER BY TipoFormaAtencionID";
+
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlTipoFormaAtencion.DataSource = cmd.ExecuteReader();
+                    ddlTipoFormaAtencion.DataTextField = "NombreTipoFormaAtencion";
+                    ddlTipoFormaAtencion.DataValueField = "TipoFormaAtencionID";
+                    ddlTipoFormaAtencion.DataBind();
+                    con.Close();
+                }
+            }
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            CSolicitud objetoSolicitud = new CSolicitud();
+
+            objetoSolicitud.SolicitudID = codigoSolicitud;
+            objetoSolicitud.TipoSolicitudID = Convert.ToInt32(Session["TipoSolicitudID"]);
+            objetoSolicitud.TipoSolicitanteID = Convert.ToInt32(Session["TipoSolicitanteID"]);
+            objetoSolicitud.SolicitanteID = Convert.ToInt32(Session["SolicitanteID"]);
+            if(txtNombreCargoSolicitante.Text !="")
+            {
+                objetoSolicitud.NombreCargoSolicitante = txtNombreCargoSolicitante.Text.ToUpper();
+            }
+            else
+            {
+                objetoSolicitud.NombreCargoSolicitante = "N/A";
+            }
+             if (Session["OrganizacionID"].ToString()  != "0")
+            {
+                objetoSolicitud.OrganizacionID = Convert.ToInt32(Session["OrganizacionID"]);
+            }
+            else
+            {
+                objetoSolicitud.OrganizacionID = 0;
+            }
+            objetoSolicitud.TipoAtencionBrindadaID = Convert.ToInt32(ddlTipoAtencionBrindada.SelectedValue);
+            objetoSolicitud.TipoReferenciaSolicitud = Convert.ToInt32(ddlTipoReferenciaSolicitud.SelectedValue);
+            if(ddlTipoUnidad.SelectedValue !="")
+            {
+                objetoSolicitud.TipoUnidadID = Convert.ToInt32(ddlTipoUnidad.SelectedValue);
+            }
+            else
+            {
+                objetoSolicitud.TipoUnidadID = 0;
+            }
+            if (ddlHijo.SelectedValue != "")
+            {
+                objetoSolicitud.TipoInsumoDetalleID = Convert.ToInt32(ddlHijo.SelectedValue);
+            }
+            else
+            {
+                objetoSolicitud.TipoInsumoDetalleID = 0;
+            }
+            objetoSolicitud.TipoRemitidoID = Convert.ToInt32(ddlTipoRemitido.SelectedValue);
+            objetoSolicitud.TipoFormaAtencionID = Convert.ToInt32(ddlTipoFormaAtencion.SelectedValue);
+            if(txtObservacionesSolicitante.Text !="")
+            {
+                objetoSolicitud.ObservacionesSolicitante = txtObservacionesSolicitante.Text.ToUpper().Trim();
+            }
+            else
+            {
+                objetoSolicitud.ObservacionesSolicitante = "N/D";
+            }
+            if (txtObservacionesAnalista.Text != "")
+            {
+                objetoSolicitud.ObservacionesAnalista = txtObservacionesAnalista.Text.ToUpper().Trim();
+            }
+            else
+            {
+                objetoSolicitud.ObservacionesAnalista = "N/D";
+            }
+            objetoSolicitud.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserID"]);
+            objetoSolicitud.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
+
+            codigoSolicitud= Solicitud.InsertarSolicitud(objetoSolicitud);
+            if(codigoSolicitud > 0)
+            {
+                messageBox.ShowMessage("Solicitud registrada correctamente.");
+            }
+        }
+
+        protected void btnNueva_Click(object sender, EventArgs e)
+        {
+            Session.Remove("SolicitanteID");
+            Session.Remove("OrganizacionID");
+            Session.Remove("TipoSolicitudID");
+            Session.Remove("TipoSolicitanteID");
+            Session.Remove("CedulaSaime");
+            Session.Remove("NombreSaime");
+            Session.Remove("ApellidoSaime");
+            Response.Redirect("SeleccionarTipoSolicitud.aspx");
         }
     }
 }

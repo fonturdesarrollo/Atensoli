@@ -14,17 +14,17 @@ namespace Atensoli
         {
             SqlParameter[] dbParams = new SqlParameter[]
             {
-                    DBHelper.MakeParam("@SolucitudID", SqlDbType.Int, 0, objetoSolicitud.SolicitudID),
+                    DBHelper.MakeParam("@SolicitudID", SqlDbType.Int, 0, objetoSolicitud.SolicitudID),
                     DBHelper.MakeParam("@TipoSolicitudID", SqlDbType.Int, 0, objetoSolicitud.TipoSolicitudID),
                     DBHelper.MakeParam("@TipoSolicitanteID", SqlDbType.Int, 0, objetoSolicitud.TipoSolicitanteID),
                     DBHelper.MakeParam("@SolicitanteID", SqlDbType.Int, 0, objetoSolicitud.SolicitanteID),
                     DBHelper.MakeParam("@NombreCargoSolicitante", SqlDbType.VarChar, 0, objetoSolicitud.NombreCargoSolicitante),
                     DBHelper.MakeParam("@OrganizacionID", SqlDbType.Int, 0, objetoSolicitud.OrganizacionID),
                     DBHelper.MakeParam("@TipoAtencionBrindadaID", SqlDbType.Int, 0, objetoSolicitud.TipoAtencionBrindadaID),
-                    DBHelper.MakeParam("@TipoReferenciaSolicitud", SqlDbType.Int, 0,objetoSolicitud.TipoReferenciaSolicitud),
+                    DBHelper.MakeParam("@TipoReferenciaSolicitudID", SqlDbType.Int, 0,objetoSolicitud.TipoReferenciaSolicitud),
                     DBHelper.MakeParam("@TipoUnidadID", SqlDbType.Int, 0,objetoSolicitud.TipoUnidadID),
                     DBHelper.MakeParam("@TipoInsumoDetalleID", SqlDbType.Int, 0,objetoSolicitud.TipoInsumoDetalleID),
-                    DBHelper.MakeParam("@TipoEstatusID", SqlDbType.Int, 0,objetoSolicitud.TipoEstatusID),
+                    DBHelper.MakeParam("@TipoRemitidoID", SqlDbType.Int, 0,objetoSolicitud.TipoRemitidoID),
                     DBHelper.MakeParam("@TipoFormaAtencionID", SqlDbType.VarChar, 0,objetoSolicitud.TipoFormaAtencionID),
                     DBHelper.MakeParam("@ObservacionesSolicitante", SqlDbType.VarChar, 0,objetoSolicitud.ObservacionesSolicitante),
                     DBHelper.MakeParam("@ObservacionesAnalista", SqlDbType.VarChar, 0,objetoSolicitud.ObservacionesAnalista),

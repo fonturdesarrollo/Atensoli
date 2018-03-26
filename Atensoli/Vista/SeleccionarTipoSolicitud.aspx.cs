@@ -10,12 +10,22 @@ using System.Web.UI.WebControls;
 
 namespace Atensoli.Vista
 {
-    public partial class BuscarTipoSolicitud : System.Web.UI.Page
+    public partial class BuscarTipoSolicitud : Seguridad.SeguridadAuditoria
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)
         {
-            CargarTipoSolicitud();
-
+            if(!IsPostBack)
+            {
+                Session.Remove("TipoSolicitudID");
+                Session.Remove("SolicitanteID");
+                Session.Remove("OrganizacionID");
+                Session.Remove("TipoSolicitudID");
+                Session.Remove("TipoSolicitanteID");
+                Session.Remove("CedulaSaime");
+                Session.Remove("NombreSaime");
+                Session.Remove("ApellidoSaime");
+                CargarTipoSolicitud();
+            }
         }
         private void CargarTipoSolicitud()
         {
@@ -50,6 +60,7 @@ namespace Atensoli.Vista
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
+            Session["TipoSolicitudID"] = ddTipoSolicitud.SelectedValue;
             Response.Redirect("~/Vista/SeleccionarSolicitante.aspx");
         }
     }

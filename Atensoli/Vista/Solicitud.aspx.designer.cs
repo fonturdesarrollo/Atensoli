@@ -85,13 +85,13 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.DropDownList ddlHijo;
         
         /// <summary>
-        /// ddlTipoEstatus control.
+        /// ddlTipoRemitido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEstatus;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoRemitido;
         
         /// <summary>
         /// ddlTipoFormaAtencion control.
@@ -112,13 +112,13 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.TextBox txtObservacionesSolicitante;
         
         /// <summary>
-        /// TextBox1txtObservacionesAnalista control.
+        /// txtObservacionesAnalista control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1txtObservacionesAnalista;
+        protected global::System.Web.UI.WebControls.TextBox txtObservacionesAnalista;
         
         /// <summary>
         /// btnGuardar control.
@@ -130,13 +130,13 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// ButtonTest control.
+        /// btnNueva control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonTest;
+        protected global::System.Web.UI.WebControls.Button btnNueva;
         
         /// <summary>
         /// ControlMenu control.

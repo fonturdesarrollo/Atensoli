@@ -40,40 +40,13 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.TextBox txtCedula;
         
         /// <summary>
-        /// hdnSolicitanteID control.
+        /// rqrValidaCedula control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnSolicitanteID;
-        
-        /// <summary>
-        /// hdnCedulaSolicitante control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnCedulaSolicitante;
-        
-        /// <summary>
-        /// hdnNombreSolicitante control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnNombreSolicitante;
-        
-        /// <summary>
-        /// rqrValidaNombre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaNombre;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaCedula;
         
         /// <summary>
         /// btnSiguiente control.

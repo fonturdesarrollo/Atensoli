@@ -48,9 +48,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Npgsql, Version=3.2.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Npgsql.3.2.6\lib\net451\Npgsql.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Npgsql, Version=3.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Npgsql.3.2.7\lib\net451\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\Solicitante.aspx" />
     <Content Include="Vista\Solicitud.aspx" />
     <Content Include="Vista\SeleccionarOrganizacion.aspx" />
     <Content Include="Vista\Organizacion.aspx" />
@@ -273,7 +274,6 @@
     <Content Include="Vista\SeguridadObjeto.aspx" />
     <Content Include="Vista\SeguridadObjetoGrupo.aspx" />
     <Content Include="Vista\SeguridadUsuario.aspx" />
-    <Content Include="Vista\Solicitante.aspx" />
     <Content Include="Vista\UCMessageBox.ascx" />
     <Content Include="Vista\UCNavegacion.ascx" />
     <Content Include="Vista\UCNavigation.ascx" />
@@ -294,6 +294,9 @@
     <Compile Include="Controlador\Parametros.cs" />
     <Compile Include="Controlador\Recepcion.cs" />
     <Compile Include="Controlador\Saime.cs" />
+    <Compile Include="Controlador\SeguridadAuditoria.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controlador\SeguridadCambiarClave.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -309,9 +312,7 @@
     <Compile Include="Controlador\SeguridadUsuario.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controlador\Solicitante.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="Controlador\Solicitante.cs" />
     <Compile Include="Controlador\Utils.cs" />
     <Compile Include="Controlador\XmlUtils.cs" />
     <Compile Include="Modelo\CSolicitud.cs" />
@@ -333,6 +334,13 @@
     </Compile>
     <Compile Include="Controlador\Solicitud.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Solicitante.aspx.cs">
+      <DependentUpon>Solicitante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Solicitante.aspx.designer.cs">
+      <DependentUpon>Solicitante.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Solicitud.aspx.cs">
       <DependentUpon>Solicitud.aspx</DependentUpon>
@@ -460,13 +468,6 @@
     </Compile>
     <Compile Include="Vista\SeguridadUsuario.aspx.designer.cs">
       <DependentUpon>SeguridadUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\Solicitante.aspx.cs">
-      <DependentUpon>Solicitante.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vista\Solicitante.aspx.designer.cs">
-      <DependentUpon>Solicitante.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\UCMessageBox.ascx.cs">
       <DependentUpon>UCMessageBox.ascx</DependentUpon>

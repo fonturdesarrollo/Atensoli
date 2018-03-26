@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Solicitante.aspx.cs" EnableEventValidation="false" Inherits="Atensoli.Solicitante" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Solicitante.aspx.cs"  EnableEventValidation="false" Inherits="Atensoli.Solicitantes" %>
+
 <%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
 
@@ -26,102 +27,12 @@
 		<script src="../assets/js/main.js"></script>      
 <%--------------------------%>
 
-	<script type="text/javascript">
-				$(function () {
-					$('#txtCedula').simpleAutoComplete('Autocomplete.aspx', {
-						autoCompleteClassName: 'autocomplete',
-						selectedClassName: 'sel',
-						attrCallBack: 'rel',
-						identifier: 'Clientes'
-					}, fnPersonalCallBack);
-
-				});
-
-				function fnPersonalCallBack(par) {
-					document.getElementById("hdnCedula").value = par[0]; 
-					document.getElementById("txtCedula").value = par[0]; 
-					document.getElementById("txtNombre").value = par[1];
-					document.getElementById("txtTelefono").value = par[3];
-					document.getElementById("txtDireccion").value = par[4]; 
-					document.getElementById("hdnClienteID").value = par[6];
-
-
-					var bt = document.getElementById("ButtonTest");
-					bt.click();
-				}
-
-				function Confirmacion() {
-
-					return confirm("¿Realmente desea eliminar este registro?, no podrá deshacer");
-				}
-				function ConfirmacionGarantia() {
-
-					//return confirm("¿Desea enviar este equipo a garantía?, no podrá deshacer");
-					return document.write("<a href=´#openModal´></a>");
-			
-				}
-				function Recibo() {
-					document.write("<a href=´#openModal´></a>");
-			
-				}
-				function LimpiarTextos() {
-					document.getElementById("hdnCedula").value = "0";
-					document.getElementById("txtCedula").value = "";
-					document.getElementById("txtNombre").value = "";
-					document.getElementById("txtTelefono").value = "";
-				}
-
-		 </script>
-		
-		 <script type="text/javascript">
-				$(function () {
-				$('#txtCedula').keydown(function (e) {
-				if (e.shiftKey || e.ctrlKey || e.altKey) {
-				e.preventDefault();
-				} else {
-				var key = e.keyCode;
-				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-				e.preventDefault();
-				}
-				}
-				});
-			});
-		</script>
-		 <script type="text/javascript">
-				$(function () {
-				$('#txtTelefono').keydown(function (e) {
-				if (e.shiftKey || e.ctrlKey || e.altKey) {
-				e.preventDefault();
-				} else {
-				var key = e.keyCode;
-				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-				e.preventDefault();
-				}
-				}
-				});
-			});
-		</script>
-		 <script type="text/javascript">
-				$(function () {
-					$('#txtCostoRevision').keydown(function (e) {
-				if (e.shiftKey || e.ctrlKey || e.altKey) {
-				e.preventDefault();
-				} else {
-				var key = e.keyCode;
-				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-				e.preventDefault();
-				}
-				}
-				});
-			});
-		</script>
-		
-
+	
 	   <%----------------------------------------------------------------------------------------------------------------------------------------------%>
 	   <%-- PROCESO PARA COMBOS ANIDADOS DESDE EL CLIENTE CON AJAX  JSON Y JAVASRCIPT--%>
 		<%--COMBO ANIDADO 2--%>
 		<script type = "text/javascript">
-			var pageUrl = '<%=ResolveUrl("Solicitud.aspx")%>'
+			var pageUrl = '<%=ResolveUrl("Organizacion.aspx")%>'
 			function CargarHijos() {
 				$("#<%=ddlHijo.ClientID%>").attr("disabled", "disabled");
 				$("#<%=ddlNieto.ClientID%>").attr("disabled", "disabled");
@@ -151,11 +62,39 @@
 			}
 		</script>
 		<%----------------------------------------------------------------------------------------------------------------------------------------------%>
+
+		<%--COMBO ANIDADO 3--%>
+		<script type = "text/javascript">
+			function CargarNieto() {
+				$("#<%=ddlNieto.ClientID%>").attr("disabled", "disabled");
+				if ($('#<%=ddlHijo.ClientID%>').val() == "0") {
+					$('#<%=ddlNieto.ClientID %>').empty().append('<option selected="selected" value="0">Seleccione el modelo del equipo</option>');
+				}
+				else {
+					$('#<%=ddlNieto.ClientID %>').empty().append('<option selected="selected" value="0">Cargando...</option>');
+					$.ajax({
+						type: "POST",
+						url: pageUrl + '/CargarNieto',
+						data: '{nietoID: ' + $('#<%=ddlHijo.ClientID%>').val() + '}',
+						contentType: "application/json; charset=utf-8",
+						dataType: "json",
+						success: EnModelosCargados,
+						failure: function(response) {
+							alert(response.d);
+						}
+					});
+				}
+			}
+ 
+			function EnModelosCargados(response) {
+				CargarControl(response.d, $("#<%=ddlNieto.ClientID %>"));
+			}
+		</script>
 			<script type = "text/javascript">
 			  function CargarControl(list, control) {
 				if (list.length > 0) {
 					control.removeAttr("disabled");
-					control.empty().append('<option selected="selected" value="0">Por favor seleccione el municipio / parroquia</option>');
+					control.empty().append('<option selected="selected" value="0">Por favor seleccione</option>');
 					$.each(list, function() {
 						control.append($("<option></option>").val(this['Value']).html(this['Text']));
 					});
@@ -167,6 +106,7 @@
 		</script>
 		<%--FIN DE COMBOS ANIDADOS--%>
 		<%----------------------------------------------------------------------------------------------------------------------------------------------%>
+	  
 	</head>
 	<body>
 		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
@@ -189,16 +129,16 @@
 									<p></p>
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtCedula"    MaxLength="12" placeholder="Cedula" />
+												<asp:TextBox runat="server" ID="txtCedula"    MaxLength="12"  Enabled="false"  placeholder="Cedula" />
 												<ASP:RequiredFieldValidator id="rqrvalidaCedula" runat="server" errormessage="Debe colocar la cedula" controltovalidate="txtCedula" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												<asp:HiddenField runat ="server" ID ="hdnCedula"  Value="0"/> 
 											</div>
 											<div class="6u 12u$(xsmall)"> 
-												<asp:TextBox runat="server" ID="txtNombre"  MaxLength="80"  placeholder="Nombre Solicitante" />
+												<asp:TextBox runat="server" ID="txtNombre"  MaxLength="80" Enabled="false" placeholder="Nombre Solicitante" />
 												<ASP:RequiredFieldValidator id="rqrvalidaNombreVisitante" runat="server" errormessage="Debe colocar el nombre"  controltovalidate="txtNombre" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)"> 
-												<asp:TextBox runat="server" ID="txtApellido"  MaxLength="80"  placeholder="Apellido Solicitante" />
+												<asp:TextBox runat="server" ID="txtApellido"  MaxLength="80" Enabled="false" placeholder="Apellido Solicitante" />
 												<ASP:RequiredFieldValidator id="rqrvalidaApellido" runat="server" errormessage="Debe colocar el Apellido"  controltovalidate="txtApellido" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
@@ -223,30 +163,32 @@
 												<asp:TextBox runat="server" ID="txtCorreo"  MaxLength="100" placeholder ="Correo"/>
 												<ASP:RequiredFieldValidator id="rqrCorreo" runat="server" errormessage="Debe colocar el Correo"  controltovalidate="txtCorreo" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
-
+					
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlPadre" runat="server" AppendDataBoundItems="true"
 																 onchange = "CargarHijos();">
-														<asp:ListItem Text = "Seleccione el estado" Value = "0"></asp:ListItem>                
+														            
 													</asp:DropDownList>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:DropDownList ID="ddlHijo" runat="server"
-															 onchange = "CargarNieto();">
-													<asp:ListItem Text = "Seleccione el municipio" Value = "0"></asp:ListItem>                
-												</asp:DropDownList>
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlHijo" runat="server"
+																 onchange = "CargarNieto();">
+														            
+													</asp:DropDownList>
+												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:DropDownList ID="ddlNieto" runat="server">
-													<asp:ListItem Text = "Seleccione la parroquia" Value = "0"></asp:ListItem>                
-												</asp:DropDownList>
-												<asp:HiddenField runat ="server" ID ="hdnCodigoModelo"  Value="0"/>
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlNieto" runat="server">
+														             
+													</asp:DropDownList>
+													<asp:HiddenField runat ="server" ID ="hdnCodigoModelo"  Value="0"/>
+												</div>
 											</div>
-
-
-											<div class="6u 12u$(xsmall)"> 
+											<div class="12u$">
 												<asp:CheckBox runat="server" ID="chkPatria" Text="Posee carnet de la patria"/> 
 											</div>
 
@@ -258,10 +200,8 @@
 											</div>
 											<div class="12u$">
 												<ul class="actions">
-													<li><asp:Button Text="Registrar solicitante" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click"/></li>
-													<li><asp:Button Text="Siguiente" runat="server" ID ="btnLimpiar"   CausesValidation="False" OnClick="btnLimpiar_Click"   /></li>
-													<li><asp:Button Text="TEST" runat="server" ID ="ButtonTest"  style="display:none"  CausesValidation="False"  /></li>
-												   
+													<li><asp:Button Text="Registrar solicitante" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click" /></li>
+													<li><asp:Button Text="Siguiente" runat="server" ID ="btnSiguiente"   CausesValidation="False" OnClick="btnSiguiente_Click"  /></li>
 												</ul>
 										  </div>
 									</div>

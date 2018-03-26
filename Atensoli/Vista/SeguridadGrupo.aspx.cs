@@ -7,6 +7,10 @@ namespace Seguridad
     {
         protected  void Page_Load(object sender, EventArgs e)
         {
+            if (this.Session["UserID"] == null)
+            {
+                Server.Transfer("Logout.aspx");
+            }
             if (SeguridadUsuario.EsUsuarioPermitido(Session,18) == false)
             {
                 Response.Redirect("/Index.aspx");

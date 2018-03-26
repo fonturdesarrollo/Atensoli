@@ -14,6 +14,10 @@ namespace Atensoli
         {
             if (SeguridadUsuario.EsUsuarioPermitido(Session,999) == false)
             {
+                if (this.Session["UserID"] == null)
+                {
+                    Server.Transfer("Logout.aspx");
+                }
                 Response.Redirect("/Index.aspx");
             }
         }

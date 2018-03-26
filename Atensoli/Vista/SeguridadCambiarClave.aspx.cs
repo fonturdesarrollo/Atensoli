@@ -2,11 +2,11 @@
 using Seguridad.Clases;
 using System;
 
-namespace WebVisita
+namespace Seguridad
 {
-    public partial class SeguridadCambiarClave : System.Web.UI.Page
+    public partial class SeguridadCambiarClave : SeguridadAuditoria
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)
         {
             if (SeguridadUsuario.EsUsuarioPermitido(Session,999) == false)
             {

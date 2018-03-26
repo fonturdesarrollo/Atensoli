@@ -40,24 +40,6 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.TextBox txtRifOrganzacion;
         
         /// <summary>
-        /// hdnOrganizacionID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnOrganizacionID;
-        
-        /// <summary>
-        /// hdnRifOrganizacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnRifOrganizacion;
-        
-        /// <summary>
         /// rqrValidaRif control.
         /// </summary>
         /// <remarks>
