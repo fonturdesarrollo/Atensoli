@@ -14,17 +14,75 @@ namespace Atensoli
     public partial class Solicitud : Seguridad.SeguridadAuditoria
     {
         private static int codigoSolicitud = 0;
+        private static DataTable dtGrid;
         protected new void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
+                if(dtGrid != null)
+                {
+                    dtGrid.Clear();
+                }
+                codigoSolicitud = 0;
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[2] { new DataColumn("Tipo"), new DataColumn("TipoSoporteID") });
+                ViewState["Soporte"] = dt;
+                this.BindGrid();
                 CargarPadre();
                 CargarTipoAtencionBrindada();
                 CargarTipoReferencia();
                 CargarTipoUnidad();
                 CargarTipoRemitido();
                 CargarFormaAtencion();
+                CargarTipoSoporte();
             }
+        }
+        protected void BindGrid()
+        {
+            grdSoporte.DataSource = (DataTable)ViewState["Soporte"];
+            grdSoporte.DataBind();
+        }
+        private bool EsSoporteFisicoAgregado()
+        {
+            bool resultado = false;
+            if(dtGrid !=null)
+            {
+                for (int i = 0; i < dtGrid.Rows.Count; i++)
+                {
+                    DataRow dr = dtGrid.Rows[i];
+                    if (dr["TipoSoporteID"].ToString() == ddlTipoSoporte.SelectedValue)
+                    {
+                        resultado = true;
+                    }
+                }
+            }
+
+            return resultado;
+        }
+        private void AgregarTipoSoporteFisico()
+        {
+
+            CargarCombosAlEnviarFormulario();
+            if(EsSoporteFisicoAgregado() == false)
+            {
+                if (ddlTipoSoporte.SelectedValue != "")
+                {
+                    dtGrid = (DataTable)ViewState["Soporte"];
+                    dtGrid.Rows.Add(ddlTipoSoporte.SelectedItem, ddlTipoSoporte.SelectedValue);
+                    ViewState["Soporte"] = dtGrid;
+                    this.BindGrid();
+                    grdSoporte.DataBind();
+                }
+                else
+                {
+                    messageBox.ShowMessage("Debe seleccionar de la lista un tipo de soporte");
+                }
+            }
+            else
+            {
+                messageBox.ShowMessage("Ya agregó a la lista este tipo de documento [" + ddlTipoSoporte.SelectedItem +"]");
+            }
+
         }
         //***********************************************************************************
         //PROCESO PARA COMBOS ANIDADOS:
@@ -94,7 +152,42 @@ namespace Atensoli
             }
         }
         //*********************************************************************************
-        //FIN COMBO ANIDADO
+        //COMBOS ANIDADOS (FUNCIONES ADICIONALES)
+        private void CargarCombosAlEnviarFormulario()
+        {
+            //ESTA FUNCION SE DEBE COLOCAR EN EL BOTON O EVENTO QUE ENVIA EL FORMULARIO
+            // YA SEA PARA GUARDAR O PARA VALIDAR ALGUN CONTROL PORQUE DEBIDO A QUE EL TERCER COMBO SE CARGA EN CLIENTE SE PIERDE SU ID AL ENVIAR
+            if(ddlPadre.SelectedValue !="")
+            {
+                string padre = Request.Form[ddlPadre.UniqueID];
+                string hijo = Request.Form[ddlHijo.UniqueID];
+
+                PopulateDropDownList(CargarHijo(int.Parse(padre)), ddlHijo);
+                if(hijo != "0"  )
+                {
+                    ddlHijo.Items.FindByValue(hijo).Selected = true;
+                }
+                else
+                {
+                    ddlHijo.Items.Clear();
+                }
+                
+            }
+            else
+            {
+                ddlHijo.Items.Clear();
+            }
+
+        }
+        private void PopulateDropDownList(ArrayList list, DropDownList ddl)
+        {
+            ddl.DataSource = list;
+            ddl.DataTextField = "Text";
+            ddl.DataValueField = "Value";
+            ddl.DataBind();
+        }
+        //FIN DE COMBOS ANIDADOS
+        //*********************************************************************************
 
         private void CargarTipoAtencionBrindada()
         {
@@ -226,76 +319,134 @@ namespace Atensoli
                 }
             }
         }
-
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        private void CargarTipoSoporte()
         {
-            CSolicitud objetoSolicitud = new CSolicitud();
+            ddlTipoSoporte.Items.Clear();
+            ddlTipoSoporte.Items.Add(new ListItem("--Seleccione el tipo de soporte fisico--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
 
-            objetoSolicitud.SolicitudID = codigoSolicitud;
-            objetoSolicitud.TipoSolicitudID = Convert.ToInt32(Session["TipoSolicitudID"]);
-            objetoSolicitud.TipoSolicitanteID = Convert.ToInt32(Session["TipoSolicitanteID"]);
-            objetoSolicitud.SolicitanteID = Convert.ToInt32(Session["SolicitanteID"]);
-            if(txtNombreCargoSolicitante.Text !="")
-            {
-                objetoSolicitud.NombreCargoSolicitante = txtNombreCargoSolicitante.Text.ToUpper();
-            }
-            else
-            {
-                objetoSolicitud.NombreCargoSolicitante = "N/A";
-            }
-             if (Session["OrganizacionID"].ToString()  != "0")
-            {
-                objetoSolicitud.OrganizacionID = Convert.ToInt32(Session["OrganizacionID"]);
-            }
-            else
-            {
-                objetoSolicitud.OrganizacionID = 0;
-            }
-            objetoSolicitud.TipoAtencionBrindadaID = Convert.ToInt32(ddlTipoAtencionBrindada.SelectedValue);
-            objetoSolicitud.TipoReferenciaSolicitud = Convert.ToInt32(ddlTipoReferenciaSolicitud.SelectedValue);
-            if(ddlTipoUnidad.SelectedValue !="")
-            {
-                objetoSolicitud.TipoUnidadID = Convert.ToInt32(ddlTipoUnidad.SelectedValue);
-            }
-            else
-            {
-                objetoSolicitud.TipoUnidadID = 0;
-            }
-            if (ddlHijo.SelectedValue != "")
-            {
-                objetoSolicitud.TipoInsumoDetalleID = Convert.ToInt32(ddlHijo.SelectedValue);
-            }
-            else
-            {
-                objetoSolicitud.TipoInsumoDetalleID = 0;
-            }
-            objetoSolicitud.TipoRemitidoID = Convert.ToInt32(ddlTipoRemitido.SelectedValue);
-            objetoSolicitud.TipoFormaAtencionID = Convert.ToInt32(ddlTipoFormaAtencion.SelectedValue);
-            if(txtObservacionesSolicitante.Text !="")
-            {
-                objetoSolicitud.ObservacionesSolicitante = txtObservacionesSolicitante.Text.ToUpper().Trim();
-            }
-            else
-            {
-                objetoSolicitud.ObservacionesSolicitante = "N/D";
-            }
-            if (txtObservacionesAnalista.Text != "")
-            {
-                objetoSolicitud.ObservacionesAnalista = txtObservacionesAnalista.Text.ToUpper().Trim();
-            }
-            else
-            {
-                objetoSolicitud.ObservacionesAnalista = "N/D";
-            }
-            objetoSolicitud.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserID"]);
-            objetoSolicitud.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
+            strQuery = "select * From TipoSoporte ORDER BY TipoSoporteID";
 
-            codigoSolicitud= Solicitud.InsertarSolicitud(objetoSolicitud);
-            if(codigoSolicitud > 0)
+            using (SqlConnection con = new SqlConnection(strConnString))
             {
-                messageBox.ShowMessage("Solicitud registrada correctamente.");
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlTipoSoporte.DataSource = cmd.ExecuteReader();
+                    ddlTipoSoporte.DataTextField = "NombreTipoSoporte";
+                    ddlTipoSoporte.DataValueField = "TipoSoporteID";
+                    ddlTipoSoporte.DataBind();
+                    con.Close();
+                }
             }
         }
+        private void ProcesoSolicitud()
+        {
+            try
+            {
+                if (EsTodoCorrecto())
+                {
+                    CSolicitud objetoSolicitud = new CSolicitud();
+
+                    objetoSolicitud.SolicitudID = codigoSolicitud;
+                    objetoSolicitud.TipoSolicitudID = Convert.ToInt32(Session["TipoSolicitudID"]);
+                    objetoSolicitud.TipoSolicitanteID = Convert.ToInt32(Session["TipoSolicitanteID"]);
+                    objetoSolicitud.SolicitanteID = Convert.ToInt32(Session["SolicitanteID"]);
+                    if (txtNombreCargoSolicitante.Text != "")
+                    {
+                        objetoSolicitud.NombreCargoSolicitante = txtNombreCargoSolicitante.Text.ToUpper();
+                    }
+                    else
+                    {
+                        objetoSolicitud.NombreCargoSolicitante = "N/A";
+                    }
+                    if (Session["OrganizacionID"].ToString() != "0")
+                    {
+                        objetoSolicitud.OrganizacionID = Convert.ToInt32(Session["OrganizacionID"]);
+                    }
+                    else
+                    {
+                        objetoSolicitud.OrganizacionID = 0;
+                    }
+                    objetoSolicitud.TipoAtencionBrindadaID = Convert.ToInt32(ddlTipoAtencionBrindada.SelectedValue);
+                    objetoSolicitud.TipoReferenciaSolicitud = Convert.ToInt32(ddlTipoReferenciaSolicitud.SelectedValue);
+                    if (ddlTipoUnidad.SelectedValue != "")
+                    {
+                        objetoSolicitud.TipoUnidadID = Convert.ToInt32(ddlTipoUnidad.SelectedValue);
+                    }
+                    else
+                    {
+                        objetoSolicitud.TipoUnidadID = 0;
+                    }
+
+                    if (ddlHijo.SelectedValue != "0" && ddlHijo.SelectedValue != "")
+                    {
+                        objetoSolicitud.TipoInsumoDetalleID = Convert.ToInt32(ddlHijo.SelectedValue);
+                    }
+                    else
+                    {
+                        objetoSolicitud.TipoInsumoDetalleID = 0;
+                    }
+                    objetoSolicitud.TipoRemitidoID = Convert.ToInt32(ddlTipoRemitido.SelectedValue);
+                    objetoSolicitud.TipoFormaAtencionID = Convert.ToInt32(ddlTipoFormaAtencion.SelectedValue);
+                    if (txtObservacionesSolicitante.Text != "")
+                    {
+                        objetoSolicitud.ObservacionesSolicitante = txtObservacionesSolicitante.Text.ToUpper().Trim();
+                    }
+                    else
+                    {
+                        objetoSolicitud.ObservacionesSolicitante = "N/D";
+                    }
+                    if (txtObservacionesAnalista.Text != "")
+                    {
+                        objetoSolicitud.ObservacionesAnalista = txtObservacionesAnalista.Text.ToUpper().Trim();
+                    }
+                    else
+                    {
+                        objetoSolicitud.ObservacionesAnalista = "N/D";
+                    }
+                    objetoSolicitud.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserID"]);
+                    objetoSolicitud.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
+
+                    codigoSolicitud = Solicitud.InsertarSolicitud(objetoSolicitud);
+                    if (codigoSolicitud > 0)
+                    {
+                        AuditarMovimiento("/Vista/Solicitud.aspx", "Agregó nueva solicitud número: " + codigoSolicitud + " codigo de solicitante: " + Session["SolicitanteID"].ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        messageBox.ShowMessage("Solicitud registrada correctamente.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                messageBox.ShowMessage(ex.Message);
+            }
+
+
+        }
+        private bool EsTodoCorrecto()
+        {
+            bool resultado = true;
+            CargarCombosAlEnviarFormulario();
+            if (ddlPadre.SelectedValue != "")
+            {
+                if(ddlHijo.SelectedValue == "0" || ddlHijo.SelectedValue == "" )
+                {
+                    resultado = false;
+                    messageBox.ShowMessage("Debe seleccionar el detalle del tipo de insumo.");
+                }
+            }
+            return resultado;
+        }
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            ProcesoSolicitud();
+        }
+
 
         protected void btnNueva_Click(object sender, EventArgs e)
         {
@@ -307,6 +458,26 @@ namespace Atensoli
             Session.Remove("NombreSaime");
             Session.Remove("ApellidoSaime");
             Response.Redirect("SeleccionarTipoSolicitud.aspx");
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarTipoSoporteFisico();
+        }
+
+        protected void grdSoporte_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            for (int i = dtGrid.Rows.Count - 1; i >= 0; i--)
+            {
+                DataRow dr = dtGrid.Rows[i];
+                if (dr["TipoSoporteID"].ToString() == e.CommandArgument.ToString())
+                {
+                    dr.Delete();
+                    ViewState["Soporte"] = dtGrid;
+                    this.BindGrid();
+                    grdSoporte.DataBind();
+                }
+            }
         }
     }
 }

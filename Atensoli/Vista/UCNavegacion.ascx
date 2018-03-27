@@ -27,15 +27,13 @@
 											<span class="opener">Atención al Ciudadano</span>
 											<ul>
 												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudes"  navigateurl ="~/Vista/SeleccionarTipoSolicitud.aspx"  Text ="Registrar solicitud"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkConsultarSolicitud"  navigateurl ="~/Vista/EnConstruccion.aspx"  Text ="Consultar solicitud"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkConsultarSolicitud"  navigateurl ="~/Vista/ConsultarSolicitud.aspx"  Text ="Consultar solicitud"></ASP:HyperLink></li>
 											</ul>
 										</li>
 
 										<li>
 											<span class="opener">Opciones especiales</span>
 											<ul>
-												<li><ASP:HyperLink runat="server" ID ="lnkSolicitante"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Solicitante"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkOrganismo"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Organismo"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoSolicitante"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de solicitante"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoSolicitud"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de solicitud"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoOrganismo"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de organismo"></ASP:HyperLink></li>

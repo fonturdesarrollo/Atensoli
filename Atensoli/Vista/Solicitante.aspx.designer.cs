@@ -166,6 +166,15 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.DropDownList ddlPadre;
         
         /// <summary>
+        /// rqrvalidaEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaEstado;
+        
+        /// <summary>
         /// ddlHijo control.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlHijo;
+        
+        /// <summary>
+        /// rqrvalidaMunicipio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaMunicipio;
         
         /// <summary>
         /// ddlNieto control.
@@ -184,13 +202,13 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.DropDownList ddlNieto;
         
         /// <summary>
-        /// hdnCodigoModelo control.
+        /// rqrvalidaParroquia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnCodigoModelo;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaParroquia;
         
         /// <summary>
         /// chkPatria control.

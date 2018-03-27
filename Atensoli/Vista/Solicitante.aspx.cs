@@ -134,11 +134,27 @@ namespace Atensoli
             string hijo = Request.Form[ddlHijo.UniqueID];
             string nieto = Request.Form[ddlNieto.UniqueID];
 
-            // Repopulate Countries and Cities
-            PopulateDropDownList(CargarHijo(int.Parse(padre)), ddlHijo);
-            PopulateDropDownList(CargarNieto(int.Parse(hijo)), ddlNieto);
-            ddlHijo.Items.FindByValue(hijo).Selected = true;
-            ddlNieto.Items.FindByValue(nieto).Selected = true;
+            if (ddlPadre.SelectedValue != "")
+            {
+                PopulateDropDownList(CargarHijo(int.Parse(padre)), ddlHijo);
+                PopulateDropDownList(CargarNieto(int.Parse(hijo)), ddlNieto);
+                if (hijo != "0" && hijo != null)
+                {
+                    ddlHijo.Items.FindByValue(hijo).Selected = true;
+                }
+                else
+                {
+                    ddlHijo.Items.Clear();
+                }
+                if (nieto != "0" && nieto != null)
+                {
+                    ddlNieto.Items.FindByValue(nieto).Selected = true;
+                }
+                else
+                {
+                    ddlNieto.Items.Clear();
+                }
+            }
         }
         private void PopulateDropDownList(ArrayList list, DropDownList ddl)
         {
@@ -213,7 +229,7 @@ namespace Atensoli
                     CargarPadre();
                     txtCedula.Text = Session["CedulaSaime"].ToString();
                     txtNombre.Text = Session["NombreSaime"].ToString();
-                    txtApellido.Text = Session["ApellidoSaime"].ToString();
+                    txtApellido.Text =  Session["ApellidoSaime"].ToString();
                     txtCedula.Enabled = false;
                     txtNombre.Enabled = false;
                     txtApellido.Enabled = false;
@@ -263,36 +279,41 @@ namespace Atensoli
         {
             try
             {
-                CSolicitante objetoSolicitante = new CSolicitante();
-                CargarCombosAlEnviarFormulario();
-                objetoSolicitante.SolicitanteID = codigoSolicitante;
-                objetoSolicitante.CedulaSolicitante = txtCedula.Text;
-                objetoSolicitante.Nombresolicitante = txtNombre.Text.ToUpper();
-                objetoSolicitante.ApellidoSolicitante = txtApellido.Text.ToUpper();
-                objetoSolicitante.Sexo = ddlSexo.SelectedValue;
-                objetoSolicitante.CelularSolicitante = txtCelular.Text;
-                objetoSolicitante.TelefonoLocalSolicitante = txtTelefonoLocal.Text;
-                objetoSolicitante.TelefonoOficinalSolicitante = txtTelefonoOficina.Text;
-                objetoSolicitante.CorreoElectronicoSolicitante = txtCorreo.Text.ToUpper();
-                objetoSolicitante.ParroquiaID = Convert.ToInt32(ddlNieto.SelectedValue);
-                objetoSolicitante.IndicaCarnetPatria = chkPatria.Checked ? 1 : 0;
-                objetoSolicitante.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"]);
-                objetoSolicitante.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
-                if (chkPatria.Checked == true)
+                if(EsTodoCorrecto())
                 {
-                    objetoSolicitante.SerialCarnetPatria = txtSerialCarnetPatria.Text.ToUpper();
-                    objetoSolicitante.CodigoCarnetPatria = txtCodigoCarnetPatria.Text.ToUpper();
-                }
-                else
-                {
-                    objetoSolicitante.SerialCarnetPatria = "";
-                    objetoSolicitante.CodigoCarnetPatria = "";
-                }
+                    CSolicitante objetoSolicitante = new CSolicitante();
+                    CargarCombosAlEnviarFormulario();
+                    objetoSolicitante.SolicitanteID = codigoSolicitante;
+                    objetoSolicitante.CedulaSolicitante = txtCedula.Text;
+                    objetoSolicitante.Nombresolicitante = txtNombre.Text.ToUpper();
+                    objetoSolicitante.ApellidoSolicitante = txtApellido.Text.ToUpper();
+                    objetoSolicitante.Sexo = ddlSexo.SelectedValue;
+                    objetoSolicitante.CelularSolicitante = txtCelular.Text;
+                    objetoSolicitante.TelefonoLocalSolicitante = txtTelefonoLocal.Text;
+                    objetoSolicitante.TelefonoOficinalSolicitante = txtTelefonoOficina.Text;
+                    objetoSolicitante.CorreoElectronicoSolicitante = txtCorreo.Text.ToUpper();
+                    objetoSolicitante.ParroquiaID = Convert.ToInt32(ddlNieto.SelectedValue);
+                    objetoSolicitante.IndicaCarnetPatria = chkPatria.Checked ? 1 : 0;
+                    objetoSolicitante.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"]);
+                    objetoSolicitante.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
+                    if (chkPatria.Checked == true)
+                    {
+                        objetoSolicitante.SerialCarnetPatria = txtSerialCarnetPatria.Text.ToUpper();
+                        objetoSolicitante.CodigoCarnetPatria = txtCodigoCarnetPatria.Text.ToUpper();
+                    }
+                    else
+                    {
+                        objetoSolicitante.SerialCarnetPatria = "";
+                        objetoSolicitante.CodigoCarnetPatria = "";
+                    }
 
-                codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante);
-                if (codigoSolicitante > 0)
-                {
-                    messageBox.ShowMessage("Registro actualizado.");
+                    codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante);
+                    if (codigoSolicitante > 0)
+                    {
+                        Session["SolicitanteID"] = codigoSolicitante;
+                        messageBox.ShowMessage("Registro actualizado.");
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -300,7 +321,25 @@ namespace Atensoli
                 messageBox.ShowMessage(ex.Message);
             }
         }
-
+        private bool EsTodoCorrecto()
+        {
+            bool resultado = true;
+            CargarCombosAlEnviarFormulario();
+            if (ddlPadre.SelectedValue != "")
+            {
+                if (ddlHijo.SelectedValue == "0" || ddlHijo.SelectedValue == "")
+                {
+                    resultado = false;
+                    messageBox.ShowMessage("Debe seleccionar el municipio.");
+                }
+                else if(ddlNieto.SelectedValue == "0" || ddlNieto.SelectedValue == "")
+                {
+                    resultado = false;
+                    messageBox.ShowMessage("Debe seleccionar la parroquia.");
+                }
+            }
+            return resultado;
+        }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             ProcesoSolicitante();

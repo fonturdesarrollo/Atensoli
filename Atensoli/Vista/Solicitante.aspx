@@ -168,24 +168,25 @@
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlPadre" runat="server" AppendDataBoundItems="true"
 																 onchange = "CargarHijos();">
-														            
+		 
 													</asp:DropDownList>
+													<ASP:RequiredFieldValidator id="rqrvalidaEstado" runat="server" errormessage="Debe colocar el estado"  controltovalidate="ddlPadre" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlHijo" runat="server"
 																 onchange = "CargarNieto();">
-														            
 													</asp:DropDownList>
+													<ASP:RequiredFieldValidator id="rqrvalidaMunicipio" runat="server" errormessage="Debe colocar el municipio"  controltovalidate="ddlHijo" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlNieto" runat="server">
-														             
+																	 
 													</asp:DropDownList>
-													<asp:HiddenField runat ="server" ID ="hdnCodigoModelo"  Value="0"/>
+													<ASP:RequiredFieldValidator id="rqrvalidaParroquia" runat="server" errormessage="Debe colocar la parroquia"  controltovalidate="ddlHijo" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 											<div class="12u$">

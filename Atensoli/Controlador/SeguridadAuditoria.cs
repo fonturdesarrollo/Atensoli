@@ -22,6 +22,7 @@ namespace Seguridad
         }
         private void EstablecerSeguridad()
         {
+
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetExpires(DateTime.Now.AddDays(-1));
             Response.Cache.SetNoStore();
@@ -35,11 +36,18 @@ namespace Seguridad
             {
                 CSeguridad objetoSeguridad = new CSeguridad();
                 objetoSeguridad.SeguridadUsuarioDatosID = Convert.ToInt32(this.Session["UserId"].ToString());
-                if (objetoSeguridad.EsAccesoPermitido(CodigoObjetoSegunUrl(HttpContext.Current.Request.Url.AbsolutePath)) == false)
+                if (objetoSeguridad.EsUsuarioAdministrador() == false)
                 {
-                    AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Intento de entrar en pantalla sin tener permiso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
-                    Server.Transfer("Logout.aspx");
+                    if(EsCambioClave(HttpContext.Current.Request.Url.AbsolutePath) == false)
+                    {
+                        if (objetoSeguridad.EsAccesoPermitido(CodigoObjetoSegunUrl(HttpContext.Current.Request.Url.AbsolutePath)) == false)
+                        {
+                            AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Intento de entrar en pantalla sin tener permiso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                            Server.Transfer("Logout.aspx");
+                        }
+                    }
                 }
+
             }
         }
         private int CodigoObjetoSegunUrl(string urlSeleccionado)
@@ -68,10 +76,22 @@ namespace Seguridad
                 case "/Vista/Solicitud.aspx":
                     codigoObjeto = 9;
                     break;
+                case "/Vista/ConsultarSolicitud.aspx":
+                    codigoObjeto = 22;
+                    break;
                 default:
                     break;
             }
             return codigoObjeto;
+        }
+        private bool EsCambioClave(string urlSeleccionado)
+        {
+            bool resultado = false;
+            if(urlSeleccionado == "/Vista/SeguridadCambiarClave.aspx")
+            {
+                resultado = true;
+            }
+            return resultado;
         }
         public static void AuditarMovimiento(string nombreFormulario, string descripcionProceso, string nombreEquipoCliente, int codigoUsuario)
         {

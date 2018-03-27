@@ -107,12 +107,14 @@
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlTipoAtencionBrindada" runat="server"  AppendDataBoundItems="True"  >
 													</asp:DropDownList>
+													<ASP:RequiredFieldValidator id="rqrvalidaTipoAtencion" runat="server" errormessage="Debe seleccionar el tipo de atención brindada"  controltovalidate="ddlTipoAtencionBrindada" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlTipoReferenciaSolicitud" runat="server"  AppendDataBoundItems="True"  >
 													</asp:DropDownList>
+													<ASP:RequiredFieldValidator id="rqrvalidaTipoReferencia" runat="server" errormessage="Debe seleccionar el tipo de referencia"  controltovalidate="ddlTipoReferenciaSolicitud" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
@@ -140,6 +142,7 @@
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlTipoRemitido" runat="server"  AppendDataBoundItems="True"  >
 													</asp:DropDownList>
+													<ASP:RequiredFieldValidator id="rqrValidaRemitido" runat="server" errormessage="Debe seleccionar donde será remitido"  controltovalidate="ddlTipoRemitido" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 
@@ -147,6 +150,7 @@
 												<div class="select-wrapper">
 													<asp:DropDownList ID="ddlTipoFormaAtencion" runat="server"  AppendDataBoundItems="True"  >
 													</asp:DropDownList>
+													<ASP:RequiredFieldValidator id="rqrValidaFormaAtencion" runat="server" errormessage="Debe seleccionar el tipo de atención prestada"  controltovalidate="ddlTipoFormaAtencion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 
@@ -156,7 +160,31 @@
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtObservacionesAnalista" TextMode="MultiLine" Rows="2" MaxLength="3000"  placeholder="Observaciones del analista"/> 
 											</div>
+											<div class="6u 12u$(xsmall)">
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlTipoSoporte" runat="server"  AppendDataBoundItems="True"  >
+													</asp:DropDownList>
+												</div>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Button runat ="server" Text ="Agregar tipo soporte" ID ="btnAgregar" OnClick="btnAgregar_Click" />
+											</div>
 
+
+											<div class="table-wrapper">
+												<asp:GridView ID ="grdSoporte" runat ="server" CssClass ="Grid" AutoGenerateColumns ="False" EmptyDataText ="No existen registros" OnRowCommand="grdSoporte_RowCommand">
+													<Columns>
+														<asp:BoundField  DataField ="Tipo" HeaderText ="Tipo Documento"/>
+														<asp:BoundField DataField ="TipoSoporteID" HeaderText ="Codigo" Visible ="false" />
+														<asp:TemplateField HeaderText="Quitar" HeaderStyle-Width="100">
+															<ItemTemplate>
+															<asp:ImageButton runat="server" ID="btnEliminar" AlternateText="Eliminar Detalle" CausesValidation="false"  ToolTip="Eliminar Detalle"  ImageUrl="~/Images/eliminar.png"  CommandName="EliminarDetalle" CommandArgument='<%# Eval("TipoSoporteID") %>' />
+															</ItemTemplate>
+														</asp:TemplateField>
+													</Columns>
+												</asp:GridView>
+
+											</div>
 											<div class="12u$">
 												<ul class="actions">
 													<li><asp:Button Text="Registrar solicitud" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click"/></li>

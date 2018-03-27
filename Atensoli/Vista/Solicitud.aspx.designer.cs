@@ -49,6 +49,15 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoAtencionBrindada;
         
         /// <summary>
+        /// rqrvalidaTipoAtencion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaTipoAtencion;
+        
+        /// <summary>
         /// ddlTipoReferenciaSolicitud control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoReferenciaSolicitud;
+        
+        /// <summary>
+        /// rqrvalidaTipoReferencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaTipoReferencia;
         
         /// <summary>
         /// ddlTipoUnidad control.
@@ -94,6 +112,15 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoRemitido;
         
         /// <summary>
+        /// rqrValidaRemitido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaRemitido;
+        
+        /// <summary>
         /// ddlTipoFormaAtencion control.
         /// </summary>
         /// <remarks>
@@ -101,6 +128,15 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoFormaAtencion;
+        
+        /// <summary>
+        /// rqrValidaFormaAtencion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaFormaAtencion;
         
         /// <summary>
         /// txtObservacionesSolicitante control.
@@ -119,6 +155,33 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtObservacionesAnalista;
+        
+        /// <summary>
+        /// ddlTipoSoporte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoSoporte;
+        
+        /// <summary>
+        /// btnAgregar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
+        
+        /// <summary>
+        /// grdSoporte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdSoporte;
         
         /// <summary>
         /// btnGuardar control.

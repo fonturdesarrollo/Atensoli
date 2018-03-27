@@ -135,11 +135,27 @@ namespace Atensoli
             string hijo = Request.Form[ddlHijo.UniqueID];
             string nieto = Request.Form[ddlNieto.UniqueID];
 
-            // Repopulate Countries and Cities
-            PopulateDropDownList(CargarHijo(int.Parse(padre)), ddlHijo);
-            PopulateDropDownList(CargarNieto(int.Parse(hijo)), ddlNieto);
-            ddlHijo.Items.FindByValue(hijo).Selected = true;
-            ddlNieto.Items.FindByValue(nieto).Selected = true;
+            if (ddlPadre.SelectedValue != "")
+            {
+                PopulateDropDownList(CargarHijo(int.Parse(padre)), ddlHijo);
+                PopulateDropDownList(CargarNieto(int.Parse(hijo)), ddlNieto);
+                if (hijo != "0" && hijo != null)
+                {
+                    ddlHijo.Items.FindByValue(hijo).Selected = true;
+                }
+                else
+                {
+                    ddlHijo.Items.Clear();
+                }
+                if (nieto != "0" && nieto != null)
+                {
+                    ddlNieto.Items.FindByValue(nieto).Selected = true;
+                }
+                else
+                {
+                    ddlNieto.Items.Clear();
+                }
+            }
         }
         private void PopulateDropDownList(ArrayList list, DropDownList ddl)
         {
@@ -268,26 +284,50 @@ namespace Atensoli
         {
             try
             {
-                COrganizacion objetoOrganizaicon = new COrganizacion();
-                CargarCombosAlEnviarFormulario();
-                objetoOrganizaicon.OrganizacionID = codigoOrganizacion;
-                objetoOrganizaicon.RifOrganizacion = txtRifOrganizacion.Text.ToUpper();
-                objetoOrganizaicon.NombreOrganizacion = txtNombreOrganizacion.Text.ToUpper();
-                objetoOrganizaicon.TipoOrganizacionID = Convert.ToInt32(ddTipoOrganizacion.SelectedValue);
-                objetoOrganizaicon.ParroquiaID = Convert.ToInt32(ddlNieto.SelectedValue);
-                objetoOrganizaicon.TelefonoOrganizacion = txtTelefonoOrganizacion.Text;
-                objetoOrganizaicon.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"]);
-                objetoOrganizaicon.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
-                codigoOrganizacion = Organizacion.InsertarOrganizacion(objetoOrganizaicon);
-                if (codigoOrganizacion > 0)
+                if(EsTodoCorrecto())
                 {
-                    messageBox.ShowMessage("Registro actualizado.");
+                    COrganizacion objetoOrganizaicon = new COrganizacion();
+                    CargarCombosAlEnviarFormulario();
+                    objetoOrganizaicon.OrganizacionID = codigoOrganizacion;
+                    objetoOrganizaicon.RifOrganizacion = txtRifOrganizacion.Text.ToUpper();
+                    objetoOrganizaicon.NombreOrganizacion = txtNombreOrganizacion.Text.ToUpper();
+                    objetoOrganizaicon.TipoOrganizacionID = Convert.ToInt32(ddTipoOrganizacion.SelectedValue);
+                    objetoOrganizaicon.ParroquiaID = Convert.ToInt32(ddlNieto.SelectedValue);
+                    objetoOrganizaicon.TelefonoOrganizacion = txtTelefonoOrganizacion.Text;
+                    objetoOrganizaicon.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"]);
+                    objetoOrganizaicon.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
+                    codigoOrganizacion = Organizacion.InsertarOrganizacion(objetoOrganizaicon);
+                    if (codigoOrganizacion > 0)
+                    {
+                        Session["OrganizacionID"] = codigoOrganizacion;
+                        messageBox.ShowMessage("Registro actualizado.");
+                    }
                 }
+
             }
             catch (Exception ex)
             {
                 messageBox.ShowMessage(ex.Message);
             }
+        }
+        private bool EsTodoCorrecto()
+        {
+            bool resultado = true;
+            CargarCombosAlEnviarFormulario();
+            if (ddlPadre.SelectedValue != "")
+            {
+                if (ddlHijo.SelectedValue == "0" || ddlHijo.SelectedValue == "")
+                {
+                    resultado = false;
+                    messageBox.ShowMessage("Debe seleccionar el municipio.");
+                }
+                else if (ddlNieto.SelectedValue == "0" || ddlNieto.SelectedValue == "")
+                {
+                    resultado = false;
+                    messageBox.ShowMessage("Debe seleccionar la parroquia.");
+                }
+            }
+            return resultado;
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {

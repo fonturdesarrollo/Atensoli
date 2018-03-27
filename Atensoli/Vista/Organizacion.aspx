@@ -26,96 +26,7 @@
 		<script src="../assets/js/main.js"></script>      
 <%--------------------------%>
 
-	<script type="text/javascript">
-				$(function () {
-					$('#txtCedula').simpleAutoComplete('Autocomplete.aspx', {
-						autoCompleteClassName: 'autocomplete',
-						selectedClassName: 'sel',
-						attrCallBack: 'rel',
-						identifier: 'Clientes'
-					}, fnPersonalCallBack);
 
-				});
-
-				function fnPersonalCallBack(par) {
-					document.getElementById("hdnCedula").value = par[0]; 
-					document.getElementById("txtCedula").value = par[0]; 
-					document.getElementById("txtNombre").value = par[1];
-					document.getElementById("txtTelefono").value = par[3];
-					document.getElementById("txtDireccion").value = par[4]; 
-					document.getElementById("hdnClienteID").value = par[6];
-
-
-					var bt = document.getElementById("ButtonTest");
-					bt.click();
-				}
-
-				function Confirmacion() {
-
-					return confirm("¿Realmente desea eliminar este registro?, no podrá deshacer");
-				}
-				function ConfirmacionGarantia() {
-
-					//return confirm("¿Desea enviar este equipo a garantía?, no podrá deshacer");
-					return document.write("<a href=´#openModal´></a>");
-			
-				}
-				function Recibo() {
-					document.write("<a href=´#openModal´></a>");
-			
-				}
-				function LimpiarTextos() {
-					document.getElementById("hdnCedula").value = "0";
-					document.getElementById("txtCedula").value = "";
-					document.getElementById("txtNombre").value = "";
-					document.getElementById("txtTelefono").value = "";
-				}
-
-		 </script>
-		
-		 <script type="text/javascript">
-				$(function () {
-				$('#txtCedula').keydown(function (e) {
-				if (e.shiftKey || e.ctrlKey || e.altKey) {
-				e.preventDefault();
-				} else {
-				var key = e.keyCode;
-				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-				e.preventDefault();
-				}
-				}
-				});
-			});
-		</script>
-		 <script type="text/javascript">
-				$(function () {
-				$('#txtTelefono').keydown(function (e) {
-				if (e.shiftKey || e.ctrlKey || e.altKey) {
-				e.preventDefault();
-				} else {
-				var key = e.keyCode;
-				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-				e.preventDefault();
-				}
-				}
-				});
-			});
-		</script>
-		 <script type="text/javascript">
-				$(function () {
-					$('#txtCostoRevision').keydown(function (e) {
-				if (e.shiftKey || e.ctrlKey || e.altKey) {
-				e.preventDefault();
-				} else {
-				var key = e.keyCode;
-				if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-				e.preventDefault();
-				}
-				}
-				});
-			});
-		</script>
-		
 	   <%----------------------------------------------------------------------------------------------------------------------------------------------%>
 	   <%-- PROCESO PARA COMBOS ANIDADOS DESDE EL CLIENTE CON AJAX  JSON Y JAVASRCIPT--%>
 		<%--COMBO ANIDADO 2--%>
@@ -219,7 +130,6 @@
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtRifOrganizacion"    MaxLength="12" placeholder="RIF de la organización" />
 												<ASP:RequiredFieldValidator id="rqrvalidaRifOrganizacion" runat="server" errormessage="Debe colocar el RIF de la organización" controltovalidate="txtRifOrganizacion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
-												<asp:HiddenField runat ="server" ID ="hdnRifOrganizacion"  Value="0"/> 
 											</div>
 											<div class="6u 12u$(xsmall)"> 
 												<asp:TextBox runat="server" ID="txtNombreOrganizacion"  MaxLength="80"  placeholder="Nombre de la organización" />
@@ -236,6 +146,7 @@
 													<asp:DropDownList ID="ddlPadre" runat="server" AppendDataBoundItems="true"
 																 onchange = "CargarHijos();">
 													</asp:DropDownList>
+													<ASP:RequiredFieldValidator id="rqrvalidaEstado" runat="server" errormessage="Debe seleccionar el estado" controltovalidate="ddlPadre" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
@@ -252,6 +163,7 @@
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtTelefonoOrganizacion"  MaxLength="100" placeholder ="Teléfono de la organización" />
+												<ASP:RequiredFieldValidator id="rqrValidaTelefonoOrg" runat="server" errormessage="Debe colocar el telefono de la organización" controltovalidate="txtTelefonoOrganizacion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="12u$">
 												<ul class="actions">

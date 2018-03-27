@@ -74,6 +74,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\TipoInsumo.aspx" />
+    <Content Include="Vista\ConsultarSolicitud.aspx" />
     <Content Include="Vista\Solicitante.aspx" />
     <Content Include="Vista\Solicitud.aspx" />
     <Content Include="Vista\SeleccionarOrganizacion.aspx" />
@@ -280,6 +282,23 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlador\ConsultarSolicitud.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoInsumo.aspx.cs">
+      <DependentUpon>TipoInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoInsumo.aspx.designer.cs">
+      <DependentUpon>TipoInsumo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ConsultarSolicitud.aspx.cs">
+      <DependentUpon>ConsultarSolicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\ConsultarSolicitud.aspx.designer.cs">
+      <DependentUpon>ConsultarSolicitud.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controlador\Autocomplete.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

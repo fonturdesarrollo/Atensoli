@@ -49,15 +49,6 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaRifOrganizacion;
         
         /// <summary>
-        /// hdnRifOrganizacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnRifOrganizacion;
-        
-        /// <summary>
         /// txtNombreOrganizacion control.
         /// </summary>
         /// <remarks>
@@ -94,6 +85,15 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.DropDownList ddlPadre;
         
         /// <summary>
+        /// rqrvalidaEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaEstado;
+        
+        /// <summary>
         /// ddlHijo control.
         /// </summary>
         /// <remarks>
@@ -128,6 +128,15 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTelefonoOrganizacion;
+        
+        /// <summary>
+        /// rqrValidaTelefonoOrg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaTelefonoOrg;
         
         /// <summary>
         /// btnGuardar control.

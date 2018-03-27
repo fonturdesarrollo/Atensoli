@@ -31,24 +31,6 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HyperLink lnkConsultarSolicitud;
         
         /// <summary>
-        /// lnkSolicitante control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkSolicitante;
-        
-        /// <summary>
-        /// lnkOrganismo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkOrganismo;
-        
-        /// <summary>
         /// lnkTipoSolicitante control.
         /// </summary>
         /// <remarks>
