@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TipoReferencia.aspx.cs" Inherits="Atensoli.TipoReferencia" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TipoSolicitante.aspx.cs" Inherits="Atensoli.TipoSolicitante" %>
 
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
 <%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
@@ -7,7 +7,7 @@
 
 <html>
 	<head>
-		<title>Atensoli | Tipo de Referencia</title>
+		<title>Atensoli | Tipo Solicitante</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -28,17 +28,17 @@
 
 	<script type="text/javascript">
 				$(function () {
-				    $('#txtNombreReferencia').simpleAutoComplete('Autocomplete.aspx', {
+				    $('#txtNombreTipoSolicitante').simpleAutoComplete('Autocomplete.aspx', {
 						autoCompleteClassName: 'autocomplete',
 						selectedClassName: 'sel',
 						attrCallBack: 'rel',
-						identifier: 'Referencia'
+						identifier: 'TipoSolicitante'
 					}, fnPersonalCallBack);
 
 				});
 
 				function fnPersonalCallBack(par) {
-				    document.getElementById("hdnTipoReferenciaID").value = par[0];
+				    document.getElementById("hdnTipoSolicitanteID").value = par[0];
 				}
 	</script>
 	</head>
@@ -53,7 +53,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Agregar tipo de referencia</strong></a>
+									<a class="logo"><strong>Tipo Solicitante</strong></a>
 									<ul class="icons">
 
 									</ul>
@@ -65,13 +65,13 @@
 										<p></p>
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtNombreReferencia" MaxLength="100" onkeypress="return event.keyCode!=13;" placeholder ="Indique el nombre de la referencia solicitud"/> 
-												<ASP:RequiredFieldValidator id="rqrvalidaNombreRef" runat="server" errormessage="Debe colocar al nombre de la referencia" controltovalidate="txtNombreReferencia" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>													
-												<asp:HiddenField runat ="server" ID ="hdnTipoReferenciaID"  Value="0"/> 
+												<asp:TextBox runat="server" ID="txtNombreTipoSolicitante" MaxLength="100" onkeypress="return event.keyCode!=13;" placeholder ="Indique el nombre del tipo de solicitante"/> 
+												<ASP:RequiredFieldValidator id="rqrvalidaNombreTipoSol" runat="server" errormessage="Debe colocar el nombre del tipo de solicitante" controltovalidate="txtNombreTipoSolicitante" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>													
+												<asp:HiddenField runat ="server" ID ="hdnTipoSolicitanteID"  Value="0"/> 
 											</div>
 											<div class="12u$">
 												<ul class="actions">
-													<asp:Button Text="Guardar referencia" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click" />												   
+													<asp:Button Text="Guardar tipo solicitante" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click" />												   
 												</ul>
 											</div>
 										</div>

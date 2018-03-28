@@ -43,6 +43,22 @@ namespace Admin
                 };
             return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerNombreReferencia", dbParams);
         }
+        public static DataSet ObtenerNombreTipoSolitante(string sQuery)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery)
+                };
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerNombreTipoSolicitante", dbParams);
+        }
+        public static DataSet ObtenerNombreTipoSolitud(string sQuery)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery)
+                };
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerNombreTipoSolicitud", dbParams);
+        }
         public static DataSet ObtenerEmpresas(string sQuery)
         {
             SqlParameter[] dbParams = new SqlParameter[]

@@ -85,6 +85,12 @@ namespace Seguridad
                 case "/Vista/TipoReferencia.aspx":
                     codigoObjeto = 16;
                     break;
+                case "/Vista/TipoSolicitante.aspx":
+                    codigoObjeto = 12;
+                    break;
+                case "/Vista/TipoSolicitud.aspx":
+                    codigoObjeto = 13;
+                    break;
                 default:
                     break;
             }
