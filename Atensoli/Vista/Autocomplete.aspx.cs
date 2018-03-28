@@ -51,6 +51,44 @@ namespace Admin
                         Response.End();
                     }
                 }
+                if (Request.QueryString["identifier"] == "Insumo")
+                {
+                    DataSet ds = Autocomplete.ObtenerNombreInsumo(Request.QueryString["query"]);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Response.Write("<ul>" + "\n");
+                        paginaBase.AutoCompleteResult item;
+                        foreach (DataRow dr in ds.Tables[0].Rows)
+                        {
+                            item = new paginaBase.AutoCompleteResult();
+                            item.value = dr["NombreTipoInsumo"].ToString();
+                            item.id = dr["TipoInsumoID"].ToString();
+                            item.value = item.value.Replace(Request.QueryString["query"].ToString(), "<span style='font-weight:bold;'>" + Request.QueryString["query"].ToString() + "</span>");
+                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["NombreTipoInsumo"].ToString() + "_" + dr["TipoInsumoID"].ToString() + "'>" + item.value + "</li>" + "\n");
+                        }
+                        Response.Write("</ul>");
+                        Response.End();
+                    }
+                }
+                if (Request.QueryString["identifier"] == "Referencia")
+                {
+                    DataSet ds = Autocomplete.ObtenerNombreReferencia(Request.QueryString["query"]);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Response.Write("<ul>" + "\n");
+                        paginaBase.AutoCompleteResult item;
+                        foreach (DataRow dr in ds.Tables[0].Rows)
+                        {
+                            item = new paginaBase.AutoCompleteResult();
+                            item.value = dr["NombreTipoReferenciaSolicitud"].ToString();
+                            item.id = dr["TipoReferenciaSolicitudID"].ToString();
+                            item.value = item.value.Replace(Request.QueryString["query"].ToString(), "<span style='font-weight:bold;'>" + Request.QueryString["query"].ToString() + "</span>");
+                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["NombreTipoReferenciaSolicitud"].ToString() + "_" + dr["TipoReferenciaSolicitudID"].ToString() + "'>" + item.value + "</li>" + "\n");
+                        }
+                        Response.Write("</ul>");
+                        Response.End();
+                    }
+                }
                 if (Request.QueryString["identifier"] == "Empresas")
                 {
                     DataSet ds = Autocomplete.ObtenerEmpresas(Request.QueryString["query"]);

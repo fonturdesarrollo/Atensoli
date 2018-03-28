@@ -27,39 +27,39 @@
 <%--------------------------%>
 
 	<script type="text/javascript">
-		        $(function () {
-		            $('#txtNombreEmpresa').simpleAutoComplete('Autocomplete.aspx', {
-				        autoCompleteClassName: 'autocomplete',
-				        selectedClassName: 'sel',
-				        attrCallBack: 'rel',
-				        identifier: 'Empresas'
-			        }, fnPersonalCallBack);
+				$(function () {
+					$('#txtNombreEmpresa').simpleAutoComplete('Autocomplete.aspx', {
+						autoCompleteClassName: 'autocomplete',
+						selectedClassName: 'sel',
+						attrCallBack: 'rel',
+						identifier: 'Empresas'
+					}, fnPersonalCallBack);
 
-		        });
+				});
 
-		        function fnPersonalCallBack(par) {
-		            document.getElementById("hdnEmpresaID").value = par[0];
-		            document.getElementById("txtRif").value = par[3];
-		            document.getElementById("txtNombreEmpresa").value = par[1];
-		            document.getElementById("txtDireccion").value = par[4];
-		            document.getElementById("txtTelefono").value = par[5];
-		            document.getElementById("txtEmail").value = par[6]; 
-		            document.getElementById("txtWeb").value = par[11];
-		            document.getElementById("txtTwitter").value = par[7];
-		            document.getElementById("txtInstagram").value = par[8];
-		            document.getElementById("txtFacebook").value = par[9];
-		            document.getElementById("hdnRutaImagen").value = par[10];
-		            document.getElementById("ddlEstatusEmpresa").value = par[12];
+				function fnPersonalCallBack(par) {
+					document.getElementById("hdnEmpresaID").value = par[0];
+					document.getElementById("txtRif").value = par[3];
+					document.getElementById("txtNombreEmpresa").value = par[1];
+					document.getElementById("txtDireccion").value = par[4];
+					document.getElementById("txtTelefono").value = par[5];
+					document.getElementById("txtEmail").value = par[6]; 
+					document.getElementById("txtWeb").value = par[11];
+					document.getElementById("txtTwitter").value = par[7];
+					document.getElementById("txtInstagram").value = par[8];
+					document.getElementById("txtFacebook").value = par[9];
+					document.getElementById("hdnRutaImagen").value = par[10];
+					document.getElementById("ddlEstatusEmpresa").value = par[12];
 
-			        var bt = document.getElementById("ButtonTest");
-			        bt.click();
-		        }
+					var bt = document.getElementById("ButtonTest");
+					bt.click();
+				}
 
-		        function Confirmacion() {
+				function Confirmacion() {
 
-			        return confirm("¿Realmente desea eliminar esta empresa?, se borraran todas sus sucursales, usuarios, inventario y movimientos, este proceso no se podrá deshacer");
-		        }
-	     </script>
+					return confirm("¿Realmente desea eliminar esta empresa?, se borraran todas sus sucursales, usuarios, inventario y movimientos, este proceso no se podrá deshacer");
+				}
+		 </script>
 		
 	</head>
 	<body>
@@ -88,20 +88,20 @@
 												<asp:HiddenField runat ="server" ID ="hdnEmpresaID"  Value="0"/> 
 											</div>
 											<div class="6u 12u$(xsmall)"> 
-												<asp:TextBox runat="server" ID="txtNombreEmpresa"  MaxLength="150"  placeholder="Nombre Cliente" />
+												<asp:TextBox runat="server" ID="txtNombreEmpresa"  MaxLength="150"  placeholder="Nombre Empresa" />
 												<ASP:RequiredFieldValidator id="rqrValidaNombreEmpresa" runat="server" errormessage="Debe colocar el nombre de la empresa"  controltovalidate="txtNombreEmpresa" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtDireccion"  MaxLength="100"  placeholder ="Dirección"/>
-                                                <ASP:RequiredFieldValidator id="rqrValidaDireccion" runat="server" errormessage="Debe colocar la dirección de la empresa"  controltovalidate="txtDireccion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+												<ASP:RequiredFieldValidator id="rqrValidaDireccion" runat="server" errormessage="Debe colocar la dirección de la empresa"  controltovalidate="txtDireccion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtTelefono"  MaxLength="100" placeholder ="Teléfono"/>
-                                                <ASP:RequiredFieldValidator id="rqrValidaTelefono" runat="server" errormessage="Debe colocar el numéro de teléfono de la empresa"  controltovalidate="txtTelefono" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+												<ASP:RequiredFieldValidator id="rqrValidaTelefono" runat="server" errormessage="Debe colocar el numéro de teléfono de la empresa"  controltovalidate="txtTelefono" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtEmail"  MaxLength="50" placeholder ="Correo Electronico"/>
-                                                <ASP:RequiredFieldValidator id="rqrValidaEmail" runat="server" errormessage="Debe colocar el E-Mail"  controltovalidate="txtEmail" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+												<ASP:RequiredFieldValidator id="rqrValidaEmail" runat="server" errormessage="Debe colocar el E-Mail"  controltovalidate="txtEmail" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtWeb"  MaxLength="100" placeholder ="Sitio Web"/>
@@ -117,13 +117,14 @@
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
-                                                    <asp:DropDownList ID="ddlEstatusEmpresa" runat="server" AppendDataBoundItems="true"></asp:DropDownList>
+													<asp:DropDownList ID="ddlEstatusEmpresa" runat="server" AppendDataBoundItems="true"></asp:DropDownList>
+													<ASP:RequiredFieldValidator id="rqrValidaEstatus" runat="server" errormessage="Debe seleccionar el estatus"  controltovalidate="ddlEstatusEmpresa" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
-                                                <asp:Label runat="server" ID="lblFile" Text ="Logo: "></asp:Label>
-                                                <asp:FileUpload id="FileUploadControl" runat="server" />
-                                                <asp:HiddenField runat ="server" ID ="hdnRutaImagen"  Value=""/> 
+												<asp:Label runat="server" ID="lblFile" Text ="Logo: "></asp:Label>
+												<asp:FileUpload id="FileUploadControl" runat="server" />
+												<asp:HiddenField runat ="server" ID ="hdnRutaImagen"  Value=""/> 
 											</div>
 
 											<div class="12u$">
@@ -202,7 +203,7 @@
 														  </asp:TemplateField>
 														   <asp:TemplateField HeaderText="Logo" HeaderStyle-Width="100">
 															  <ItemTemplate>
-                                                                  <asp:Image runat="server" ID="imgLogo"  ImageUrl ='<%# Eval("LogoEmpresa") %>' Width="50" Height="50"></asp:Image>
+																  <asp:Image runat="server" ID="imgLogo"  ImageUrl ='<%# Eval("LogoEmpresa") %>' Width="50" Height="50"></asp:Image>
 															  </ItemTemplate>   
 														  </asp:TemplateField>
 														   <asp:TemplateField HeaderText="Acciones" HeaderStyle-Width="100">

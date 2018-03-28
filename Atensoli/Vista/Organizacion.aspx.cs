@@ -300,6 +300,7 @@ namespace Atensoli
                     if (codigoOrganizacion > 0)
                     {
                         Session["OrganizacionID"] = codigoOrganizacion;
+                        AuditarMovimiento("/Vista/Organizacion.aspx", "Agregó nueva organización: " + txtNombreOrganizacion.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         messageBox.ShowMessage("Registro actualizado.");
                     }
                 }

@@ -27,6 +27,22 @@ namespace Admin
                 };
             return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerRifOrganizacion", dbParams);
         }
+        public static DataSet ObtenerNombreInsumo(string sQuery)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery)
+                };
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerNombreInsumo", dbParams);
+        }
+        public static DataSet ObtenerNombreReferencia(string sQuery)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery)
+                };
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerNombreReferencia", dbParams);
+        }
         public static DataSet ObtenerEmpresas(string sQuery)
         {
             SqlParameter[] dbParams = new SqlParameter[]

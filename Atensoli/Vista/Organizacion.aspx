@@ -150,16 +150,18 @@
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:DropDownList ID="ddlHijo" runat="server"
-															 onchange = "CargarNieto();">
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlHijo" runat="server"
+																 onchange = "CargarNieto();">
 		
-												</asp:DropDownList>
+													</asp:DropDownList>
+												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:DropDownList ID="ddlNieto" runat="server">
-	   
-												</asp:DropDownList>
-												<asp:HiddenField runat ="server" ID ="hdnCodigoModelo"  Value="0"/>
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlNieto" runat="server">
+													</asp:DropDownList>
+												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtTelefonoOrganizacion"  MaxLength="100" placeholder ="Teléfono de la organización" />

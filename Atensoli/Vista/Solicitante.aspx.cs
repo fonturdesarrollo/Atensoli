@@ -310,6 +310,7 @@ namespace Atensoli
                     codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante);
                     if (codigoSolicitante > 0)
                     {
+                        AuditarMovimiento("/Vista/Solicitante.aspx", "Agregó nuevo solicitante cedula:" + txtCedula.Text.ToUpper() + " nombre: " + txtNombre.Text + " " + txtApellido.Text , System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         Session["SolicitanteID"] = codigoSolicitante;
                         messageBox.ShowMessage("Registro actualizado.");
                     }

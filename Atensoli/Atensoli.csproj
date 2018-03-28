@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\TipoReferencia.aspx" />
     <Content Include="Vista\TipoInsumo.aspx" />
     <Content Include="Vista\ConsultarSolicitud.aspx" />
     <Content Include="Vista\Solicitante.aspx" />
@@ -284,6 +285,21 @@
   <ItemGroup>
     <Compile Include="Controlador\ConsultarSolicitud.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\TipoInsumo.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modelo\CTipoReferencia.cs" />
+    <Compile Include="Modelo\CTipoInsumo.cs" />
+    <Compile Include="Controlador\TipoReferencia.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoReferencia.aspx.cs">
+      <DependentUpon>TipoReferencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoReferencia.aspx.designer.cs">
+      <DependentUpon>TipoReferencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\TipoInsumo.aspx.cs">
       <DependentUpon>TipoInsumo.aspx</DependentUpon>

@@ -10,7 +10,7 @@
 namespace Atensoli {
     
     
-    public partial class TipoInsumo {
+    public partial class TipoReferencia {
         
         /// <summary>
         /// messageBox control.
@@ -31,76 +31,40 @@ namespace Atensoli {
         protected global::System.Web.UI.HtmlControls.HtmlForm principal;
         
         /// <summary>
-        /// txtNombreInsumo control.
+        /// txtNombreReferencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreInsumo;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreReferencia;
         
         /// <summary>
-        /// hdnTipoInsumoID control.
+        /// rqrvalidaNombreRef control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnTipoInsumoID;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaNombreRef;
         
         /// <summary>
-        /// btnGuardarInsumo control.
+        /// hdnTipoReferenciaID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarInsumo;
+        protected global::System.Web.UI.WebControls.HiddenField hdnTipoReferenciaID;
         
         /// <summary>
-        /// lblDetalleInsumo control.
+        /// btnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDetalleInsumo;
-        
-        /// <summary>
-        /// ddlInsumo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlInsumo;
-        
-        /// <summary>
-        /// txtNombreDetalleInsumo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreDetalleInsumo;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// gridDetalle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridDetalle;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
         /// ControlMenu control.
