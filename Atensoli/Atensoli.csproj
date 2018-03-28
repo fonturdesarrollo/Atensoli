@@ -74,6 +74,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\TipoRemitido.aspx" />
+    <Content Include="Vista\TipoSoporte.aspx" />
     <Content Include="Vista\TipoAtencion.aspx" />
     <Content Include="Vista\TipoOrganizacion.aspx" />
     <Content Include="Vista\TipoSolicitud.aspx" />
@@ -293,6 +295,8 @@
     <Compile Include="Controlador\TipoInsumo.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Modelo\CTipoRemitido.cs" />
+    <Compile Include="Modelo\CTipoSoporte.cs" />
     <Compile Include="Modelo\CTIpoAtencion.cs" />
     <Compile Include="Modelo\CTipoOrganizacion.cs" />
     <Compile Include="Modelo\CTipoSolicitud.cs" />
@@ -313,6 +317,26 @@
     </Compile>
     <Compile Include="Controlador\TipoAtencion.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\TipoSoporte.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\TipoRemitido.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoRemitido.aspx.cs">
+      <DependentUpon>TipoRemitido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoRemitido.aspx.designer.cs">
+      <DependentUpon>TipoRemitido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TipoSoporte.aspx.cs">
+      <DependentUpon>TipoSoporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoSoporte.aspx.designer.cs">
+      <DependentUpon>TipoSoporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\TipoAtencion.aspx.cs">
       <DependentUpon>TipoAtencion.aspx</DependentUpon>

@@ -49,7 +49,7 @@ namespace Atensoli.Vista
 
                 if (objetoSeguridad.EsAccesoPermitido(17) == true)
                 {
-                    lnkTipoUnidad.Visible = true;
+                    lnkTipoRemitido.Visible = true;
 
                 }
                 if (objetoSeguridad.EsAccesoPermitido(18) == true)

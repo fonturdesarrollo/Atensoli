@@ -39,9 +39,9 @@
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoOrganizacion"  navigateurl ="~/Vista/TipoOrganizacion.aspx" Text ="Tipo de organización"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoAtencion"  navigateurl ="~/Vista/TipoAtencion.aspx" Text ="Tipo de atención"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkReferido"  navigateurl ="~/Vista/TipoReferencia.aspx" Text ="Tipo de referencia"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkTipoUnidad"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de unidad transporte"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoRemitido"  navigateurl ="~/Vista/TipoRemitido.aspx" Text ="Tipo de remitido"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoInsumo"  navigateurl ="~/Vista/TipoInsumo.aspx" Text ="Tipo de insumo"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkTipoSoporteFIsico"  navigateurl ="~/Vista/TipoSoporte.aspx" Text ="Tipo de soporte fisico"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoSoporteFIsico"  navigateurl ="~/Vista/TipoSoporte.aspx" Text ="Tipo de soporte físico"></ASP:HyperLink></li>
 											</ul>
 										</li>
 										<li>

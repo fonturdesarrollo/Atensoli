@@ -163,7 +163,7 @@ namespace Atensoli
                 string hijo = Request.Form[ddlHijo.UniqueID];
 
                 PopulateDropDownList(CargarHijo(int.Parse(padre)), ddlHijo);
-                if(hijo != "0"  )
+                if(hijo != "0"  && hijo != null)
                 {
                     ddlHijo.Items.FindByValue(hijo).Selected = true;
                 }

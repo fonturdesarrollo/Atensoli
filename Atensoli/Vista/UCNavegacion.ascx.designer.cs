@@ -76,13 +76,13 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HyperLink lnkReferido;
         
         /// <summary>
-        /// lnkTipoUnidad control.
+        /// lnkTipoRemitido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoUnidad;
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoRemitido;
         
         /// <summary>
         /// lnkTipoInsumo control.
