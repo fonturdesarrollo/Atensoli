@@ -3,6 +3,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
 using System.Web.UI.WebControls;
 
 
@@ -165,7 +166,6 @@ namespace Seguridad
         {
             if (EsTodoCorrecto()== true)
             {
-
                 try
                 {
                     CSeguridad objetoSeguridad = new CSeguridad();
@@ -180,6 +180,7 @@ namespace Seguridad
                     objetoSeguridad.EmpresaSucursalID = Convert.ToInt32(ddlSucursal.SelectedValue);
                     if (SeguridadUsuario.InsertarUsuario(objetoSeguridad) > 0)
                     {
+                        Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nuevo usuario: " + txtNombre.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         messageBox.ShowMessage("El usuario se ingresó correctamente");
                         LimpiarPantalla();
                     }

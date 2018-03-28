@@ -33,7 +33,7 @@ namespace Atensoli.Vista
                 }
                 if (objetoSeguridad.EsAccesoPermitido(14) == true)
                 {
-                    lnkTipoOrganismo.Visible = true;
+                    lnkTipoOrganizacion.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(15) == true)
                 {
@@ -59,6 +59,10 @@ namespace Atensoli.Vista
                 if (objetoSeguridad.EsAccesoPermitido(22) == true)
                 {
                     lnkConsultarSolicitud.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(23) == true)
+                {
+                    lnkTipoSoporteFIsico.Visible = true;
                 }
             }
         }

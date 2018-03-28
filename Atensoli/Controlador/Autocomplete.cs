@@ -59,6 +59,22 @@ namespace Admin
                 };
             return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerNombreTipoSolicitud", dbParams);
         }
+        public static DataSet ObtenerNombreTipoOrganizacion(string sQuery)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery)
+                };
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerNombreTipoOrganizacion", dbParams);
+        }
+        public static DataSet ObtenerNombreTipoAtencion(string sQuery)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery)
+                };
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerNombreTipoAtencion", dbParams);
+        }
         public static DataSet ObtenerEmpresas(string sQuery)
         {
             SqlParameter[] dbParams = new SqlParameter[]

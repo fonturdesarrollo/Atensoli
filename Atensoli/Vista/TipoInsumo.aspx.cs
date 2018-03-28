@@ -62,7 +62,7 @@ namespace Atensoli
                     {
                         CargarTipoInsumo();
                         messageBox.ShowMessage("Registro actualizado.");
-                        AuditarMovimiento("/Vista/TipoInsumo.aspx", "Agregó nuevo tipo de insumo: " + txtNombreInsumo.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nuevo tipo de insumo: " + txtNombreInsumo.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                     }
                 }
             }

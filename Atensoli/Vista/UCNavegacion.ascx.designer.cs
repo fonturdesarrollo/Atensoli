@@ -49,13 +49,13 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HyperLink lnkTipoSolicitud;
         
         /// <summary>
-        /// lnkTipoOrganismo control.
+        /// lnkTipoOrganizacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoOrganismo;
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoOrganizacion;
         
         /// <summary>
         /// lnkTipoAtencion control.
@@ -92,6 +92,15 @@ namespace Atensoli.Vista {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink lnkTipoInsumo;
+        
+        /// <summary>
+        /// lnkTipoSoporteFIsico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkTipoSoporteFIsico;
         
         /// <summary>
         /// lnkSeguridad control.

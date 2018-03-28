@@ -74,6 +74,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\TipoAtencion.aspx" />
+    <Content Include="Vista\TipoOrganizacion.aspx" />
     <Content Include="Vista\TipoSolicitud.aspx" />
     <Content Include="Vista\TipoSolicitante.aspx" />
     <Content Include="Vista\TipoReferencia.aspx" />
@@ -291,6 +293,8 @@
     <Compile Include="Controlador\TipoInsumo.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Modelo\CTIpoAtencion.cs" />
+    <Compile Include="Modelo\CTipoOrganizacion.cs" />
     <Compile Include="Modelo\CTipoSolicitud.cs" />
     <Compile Include="Modelo\CTipoSolicitante.cs" />
     <Compile Include="Modelo\CTipoReferencia.cs" />
@@ -303,6 +307,26 @@
     </Compile>
     <Compile Include="Controlador\TipoSolicitud.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\TipoOrganizacion.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\TipoAtencion.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoAtencion.aspx.cs">
+      <DependentUpon>TipoAtencion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoAtencion.aspx.designer.cs">
+      <DependentUpon>TipoAtencion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TipoOrganizacion.aspx.cs">
+      <DependentUpon>TipoOrganizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoOrganizacion.aspx.designer.cs">
+      <DependentUpon>TipoOrganizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\TipoSolicitud.aspx.cs">
       <DependentUpon>TipoSolicitud.aspx</DependentUpon>

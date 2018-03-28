@@ -36,11 +36,12 @@
 											<ul>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoSolicitante"  navigateurl ="~/Vista/TipoSolicitante.aspx" Text ="Tipo de solicitante"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoSolicitud"  navigateurl ="~/Vista/TipoSolicitud.aspx" Text ="Tipo de solicitud"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkTipoOrganismo"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de organismo"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkTipoAtencion"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de atención"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoOrganizacion"  navigateurl ="~/Vista/TipoOrganizacion.aspx" Text ="Tipo de organización"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoAtencion"  navigateurl ="~/Vista/TipoAtencion.aspx" Text ="Tipo de atención"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkReferido"  navigateurl ="~/Vista/TipoReferencia.aspx" Text ="Tipo de referencia"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoUnidad"  navigateurl ="~/Vista/EnConstruccion.aspx" Text ="Tipo de unidad transporte"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoInsumo"  navigateurl ="~/Vista/TipoInsumo.aspx" Text ="Tipo de insumo"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkTipoSoporteFIsico"  navigateurl ="~/Vista/TipoSoporte.aspx" Text ="Tipo de soporte fisico"></ASP:HyperLink></li>
 											</ul>
 										</li>
 										<li>

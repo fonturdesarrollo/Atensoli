@@ -127,7 +127,44 @@ namespace Admin
                         Response.End();
                     }
                 }
-
+                if (Request.QueryString["identifier"] == "TipoOrganizacion")
+                {
+                    DataSet ds = Autocomplete.ObtenerNombreTipoOrganizacion(Request.QueryString["query"]);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Response.Write("<ul>" + "\n");
+                        paginaBase.AutoCompleteResult item;
+                        foreach (DataRow dr in ds.Tables[0].Rows)
+                        {
+                            item = new paginaBase.AutoCompleteResult();
+                            item.value = dr["NombreTipoOrganizacion"].ToString();
+                            item.id = dr["TipoOrganizacionID"].ToString();
+                            item.value = item.value.Replace(Request.QueryString["query"].ToString(), "<span style='font-weight:bold;'>" + Request.QueryString["query"].ToString() + "</span>");
+                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["NombreTipoOrganizacion"].ToString() + "_" + dr["TipoOrganizacionID"].ToString() + "'>" + item.value + "</li>" + "\n");
+                        }
+                        Response.Write("</ul>");
+                        Response.End();
+                    }
+                }
+                if (Request.QueryString["identifier"] == "TipoAtencion")
+                {
+                    DataSet ds = Autocomplete.ObtenerNombreTipoAtencion(Request.QueryString["query"]);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Response.Write("<ul>" + "\n");
+                        paginaBase.AutoCompleteResult item;
+                        foreach (DataRow dr in ds.Tables[0].Rows)
+                        {
+                            item = new paginaBase.AutoCompleteResult();
+                            item.value = dr["NombreTipoAtencionBrindada"].ToString();
+                            item.id = dr["TipoAtencionBrindadaID"].ToString();
+                            item.value = item.value.Replace(Request.QueryString["query"].ToString(), "<span style='font-weight:bold;'>" + Request.QueryString["query"].ToString() + "</span>");
+                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["NombreTipoAtencionBrindada"].ToString() + "_" + dr["TipoAtencionBrindadaID"].ToString() + "'>" + item.value + "</li>" + "\n");
+                        }
+                        Response.Write("</ul>");
+                        Response.End();
+                    }
+                }
                 if (Request.QueryString["identifier"] == "Empresas")
                 {
                     DataSet ds = Autocomplete.ObtenerEmpresas(Request.QueryString["query"]);
