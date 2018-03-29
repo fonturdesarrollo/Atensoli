@@ -342,6 +342,10 @@ namespace Atensoli
                 Session["OrganizacionID"] = codigoOrganizacion;
                 Response.Redirect("~/Vista/Solicitud.aspx");
             }
+            else
+            {
+                messageBox.ShowMessage("No puede avanzar al siguiente paso hasta no agregar los datos de la organización y presionar REGISTRAR ORGANIZACION");
+            }
         }
     }
 }

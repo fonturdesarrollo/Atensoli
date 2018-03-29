@@ -30,9 +30,7 @@
                                     <ul class="icons">
                                         <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                                         <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                                        <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
                                         <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                                        <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
                                     </ul>
                                 </header>
 
@@ -40,7 +38,7 @@
                                 <section id="banner">
                                     <div class="content">
                                         <header>
-                                            <h1>Bienvenido <%:Session["NombreCompletoUsuario"]%> al sistema Atensoli.<br /></h1>
+                                            <h1>Bienvenid@ <%:Session["NombreCompletoUsuario"]%> al sistema Atensoli.<br /></h1>
                                             <p><%:Session["NombreEmpresa"]%></p>
                                         </header>
                                     </div>
@@ -77,24 +75,16 @@
 
                                     </div>
                                 </section>
-
                         </div>
                     </div>
 
                 <!-- Sidebar -->
 <%--					<div id="sidebar">
                         <div class="inner">--%>
-
-
-                                    <uc2:UCNavegacion  runat ="server" ID ="ControlMenu"/>
-
-
-
+                                <uc2:UCNavegacion  runat ="server" ID ="ControlMenu"/>
 <%--						</div>
                     </div>--%>
-
             </div>
-
         <!-- Scripts -->
 
     </body>

@@ -285,7 +285,6 @@
     <Content Include="Vista\SeguridadUsuario.aspx" />
     <Content Include="Vista\UCMessageBox.ascx" />
     <Content Include="Vista\UCNavegacion.ascx" />
-    <Content Include="Vista\UCNavigation.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -589,13 +588,6 @@
     </Compile>
     <Compile Include="Vista\UCNavegacion.ascx.designer.cs">
       <DependentUpon>UCNavegacion.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\UCNavigation.ascx.cs">
-      <DependentUpon>UCNavigation.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vista\UCNavigation.ascx.designer.cs">
-      <DependentUpon>UCNavigation.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

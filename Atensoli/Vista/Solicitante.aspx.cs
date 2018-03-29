@@ -206,6 +206,7 @@ namespace Atensoli
                             }
                             txtSerialCarnetPatria.Text = dr["SerialCarnetPatria"].ToString();
                             txtCodigoCarnetPatria.Text = dr["CodigoCarnetPatria"].ToString();
+                            codigoSolicitante = Convert.ToInt32(Session["SolicitanteID"]);
                             SoloLecturaRegistrado();
                             resultado = true;
                         }
@@ -233,6 +234,7 @@ namespace Atensoli
                     txtCedula.Enabled = false;
                     txtNombre.Enabled = false;
                     txtApellido.Enabled = false;
+                    codigoSolicitante = 0;
                     SoloLecturaNuevo();
                     resultado = true;
                 }
@@ -341,6 +343,28 @@ namespace Atensoli
             }
             return resultado;
         }
+        private bool EsTodoCorrectoParaSiguiente()
+        {
+            bool resultado = true;
+            CargarCombosAlEnviarFormulario();
+            if (Session["SolicitanteID"] == null)
+            {
+                resultado = false;
+                messageBox.ShowMessage("No puede avanzar al siguiente paso hasta no agregar los datos del solicitante y presionar: REGISTRAR SOLICITANTE");
+            }
+            return resultado;
+        }
+        private void ProcesoSiguiente()
+        {
+            if (codigoSolicitante > 0)
+            {
+                Response.Redirect("SeleccionarTipoSolicitante.aspx");
+            }
+            else
+            {
+                messageBox.ShowMessage("No puede avanzar al siguiente paso hasta no agregar los datos del solicitante y presionar: REGISTRAR SOLICITANTE");
+            }
+        }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             ProcesoSolicitante();
@@ -348,7 +372,7 @@ namespace Atensoli
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Response.Redirect("SeleccionarTipoSolicitante.aspx");
+            ProcesoSiguiente();
         }
     }
 }

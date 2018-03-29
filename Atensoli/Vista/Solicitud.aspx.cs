@@ -413,6 +413,15 @@ namespace Atensoli
                     objetoSolicitud.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserID"]);
                     objetoSolicitud.EmpresaSucursalID = Convert.ToInt32(Session["CodigoSucursalEmpresa"]);
 
+                    //Si la solicitud es resuelta en sitio el estatus queda en finalizada
+                    if (ddlTipoRemitido.SelectedValue =="1")
+                    {
+                        objetoSolicitud.SolicitudEstatusID = 6;
+                    }
+                    else
+                    {
+                        objetoSolicitud.SolicitudEstatusID = 1;
+                    }
                     codigoSolicitud = Solicitud.InsertarSolicitud(objetoSolicitud);
                     if (codigoSolicitud > 0)
                     {

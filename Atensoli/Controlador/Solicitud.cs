@@ -30,7 +30,8 @@ namespace Atensoli
                     DBHelper.MakeParam("@ObservacionesSolicitante", SqlDbType.VarChar, 0,objetoSolicitud.ObservacionesSolicitante),
                     DBHelper.MakeParam("@ObservacionesAnalista", SqlDbType.VarChar, 0,objetoSolicitud.ObservacionesAnalista),
                     DBHelper.MakeParam("@SeguridadUsuarioDatosID", SqlDbType.Int, 0,objetoSolicitud.SeguridadUsuarioDatosID),
-                    DBHelper.MakeParam("@EmpresaSucursalID", SqlDbType.Int, 0,objetoSolicitud.EmpresaSucursalID)
+                    DBHelper.MakeParam("@EmpresaSucursalID", SqlDbType.Int, 0,objetoSolicitud.EmpresaSucursalID),
+                    DBHelper.MakeParam("SolicitudEstatusID", SqlDbType.Int, 0,objetoSolicitud.SolicitudEstatusID)
 
             };
             codigoSolicitudNueva = Convert.ToInt32(DBHelper.ExecuteScalar("usp_Solicitud_Insertar", dbParams));

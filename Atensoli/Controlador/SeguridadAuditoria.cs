@@ -94,6 +94,9 @@ namespace Seguridad
                 case "/Vista/TipoOrganizacion.aspx":
                     codigoObjeto = 14;
                     break;
+                case "/Vista/TipoAtencion.aspx":
+                    codigoObjeto = 15;
+                    break;
                 case "/Vista/TipoSoporte.aspx":
                     codigoObjeto = 23;
                     break;

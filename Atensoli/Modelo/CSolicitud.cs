@@ -25,9 +25,9 @@ namespace Atensoli
         private string _observacionesSolicitante;
         private string _observacionesAnalista;
         private int _seguridadUsuarioDatosID;
-        private string _fechaRegistroSolicitante;
         private int _empresaSucursalID;
-        public CSolicitud(int _solicitudID, int _tipoSolicitudID, int _tipoSolicitanteID, int _solicitanteID, string _nombreCargoSolicitante, int _organizacionID, int _tipoAtencionBrindadaID, int _tipoReferenciaSolicitud, int _tipoUnidadID, int _tipoInsumoDetalleID, int _tipoRemitidoID, int _tipoFormaAtencionID, string _observacionesSolicitante, string _observacionesAnalista, int _seguridadUsuarioDatosID, int _empresaSucursalID)
+        private int _solicitudEstatusID;
+        public CSolicitud(int _solicitudID, int _tipoSolicitudID, int _tipoSolicitanteID, int _solicitanteID, string _nombreCargoSolicitante, int _organizacionID, int _tipoAtencionBrindadaID, int _tipoReferenciaSolicitud, int _tipoUnidadID, int _tipoInsumoDetalleID, int _tipoRemitidoID, int _tipoFormaAtencionID, string _observacionesSolicitante, string _observacionesAnalista, int _seguridadUsuarioDatosID, int _empresaSucursalID, int _solicitudEstatusID)
         {
             this.TipoSolicitudID = _tipoSolicitudID;
             this.TipoSolicitanteID = _tipoSolicitanteID;
@@ -43,9 +43,8 @@ namespace Atensoli
             this.ObservacionesSolicitante = _observacionesSolicitante;
             this.ObservacionesAnalista = _observacionesAnalista;
             this.SeguridadUsuarioDatosID = _seguridadUsuarioDatosID;
-            this.FechaRegistroSolicitante = _fechaRegistroSolicitante;
             this.EmpresaSucursalID = _empresaSucursalID;
-
+            this.SolicitudEstatusID = _solicitudEstatusID;
         }
         public int SolicitudID
         {
@@ -253,20 +252,17 @@ namespace Atensoli
                 _empresaSucursalID = value;
             }
         }
-
-        public string FechaRegistroSolicitante
+        public int SolicitudEstatusID
         {
             get
             {
-                return _fechaRegistroSolicitante;
+                return _solicitudEstatusID;
             }
 
             set
             {
-                _fechaRegistroSolicitante = value;
+                _solicitudEstatusID = value;
             }
         }
-
-
     }
 }

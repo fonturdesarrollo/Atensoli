@@ -64,6 +64,10 @@ namespace Atensoli.Vista
                 {
                     lnkTipoSoporteFIsico.Visible = true;
                 }
+                if (objetoSeguridad.EsAccesoPermitido(1023) == true)
+                {
+                    lnkSeguimientoSolicitudes.Visible = true;
+                }
             }
         }
         private void ColocarEnlacesInvisibles()
