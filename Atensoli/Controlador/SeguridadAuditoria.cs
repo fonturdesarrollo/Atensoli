@@ -142,5 +142,15 @@ namespace Seguridad
             }
 
         }
+        public static DataSet ObtenerMovimientosAuditoria()
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+
+                };
+
+            return DBHelper.ExecuteDataSet("usp_SeguridadAuditoria_ObtenerMovimientosAuditoria", dbParams);
+
+        }
     }
     }

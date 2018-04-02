@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\SeguridadVistaAuditoria.aspx" />
     <Content Include="Vista\TipoInsumo.aspx" />
     <Content Include="Vista\TipoRemitido.aspx" />
     <Content Include="Vista\TipoSoporte.aspx" />
@@ -322,6 +323,13 @@
     </Compile>
     <Compile Include="Controlador\TipoRemitido.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguridadVistaAuditoria.aspx.cs">
+      <DependentUpon>SeguridadVistaAuditoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguridadVistaAuditoria.aspx.designer.cs">
+      <DependentUpon>SeguridadVistaAuditoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\TipoInsumo.aspx.cs">
       <DependentUpon>TipoInsumo.aspx</DependentUpon>

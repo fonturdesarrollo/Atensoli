@@ -67,5 +67,10 @@ namespace Seguridad
         {
             Response.Redirect("Empresa.aspx");
         }
+
+        protected void btnAuditoria_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SeguridadVistaAuditoria.aspx");
+        }
     }
 }

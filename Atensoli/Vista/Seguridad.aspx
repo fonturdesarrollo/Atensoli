@@ -60,6 +60,7 @@
 													<li><asp:Button Text="Grupos" runat="server" ID ="btnAgregarGrupo"    OnClick="btnAgregarGrupo_Click"/></li>
 													<li><asp:Button Text="Objetos" runat="server" ID ="btnAgregarObjeto"  OnClick="btnAgregarObjeto_Click"/></li>
 													<li><asp:Button Text="Objetos/Grupos" runat="server" ID ="btmAgregarGrupoObjeto"  OnClick="btmAgregarGrupoObjeto_Click"/></li>
+													<li><asp:Button Text="Auditoria" runat="server" ID ="btnAuditoria" OnClick="btnAuditoria_Click"/></li>
 												 </ul>
 												<hr />
 												<div class="content">
