@@ -180,7 +180,7 @@ namespace Seguridad
                     objetoSeguridad.EmpresaSucursalID = Convert.ToInt32(ddlSucursal.SelectedValue);
                     if (SeguridadUsuario.InsertarUsuario(objetoSeguridad) > 0)
                     {
-                        Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nuevo usuario: " + txtNombre.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nuevo usuario: " + txtNombre.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         messageBox.ShowMessage("El usuario se ingresó correctamente");
                         LimpiarPantalla();
                     }

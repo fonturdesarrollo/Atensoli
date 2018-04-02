@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\TipoInsumo.aspx" />
     <Content Include="Vista\TipoRemitido.aspx" />
     <Content Include="Vista\TipoSoporte.aspx" />
     <Content Include="Vista\TipoAtencion.aspx" />
@@ -81,7 +82,6 @@
     <Content Include="Vista\TipoSolicitud.aspx" />
     <Content Include="Vista\TipoSolicitante.aspx" />
     <Content Include="Vista\TipoReferencia.aspx" />
-    <Content Include="Vista\TipoInsumo.aspx" />
     <Content Include="Vista\ConsultarSolicitud.aspx" />
     <Content Include="Vista\Solicitante.aspx" />
     <Content Include="Vista\Solicitud.aspx" />
@@ -323,6 +323,13 @@
     <Compile Include="Controlador\TipoRemitido.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Vista\TipoInsumo.aspx.cs">
+      <DependentUpon>TipoInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoInsumo.aspx.designer.cs">
+      <DependentUpon>TipoInsumo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\TipoRemitido.aspx.cs">
       <DependentUpon>TipoRemitido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -371,13 +378,6 @@
     </Compile>
     <Compile Include="Vista\TipoReferencia.aspx.designer.cs">
       <DependentUpon>TipoReferencia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\TipoInsumo.aspx.cs">
-      <DependentUpon>TipoInsumo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vista\TipoInsumo.aspx.designer.cs">
-      <DependentUpon>TipoInsumo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\ConsultarSolicitud.aspx.cs">
       <DependentUpon>ConsultarSolicitud.aspx</DependentUpon>

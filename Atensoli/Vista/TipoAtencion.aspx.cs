@@ -26,7 +26,7 @@ namespace Atensoli
                 if (codigoTipoAtencion > 0)
                 {
                     messageBox.ShowMessage("Registro actualizado.");
-                    AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nuevo tipo de atención: " + txtNombreTipoAtencion.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                    AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nuevo tipo de atención: " + txtNombreTipoAtencion.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                 }
             }
             catch (Exception ex)

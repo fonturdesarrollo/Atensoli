@@ -312,7 +312,7 @@ namespace Atensoli
                     codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante);
                     if (codigoSolicitante > 0)
                     {
-                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nuevo solicitante cedula:" + txtCedula.Text.ToUpper() + " nombre: " + txtNombre.Text + " " + txtApellido.Text , System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nuevo solicitante cedula:" + txtCedula.Text.ToUpper() + " nombre: " + txtNombre.Text + " " + txtApellido.Text , System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         Session["SolicitanteID"] = codigoSolicitante;
                         messageBox.ShowMessage("Registro actualizado.");
                     }

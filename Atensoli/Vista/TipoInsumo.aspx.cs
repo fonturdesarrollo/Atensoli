@@ -85,7 +85,7 @@ namespace Atensoli
                     codigoDetalleTipoInsumo = TipoInsumo.InsertarDetalleTipoInsumo(objetoTipoInsumo);
                     if (codigoDetalleTipoInsumo > 0)
                     {
-                        AuditarMovimiento("/Vista/TipoInsumo.aspx", "Agregó nuevo tipo detalle de insumo: " + txtNombreDetalleInsumo.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nuevo tipo detalle de insumo: " + txtNombreDetalleInsumo.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         txtNombreDetalleInsumo.Text = "";
                         CargarDetalleTipoInsumo();
                         messageBox.ShowMessage("Registro actualizado.");

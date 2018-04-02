@@ -425,7 +425,7 @@ namespace Atensoli
                     codigoSolicitud = Solicitud.InsertarSolicitud(objetoSolicitud);
                     if (codigoSolicitud > 0)
                     {
-                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nueva solicitud número: " + codigoSolicitud + " codigo de solicitante: " + Session["SolicitanteID"].ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nueva solicitud número: " + codigoSolicitud + " codigo de solicitante: " + Session["SolicitanteID"].ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         messageBox.ShowMessage("Solicitud registrada correctamente.");
                     }
                 }

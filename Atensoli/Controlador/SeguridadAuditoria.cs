@@ -29,7 +29,7 @@ namespace Seguridad
 
             if (this.Session["UserID"] == null)
             {
-                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Intento de entrar en pantalla sin iniciar sesión", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, 0);
+                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Intento de entrar en pantalla sin iniciar sesión", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, 0);
                 Server.Transfer("Logout.aspx");
             }
             else
@@ -38,11 +38,11 @@ namespace Seguridad
                 objetoSeguridad.SeguridadUsuarioDatosID = Convert.ToInt32(this.Session["UserId"].ToString());
                 if (objetoSeguridad.EsUsuarioAdministrador() == false)
                 {
-                    if(EsCambioClave(HttpContext.Current.Request.Url.AbsolutePath) == false)
+                    if(EsCambioClave(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/")) == false)
                     {
-                        if (objetoSeguridad.EsAccesoPermitido(CodigoObjetoSegunUrl(HttpContext.Current.Request.Url.AbsolutePath)) == false)
+                        if (objetoSeguridad.EsAccesoPermitido(CodigoObjetoSegunUrl(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"))) == false)
                         {
-                            AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Intento de entrar en pantalla sin tener permiso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                            AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Intento de entrar en pantalla sin tener permiso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                             Server.Transfer("Logout.aspx");
                         }
                     }
@@ -60,7 +60,7 @@ namespace Seguridad
                     break;
                 case "/Vista/SeleccionarSolicitante.aspx":
                     codigoObjeto = 9;
-                     break;
+                    break;
                 case "/Vista/Solicitante.aspx":
                     codigoObjeto = 9;
                     break;
@@ -88,19 +88,19 @@ namespace Seguridad
                 case "/Vista/TipoSolicitante.aspx":
                     codigoObjeto = 12;
                     break;
-                case "/Vista/TipoSolicitud.aspx":
+                case "/Atensoli/Vista/TipoSolicitud.aspx":
                     codigoObjeto = 13;
                     break;
-                case "/Vista/TipoOrganizacion.aspx":
+                case "/Atensoli/Vista/TipoOrganizacion.aspx":
                     codigoObjeto = 14;
                     break;
-                case "/Vista/TipoAtencion.aspx":
+                case "/Atensoli/Vista/TipoAtencion.aspx":
                     codigoObjeto = 15;
                     break;
-                case "/Vista/TipoSoporte.aspx":
+                case "/Atensoli/Vista/TipoSoporte.aspx":
                     codigoObjeto = 23;
                     break;
-                case "/Vista/TipoRemitido.aspx":
+                case "/Atensoli/Vista/TipoRemitido.aspx":
                     codigoObjeto = 17;
                     break;
                 default:
