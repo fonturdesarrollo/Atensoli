@@ -27,6 +27,7 @@
 											<span class="opener">Atención al Ciudadano</span>
 											<ul>
 												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudes"  navigateurl ="~/Vista/SeleccionarTipoSolicitud.aspx"  Text ="Registrar solicitud"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudesCargadas"  navigateurl ="~/Vista/ConsultarSolicitudesCargadas.aspx"  Text ="Solicitudes cargadas"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkConsultarSolicitud"  navigateurl ="~/Vista/ConsultarSolicitud.aspx"  Text ="Consultar solicitud"></ASP:HyperLink></li>
 											</ul>
 										</li>

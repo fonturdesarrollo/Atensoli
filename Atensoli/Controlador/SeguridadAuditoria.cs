@@ -88,20 +88,23 @@ namespace Seguridad
                 case "/Vista/TipoSolicitante.aspx":
                     codigoObjeto = 12;
                     break;
-                case "/Atensoli/Vista/TipoSolicitud.aspx":
+                case "/Vista/TipoSolicitud.aspx":
                     codigoObjeto = 13;
                     break;
-                case "/Atensoli/Vista/TipoOrganizacion.aspx":
+                case "/Vista/TipoOrganizacion.aspx":
                     codigoObjeto = 14;
                     break;
-                case "/Atensoli/Vista/TipoAtencion.aspx":
+                case "/Vista/TipoAtencion.aspx":
                     codigoObjeto = 15;
                     break;
-                case "/Atensoli/Vista/TipoSoporte.aspx":
+                case "/Vista/TipoSoporte.aspx":
                     codigoObjeto = 23;
                     break;
-                case "/Atensoli/Vista/TipoRemitido.aspx":
+                case "/Vista/TipoRemitido.aspx":
                     codigoObjeto = 17;
+                    break;
+                case "/Vista/ConsultarSolicitudesCargadas.aspx":
+                    codigoObjeto = 1024;
                     break;
                 default:
                     break;
