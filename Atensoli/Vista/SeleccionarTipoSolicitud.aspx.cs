@@ -16,10 +16,13 @@ namespace Atensoli.Vista
         {
             if(!IsPostBack)
             {
+                Session.Remove("SolicitudID");
                 Session.Remove("TipoSolicitudID");
                 Session.Remove("SolicitanteID");
                 Session.Remove("OrganizacionID");
+                Session.Remove("RifOrganizacion");
                 Session.Remove("TipoSolicitudID");
+                Session.Remove("NombreTipoSolicitud");
                 Session.Remove("TipoSolicitanteID");
                 Session.Remove("CedulaSaime");
                 Session.Remove("NombreSaime");
@@ -61,6 +64,7 @@ namespace Atensoli.Vista
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             Session["TipoSolicitudID"] = ddTipoSolicitud.SelectedValue;
+            Session["NombreTipoSolicitud"] = ddTipoSolicitud.SelectedItem.ToString();
             Response.Redirect("~/Vista/SeleccionarSolicitante.aspx");
         }
     }

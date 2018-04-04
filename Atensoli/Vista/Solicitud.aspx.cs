@@ -35,6 +35,27 @@ namespace Atensoli
                 CargarTipoRemitido();
                 CargarFormaAtencion();
                 CargarTipoSoporte();
+                CargarDatosSolicitante();
+            }
+        }
+        private void CargarDatosSolicitante()
+        {
+            if (Session["SolicitanteID"] != null && Session["SolicitanteID"].ToString() != "")
+            {
+                SqlDataReader dr = Solicitante.ObtenerDatosSolicitante(Convert.ToInt32(Session["SolicitanteID"]));
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        lblTitulo.Text = "Datos de la solicitud [ Solicitante: " + dr["CedulaSolicitante"].ToString() + " " + dr["NombreSolicitante"].ToString() + " " + dr["ApellidoSolicitante"].ToString() + "]";
+                        lblTitulo2.Text = "Tipo de solicitud: [" + Session["NombreTipoSolicitud"] + "]";
+                    }
+                }
+                dr.Close();
+            }
+            else
+            {
+                Response.Redirect("SeleccionarTipoSolicitud.aspx");
             }
         }
         protected void BindGrid()
@@ -365,7 +386,7 @@ namespace Atensoli
                     {
                         objetoSolicitud.NombreCargoSolicitante = "N/A";
                     }
-                    if (Session["OrganizacionID"].ToString() != "0")
+                    if (Session["OrganizacionID"].ToString() != "0"  && Session["OrganizacionID"] != null)
                     {
                         objetoSolicitud.OrganizacionID = Convert.ToInt32(Session["OrganizacionID"]);
                     }
@@ -425,8 +446,9 @@ namespace Atensoli
                     codigoSolicitud = Solicitud.InsertarSolicitud(objetoSolicitud);
                     if (codigoSolicitud > 0)
                     {
+                        Session["SolicitudID"] = codigoSolicitud;
                         AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nueva solicitud número: " + codigoSolicitud + " codigo de solicitante: " + Session["SolicitanteID"].ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
-                        messageBox.ShowMessage("Solicitud registrada correctamente.");
+                        Response.Redirect("SolicitudResultado.aspx");
                     }
                 }
             }
@@ -448,6 +470,11 @@ namespace Atensoli
                     resultado = false;
                     messageBox.ShowMessage("Debe seleccionar el detalle del tipo de insumo.");
                 }
+            }
+            if (Session["SolicitanteID"].ToString() == "0" && Session["OrganizacionID"] == null)
+            {
+                resultado = false;
+                Response.Redirect("SeleccionarTipoSolicitud.aspx");
             }
             return resultado;
         }

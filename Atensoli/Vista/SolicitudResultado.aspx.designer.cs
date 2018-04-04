@@ -10,7 +10,7 @@
 namespace Atensoli {
     
     
-    public partial class SeleccionarOrganizacion {
+    public partial class SolicitudResultado {
         
         /// <summary>
         /// messageBox control.
@@ -20,15 +20,6 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Teach.UCMessageBox messageBox;
-        
-        /// <summary>
-        /// lblTitulo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitulo;
         
         /// <summary>
         /// lblTitulo2 control.
@@ -49,31 +40,49 @@ namespace Atensoli {
         protected global::System.Web.UI.HtmlControls.HtmlForm principal;
         
         /// <summary>
-        /// txtRifOrganzacion control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRifOrganzacion;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// rqrValidaRif control.
+        /// lblNumeroSOlicitud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaRif;
+        protected global::System.Web.UI.WebControls.Label lblNumeroSOlicitud;
         
         /// <summary>
-        /// btnSiguiente control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSiguiente;
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// lblSolicitante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSolicitante;
+        
+        /// <summary>
+        /// btnNueva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNueva;
         
         /// <summary>
         /// ControlMenu control.

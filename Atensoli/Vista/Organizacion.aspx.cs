@@ -20,9 +20,29 @@ namespace Atensoli
             {
                 EstablecerEstadoInicial();
                 CargarTipoOrganizacion();
+                CargarDatosSolicitante();
             }
         }
- 
+        private void CargarDatosSolicitante()
+        {
+            if (Session["SolicitanteID"] != null && Session["SolicitanteID"].ToString() != "")
+            {
+                SqlDataReader dr = Solicitante.ObtenerDatosSolicitante(Convert.ToInt32(Session["SolicitanteID"]));
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        lblTitulo.Text = "Datos de la Organización [ Solicitante: " + dr["CedulaSolicitante"].ToString() + " " + dr["NombreSolicitante"].ToString() + " " + dr["ApellidoSolicitante"].ToString() + "]";
+                        lblTitulo2.Text = "Tipo de solicitud: [" + Session["NombreTipoSolicitud"] + "]";
+                    }
+                }
+                dr.Close();
+            }
+            else
+            {
+                Response.Redirect("SeleccionarTipoSolicitud.aspx");
+            }
+        }
         //***********************************************************************************
         //PROCESO PARA COMBOS ANIDADOS:
 
@@ -168,7 +188,7 @@ namespace Atensoli
         //*********************************************************************************
         private void EstablecerEstadoInicial()
         {
-
+            codigoOrganizacion = 0;
             if (EstablecerOrganizacion() == false && EstablecerOrganizacionNueva() == false)
             {
                 Response.Redirect("SeleccionarOrganizacion.aspx");
@@ -245,10 +265,12 @@ namespace Atensoli
             ddlNieto.Enabled = false;
             btnGuardar.Text = "Organización registrada";
             btnGuardar.Enabled = false;
+            btnSiguiente.Visible = true;
         }
         private void SoloLecturaNuevo()
         {
             txtRifOrganizacion.Enabled = false;
+            btnSiguiente.Visible = false;
         }
         private void CargarTipoOrganizacion()
         {
@@ -299,9 +321,15 @@ namespace Atensoli
                     codigoOrganizacion = Organizacion.InsertarOrganizacion(objetoOrganizaicon);
                     if (codigoOrganizacion > 0)
                     {
+                        Session.Remove("OrganizacionID");
                         Session["OrganizacionID"] = codigoOrganizacion;
                         AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nueva organización: " + txtNombreOrganizacion.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         messageBox.ShowMessage("Registro actualizado.");
+                        ProcesoSiguiente();
+                    }
+                    else
+                    {
+                        messageBox.ShowMessage("No se actualizó el registro.");
                     }
                 }
 
@@ -334,10 +362,9 @@ namespace Atensoli
         {
             ProcesoOrganizacion();
         }
-
-        protected void btnSiguiente_Click(object sender, EventArgs e)
+        private void ProcesoSiguiente()
         {
-            if(codigoOrganizacion > 0)
+            if (codigoOrganizacion > 0)
             {
                 Session["OrganizacionID"] = codigoOrganizacion;
                 Response.Redirect("~/Vista/Solicitud.aspx");
@@ -346,6 +373,10 @@ namespace Atensoli
             {
                 messageBox.ShowMessage("No puede avanzar al siguiente paso hasta no agregar los datos de la organización y presionar REGISTRAR ORGANIZACION");
             }
+        }
+        protected void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            ProcesoSiguiente();
         }
     }
 }

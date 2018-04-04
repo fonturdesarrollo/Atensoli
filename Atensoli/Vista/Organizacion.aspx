@@ -117,9 +117,9 @@
 						<div class="inner">
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Datos de la Organización</strong></a>
+									<a class="logo"><strong><asp:Label runat ="server" ID ="lblTitulo" Text="Datos de la Organización"></asp:Label></strong></a>
 									<ul class="icons">
-
+										<asp:Label runat ="server" ID ="lblTitulo2" Text="Datos de la Organización"></asp:Label>
 									</ul>
 								</header>
 							<!-- Content -->

@@ -14,11 +14,51 @@ namespace Atensoli
     {
         protected new void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 Session.Remove("TipoSolicitanteID");
-                CargarTipoSolicitante();
+                if (EsSolicitanteRegistrado())
+                {
+                    CargarDatosSolicitante();
+                    CargarTipoSolicitante();
+                }
+                else
+                {
+                    Response.Redirect("SeleccionarSolicitante.aspx");
+                }
             }
+        }
+        private bool EsSolicitanteRegistrado()
+        {
+            if(Session["SolicitanteID"] != null && Session["SolicitanteID"].ToString() !="")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private void CargarDatosSolicitante()
+        {
+            if (Session["SolicitanteID"] != null && Session["SolicitanteID"].ToString() != "")
+            {
+                SqlDataReader dr = Solicitante.ObtenerDatosSolicitante(Convert.ToInt32(Session["SolicitanteID"]));
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        lblTitulo.Text = "Tipo de solicitante [" + dr["CedulaSolicitante"].ToString() + " " + dr["NombreSolicitante"].ToString() + " " + dr["ApellidoSolicitante"].ToString() + "]";
+                        lblTitulo2.Text = "Tipo de solicitud: [" + Session["NombreTipoSolicitud"] + "]";
+                    }
+                }
+                dr.Close();
+            }
+            else
+            {
+                Response.Redirect("SeleccionarTipoSolicitud.aspx");
+            }
+
         }
         private void CargarTipoSolicitante()
         {

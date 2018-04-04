@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\SolicitudResultado.aspx" />
     <Content Include="Vista\ConsultarSolicitudesCargadas.aspx" />
     <Content Include="Vista\SeguridadVistaAuditoria.aspx" />
     <Content Include="Vista\TipoInsumo.aspx" />
@@ -290,6 +291,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vista\SolicitudResultado.aspx.cs">
+      <DependentUpon>SolicitudResultado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SolicitudResultado.aspx.designer.cs">
+      <DependentUpon>SolicitudResultado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\ConsultarSolicitudesCargadas.aspx.cs">
       <DependentUpon>ConsultarSolicitudesCargadas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

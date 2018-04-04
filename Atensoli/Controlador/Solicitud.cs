@@ -67,7 +67,7 @@ namespace Atensoli
                 {
                     DBHelper.MakeParam("@SolicitudID", SqlDbType.Int, 0, solicitudID)
                 };
-            return DBHelper.ExecuteDataReader("usp_Solicitante_ObtenerSolicitante", dbParams);
+            return DBHelper.ExecuteDataReader("usp_Solicitud_ObtenerSolicitud", dbParams);
         }
     }
 }

@@ -206,6 +206,7 @@ namespace Atensoli
                             }
                             txtSerialCarnetPatria.Text = dr["SerialCarnetPatria"].ToString();
                             txtCodigoCarnetPatria.Text = dr["CodigoCarnetPatria"].ToString();
+                            codigoSolicitante = 0;
                             codigoSolicitante = Convert.ToInt32(Session["SolicitanteID"]);
                             SoloLecturaRegistrado();
                             resultado = true;
@@ -270,12 +271,14 @@ namespace Atensoli
             chkPatria.Enabled = false;
             btnGuardar.Text = "Solicitante registrado";
             btnGuardar.Enabled = false;
+            btnSiguiente.Visible = true;
         }
         private void SoloLecturaNuevo()
         {
             txtCedula.Enabled = false;
             txtNombre.Enabled = false;
             txtApellido.Enabled = false;
+            btnSiguiente.Visible = false;
         }
         private void ProcesoSolicitante()
         {
@@ -313,8 +316,14 @@ namespace Atensoli
                     if (codigoSolicitante > 0)
                     {
                         AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nuevo solicitante cedula:" + txtCedula.Text.ToUpper() + " nombre: " + txtNombre.Text + " " + txtApellido.Text , System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        LimpiarVariablesSession();
                         Session["SolicitanteID"] = codigoSolicitante;
                         messageBox.ShowMessage("Registro actualizado.");
+                        ProcesoSiguiente();
+                    }
+                    else
+                    {
+                        messageBox.ShowMessage("No se actualizó el registro.");
                     }
 
                 }
@@ -373,6 +382,13 @@ namespace Atensoli
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             ProcesoSiguiente();
+        }
+        private void LimpiarVariablesSession()
+        {
+            Session.Remove("SolicitanteID");
+            Session.Remove("CedulaSaime");
+            Session.Remove("NombreSaime");
+            Session.Remove("ApellidoSaime");
         }
     }
 }

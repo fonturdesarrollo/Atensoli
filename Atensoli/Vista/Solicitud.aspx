@@ -89,9 +89,9 @@
 						<div class="inner">
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Datos de la Solicitud</strong></a>
+									<a class="logo"><strong><asp:Label runat ="server" ID ="lblTitulo" Text="Datos de la solicitud"></asp:Label></strong></a>
 									<ul class="icons">
-
+										<asp:Label runat ="server" ID ="lblTitulo2" Text="Tipo de solicitud"></asp:Label>
 									</ul>
 								</header>
 							<!-- Content -->
@@ -188,7 +188,7 @@
 											<div class="12u$">
 												<ul class="actions">
 													<li><asp:Button Text="Registrar solicitud" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click"/></li>
-													<li><asp:Button Text="Nueva solicitud" runat="server" ID ="btnNueva" OnClick="btnNueva_Click"/></li>
+													<%--<li><asp:Button Text="Nueva solicitud" runat="server" ID ="btnNueva" OnClick="btnNueva_Click"/></li>--%>
 												</ul>
 										  </div>
 									</div>

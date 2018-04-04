@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,10 +12,32 @@ namespace Atensoli
     {
         protected new void Page_Load(object sender, EventArgs e)
         {
-            Session.Remove("OrganizacionID");
-            Session.Remove("RifOrganizacion");
+            if(!IsPostBack)
+            {
+                LimpiarVariablesSession();
+                CargarDatosSolicitante();
+            }
         }
-
+        private void CargarDatosSolicitante()
+        {
+            if(Session["SolicitanteID"] != null && Session["SolicitanteID"].ToString() !="")
+            {
+                SqlDataReader dr = Solicitante.ObtenerDatosSolicitante(Convert.ToInt32(Session["SolicitanteID"]));
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        lblTitulo.Text = "Seleccionar organización [ Solicitante: " + dr["CedulaSolicitante"].ToString() + " " + dr["NombreSolicitante"].ToString() + " " + dr["ApellidoSolicitante"].ToString() + "]";
+                        lblTitulo2.Text = "Tipo de solicitud: [" + Session["NombreTipoSolicitud"] + "]";
+                    }
+                }
+                dr.Close();
+            }
+            else
+            {
+                Response.Redirect("SeleccionarTipoSolicitud.aspx");
+            }
+        }
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             SiguientePaso();
@@ -32,11 +55,10 @@ namespace Atensoli
         }
         private bool EsOrganizacionValida()
         {
-            int codigoOrganizacionRegistrada;
+            int codigoOrganizacionRegistrada =0;
             bool resultado = false;
 
-            //Paso 1
-            //Verificar que la cedula este registrada en el sistema
+            //Verificar que el RIF este registrado en el sistema
             codigoOrganizacionRegistrada = Organizacion.CodigoOrganizacionRegistrada(txtRifOrganzacion.Text);
             if (codigoOrganizacionRegistrada > 0)
             {
@@ -45,11 +67,17 @@ namespace Atensoli
             }
             else
             {
+                Session.Remove("OrganizacionID");
                 Session["OrganizacionID"] = "0";
                 Session["RifOrganizacion"] = txtRifOrganzacion.Text.ToUpper();
                 resultado = true;
             }
             return resultado;
+        }
+        private void LimpiarVariablesSession()
+        {
+            Session.Remove("OrganizacionID");
+            Session.Remove("RifOrganizacion");
         }
     }
 }

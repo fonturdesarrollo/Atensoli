@@ -14,10 +14,7 @@ namespace Atensoli.Vista
         {
             if (!IsPostBack)
             {
-                Session.Remove("SolicitanteID");
-                Session.Remove("CedulaSaime");
-                Session.Remove("NombreSaime");
-                Session.Remove("ApellidoSaime");
+                LimpiarVariablesSession();
             }
         }
         protected void btnSiguiente_Click(object sender, EventArgs e)
@@ -38,7 +35,8 @@ namespace Atensoli.Vista
         }
         private bool EsSolicitanteValido()
         {
-            int codigoSolicitanteRegistrado;
+            int codigoSolicitanteRegistrado = 0;
+            LimpiarVariablesSession();
             bool resultado = false;
 
             //Paso 1
@@ -64,33 +62,50 @@ namespace Atensoli.Vista
         {
             bool resultado = false;
             int contador = 0;
-            foreach (var saime in Saime.ObtenerDatosSaime(txtCedula.Text))
+            LimpiarVariablesSession();
+            try
             {
-                //Si ocurre algún error de conexión en la BD SAIME se sale de la busqueda
-                if (saime.Contains("ERROR "))
+                foreach (var saime in Saime.ObtenerDatosSaime(txtCedula.Text))
                 {
-                    break;
-                }
-                switch (contador)
-                {
-                    case 0:
-                        Session["CedulaSaime"] = saime;
-                        contador = 1;
-                        resultado = true;
+                    //Si ocurre algún error de conexión en la BD SAIME se sale de la busqueda
+                    if (saime.Contains("ERROR "))
+                    {
                         break;
-                    case 1:
-                        Session["NombreSaime"] = saime;
-                        contador = 2;
-                        resultado = true;
-                        break;
-                    case 2:
-                        Session["ApellidoSaime"] = saime;
-                        contador = 3;
-                        resultado = true;
-                        break;
+                    }
+                    switch (contador)
+                    {
+                        case 0:
+                            Session["CedulaSaime"] = saime;
+                            contador = 1;
+                            resultado = true;
+                            break;
+                        case 1:
+                            Session["NombreSaime"] = saime;
+                            contador = 2;
+                            resultado = true;
+                            break;
+                        case 2:
+                            Session["ApellidoSaime"] = saime;
+                            contador = 3;
+                            resultado = true;
+                            break;
+                    }
+
                 }
             }
+            catch (Exception)
+            {
+                LimpiarVariablesSession();
+                resultado = false;
+            }
             return resultado;
+        }
+        private void LimpiarVariablesSession()
+        {
+            Session.Remove("SolicitanteID");
+            Session.Remove("CedulaSaime");
+            Session.Remove("NombreSaime");
+            Session.Remove("ApellidoSaime");
         }
     }
 }

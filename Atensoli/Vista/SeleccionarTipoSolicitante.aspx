@@ -37,9 +37,9 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Tipo de solicitante</strong></a>
+									<a class="logo"><strong><asp:Label runat ="server" ID ="lblTitulo" Text="Tipo de solicitante"></asp:Label></strong></a>
 									<ul class="icons">
-
+										<asp:Label runat ="server" ID ="lblTitulo2" Text="Tipo de solicitud"></asp:Label>
 									</ul>
 								</header>
 
