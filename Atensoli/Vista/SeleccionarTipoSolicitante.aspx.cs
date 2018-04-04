@@ -30,7 +30,8 @@ namespace Atensoli
         }
         private bool EsSolicitanteRegistrado()
         {
-            if(Session["SolicitanteID"] != null && Session["SolicitanteID"].ToString() !="")
+
+            if (Session["SolicitanteID"] != null && Session["SolicitanteID"].ToString() !="")
             {
                 return true;
             }

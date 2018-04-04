@@ -29,7 +29,7 @@ namespace Seguridad
 
             if (this.Session["UserID"] == null)
             {
-                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Intento de entrar en pantalla sin iniciar sesión", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, 0);
+                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Intento de entrar en pantalla sin iniciar sesión", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, 0);
                 Server.Transfer("Logout.aspx");
             }
             else
@@ -38,11 +38,11 @@ namespace Seguridad
                 objetoSeguridad.SeguridadUsuarioDatosID = Convert.ToInt32(this.Session["UserId"].ToString());
                 if (objetoSeguridad.EsUsuarioAdministrador() == false)
                 {
-                    if(EsCambioClave(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/")) == false)
+                    if(EsCambioClave(HttpContext.Current.Request.Url.AbsolutePath) == false)
                     {
-                        if (objetoSeguridad.EsAccesoPermitido(CodigoObjetoSegunUrl(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"))) == false)
+                        if (objetoSeguridad.EsAccesoPermitido(CodigoObjetoSegunUrl(HttpContext.Current.Request.Url.AbsolutePath)) == false)
                         {
-                            AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Intento de entrar en pantalla sin tener permiso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                            AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Intento de entrar en pantalla sin tener permiso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                             Server.Transfer("Logout.aspx");
                         }
                     }
@@ -53,7 +53,7 @@ namespace Seguridad
         private int CodigoObjetoSegunUrl(string urlSeleccionado)
         {
             int codigoObjeto = 0;
-            switch (urlSeleccionado)
+            switch (urlSeleccionado.Replace("/Atensoli/", "/"))
             {
                 case "/Vista/SeleccionarTipoSolicitud.aspx":
                     codigoObjeto = 9;
@@ -114,7 +114,7 @@ namespace Seguridad
         private bool EsCambioClave(string urlSeleccionado)
         {
             bool resultado = false;
-            if(urlSeleccionado == "/Vista/SeguridadCambiarClave.aspx")
+            if(urlSeleccionado.Replace("/Atensoli/", "/") == "/Vista/SeguridadCambiarClave.aspx")
             {
                 resultado = true;
             }

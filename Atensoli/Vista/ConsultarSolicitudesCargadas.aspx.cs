@@ -32,7 +32,7 @@ namespace Atensoli
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             CargarSolicitudes();
-            AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Consultó movimientos de solictudes", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+            AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Consultó movimientos de solictudes", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
         }
     }
 }

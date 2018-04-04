@@ -447,7 +447,8 @@ namespace Atensoli
                     if (codigoSolicitud > 0)
                     {
                         Session["SolicitudID"] = codigoSolicitud;
-                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nueva solicitud número: " + codigoSolicitud + " codigo de solicitante: " + Session["SolicitanteID"].ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        codigoSolicitud = 0;
+                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nueva solicitud número: " + codigoSolicitud + " codigo de solicitante: " + Session["SolicitanteID"].ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         Response.Redirect("SolicitudResultado.aspx");
                     }
                 }

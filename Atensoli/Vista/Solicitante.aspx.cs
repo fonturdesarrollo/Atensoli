@@ -232,6 +232,9 @@ namespace Atensoli
                     txtCedula.Text = Session["CedulaSaime"].ToString();
                     txtNombre.Text = Session["NombreSaime"].ToString();
                     txtApellido.Text =  Session["ApellidoSaime"].ToString();
+
+                    ddlSexo.SelectedValue = Session["Sexo"].ToString();
+
                     txtCedula.Enabled = false;
                     txtNombre.Enabled = false;
                     txtApellido.Enabled = false;
@@ -279,6 +282,7 @@ namespace Atensoli
             txtNombre.Enabled = false;
             txtApellido.Enabled = false;
             btnSiguiente.Visible = false;
+            ddlSexo.Enabled = false;
         }
         private void ProcesoSolicitante()
         {
@@ -315,11 +319,11 @@ namespace Atensoli
                     codigoSolicitante = Solicitante.InsertarSolicitante(objetoSolicitante);
                     if (codigoSolicitante > 0)
                     {
-                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nuevo solicitante cedula:" + txtCedula.Text.ToUpper() + " nombre: " + txtNombre.Text + " " + txtApellido.Text , System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nuevo solicitante cedula:" + txtCedula.Text.ToUpper() + " nombre: " + txtNombre.Text + " " + txtApellido.Text , System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         LimpiarVariablesSession();
                         Session["SolicitanteID"] = codigoSolicitante;
-                        messageBox.ShowMessage("Registro actualizado.");
-                        ProcesoSiguiente();
+                        codigoSolicitante = 0;
+                        Response.Redirect("SeleccionarTipoSolicitante.aspx");
                     }
                     else
                     {
@@ -363,17 +367,6 @@ namespace Atensoli
             }
             return resultado;
         }
-        private void ProcesoSiguiente()
-        {
-            if (codigoSolicitante > 0)
-            {
-                Response.Redirect("SeleccionarTipoSolicitante.aspx");
-            }
-            else
-            {
-                messageBox.ShowMessage("No puede avanzar al siguiente paso hasta no agregar los datos del solicitante y presionar: REGISTRAR SOLICITANTE");
-            }
-        }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             ProcesoSolicitante();
@@ -381,7 +374,15 @@ namespace Atensoli
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            ProcesoSiguiente();
+            if (Session["SolicitanteID"] != null && Session["SolicitanteID"].ToString() !="")
+            {
+                codigoSolicitante = 0;
+                Response.Redirect("SeleccionarTipoSolicitante.aspx");
+            }
+            else
+            {
+                messageBox.ShowMessage("No puede avanzar al siguiente paso hasta no agregar los datos del solicitante y presionar: REGISTRAR SOLICITANTE");
+            }
         }
         private void LimpiarVariablesSession()
         {

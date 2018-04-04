@@ -65,7 +65,7 @@ namespace Seguridad
                     this.Session["CodigoSucursalEmpresa"] = ddlEmpresa.SelectedValue;
                     this.Session["NombreEmpresa"] = ddlEmpresa.SelectedItem;
                     this.Session["LogoEmpresa"] = LogoEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue));
-                    Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Inicio de sesión exitoso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                    Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Inicio de sesión exitoso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                     Response.Redirect("~/Vista/Principal.aspx");
                 }
 
@@ -98,7 +98,7 @@ namespace Seguridad
                         this.Session["CodigoSucursalEmpresa"] = codigoDeEmpresa;
                         this.Session["LogoEmpresa"] = LogoEmpresa(codigoDeEmpresa);
                         this.Session["NombreEmpresa"] = ddlEmpresa.SelectedItem;
-                        Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Inicio de sesión exitoso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Inicio de sesión exitoso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         Response.Redirect("~/Vista/Principal.aspx");
                     }
                     else if (CantidadEmpresasPorUsuario(codigoUsuario, false) > 1)

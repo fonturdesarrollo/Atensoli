@@ -89,6 +89,11 @@ namespace Atensoli.Vista
                             contador = 3;
                             resultado = true;
                             break;
+                        case 3:
+                            Session["Sexo"] = saime.ToUpper();
+                            contador = 4;
+                            resultado = true;
+                            break;
                     }
 
                 }

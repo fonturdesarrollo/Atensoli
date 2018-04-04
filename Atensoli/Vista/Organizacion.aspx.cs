@@ -323,10 +323,10 @@ namespace Atensoli
                     {
                         Session.Remove("OrganizacionID");
                         Session["OrganizacionID"] = codigoOrganizacion;
-                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath.Replace("/Atensoli/", "/"), "Agregó nueva organización: " + txtNombreOrganizacion.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
-                        messageBox.ShowMessage("Registro actualizado.");
-                        ProcesoSiguiente();
-                    }
+                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nueva organización: " + txtNombreOrganizacion.Text.ToUpper(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        codigoOrganizacion = 0;
+                        Response.Redirect("~/Vista/Solicitud.aspx");
+                     }
                     else
                     {
                         messageBox.ShowMessage("No se actualizó el registro.");
@@ -362,21 +362,18 @@ namespace Atensoli
         {
             ProcesoOrganizacion();
         }
-        private void ProcesoSiguiente()
+        protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (codigoOrganizacion > 0)
+            if (Session["OrganizacionID"] != null && Session["OrganizacionID"].ToString() != "")
             {
                 Session["OrganizacionID"] = codigoOrganizacion;
+                codigoOrganizacion = 0;
                 Response.Redirect("~/Vista/Solicitud.aspx");
             }
             else
             {
                 messageBox.ShowMessage("No puede avanzar al siguiente paso hasta no agregar los datos de la organización y presionar REGISTRAR ORGANIZACION");
             }
-        }
-        protected void btnSiguiente_Click(object sender, EventArgs e)
-        {
-            ProcesoSiguiente();
         }
     }
 }

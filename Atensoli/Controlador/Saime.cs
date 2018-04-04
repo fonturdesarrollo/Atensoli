@@ -18,7 +18,7 @@ namespace Atensoli
                 using (NpgsqlConnection connection = new NpgsqlConnection())
                 {
 
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         if (cedulaSolictante.Length == 7)
                         {
@@ -71,6 +71,7 @@ namespace Atensoli
                                 datosSaime.Add( dr["ci"].ToString().Replace("V", "").Replace("E", "").TrimStart('0'));
                                 datosSaime.Add(dr["name"].ToString());
                                 datosSaime.Add(dr["apellido1"].ToString());
+                                datosSaime.Add(dr["gender"].ToString());
                                 i = 2;
                                 break;
                             }
