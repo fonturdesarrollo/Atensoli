@@ -62,11 +62,18 @@
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
-											<div class="12u$">
-												<ul class="actions">
-													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />
-												</ul>
-											</div>
+											<div class="row uniform">
+												<div class="6u 12u$(xsmall)">
+													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />											    </div>
+												<div class="6u 12u$(xsmall)"> 
+													<asp:CheckBox runat="server" ID ="chkDelDia" Checked ="true" Text ="Hoy" />
+												</div>
+												<div class="12u$">
+													<ul class="actions">
+													</ul>
+											  </div>												
+										   </div>
+	
 											<div class="table-wrapper">
 												  <asp:GridView ID="gridDetalle" runat="server" 
 													  CssClass="subtitulo" 
@@ -107,9 +114,19 @@
 																  <asp:Label runat="server" ID="lblTipoSolicitante" Text='<%# Eval("NombreTipoSolicitante") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Cedula Solicitante">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblCedulaSolicitante" Text='<%# Eval("CedulaSolicitante") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Nombre Solicitante">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNombreSolicitante" Text='<%# Eval("SolicitanteNombre") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="RIF organización">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblRifOrganizacion" Text='<%# Eval("RifOrganizacion") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Nombre Organización">
@@ -122,29 +139,19 @@
 																  <asp:Label runat="server" ID="lblTipoAtencion" Text='<%# Eval("NombreTipoAtencionBrindada") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Referencia">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoReferencia" Text='<%# Eval("NombreTipoReferenciaSolicitud") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Tipo Unidad">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblTipoUnidad" Text='<%# Eval("NombreTipoUnidad") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Tipo Insumo">
-															  <ItemTemplate>
+															  <ItemTemplate>    
 																  <asp:Label runat="server" ID="lblTipoInsumo" Text='<%# Eval("NombreTipoInsumo") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Detalle Tipo Insumo">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblTipoInsumoDetalle" Text='<%# Eval("NombreTipoInsumoDetalle") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Forma Atención">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoAten" Text='<%# Eval("NombreTipoFormaAtencion") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Observaciones Solicitante">
@@ -177,7 +184,7 @@
 								<uc2:UCNavegacion  runat ="server" ID ="ControlMenu"/>
 <%--						</div>
 					</div>--%>
-			</div>
+			<%--</div>--%>
 		<!-- Scripts -->
 
 <%--        SE COLOCARON EN EL HEADER --%>

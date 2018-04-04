@@ -18,7 +18,12 @@ namespace Atensoli
         {
             try
             {
-                DataSet ds = ConsultarSolicitud.ObtenerSolicitudesCargadas();
+                string fechaSolicitud = "";
+                if(chkDelDia.Checked == true)
+                {
+                    fechaSolicitud = DateTime.Now.ToString("dd/MM/yyyy");
+                }
+                DataSet ds = ConsultarSolicitud.ObtenerSolicitudesCargadas(fechaSolicitud);
                 this.gridDetalle.DataSource = ds.Tables[0];
                 this.gridDetalle.DataBind();
             }

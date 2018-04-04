@@ -20,11 +20,11 @@ namespace Atensoli
             return DBHelper.ExecuteDataSet("usp_ConsultaSolicitud_ObtenerSolicitud", dbParams);
 
         }
-        public static DataSet ObtenerSolicitudesCargadas()
+        public static DataSet ObtenerSolicitudesCargadas(string fechaSolicitud)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-
+                   DBHelper.MakeParam("@FechaSolicitud", SqlDbType.VarChar, 0, fechaSolicitud)
                 };
 
             return DBHelper.ExecuteDataSet("usp_ConsultaSolicitud_ObtenerSolicitudesCargadas", dbParams);
