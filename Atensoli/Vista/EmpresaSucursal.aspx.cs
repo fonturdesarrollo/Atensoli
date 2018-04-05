@@ -9,10 +9,14 @@ namespace Atensoli
     {
         protected new void Page_Load(object sender, EventArgs e)
         {
-            CargarEmpresa();
+            if(!IsPostBack)
+            {
+                CargarEmpresa();
+            }
         }
         private void CargarEmpresa()
         {
+            ddlEmpresa.Items.Clear();
             String strConnString = ConfigurationManager
             .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
             String strQuery = "";
