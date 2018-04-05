@@ -46,9 +46,9 @@
 		function fnPersonalCallBack(par) {
 		    document.getElementById("hdnEmpresaSucursalID").value = par[0]; //par[0] id
 		    document.getElementById("txtNombreSucursal").value = par[1];
-		    document.getElementById("txtDireccionSucursal").value = par[2];
-		    document.getElementById("txtTelefonoSucursal").value = par[3];
-		    $("#ddlEmpresa").val(par[4]);
+		    document.getElementById("txtDireccionSucursal").value = par[3];
+		    document.getElementById("txtTelefonoSucursal").value = par[4];
+		    $("#ddlEmpresa").val(par[5]);
 
 		}
 
@@ -78,7 +78,7 @@
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
-													<asp:DropDownList ID="ddlEmpresa" runat="server"  AppendDataBoundItems="True" AutoPostBack = "true"></asp:DropDownList>
+													<asp:DropDownList ID="ddlEmpresa" runat="server"  AppendDataBoundItems="True" AutoPostBack = "false"></asp:DropDownList>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)"> 
