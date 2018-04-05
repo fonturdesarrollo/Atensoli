@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\EmpresaSucursal.aspx" />
     <Content Include="Vista\SolicitudResultado.aspx" />
     <Content Include="Vista\ConsultarSolicitudesCargadas.aspx" />
     <Content Include="Vista\SeguridadVistaAuditoria.aspx" />
@@ -291,6 +292,17 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlador\EmpresaSucursal.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modelo\CEmpresaSucursal.cs" />
+    <Compile Include="Vista\EmpresaSucursal.aspx.cs">
+      <DependentUpon>EmpresaSucursal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\EmpresaSucursal.aspx.designer.cs">
+      <DependentUpon>EmpresaSucursal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\SolicitudResultado.aspx.cs">
       <DependentUpon>SolicitudResultado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

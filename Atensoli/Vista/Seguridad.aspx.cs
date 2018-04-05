@@ -72,5 +72,10 @@ namespace Seguridad
         {
             Response.Redirect("SeguridadVistaAuditoria.aspx");
         }
+
+        protected void btnAgregarSucrusal_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EmpresaSucursal.aspx");
+        }
     }
 }

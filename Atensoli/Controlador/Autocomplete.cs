@@ -99,6 +99,14 @@ namespace Admin
                 };
             return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerEmpresas", dbParams);
         }
+        public static DataSet ObtenerEmpresaSucursal(string sQuery)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery),
+                };
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerEmpresaSucursal", dbParams);
+        }
 
         //SEGURIDAD ***************************************************
         public static DataSet ObtenerUsuarios(string sQuery, int codigoSucursal)

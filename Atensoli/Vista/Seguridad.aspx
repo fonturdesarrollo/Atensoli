@@ -68,7 +68,7 @@
 												</div>
 												<ul class="actions">
 													<li><asp:Button Text="Agregar Empresa" runat="server" ID ="btnAgregarEmpresa" OnClick="btnAgregarEmpresa_Click" /></li>
-													<li><asp:Button Text="Agregar Sucursal" runat="server" ID ="btnAgregarSucrusal" /></li>
+													<li><asp:Button Text="Agregar Sucursal" runat="server" ID ="btnAgregarSucrusal" OnClick="btnAgregarSucrusal_Click" /></li>
 												</ul>
 											</div>
 										</div>

@@ -1,4 +1,5 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeguridadObjetoGrupo.aspx.cs" Inherits="Seguridad.SeguridadObjetoGrupo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EmpresaSucursal.aspx.cs" Inherits="Atensoli.EmpresaSucursal" %>
+
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
 <%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
 
@@ -6,7 +7,7 @@
 
 <html>
 	<head>
-		<title>Seguridad | Objeto y Grupos</title>
+		<title>Seguridad | Sucursal</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -29,7 +30,26 @@
 
 		function Confirmacion() {
 
-			return confirm("�Realmente desea eliminar este servicio?");
+			return confirm("¿Realmente desea eliminar este servicio?");
+		}
+
+		$(function () {
+			$('#txtNombreSucursal').simpleAutoComplete('Autocomplete.aspx', {
+				autoCompleteClassName: 'autocomplete',
+				selectedClassName: 'sel',
+				attrCallBack: 'rel',
+				identifier: 'EmpresaSucursal'
+			}, fnPersonalCallBack);
+
+		});
+
+		function fnPersonalCallBack(par) {
+		    document.getElementById("hdnEmpresaSucursalID").value = par[0]; //par[0] id
+		    document.getElementById("txtNombreSucursal").value = par[1];
+		    document.getElementById("txtDireccionSucursal").value = par[2];
+		    document.getElementById("txtTelefonoSucursal").value = par[3];
+		    $("#ddlEmpresa").val(par[4]);
+
 		}
 
 	</script>
@@ -45,7 +65,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Objetos y Grupos</strong></a>
+									<a class="logo"><strong>Sucursal</strong></a>
 									<ul class="icons">
 
 									</ul>
@@ -58,23 +78,31 @@
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
-													<asp:DropDownList ID="ddlGrupo" runat="server"  AppendDataBoundItems="True" AutoPostBack = "true" OnSelectedIndexChanged="ddlGrupo_SelectedIndexChanged"></asp:DropDownList>
+													<asp:DropDownList ID="ddlEmpresa" runat="server"  AppendDataBoundItems="True" AutoPostBack = "true"></asp:DropDownList>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)"> 
-												<div class="select-wrapper">
-													<asp:DropDownList ID="ddlObjeto" runat="server"  AppendDataBoundItems="True"  > </asp:DropDownList>
-												</div>
+												<asp:TextBox runat ="server" ID ="txtNombreSucursal" placeholder ="Nombre de la sucursal"></asp:TextBox>
+												<asp:RequiredFieldValidator runat ="server" ID ="rqrValidaNombre" ControlToValidate="txtNombreSucursal" ErrorMessage="Debe colocar el nombre la sucrusal" Font-Bold ="true" ForeColor ="Red"></asp:RequiredFieldValidator>
+												<asp:HiddenField runat ="server" ID ="hdnEmpresaSucursalID"  Value="0"/>
+											</div>
+											<div class="6u 12u$(xsmall)"> 
+												<asp:TextBox runat ="server" ID ="txtDireccionSucursal" placeholder ="Dirección de la sucursal"></asp:TextBox>
+												<asp:RequiredFieldValidator runat ="server" ID ="rqrValidaDireccion" ControlToValidate="txtDireccionSucursal" ErrorMessage="Debe colocar la dirección de la sucursal" Font-Bold ="true" ForeColor ="Red"></asp:RequiredFieldValidator>
+											</div>
+											<div class="6u 12u$(xsmall)"> 
+												<asp:TextBox runat ="server" ID ="txtTelefonoSucursal" placeholder ="Telefono de la sucursal"></asp:TextBox>
+												<asp:RequiredFieldValidator runat ="server" ID ="rqrValidaTelefono" ControlToValidate="txtTelefonoSucursal" ErrorMessage="Debe colocar el telefono de la sucursal" Font-Bold ="true" ForeColor ="Red"></asp:RequiredFieldValidator>
 											</div>
 											<div class="12u$">
 												<ul class="actions">
-													<asp:Button Text="Asignar Objeto" runat="server" ID ="btnAsignar"  CssClass ="special" OnClick="btnAsignar_Click" />
+													<asp:Button Text="Asignar sucursal" runat="server" ID ="btnAsignar"  CssClass ="special" OnClick="btnAsignar_Click" />
 													<li><asp:Button Text="Nuevo registro" runat="server" ID ="btnNuevo" CausesValidation="False" /></li>
 												</ul>
 											</div>
 											<div class="table-wrapper">
 												  <asp:GridView ID="gridDetalle" runat="server" CssClass="subtitulo" EmptyDataText="No existen Registros" 
-													  GridLines="Horizontal" AutoGenerateColumns="False" OnRowCommand="gridDetalle_RowCommand" >
+													  GridLines="Horizontal" AutoGenerateColumns="False" >
 														<HeaderStyle CssClass ="registroTitulo" Font-Size="10px" />
 														<AlternatingRowStyle CssClass ="registroNormal" Font-Size="10px" />
 														  <RowStyle CssClass ="registroAlternado" Font-Size="10px" />
@@ -84,7 +112,7 @@
 																  <asp:Label runat="server" ID="lblNombreGrupo" Text='<%# Eval("NombreGrupo") %>'></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Descripci�n Grupo" HeaderStyle-Width="200">
+														  <asp:TemplateField HeaderText="Descripción Grupo" HeaderStyle-Width="200">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblDesGrupo" Text='<%# Eval("DescripcionGrupo") %>'></asp:Label>
 															  </ItemTemplate>

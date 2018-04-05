@@ -52,7 +52,7 @@
 										<p></p>
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtRifOrganzacion" MaxLength="10" onkeypress="return event.keyCode!=13;" placeholder ="Indique el RIF de la organización" pattern="^([JG]{1})([0-9]{9,10})$" title="El primer caracter debe ser J o G mayuscula seguido del numero de RIf G200062894"/> 
+												<asp:TextBox runat="server" ID="txtRifOrganzacion" MaxLength="10" onkeypress="return event.keyCode!=13;" placeholder ="Indique el RIF de la organización" pattern="^([JGC]{1})([0-9]{9,10})$" title="El primer caracter debe ser J o G mayuscula seguido del numero de RIf G200062894"/> 
 												<ASP:RequiredFieldValidator id="rqrValidaRif" runat="server" errormessage="Debe colocar el RIF de la organización"  controltovalidate="txtRifOrganzacion" ForeColor ="Red" display="Dynamic"></ASP:RequiredFieldValidator>
 											</div>
 
