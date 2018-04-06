@@ -164,7 +164,7 @@
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtTelefonoOrganizacion"  MaxLength="100" placeholder ="Teléfono de la organización" ^([0212]{4})([0-9]{7})$ title="Debe colocar el codigo seguido del numero sin espacios ni guiones 02127654321" />
+												<asp:TextBox runat="server" ID="txtTelefonoOrganizacion"  MaxLength="100" placeholder ="Teléfono de la organización" pattern="^([0212]{4})([0-9]{7})$" title="Debe colocar el codigo seguido del numero sin espacios ni guiones 02127654321" />
 												<ASP:RequiredFieldValidator id="rqrValidaTelefonoOrg" runat="server" errormessage="Debe colocar el telefono de la organización" controltovalidate="txtTelefonoOrganizacion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="12u$">

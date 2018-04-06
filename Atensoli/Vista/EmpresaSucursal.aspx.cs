@@ -12,6 +12,7 @@ namespace Atensoli
             if(!IsPostBack)
             {
                 CargarEmpresa();
+                CargarEmpresaSucursal();
             }
         }
         private void CargarEmpresa()
@@ -39,6 +40,21 @@ namespace Atensoli
                 }
             }
         }
+        private void CargarEmpresaSucursal()
+        {
+            try
+            {
+                DataSet ds = EmpresaSucursal.ObtenerSucursal(Convert.ToInt32(ddlEmpresa.SelectedValue));
+                this.gridDetalle.DataSource = ds.Tables[0];
+                this.gridDetalle.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                messageBox.ShowMessage(ex.Message + ex.StackTrace);
+            }
+
+        }
         private void ProcesoSucursal()
         {
             CEmpresaSucursal objetoEmpresaSucursal = new CEmpresaSucursal();
@@ -49,11 +65,30 @@ namespace Atensoli
             objetoEmpresaSucursal.TelefonoSucursal = txtTelefonoSucursal.Text;
 
             EmpresaSucursal.InsertarEmpresaSucursal(objetoEmpresaSucursal);
+            NuevoRegistro();
         }
-
+        private void NuevoRegistro()
+        {
+            hdnEmpresaSucursalID.Value = "0";
+            txtNombreSucursal.Text = string.Empty;
+            txtDireccionSucursal.Text = string.Empty;
+            txtTelefonoSucursal.Text = string.Empty;
+            CargarEmpresaSucursal();
+            txtNombreSucursal.Focus();
+        }
         protected void btnAsignar_Click(object sender, EventArgs e)
         {
             ProcesoSucursal();
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            NuevoRegistro();
+        }
+
+        protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarEmpresaSucursal();
         }
     }
 }

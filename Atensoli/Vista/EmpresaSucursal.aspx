@@ -44,12 +44,11 @@
 		});
 
 		function fnPersonalCallBack(par) {
-		    document.getElementById("hdnEmpresaSucursalID").value = par[0]; //par[0] id
-		    document.getElementById("txtNombreSucursal").value = par[1];
-		    document.getElementById("txtDireccionSucursal").value = par[3];
-		    document.getElementById("txtTelefonoSucursal").value = par[4];
-		    $("#ddlEmpresa").val(par[5]);
-
+			document.getElementById("hdnEmpresaSucursalID").value = par[0]; //par[0] id
+			document.getElementById("txtNombreSucursal").value = par[1];
+			document.getElementById("txtDireccionSucursal").value = par[3];
+			document.getElementById("txtTelefonoSucursal").value = par[4];
+			$("#ddlEmpresa").val(par[5]);
 		}
 
 	</script>
@@ -70,15 +69,14 @@
 
 									</ul>
 								</header>
-
 							<!-- Content -->
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
-												<div class="select-wrapper">
-													<asp:DropDownList ID="ddlEmpresa" runat="server"  AppendDataBoundItems="True" AutoPostBack = "false"></asp:DropDownList>
+												<div class="select-wrapper" style="height: 19px">
+													<asp:DropDownList ID="ddlEmpresa" runat="server"  AppendDataBoundItems="True" AutoPostBack = "true" OnSelectedIndexChanged="ddlEmpresa_SelectedIndexChanged"></asp:DropDownList>
 												</div>
 											</div>
 											<div class="6u 12u$(xsmall)"> 
@@ -97,9 +95,13 @@
 											<div class="12u$">
 												<ul class="actions">
 													<asp:Button Text="Asignar sucursal" runat="server" ID ="btnAsignar"  CssClass ="special" OnClick="btnAsignar_Click" />
-													<li><asp:Button Text="Nuevo registro" runat="server" ID ="btnNuevo" CausesValidation="False" /></li>
+													<li><asp:Button Text="Nuevo registro" runat="server" ID ="btnNuevo" CausesValidation="False" OnClick="btnNuevo_Click" /></li>
+												</ul>
+												<ul>
+
 												</ul>
 											</div>
+									   </div>
 											<div class="table-wrapper">
 												  <asp:GridView ID="gridDetalle" runat="server" CssClass="subtitulo" EmptyDataText="No existen Registros" 
 													  GridLines="Horizontal" AutoGenerateColumns="False" >
@@ -107,31 +109,30 @@
 														<AlternatingRowStyle CssClass ="registroNormal" Font-Size="10px" />
 														  <RowStyle CssClass ="registroAlternado" Font-Size="10px" />
 													  <Columns>
-														  <asp:TemplateField HeaderText="Nombre de Grupo" HeaderStyle-Width="200">
+														  <asp:TemplateField HeaderText="Nombre de Sucursal">
 															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblNombreGrupo" Text='<%# Eval("NombreGrupo") %>'></asp:Label>
+																  <asp:Label runat="server" ID="lblNombreGrupo" Text='<%# Eval("NombreEmpresaSucursal") %>'></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Descripción Grupo" HeaderStyle-Width="200">
+														  <asp:TemplateField HeaderText="Dirección">
 															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblDesGrupo" Text='<%# Eval("DescripcionGrupo") %>'></asp:Label>
+																  <asp:Label runat="server" ID="lblDesGrupo" Text='<%# Eval("DireccionSucursal") %>'></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Nombre Objeto" HeaderStyle-Width="200px">
+														  <asp:TemplateField HeaderText="Teléfono" >
 															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblNombreObjeto" Text='<%# Eval("NombreObjeto") %>'></asp:Label>
+																  <asp:Label runat="server" ID="lblNombreObjeto" Text='<%# Eval("TelefonoSucursal") %>'></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-
 														   <asp:TemplateField HeaderText="Acciones" HeaderStyle-Width="100px">
 															  <ItemTemplate>
-																  <asp:ImageButton runat="server" ID="btnEliminar" AlternateText="Eliminar Detalle" OnClientClick="return Confirmacion();" ToolTip="Eliminar Detalle" CssClass="cBotones" ImageUrl="~/Images/eliminar.gif"  CommandName="EliminarDetalle" CommandArgument='<%# Eval("SeguridadObjetoAccesoID") %>'/>
+																  <asp:ImageButton runat="server" ID="btnEliminar" AlternateText="Eliminar Detalle" OnClientClick="return Confirmacion();" ToolTip="Eliminar Detalle" CssClass="cBotones" ImageUrl="~/Images/eliminar.gif"  CommandName="EliminarDetalle" CommandArgument='<%# Eval("EmpresaSucursalID") %>'/>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 													  </Columns>
 												  </asp:GridView>
 											</div>
-										</div>
+
 								</section>
 							</form>
 						</div>

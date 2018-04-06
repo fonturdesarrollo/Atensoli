@@ -32,5 +32,14 @@ namespace Atensoli
             }
 
         }
+        public static DataSet ObtenerSucursal(int codigoEmpresa)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@EmpresaID", SqlDbType.Int, 0, codigoEmpresa),
+                };
+
+            return DBHelper.ExecuteDataSet("usp_EmpresaSucursal_ObtenerSucursal", dbParams);
+        }
     }
 }
