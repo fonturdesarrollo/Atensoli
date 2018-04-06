@@ -154,10 +154,10 @@
 												<ASP:RequiredFieldValidator id="rqrvalidaCelular" runat="server" errormessage="Debe colocar el Celular"  controltovalidate="txtCelular" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtTelefonoLocal"  MaxLength="100" placeholder ="Teléfono local" pattern="^([0212]{4})([0-9]{7})$" title="Debe colocar el codigo seguido del numero sin espacios ni guiones 02127654321" />
+												<asp:TextBox runat="server" ID="txtTelefonoLocal"  MaxLength="100" placeholder ="Teléfono local"  pattern="^([02]{2})([12|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|61|62|63|64|65|66|67|68|69|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|91|92|93|94|95]{2})([0-9]{7})$" title="Debe colocar el codigo seguido del numero sin espacios ni guiones 02127654321" />
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtTelefonoOficina"  MaxLength="100" placeholder ="Teléfono oficina" pattern="^([0212]{4})([0-9]{7})$" title="Debe colocar el codigo seguido del numero sin espacios ni guiones 02127654321" />
+												<asp:TextBox runat="server" ID="txtTelefonoOficina"  MaxLength="100" placeholder ="Teléfono oficina"  pattern="^([02]{2})([12|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|61|62|63|64|65|66|67|68|69|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|91|92|93|94|95]{2})([0-9]{7})$" title="Debe colocar el codigo seguido del numero sin espacios ni guiones 02127654321" />
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtCorreo"  MaxLength="100" placeholder ="Correo" pattern="[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+" />
