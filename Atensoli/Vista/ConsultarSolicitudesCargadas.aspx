@@ -65,6 +65,9 @@
 											<div class="row uniform">
 												<div class="6u 12u$(xsmall)">
 													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />											    </div>
+												<div class="6u 12u$(xsmall)">
+													<asp:Button Text="Exportar a excel" runat="server" ID ="btnExportar"   />											    </div>
+
 												<div class="6u 12u$(xsmall)"> 
 													<asp:CheckBox runat="server" ID ="chkDelDia" Checked ="true" Text ="Hoy" />
 												</div>
