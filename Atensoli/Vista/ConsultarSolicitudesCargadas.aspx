@@ -26,20 +26,6 @@
 
 <%--------------------------%>
 
-	<script type="text/javascript">
-			$(function () {
-			$('#txtCedula').keydown(function (e) {
-			if (e.shiftKey || e.ctrlKey || e.altKey) {
-			e.preventDefault();
-			} else {
-			var key = e.keyCode;
-			if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-			e.preventDefault();
-			}
-			}
-			});
-		});
-	</script>
 	</head>
 	<body>
 		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
@@ -54,7 +40,7 @@
 								<header id="header">
 									<a class="logo"><strong>Consultar Solicitudes Cargadas</strong></a>
 									<ul class="icons">
-
+										
 									</ul>
 								</header>
 
@@ -63,20 +49,18 @@
 								<section>
 										<p></p>
 											<div class="row uniform">
-												<div class="6u 12u$(xsmall)">
-													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />											    </div>
-												<div class="6u 12u$(xsmall)">
-													<asp:Button Text="Exportar a excel" runat="server" ID ="btnExportar"   />											    </div>
-
+											   <div class="6u 12u$(xsmall)">
+													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />
+											   </div>
 												<div class="6u 12u$(xsmall)"> 
-													<asp:CheckBox runat="server" ID ="chkDelDia" Checked ="true" Text ="Hoy" />
+													<asp:Button ID="btnExportar" runat="server"  Text="Exportar a Excel" OnClick = "ExportToExcel" />
+													<asp:CheckBox runat="server" ID ="chkDelDia" Checked ="true" Text ="Solo solicitudes de hoy" />
 												</div>
-												<div class="12u$">
-													<ul class="actions">
-													</ul>
-											  </div>												
+												<div class="6u 12u$(xsmall)">
+													
+												</div>
 										   </div>
-	
+											<p></p>
 											<div class="table-wrapper">
 												  <asp:GridView ID="gridDetalle" runat="server" 
 													  CssClass="subtitulo" 
@@ -87,7 +71,7 @@
 														<AlternatingRowStyle Font-Size="10px" />
 														  <RowStyle  Font-Size="10px" />
 													  <Columns>
-														  <asp:TemplateField HeaderText="N°" HeaderStyle-Width="50">
+														  <asp:TemplateField HeaderText="N" HeaderStyle-Width="50">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNumero" Text='<%# Eval("SolicitudID") %>'  ></asp:Label>
 															  </ItemTemplate>
@@ -127,12 +111,12 @@
 																  <asp:Label runat="server" ID="lblNombreSolicitante" Text='<%# Eval("SolicitanteNombre") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="RIF organización">
+														  <asp:TemplateField HeaderText="RIF Organizacion">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblRifOrganizacion" Text='<%# Eval("RifOrganizacion") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Nombre Organización">
+														  <asp:TemplateField HeaderText="Nombre Organizacion">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNombreOrganizacion" Text='<%# Eval("NombreOrganizacion") %>'  ></asp:Label>
 															  </ItemTemplate>
