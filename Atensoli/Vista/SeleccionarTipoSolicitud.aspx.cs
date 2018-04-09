@@ -27,6 +27,7 @@ namespace Atensoli.Vista
                 Session.Remove("CedulaSaime");
                 Session.Remove("NombreSaime");
                 Session.Remove("ApellidoSaime");
+                Session.Remove("SerialCarnetPatria");
                 CargarTipoSolicitud();
             }
         }

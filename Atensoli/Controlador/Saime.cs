@@ -72,6 +72,7 @@ namespace Atensoli
                                 datosSaime.Add(dr["name"].ToString());
                                 datosSaime.Add(dr["apellido1"].ToString());
                                 datosSaime.Add(dr["gender"].ToString());
+                                datosSaime.Add(dr["serial_ciudadano"].ToString());
                                 i = 2;
                                 break;
                             }

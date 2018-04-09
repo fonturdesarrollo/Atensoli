@@ -71,6 +71,7 @@ namespace Atensoli
             Session.Remove("CedulaSaime");
             Session.Remove("NombreSaime");
             Session.Remove("ApellidoSaime");
+            Session.Remove("SerialCarnetPatria");
         }
         protected void btnNueva_Click(object sender, EventArgs e)
         {

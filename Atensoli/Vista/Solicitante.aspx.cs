@@ -234,7 +234,19 @@ namespace Atensoli
                     txtApellido.Text =  Session["ApellidoSaime"].ToString();
 
                     ddlSexo.SelectedValue = Session["Sexo"].ToString();
-
+                    if(Session["SerialCarnetPatria"].ToString() !="")
+                    {
+                        chkPatria.Checked = true;
+                        txtSerialCarnetPatria.Text = Session["SerialCarnetPatria"].ToString();
+                        chkPatria.Enabled = false;
+                        txtSerialCarnetPatria.Enabled = false;
+                    }
+                    else 
+                    {
+                        chkPatria.Checked = false;
+                        chkPatria.Enabled = true;
+                        txtSerialCarnetPatria.Enabled = true;
+                    }
                     txtCedula.Enabled = false;
                     txtNombre.Enabled = false;
                     txtApellido.Enabled = false;

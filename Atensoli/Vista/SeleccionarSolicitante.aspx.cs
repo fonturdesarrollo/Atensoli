@@ -94,6 +94,11 @@ namespace Atensoli.Vista
                             contador = 4;
                             resultado = true;
                             break;
+                        case 4:
+                            Session["SerialCarnetPatria"] = saime.ToUpper();
+                            contador = 5;
+                            resultado = true;
+                            break;
                     }
 
                 }
@@ -111,6 +116,7 @@ namespace Atensoli.Vista
             Session.Remove("CedulaSaime");
             Session.Remove("NombreSaime");
             Session.Remove("ApellidoSaime");
+            Session.Remove("SerialCarnetPatria");
         }
     }
 }

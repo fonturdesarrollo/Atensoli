@@ -121,7 +121,7 @@
 																  <asp:Label runat="server" ID="lblNombreOrganizacion" Text='<%# Eval("NombreOrganizacion") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Atención">
+														  <asp:TemplateField HeaderText="Tipo Atencion">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblTipoAtencion" Text='<%# Eval("NombreTipoAtencionBrindada") %>'  ></asp:Label>
 															  </ItemTemplate>
