@@ -10,13 +10,13 @@ namespace Atensoli
 {
     public partial class ConsultarSolicitud
     {
-        public static DataSet ObtenerConsultaSolicitud(string cedulaSolicitnate)
+        public static DataSet ObtenerConsultaSolicitud(string cedulaSolicitante, int IndicaSoloPendientes)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                DBHelper.MakeParam("@CedulaSolicitante", SqlDbType.VarChar, 0, cedulaSolicitnate)
+                    DBHelper.MakeParam("@CedulaSolicitante", SqlDbType.VarChar, 0, cedulaSolicitante),
+                    DBHelper.MakeParam("@IndicaSoloPendientes", SqlDbType.Int, 0, IndicaSoloPendientes)
                 };
-
             return DBHelper.ExecuteDataSet("usp_ConsultaSolicitud_ObtenerSolicitud", dbParams);
 
         }

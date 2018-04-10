@@ -31,8 +31,8 @@ namespace Atensoli
                     DBHelper.MakeParam("@ObservacionesAnalista", SqlDbType.VarChar, 0,objetoSolicitud.ObservacionesAnalista),
                     DBHelper.MakeParam("@SeguridadUsuarioDatosID", SqlDbType.Int, 0,objetoSolicitud.SeguridadUsuarioDatosID),
                     DBHelper.MakeParam("@EmpresaSucursalID", SqlDbType.Int, 0,objetoSolicitud.EmpresaSucursalID),
-                    DBHelper.MakeParam("SolicitudEstatusID", SqlDbType.Int, 0,objetoSolicitud.SolicitudEstatusID)
-
+                    DBHelper.MakeParam("@SolicitudEstatusID", SqlDbType.Int, 0,objetoSolicitud.SolicitudEstatusID),
+                    DBHelper.MakeParam("@SolicitudPadreID", SqlDbType.Int, 0,objetoSolicitud.SolicitudPadreID)
             };
             codigoSolicitudNueva = Convert.ToInt32(DBHelper.ExecuteScalar("usp_Solicitud_Insertar", dbParams));
 
@@ -68,6 +68,44 @@ namespace Atensoli
                     DBHelper.MakeParam("@SolicitudID", SqlDbType.Int, 0, solicitudID)
                 };
             return DBHelper.ExecuteDataReader("usp_Solicitud_ObtenerSolicitud", dbParams);
+        }
+        public static  int ActualizarConsultaSolicitud(int solicitudID, int codigoUsuario)
+        {
+            int resultado =0;
+            CSolicitud objSolicitud = new CSolicitud();
+            SqlDataReader dr = ObtenerDatosSolicitud(solicitudID);
+            if(dr.HasRows)
+            {
+                while (dr.Read())
+                {
+
+                    objSolicitud.SolicitudID = 0;
+                    objSolicitud.TipoSolicitudID = 11;
+                    objSolicitud.TipoSolicitanteID = Convert.ToInt32(dr["TipoSolicitanteID"].ToString());
+                    objSolicitud.SolicitanteID = Convert.ToInt32(dr["SolicitanteID"].ToString());
+                    objSolicitud.NombreCargoSolicitante = dr["NombreCargoSolicitante"].ToString();
+
+                    objSolicitud.OrganizacionID = Convert.ToInt32(dr["OrganizacionID"].ToString());
+                    objSolicitud.TipoAtencionBrindadaID = Convert.ToInt32(dr["TipoAtencionBrindadaID"].ToString());
+                    objSolicitud.TipoReferenciaSolicitud = Convert.ToInt32(dr["TipoReferenciaSolicitudID"].ToString());
+                    objSolicitud.TipoUnidadID = Convert.ToInt32(dr["TipoUnidadID"].ToString());
+
+                    objSolicitud.TipoInsumoDetalleID = Convert.ToInt32(dr["TipoInsumoDetalleID"].ToString());
+
+                    objSolicitud.TipoRemitidoID = Convert.ToInt32(dr["TipoRemitidoID"].ToString());
+                    objSolicitud.TipoFormaAtencionID = 2;
+                    objSolicitud.ObservacionesSolicitante = dr["ObservacionesSolicitante"].ToString();
+                    objSolicitud.ObservacionesAnalista = "CONSULTA DE LA SOLICITUD NUMERO " + solicitudID +" DE FECHA " + dr["FechaDeRegistro"].ToString();
+                    objSolicitud.SeguridadUsuarioDatosID = codigoUsuario;
+                    objSolicitud.EmpresaSucursalID = Convert.ToInt32(dr["EmpresaSucursalID"].ToString());
+                    objSolicitud.SolicitudEstatusID = 6;
+                    objSolicitud.SolicitudPadreID = solicitudID;
+
+                    resultado = InsertarSolicitud(objSolicitud);
+                    
+                }
+            }
+            return resultado;
         }
     }
 }

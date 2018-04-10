@@ -443,6 +443,7 @@ namespace Atensoli
                     {
                         objetoSolicitud.SolicitudEstatusID = 1;
                     }
+                    objetoSolicitud.SolicitudPadreID = 0;
                     codigoSolicitud = Solicitud.InsertarSolicitud(objetoSolicitud);
                     if (codigoSolicitud > 0)
                     {

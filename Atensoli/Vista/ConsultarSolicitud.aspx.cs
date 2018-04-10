@@ -21,7 +21,16 @@ namespace Atensoli
         {
             try
             {
-                DataSet ds = ConsultarSolicitud.ObtenerConsultaSolicitud(txtCedula.Text.Trim());
+                int indicaSoloPendientes;
+                if(chkPendientes.Checked == true)
+                {
+                    indicaSoloPendientes = 0;
+                }
+                else
+                {
+                    indicaSoloPendientes = 6;
+                }
+                DataSet ds = ConsultarSolicitud.ObtenerConsultaSolicitud(txtCedula.Text.Trim(), indicaSoloPendientes);
                 this.gridDetalle.DataSource = ds.Tables[0];
                 this.gridDetalle.DataBind();
             }
@@ -35,6 +44,23 @@ namespace Atensoli
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             CargarConsulta();
+        }
+
+        protected void gridDetalle_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+
+                Solicitud.ActualizarConsultaSolicitud(Convert.ToInt32(e.CommandArgument.ToString()), Convert.ToInt32(Session["UserID"]));
+                CargarConsulta();
+                messageBox.ShowMessage("Consulta actualizada");
+
+            }
+            catch (Exception ex)
+            {
+                messageBox.ShowMessage(ex.Message + ex.StackTrace);
+            }
+
         }
     }
 }

@@ -38,7 +38,12 @@
 			}
 			}
 			});
-		});
+			});
+
+			function Confirmacion() {
+
+			    return confirm("¿Desea actualizar el estatus de esta solicitud?");
+			}
 	</script>
 	</head>
 	<body>
@@ -67,7 +72,9 @@
 												<asp:TextBox runat="server" ID="txtCedula" MaxLength="9" placeholder ="Indique el número de cedula del solicitante"/>  
 												<ASP:RequiredFieldValidator id="rqrValidaCedula" runat="server" errormessage="Debe colocar el número de cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
-
+											<div class="6u 12u$(xsmall)"> 
+												<asp:CheckBox runat="server" ID ="chkPendientes" Checked ="true" Text ="Solo solicitudes pedientes" />
+											</div>
 											<div class="12u$">
 												<ul class="actions">
 													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click" />
@@ -78,12 +85,12 @@
 													  CssClass="subtitulo" 
 													  EmptyDataText="No existen Registros" 
 													  GridLines="Horizontal" 
-													  AutoGenerateColumns="False">
+													  AutoGenerateColumns="False" OnRowCommand="gridDetalle_RowCommand">
 														<HeaderStyle  Font-Size="10px" />
 														<AlternatingRowStyle Font-Size="10px" />
 														  <RowStyle  Font-Size="10px" />
 													  <Columns>
-														  <asp:TemplateField HeaderText="N°" HeaderStyle-Width="50">
+														  <asp:TemplateField HeaderText="N°">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNumero" Text='<%# Eval("SolicitudID") %>'  ></asp:Label>
 															  </ItemTemplate>
@@ -128,11 +135,6 @@
 																  <asp:Label runat="server" ID="lblTipoAtencion" Text='<%# Eval("NombreTipoAtencionBrindada") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Referencia">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoReferencia" Text='<%# Eval("NombreTipoReferenciaSolicitud") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Tipo Unidad">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblTipoUnidad" Text='<%# Eval("NombreTipoUnidad") %>'  ></asp:Label>
@@ -148,11 +150,6 @@
 																  <asp:Label runat="server" ID="lblTipoInsumoDetalle" Text='<%# Eval("NombreTipoInsumoDetalle") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Forma Atención">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoAten" Text='<%# Eval("NombreTipoFormaAtencion") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Observaciones Solicitante">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblObsSol" Text='<%# Eval("ObservacionesSolicitante") %>'  ></asp:Label>
@@ -166,6 +163,11 @@
 														  <asp:TemplateField HeaderText="Atendido por">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblAtencion" Text='<%# Eval("NombreCompleto") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														   <asp:TemplateField HeaderText="Acciones">
+															  <ItemTemplate>
+																<asp:ImageButton runat="server" ID="btnEstatus" AlternateText="Actualizar estatus" ToolTip="Actualizar estatus" ImageUrl="~/Images/asignar_tecnico_icono.png" OnClientClick="return Confirmacion();" CommandName="ActualizarEstatus" CommandArgument='<%# Eval("SolicitudID") %>' CausesValidation ="false"/> 
 															  </ItemTemplate>
 														  </asp:TemplateField>
 													  </Columns>

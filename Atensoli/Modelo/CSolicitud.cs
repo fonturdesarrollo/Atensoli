@@ -27,7 +27,8 @@ namespace Atensoli
         private int _seguridadUsuarioDatosID;
         private int _empresaSucursalID;
         private int _solicitudEstatusID;
-        public CSolicitud(int _solicitudID, int _tipoSolicitudID, int _tipoSolicitanteID, int _solicitanteID, string _nombreCargoSolicitante, int _organizacionID, int _tipoAtencionBrindadaID, int _tipoReferenciaSolicitud, int _tipoUnidadID, int _tipoInsumoDetalleID, int _tipoRemitidoID, int _tipoFormaAtencionID, string _observacionesSolicitante, string _observacionesAnalista, int _seguridadUsuarioDatosID, int _empresaSucursalID, int _solicitudEstatusID)
+        private int _solicitudPadreID;
+        public CSolicitud(int _solicitudID, int _tipoSolicitudID, int _tipoSolicitanteID, int _solicitanteID, string _nombreCargoSolicitante, int _organizacionID, int _tipoAtencionBrindadaID, int _tipoReferenciaSolicitud, int _tipoUnidadID, int _tipoInsumoDetalleID, int _tipoRemitidoID, int _tipoFormaAtencionID, string _observacionesSolicitante, string _observacionesAnalista, int _seguridadUsuarioDatosID, int _empresaSucursalID, int _solicitudEstatusID, int _solicitudPadreID)
         {
             this.TipoSolicitudID = _tipoSolicitudID;
             this.TipoSolicitanteID = _tipoSolicitanteID;
@@ -45,6 +46,7 @@ namespace Atensoli
             this.SeguridadUsuarioDatosID = _seguridadUsuarioDatosID;
             this.EmpresaSucursalID = _empresaSucursalID;
             this.SolicitudEstatusID = _solicitudEstatusID;
+            this.SolicitudPadreID = _solicitudPadreID;
         }
         public int SolicitudID
         {
@@ -262,6 +264,18 @@ namespace Atensoli
             set
             {
                 _solicitudEstatusID = value;
+            }
+        }
+        public int SolicitudPadreID
+        {
+            get
+            {
+                return _solicitudPadreID;
+            }
+
+            set
+            {
+                _solicitudPadreID = value;
             }
         }
     }
