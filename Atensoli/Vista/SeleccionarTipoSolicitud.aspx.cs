@@ -29,6 +29,7 @@ namespace Atensoli.Vista
                 Session.Remove("ApellidoSaime");
                 Session.Remove("SerialCarnetPatria");
                 CargarTipoSolicitud();
+                CargarDescripcion();
             }
         }
         private void CargarTipoSolicitud()
@@ -61,12 +62,28 @@ namespace Atensoli.Vista
                 con.Dispose();
             }
         }
+        private void CargarDescripcion()
+        {
+            SqlDataReader dr = TipoSolicitud.ObtenerTipoSolicitud(Convert.ToInt32(ddTipoSolicitud.SelectedValue));
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    lblDescripcion.Text = dr["DescripcionTipoSolicitud"].ToString();
+                }
+            }
+        }
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             Session["TipoSolicitudID"] = ddTipoSolicitud.SelectedValue;
             Session["NombreTipoSolicitud"] = ddTipoSolicitud.SelectedItem.ToString();
             Response.Redirect("~/Vista/SeleccionarSolicitante.aspx");
+        }
+
+        protected void ddTipoSolicitud_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarDescripcion();
         }
     }
 }

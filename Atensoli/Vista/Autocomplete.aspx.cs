@@ -121,7 +121,7 @@ namespace Admin
                             item.value = dr["NombreTipoSolicitud"].ToString();
                             item.id = dr["TipoSolicitudID"].ToString();
                             item.value = item.value.Replace(Request.QueryString["query"].ToString(), "<span style='font-weight:bold;'>" + Request.QueryString["query"].ToString() + "</span>");
-                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["NombreTipoSolicitud"].ToString() + "_" + dr["TipoSolicitudID"].ToString() + "'>" + item.value + "</li>" + "\n");
+                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["NombreTipoSolicitud"].ToString() + "_" + dr["TipoSolicitudID"].ToString() + "_" + dr["DescripcionTipoSolicitud"].ToString() + "'>" + item.value + "</li>" + "\n");
                         }
                         Response.Write("</ul>");
                         Response.End();

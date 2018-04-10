@@ -28,7 +28,7 @@
 
 	<script type="text/javascript">
 				$(function () {
-				    $('#txtNombreTipoSolicitud').simpleAutoComplete('Autocomplete.aspx', {
+					$('#txtNombreTipoSolicitud').simpleAutoComplete('Autocomplete.aspx', {
 						autoCompleteClassName: 'autocomplete',
 						selectedClassName: 'sel',
 						attrCallBack: 'rel',
@@ -38,7 +38,8 @@
 				});
 
 				function fnPersonalCallBack(par) {
-				    document.getElementById("hdnTipoSolicitudID").value = par[0];
+					document.getElementById("hdnTipoSolicitudID").value = par[0];
+					document.getElementById("txtDescripcionTipoSolicitud").value = par[3];
 				}
 	</script>
 	</head>
@@ -69,6 +70,11 @@
 												<ASP:RequiredFieldValidator id="rqrvalidaNombreTipoSol" runat="server" errormessage="Debe colocar el nombre del tipo de solicitud" controltovalidate="txtNombreTipoSolicitud" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>													
 												<asp:HiddenField runat ="server" ID ="hdnTipoSolicitudID"  Value="0"/> 
 											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:TextBox runat="server" ID="txtDescripcionTipoSolicitud" MaxLength="200" onkeypress="return event.keyCode!=13;" placeholder ="Indique la descripción del tipo de solicitud"/> 
+												<ASP:RequiredFieldValidator id="RequiredFieldValidator1" runat="server" errormessage="Debe colocar descripción del tipo de solicitud" controltovalidate="txtDescripcionTipoSolicitud" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>		
+											</div>
+										
 											<div class="12u$">
 												<ul class="actions">
 													<asp:Button Text="Guardar tipo solicitud" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click" />												   

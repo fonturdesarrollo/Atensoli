@@ -19,7 +19,8 @@ namespace Atensoli
             {
                 CTipoSolicitud objetoTipoSolicitud = new CTipoSolicitud();
                 objetoTipoSolicitud.TipoSolicitudID = Convert.ToInt32(hdnTipoSolicitudID.Value);
-                objetoTipoSolicitud.NombreTipoSolicitud = txtNombreTipoSolicitud.Text.ToUpper().Trim();
+                objetoTipoSolicitud.NombreTipoSolicitud = txtNombreTipoSolicitud.Text.Trim();
+                objetoTipoSolicitud.DescripcionTipoSolicitud = txtDescripcionTipoSolicitud.Text.Trim();
 
                 codigoTipoSolicitud = TipoSolicitud.InsertarTipoSolicitud(objetoTipoSolicitud);
                 if (codigoTipoSolicitud > 0)

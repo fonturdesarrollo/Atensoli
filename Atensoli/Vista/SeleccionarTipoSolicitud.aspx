@@ -49,8 +49,13 @@
 										<div class="row uniform">
 											<div class="6u 12u$(xsmall)">
 												<div class="select-wrapper">
-													<asp:DropDownList ID="ddTipoSolicitud" runat="server"  AppendDataBoundItems="True" AutoPostBack = "false" ></asp:DropDownList>         
+													<asp:DropDownList ID="ddTipoSolicitud" runat="server"  AppendDataBoundItems="True" AutoPostBack = "true" OnSelectedIndexChanged="ddTipoSolicitud_SelectedIndexChanged" ></asp:DropDownList>         
 												</div>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="lblDescripcion" Font-Bold ="true" ForeColor ="Red">
+
+												</asp:Label>
 											</div>
 											<div class="12u$">
 												<ul class="actions">

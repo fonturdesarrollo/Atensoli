@@ -12,10 +12,12 @@ namespace Atensoli
         }
         private int _tipoSolicitudID;
         private string _nombreTipoSolicitud;
-        public CTipoSolicitud(int _tipoSolicitudID, string _nombreTipoSolicitud)
+        private string _descripcionTipoSolicitud;
+        public CTipoSolicitud(int _tipoSolicitudID, string _nombreTipoSolicitud, string _descripcionTipoSolicitud)
         {
             this.TipoSolicitudID = _tipoSolicitudID;
             this.NombreTipoSolicitud = _nombreTipoSolicitud;
+            this.DescripcionTipoSolicitud = _descripcionTipoSolicitud;
         }
 
         public int TipoSolicitudID
@@ -41,6 +43,18 @@ namespace Atensoli
             set
             {
                 _nombreTipoSolicitud = value;
+            }
+        }
+        public string DescripcionTipoSolicitud
+        {
+            get
+            {
+                return _descripcionTipoSolicitud;
+            }
+
+            set
+            {
+                _descripcionTipoSolicitud = value;
             }
         }
     }
