@@ -73,6 +73,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\EstadisticasGenerales.aspx" />
     <Content Include="Vista\EmpresaSucursal.aspx" />
     <Content Include="Vista\SolicitudResultado.aspx" />
     <Content Include="Vista\ConsultarSolicitudesCargadas.aspx" />
@@ -293,6 +294,14 @@
   <ItemGroup>
     <Compile Include="Controlador\EmpresaSucursal.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\Estadisticas.cs" />
+    <Compile Include="Vista\EstadisticasGenerales.aspx.cs">
+      <DependentUpon>EstadisticasGenerales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\EstadisticasGenerales.aspx.designer.cs">
+      <DependentUpon>EstadisticasGenerales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelo\CEmpresaSucursal.cs" />
     <Compile Include="Vista\EmpresaSucursal.aspx.cs">

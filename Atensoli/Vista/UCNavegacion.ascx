@@ -27,7 +27,6 @@
 											<span class="opener">Atención al Ciudadano</span>
 											<ul>
 												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudes"  navigateurl ="~/Vista/SeleccionarTipoSolicitud.aspx"  Text ="Registrar solicitud"></ASP:HyperLink></li>
-												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudesCargadas"  navigateurl ="~/Vista/ConsultarSolicitudesCargadas.aspx"  Text ="Solicitudes cargadas"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkConsultarSolicitud"  navigateurl ="~/Vista/ConsultarSolicitud.aspx"  Text ="Consultar solicitud"></ASP:HyperLink></li>
 											</ul>
 										</li>
@@ -48,6 +47,13 @@
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoRemitido"  navigateurl ="~/Vista/TipoRemitido.aspx" Text ="Tipo de remitido"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoInsumo"  navigateurl ="~/Vista/TipoInsumo.aspx" Text ="Tipo de insumo"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoSoporteFIsico"  navigateurl ="~/Vista/TipoSoporte.aspx" Text ="Tipo de soporte físico"></ASP:HyperLink></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Estadísticas</span>
+											<ul>
+												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudesCargadas"  navigateurl ="~/Vista/ConsultarSolicitudesCargadas.aspx"  Text ="Solicitudes cargadas"></ASP:HyperLink></li>												
+												<li><ASP:HyperLink runat="server" ID ="lnkEstadisticasGenerales"  navigateurl ="~/Vista/EstadisticasGenerales.aspx"  Text ="Estadísticas generales"></ASP:HyperLink></li>
 											</ul>
 										</li>
 										<li>

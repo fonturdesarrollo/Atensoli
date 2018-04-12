@@ -72,6 +72,10 @@ namespace Atensoli.Vista
                 {
                     lnkSolicitudesCargadas.Visible = true;
                 }
+                if (objetoSeguridad.EsAccesoPermitido(1025) == true)
+                {
+                    lnkEstadisticasGenerales.Visible = true;
+                }
             }
         }
         private void ColocarEnlacesInvisibles()

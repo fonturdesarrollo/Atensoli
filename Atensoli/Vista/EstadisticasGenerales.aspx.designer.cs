@@ -7,144 +7,117 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Atensoli.Vista {
+namespace Atensoli {
     
     
-    public partial class UCNavegacion {
+    public partial class EstadisticasGenerales {
         
         /// <summary>
-        /// lnkSolicitudes control.
+        /// messageBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkSolicitudes;
+        protected global::Teach.UCMessageBox messageBox;
         
         /// <summary>
-        /// lnkConsultarSolicitud control.
+        /// principal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkConsultarSolicitud;
+        protected global::System.Web.UI.HtmlControls.HtmlForm principal;
         
         /// <summary>
-        /// lnkSeguimientoSolicitudes control.
+        /// txtFechaRegistro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkSeguimientoSolicitudes;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaRegistro;
         
         /// <summary>
-        /// lnkTipoSolicitante control.
+        /// rqrValidaFechaRegistro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoSolicitante;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaFechaRegistro;
         
         /// <summary>
-        /// lnkTipoSolicitud control.
+        /// btnConsultar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoSolicitud;
+        protected global::System.Web.UI.WebControls.Button btnConsultar;
         
         /// <summary>
-        /// lnkTipoOrganizacion control.
+        /// lblTituloEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoOrganizacion;
+        protected global::System.Web.UI.WebControls.Label lblTituloEstado;
         
         /// <summary>
-        /// lnkTipoAtencion control.
+        /// gridDetalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoAtencion;
+        protected global::System.Web.UI.WebControls.GridView gridDetalle;
         
         /// <summary>
-        /// lnkReferido control.
+        /// lblTituloSolicitud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkReferido;
+        protected global::System.Web.UI.WebControls.Label lblTituloSolicitud;
         
         /// <summary>
-        /// lnkTipoRemitido control.
+        /// gridDetalle2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoRemitido;
+        protected global::System.Web.UI.WebControls.GridView gridDetalle2;
         
         /// <summary>
-        /// lnkTipoInsumo control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoInsumo;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// lnkTipoSoporteFIsico control.
+        /// gridDetalle3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkTipoSoporteFIsico;
+        protected global::System.Web.UI.WebControls.GridView gridDetalle3;
         
         /// <summary>
-        /// lnkSolicitudesCargadas control.
+        /// ControlMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkSolicitudesCargadas;
-        
-        /// <summary>
-        /// lnkEstadisticasGenerales control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkEstadisticasGenerales;
-        
-        /// <summary>
-        /// lnkSeguridad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkSeguridad;
-        
-        /// <summary>
-        /// lnkCambiarClave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkCambiarClave;
+        protected global::Atensoli.Vista.UCNavegacion ControlMenu;
     }
 }
