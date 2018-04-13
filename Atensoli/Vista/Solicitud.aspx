@@ -155,6 +155,7 @@
 
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtObservacionesSolicitante" TextMode="MultiLine" Rows="2" MaxLength="3000"  placeholder="Observaciones del solictante"/> 
+												<ASP:RequiredFieldValidator id="rqrValidaObservacionesSolicitante" runat="server" errormessage="Debe colocar las observaciones del solicitante"  controltovalidate="txtObservacionesSolicitante" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)">
 												<asp:TextBox runat="server" ID="txtObservacionesAnalista" TextMode="MultiLine" Rows="2" MaxLength="3000"  placeholder="Observaciones del analista"/> 
