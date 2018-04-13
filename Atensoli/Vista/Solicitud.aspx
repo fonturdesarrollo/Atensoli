@@ -21,7 +21,6 @@
 		<script src="../js/Util.js" type="text/javascript"></script>
 <%--        <script src="../js/jquery.js"></script>--%>
 		<script  src="../js/jquery-ui-1.8rc3.custom.min.js"></script>
-		<script src="../assets/js/jquery.min.js"></script>
 		<script src="../assets/js/skel.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>      

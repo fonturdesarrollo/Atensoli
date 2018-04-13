@@ -13,13 +13,12 @@
 
 <%--        SCRIPTS--%>
 		<link rel="stylesheet"  href="../Styles/jquery-ui-1.8rc3.custom.css"  />
-		<script src="../assets/js/jquery.min.js"></script>
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<link rel="stylesheet" href="../Styles/simpleAutoComplete.css"  />
 		<script src="../js/Util.js" type="text/javascript"></script>
 <%--        <script src="../js/jquery.js"></script>--%>      
 		<script  src="../js/jquery-ui-1.8rc3.custom.min.js"></script>
-		<script src="../assets/js/jquery.min.js"></script>
+
 		<script src="../assets/js/skel.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>      
@@ -70,7 +69,7 @@
 								<header id="header">
 									<a class="logo"><strong>Estadísticas Generales</strong></a>
 									<ul class="icons">
-										
+										<asp:HyperLink runat="server" ID="lnkInicio" Text ="Inicio" NavigateUrl="~/Vista/Principal.aspx" ></asp:HyperLink>
 									</ul>
 								</header>
 
@@ -173,7 +172,7 @@
 <%--					<div id="sidebar">
 						<div class="inner">--%>
 							<!-- Menu -->
-								<uc2:UCNavegacion  runat ="server" ID ="ControlMenu"/>
+								<%--<uc2:UCNavegacion  runat ="server" ID ="ControlMenu"/>--%>
 <%--						</div>
 					</div>--%>
 			<%--</div>--%>
