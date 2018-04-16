@@ -93,6 +93,7 @@ namespace Atensoli
                 Response.Output.Write(sw.ToString());
                 Response.Flush();
                 Response.End();
+                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Exportó a excel movimientos de solictudes", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
             }
         }
         public override void VerifyRenderingInServerForm(Control control)

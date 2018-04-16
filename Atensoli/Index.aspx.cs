@@ -53,21 +53,30 @@ namespace Seguridad
             }
             else
             {
-                DataSet ds = Login.ValidarLogin(txtLogin.Text, txtClave.Text);
-                DataTable dt = ds.Tables[0];
-                if (dt.Rows.Count == 0)
+                try
                 {
-                    messageBox.ShowMessage("El usuario y/o la contraseña son incorrectos");
+                    DataSet ds = Login.ValidarLogin(txtLogin.Text, txtClave.Text);
+                    DataTable dt = ds.Tables[0];
+                    if (dt.Rows.Count == 0)
+                    {
+                        messageBox.ShowMessage("El usuario y/o la contraseña son incorrectos");
+                    }
+                    else
+                    {
+                        this.Session["CodigoEmpresa"] = SeguridadUsuario.ObtenerCodigoEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue));
+                        this.Session["CodigoSucursalEmpresa"] = ddlEmpresa.SelectedValue;
+                        this.Session["NombreEmpresa"] = ddlEmpresa.SelectedItem;
+                        this.Session["LogoEmpresa"] = LogoEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue));
+                        Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Inicio de sesión exitoso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        Response.Redirect("~/Vista/Principal.aspx");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    this.Session["CodigoEmpresa"] = SeguridadUsuario.ObtenerCodigoEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue));
-                    this.Session["CodigoSucursalEmpresa"] = ddlEmpresa.SelectedValue;
-                    this.Session["NombreEmpresa"] = ddlEmpresa.SelectedItem;
-                    this.Session["LogoEmpresa"] = LogoEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue));
-                    Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Inicio de sesión exitoso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
-                    Response.Redirect("~/Vista/Principal.aspx");
+
+                    messageBox.ShowMessage(ex.StackTrace);
                 }
+
 
             }
         }

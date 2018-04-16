@@ -40,5 +40,15 @@ namespace Atensoli
             return DBHelper.ExecuteDataSet("usp_EstadisticasGenerales_ObtenerEstadisticaPorTipoRemitido", dbParams);
 
         }
+        public static SqlDataReader ObtenerTotalSolicitudes(string fechaSolicitud)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                   DBHelper.MakeParam("@FechaSolicitud", SqlDbType.VarChar, 0, fechaSolicitud)
+                };
+
+            return DBHelper.ExecuteDataReader("usp_ConsultaSolicitud_ObtenerTotalSolicitudesPorFecha", dbParams);
+
+        }
     }
 }

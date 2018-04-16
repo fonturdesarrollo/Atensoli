@@ -19,9 +19,13 @@
 <%--        <script src="../js/jquery.js"></script>--%>      
 		<script  src="../js/jquery-ui-1.8rc3.custom.min.js"></script>
 
+		<script src="../assets/js/jquery.min.js"></script>
+
 		<script src="../assets/js/skel.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>      
+
+
 
 <%--------------------------%>
 	<script type ="text/javascript">
@@ -49,7 +53,7 @@
 			$.datepicker.setDefaults($.datepicker.regional['es']);
 
 			$("#txtFechaRegistro").datepicker({
-				dateFormat: 'dd/mm/yy', buttonImageOnly: false, changeMonth: true,
+				dateFormat: 'dd/mm/yy',  buttonImageOnly: false, changeMonth: true,
 				changeYear: true, gotoCurrent: true, yearRange: "1900:2020"
 			});
 		});
@@ -67,7 +71,9 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Estadísticas Generales</strong></a>
+									<a class="logo"><strong><asp:Label runat ="server" ID ="lblTitulo" Text ="Estadísticas Generales"></asp:Label></strong>
+
+									</a>
 									<ul class="icons">
 										<asp:HyperLink runat="server" ID="lnkInicio" Text ="Inicio" NavigateUrl="~/Vista/Principal.aspx" ></asp:HyperLink>
 									</ul>

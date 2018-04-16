@@ -81,6 +81,11 @@
 																  <asp:Label runat="server" ID="lblFechaSolicitud" Text='<%# Eval("FechaRegistroSolicitud") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Estado" >
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblEstado" Text='<%# Eval("NombreEstado") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Estatus Solicitud" >
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblEstatusSolicitud" Text='<%# Eval("NombreSolicitudEstatus") %>' Font-Bold ="true" ForeColor = '<%# Eval("SolicitudEstatusID").ToString() == "6"?System.Drawing.Color.Blue:System.Drawing.Color.Red %>' ></asp:Label>

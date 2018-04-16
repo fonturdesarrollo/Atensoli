@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,9 +9,10 @@ using System.Web.UI.WebControls;
 
 namespace Atensoli
 {
-    public partial class EstadisticasGenerales : System.Web.UI.Page
+    [System.Runtime.InteropServices.Guid("41556A1F-56A6-41B7-9509-F6F5153F4487")]
+    public partial class EstadisticasGenerales : Seguridad.SeguridadAuditoria
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
@@ -18,6 +20,28 @@ namespace Atensoli
                 CargarPorEstado();
                 CargarPorTipoSolicitud();
                 CargarPorTipoRemitido();
+                CargarTotales();
+            }
+        }
+        private void CargarTotales()
+        {
+            try
+            {
+                SqlDataReader dr = Estadisticas.ObtenerTotalSolicitudes(txtFechaRegistro.Text);
+                
+                if(dr.HasRows)
+                {
+                    while(dr.Read())
+                    {
+                        lblTitulo.Text = "Total solicitudes registradas en la fecha seleccionada: ["  + dr["Total"] +"]";
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                messageBox.ShowMessage(ex.Message);
             }
         }
         private void CargarPorEstado()
@@ -77,6 +101,7 @@ namespace Atensoli
             CargarPorEstado();
             CargarPorTipoSolicitud();
             CargarPorTipoRemitido();
+            CargarTotales();
         }
     }
 }

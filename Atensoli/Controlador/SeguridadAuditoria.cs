@@ -106,6 +106,9 @@ namespace Seguridad
                 case "/Vista/ConsultarSolicitudesCargadas.aspx":
                     codigoObjeto = 1024;
                     break;
+                case "/Vista/EstadisticasGenerales.aspx":
+                    codigoObjeto = 1025;
+                    break;
                 default:
                     break;
             }
