@@ -31,13 +31,58 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HyperLink lnkConsultarSolicitud;
         
         /// <summary>
-        /// lnkSeguimientoSolicitudes control.
+        /// lnkCobranzas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkSeguimientoSolicitudes;
+        protected global::System.Web.UI.WebControls.HyperLink lnkCobranzas;
+        
+        /// <summary>
+        /// lnkFinanciamiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkFinanciamiento;
+        
+        /// <summary>
+        /// lnkMovilidadEstudiantil control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkMovilidadEstudiantil;
+        
+        /// <summary>
+        /// lnkAsesoriaLegal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkAsesoriaLegal;
+        
+        /// <summary>
+        /// lnkTecncicaAutomotriz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkTecncicaAutomotriz;
+        
+        /// <summary>
+        /// lnkOAC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkOAC;
         
         /// <summary>
         /// lnkTipoSolicitante control.

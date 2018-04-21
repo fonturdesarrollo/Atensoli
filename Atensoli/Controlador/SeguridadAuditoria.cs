@@ -109,6 +109,9 @@ namespace Seguridad
                 case "/Vista/EstadisticasGenerales.aspx":
                     codigoObjeto = 1025;
                     break;
+                case "/Vista/SeguimientoSeleccion.aspx":
+                    codigoObjeto = Convert.ToInt32(Request.QueryString["CodigoObjeto"]);
+                    break;
                 default:
                     break;
             }

@@ -64,10 +64,37 @@ namespace Atensoli.Vista
                 {
                     lnkTipoSoporteFIsico.Visible = true;
                 }
+
+                //=============================================================
+                //SEGUIMIENTO
+                //=============================================================
                 if (objetoSeguridad.EsAccesoPermitido(1023) == true)
                 {
-                    lnkSeguimientoSolicitudes.Visible = true;
+                    lnkCobranzas.Visible = true;
                 }
+                if (objetoSeguridad.EsAccesoPermitido(1026) == true)
+                {
+                    lnkFinanciamiento.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1027) == true)
+                {
+                    lnkMovilidadEstudiantil.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1028) == true)
+                {
+                    lnkAsesoriaLegal.Visible = true;
+                }
+
+                if (objetoSeguridad.EsAccesoPermitido(1029) == true)
+                {
+                    lnkTecncicaAutomotriz.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1030) == true)
+                {
+                    lnkOAC.Visible = true;
+                }
+                //=============================================================
+
                 if (objetoSeguridad.EsAccesoPermitido(1024) == true)
                 {
                     lnkSolicitudesCargadas.Visible = true;

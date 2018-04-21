@@ -73,6 +73,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Docs\Varios.txt" />
+    <Content Include="Vista\SeguimientoSeleccion.aspx" />
     <Content Include="Vista\EstadisticasGenerales.aspx" />
     <Content Include="Vista\EmpresaSucursal.aspx" />
     <Content Include="Vista\SolicitudResultado.aspx" />
@@ -296,6 +298,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controlador\Estadisticas.cs" />
+    <Compile Include="Vista\SeguimientoSeleccion.aspx.cs">
+      <DependentUpon>SeguimientoSeleccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguimientoSeleccion.aspx.designer.cs">
+      <DependentUpon>SeguimientoSeleccion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\EstadisticasGenerales.aspx.cs">
       <DependentUpon>EstadisticasGenerales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

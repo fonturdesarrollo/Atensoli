@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultarSolicitud.aspx.cs" Inherits="Atensoli.ConsultarSolicitud" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeguimientoSeleccion.aspx.cs" Inherits="Atensoli.SeguimientoSeleccion" %>
 
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
 <%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
@@ -7,56 +7,37 @@
 
 <html>
 	<head>
-		<title>Atensoli | Consultar Solicitud</title>
+		<title>Atensoli | Listado Seguimiento</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 <%--        SCRIPTS--%>
 		<link rel="stylesheet"  href="../Styles/jquery-ui-1.8rc3.custom.css"  />
-		<script src="../assets/js/jquery.min.js"></script>
+
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<link rel="stylesheet" href="../Styles/simpleAutoComplete.css"  />
 		<script src="../js/Util.js" type="text/javascript"></script>
 <%--        <script src="../js/jquery.js"></script>--%>      
-		<script  src="../js/jquery-ui-1.8rc3.custom.min.js"></script>
+
+		<script src="../assets/js/jquery.min.js"></script>
 		<script src="../assets/js/skel.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>      
 
 <%--------------------------%>
 
-	<script type="text/javascript">
-			$(function () {
-			$('#txtCedula').keydown(function (e) {
-			if (e.shiftKey || e.ctrlKey || e.altKey) {
-			e.preventDefault();
-			} else {
-			var key = e.keyCode;
-			if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
-			e.preventDefault();
-			}
-			}
-			});
-			});
-
-			function Confirmacion() {
-
-				return confirm("¿Desea actualizar el estatus de esta solicitud?");
-			}
-	</script>
 	</head>
 	<body>
 		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
 		<!-- Wrapper -->
 			<div id="wrapper">
-
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Consultar Solicitud</strong></a>
+									<a class="logo"><strong>Listado Seguimiento</strong></a>
 									<ul class="icons">
 										<asp:HyperLink runat="server" ID="lnkInicio" Text ="Inicio" NavigateUrl="~/Vista/Principal.aspx" ></asp:HyperLink>
 									</ul>
@@ -66,30 +47,30 @@
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
-										<div class="row uniform">
-											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtCedula" MaxLength="9" placeholder ="Indique el número de cedula del solicitante"/>  
-												<ASP:RequiredFieldValidator id="rqrValidaCedula" runat="server" errormessage="Debe colocar el número de cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
-											</div>
-											<div class="6u 12u$(xsmall)"> 
-												<asp:CheckBox runat="server" ID ="chkPendientes" Checked ="true" Text ="Solo solicitudes pedientes" />
-											</div>
-											<div class="12u$">
-												<ul class="actions">
-													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click" />
-												</ul>
-											</div>
+											<div class="row uniform">
+											   <div class="6u 12u$(xsmall)">
+													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special"  />
+											   </div>
+												<div class="6u 12u$(xsmall)"> 
+													<asp:Button ID="btnExportar" runat="server"  Text="Exportar a Excel" />
+													<asp:CheckBox runat="server" ID ="chkDelDia" Checked ="true" Text ="Solo solicitudes de hoy" />
+												</div>
+												<div class="6u 12u$(xsmall)">
+													
+												</div>
+										   </div>
+											<p></p>
 											<div class="table-wrapper">
 												  <asp:GridView ID="gridDetalle" runat="server" 
 													  CssClass="subtitulo" 
 													  EmptyDataText="No existen Registros" 
 													  GridLines="Horizontal" 
-													  AutoGenerateColumns="False" OnRowCommand="gridDetalle_RowCommand">
+													  AutoGenerateColumns="False">
 														<HeaderStyle  Font-Size="10px" />
 														<AlternatingRowStyle Font-Size="10px" />
 														  <RowStyle  Font-Size="10px" />
 													  <Columns>
-														  <asp:TemplateField HeaderText="N°">
+														  <asp:TemplateField HeaderText="N" HeaderStyle-Width="50">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNumero" Text='<%# Eval("SolicitudID") %>'  ></asp:Label>
 															  </ItemTemplate>
@@ -97,6 +78,11 @@
 														  <asp:TemplateField HeaderText="Fecha Solicitud" >
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblFechaSolicitud" Text='<%# Eval("FechaRegistroSolicitud") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Estado" >
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblEstado" Text='<%# Eval("NombreEstado") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Estatus Solicitud" >
@@ -119,17 +105,27 @@
 																  <asp:Label runat="server" ID="lblTipoSolicitante" Text='<%# Eval("NombreTipoSolicitante") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Cedula Solicitante">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblCedulaSolicitante" Text='<%# Eval("CedulaSolicitante") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Nombre Solicitante">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNombreSolicitante" Text='<%# Eval("SolicitanteNombre") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Nombre Organización">
+														  <asp:TemplateField HeaderText="RIF Organizacion">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblRifOrganizacion" Text='<%# Eval("RifOrganizacion") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Nombre Organizacion">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNombreOrganizacion" Text='<%# Eval("NombreOrganizacion") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Atención">
+														  <asp:TemplateField HeaderText="Tipo Atencion">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblTipoAtencion" Text='<%# Eval("NombreTipoAtencionBrindada") %>'  ></asp:Label>
 															  </ItemTemplate>
@@ -140,7 +136,7 @@
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Tipo Insumo">
-															  <ItemTemplate>
+															  <ItemTemplate>    
 																  <asp:Label runat="server" ID="lblTipoInsumo" Text='<%# Eval("NombreTipoInsumo") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
@@ -164,27 +160,23 @@
 																  <asp:Label runat="server" ID="lblAtencion" Text='<%# Eval("NombreCompleto") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														   <asp:TemplateField HeaderText="Acciones">
-															  <ItemTemplate>
-																<asp:ImageButton runat="server" ID="btnEstatus" AlternateText="Actualizar estatus" ToolTip="Actualizar estatus" ImageUrl="~/Images/asignar_tecnico_icono.png" OnClientClick="return Confirmacion();" CommandName="ActualizarEstatus" CommandArgument='<%# Eval("SolicitudID") %>' CausesValidation ="false"/> 
-															  </ItemTemplate>
-														  </asp:TemplateField>
 													  </Columns>
 												  </asp:GridView>
 											</div>
-										</div>
 								</section>
 							</form>
 						</div>
 					</div>
+				</div>
 				<!-- Sidebar -->
 <%--					<div id="sidebar">
 						<div class="inner">--%>
 							<!-- Menu -->
-								<uc2:UCNavegacion  runat ="server" ID ="ControlMenu"/>
+								<%-- SE COMENTÓ DEBIDO A QUE NO SE VE BIEN --%>
+								<%--<uc2:UCNavegacion  runat ="server" ID ="ControlMenu"/>--%>
 <%--						</div>
 					</div>--%>
-			</div>
+			<%--</div>--%>
 		<!-- Scripts -->
 
 <%--        SE COLOCARON EN EL HEADER --%>

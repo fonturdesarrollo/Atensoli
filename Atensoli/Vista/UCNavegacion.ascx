@@ -5,6 +5,7 @@
 <html>
 
 	<body>
+
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -17,6 +18,7 @@
 
 
 							<!-- Menu -->
+							
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
@@ -30,12 +32,22 @@
 												<li><ASP:HyperLink runat="server" ID ="lnkConsultarSolicitud"  navigateurl ="~/Vista/ConsultarSolicitud.aspx"  Text ="Consultar solicitud"></ASP:HyperLink></li>
 											</ul>
 										</li>
+										
 										<li>
 											<span class="opener">Seguimiento</span>
-											<ul>
-												<li><ASP:HyperLink runat="server" ID ="lnkSeguimientoSolicitudes"  navigateurl ="~/Vista/EnConstruccion.aspx"  Text ="Seguimiento a las solicitudes"></ASP:HyperLink></li>
-											</ul>
+												
+												<ul>
+												
+													<li><ASP:HyperLink runat="server" ID ="lnkCobranzas"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1023"  Text ="Cobranzas"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkFinanciamiento"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1026"  Text ="Financiamiento"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkMovilidadEstudiantil"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1027"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkAsesoriaLegal"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1028"  Text ="Asesoria Legal"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkTecncicaAutomotriz"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1029"  Text ="Tecnica Automotriz"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkOAC"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1030"  Text ="Control y Seguimiento OAC"></ASP:HyperLink></li>
+												</ul>
+											
 										</li>
+										
 										<li>
 											<span class="opener">Opciones especiales</span>
 											<ul>
@@ -66,7 +78,7 @@
 										<li><a href="Logout.aspx">Salir</a></li>
 									</ul>
 								</nav>
-
+								
 							<!-- Section -->
 
 
