@@ -7,7 +7,7 @@
 
 <html>
 	<head>
-		<title>Atensoli | Listado Seguimiento</title>
+		<title>Atensoli | Consulta de Seguimiento</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -37,7 +37,9 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Listado Seguimiento</strong></a>
+									<a class="logo">
+										<strong><asp:Label runat ="server" ID ="lblTitulo" Text="Consulta de Seguimiento"></asp:Label></strong>
+									</a>
 									<ul class="icons">
 										<asp:HyperLink runat="server" ID="lnkInicio" Text ="Inicio" NavigateUrl="~/Vista/Principal.aspx" ></asp:HyperLink>
 									</ul>
@@ -48,13 +50,13 @@
 								<section>
 										<p></p>
 											<div class="row uniform">
-											   <div class="6u 12u$(xsmall)">
-													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special"  />
-											   </div>
-												<div class="6u 12u$(xsmall)"> 
-													<asp:Button ID="btnExportar" runat="server"  Text="Exportar a Excel" />
-													<asp:CheckBox runat="server" ID ="chkDelDia" Checked ="true" Text ="Solo solicitudes de hoy" />
+												<div class="6u 12u$(xsmall)">
+													<asp:TextBox runat ="server" ID ="txtCedula" placeholder ="Indique el número de cedula del solicitante"></asp:TextBox>
 												</div>
+											   <div class="6u 12u$(xsmall)">
+													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />
+											   </div>
+	
 												<div class="6u 12u$(xsmall)">
 													
 												</div>
@@ -83,11 +85,6 @@
 														  <asp:TemplateField HeaderText="Estado" >
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblEstado" Text='<%# Eval("NombreEstado") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Estatus Solicitud" >
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblEstatusSolicitud" Text='<%# Eval("NombreSolicitudEstatus") %>' Font-Bold ="true" ForeColor = '<%# Eval("SolicitudEstatusID").ToString() == "6"?System.Drawing.Color.Blue:System.Drawing.Color.Red %>' ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Remitido">
@@ -125,11 +122,6 @@
 																  <asp:Label runat="server" ID="lblNombreOrganizacion" Text='<%# Eval("NombreOrganizacion") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Atencion">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoAtencion" Text='<%# Eval("NombreTipoAtencionBrindada") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Tipo Unidad">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblTipoUnidad" Text='<%# Eval("NombreTipoUnidad") %>'  ></asp:Label>
@@ -153,11 +145,6 @@
 														  <asp:TemplateField HeaderText="Observaciones Analista">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblObsAnalis" Text='<%# Eval("ObservacionesAnalista") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Atendido por">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblAtencion" Text='<%# Eval("NombreCompleto") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 													  </Columns>
