@@ -28,7 +28,14 @@ namespace Atensoli
                 };
 
             return DBHelper.ExecuteDataSet("usp_ConsultaSolicitud_ObtenerSolicitudesCargadas", dbParams);
-
+        }
+        public static DataSet ObtenerSolicitudPorID(int solicitudID)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@SolicituID", SqlDbType.VarChar, 0, solicitudID),
+                };
+            return DBHelper.ExecuteDataSet("usp_ConsultaSolicitud_ObtenerSolicitudPorID", dbParams);
         }
     }
 }

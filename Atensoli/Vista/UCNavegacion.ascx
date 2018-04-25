@@ -34,16 +34,27 @@
 										</li>
 										
 										<li>
-											<span class="opener">Seguimiento</span>
-												
+											<span class="opener">Seleccionar solicitud para seguimiento</span>
 												<ul>
-												
 													<li><ASP:HyperLink runat="server" ID ="lnkCobranzas"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1023"  Text ="Cobranzas"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkFinanciamiento"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1026"  Text ="Financiamiento"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkMovilidadEstudiantil"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1027"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkAsesoriaLegal"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1028"  Text ="Asesoria Legal"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkTecncicaAutomotriz"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1029"  Text ="Tecnica Automotriz"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkOAC"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1030"  Text ="Control y Seguimiento OAC"></ASP:HyperLink></li>
+												</ul>
+										</li>
+
+										<li>
+											<span class="opener">Seguimiento</span>
+												<ul>
+												
+													<li><ASP:HyperLink runat="server" ID ="HyperLink1"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1023"  Text ="Cobranzas"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="HyperLink2"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1026"  Text ="Financiamiento"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="HyperLink3"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1027"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="HyperLink4"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1028"  Text ="Asesoria Legal"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="HyperLink5"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1029"  Text ="Tecnica Automotriz"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="HyperLink6"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1030"  Text ="Control y Seguimiento OAC"></ASP:HyperLink></li>
 												</ul>
 											
 										</li>

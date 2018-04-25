@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\Varios.txt" />
+    <Content Include="Vista\SeguimientoOAC.aspx" />
     <Content Include="Vista\SeguimientoSeleccion.aspx" />
     <Content Include="Vista\EstadisticasGenerales.aspx" />
     <Content Include="Vista\EmpresaSucursal.aspx" />
@@ -298,6 +299,17 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controlador\Estadisticas.cs" />
+    <Compile Include="Modelo\CSeguimientoOAC.cs" />
+    <Compile Include="Controlador\SeguimientoOAC.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguimientoOAC.aspx.cs">
+      <DependentUpon>SeguimientoOAC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguimientoOAC.aspx.designer.cs">
+      <DependentUpon>SeguimientoOAC.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\SeguimientoSeleccion.aspx.cs">
       <DependentUpon>SeguimientoSeleccion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

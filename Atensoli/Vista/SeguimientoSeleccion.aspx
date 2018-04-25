@@ -26,6 +26,18 @@
 
 <%--------------------------%>
 
+	<script type="text/javascript">
+
+				function Confirmacion() {
+
+					return confirm("¿Realmente desea descartar esta solicitud?, no podrá deshacer");
+				}
+				function ConfirmacionSeguimiento() {
+
+				    return confirm("¿Desea realizar seguimiento esta solicitud?");
+				}
+		 </script>
+
 	</head>
 	<body>
 		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
@@ -67,7 +79,7 @@
 													  CssClass="subtitulo" 
 													  EmptyDataText="No existen Registros" 
 													  GridLines="Horizontal" 
-													  AutoGenerateColumns="False">
+													  AutoGenerateColumns="False" OnRowCommand="gridDetalle_RowCommand">
 														<HeaderStyle  Font-Size="10px" />
 														<AlternatingRowStyle Font-Size="10px" />
 														  <RowStyle  Font-Size="10px" />
@@ -145,6 +157,11 @@
 														  <asp:TemplateField HeaderText="Observaciones Analista">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblObsAnalis" Text='<%# Eval("ObservacionesAnalista") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														   <asp:TemplateField HeaderText="Acciones" HeaderStyle-Width="100">
+															  <ItemTemplate>
+																<asp:ImageButton runat="server" ID="btnSeguimiento" AlternateText="Realizar seguimiento" ToolTip="Realizar seguimiento" ImageUrl="~/images/asignar_estatus_icono.png"  CommandName="RealizarSeguimiento"  CommandArgument='<%# Eval("SolicitudID") %>'  OnClientClick="return ConfirmacionSeguimiento();" CausesValidation ="false"/> 
 															  </ItemTemplate>
 														  </asp:TemplateField>
 													  </Columns>

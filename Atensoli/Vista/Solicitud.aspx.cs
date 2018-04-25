@@ -36,7 +36,7 @@ namespace Atensoli
                 CargarFormaAtencion();
                 CargarTipoSoporte();
                 CargarDatosSolicitante();
-            }
+            }                                                                                                                                                                                                                                                                                                  
         }
         private void CargarDatosSolicitante()
         {

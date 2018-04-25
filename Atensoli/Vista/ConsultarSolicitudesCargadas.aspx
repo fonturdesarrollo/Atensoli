@@ -168,6 +168,7 @@
 							</form>
 						</div>
 					</div>
+			   </div>
 				<!-- Sidebar -->
 <%--					<div id="sidebar">
 						<div class="inner">--%>

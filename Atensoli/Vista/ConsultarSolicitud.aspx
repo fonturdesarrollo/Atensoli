@@ -72,7 +72,7 @@
 												<ASP:RequiredFieldValidator id="rqrValidaCedula" runat="server" errormessage="Debe colocar el número de cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<div class="6u 12u$(xsmall)"> 
-												<asp:CheckBox runat="server" ID ="chkPendientes" Checked ="true" Text ="Solo solicitudes pedientes" />
+												<asp:CheckBox runat="server" ID ="chkPendientes" Checked ="true" Text ="Solo solicitudes pendientes" />
 											</div>
 											<div class="12u$">
 												<ul class="actions">
@@ -102,6 +102,11 @@
 														  <asp:TemplateField HeaderText="Estatus Solicitud" >
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblEstatusSolicitud" Text='<%# Eval("NombreSolicitudEstatus") %>' Font-Bold ="true" ForeColor = '<%# Eval("SolicitudEstatusID").ToString() == "6"?System.Drawing.Color.Blue:System.Drawing.Color.Red %>' ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Observaciones Analista">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblObsAnalis" Text='<%# Eval("ObservacionesAnalista") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Remitido">
@@ -154,11 +159,7 @@
 																  <asp:Label runat="server" ID="lblObsSol" Text='<%# Eval("ObservacionesSolicitante") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Observaciones Analista">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblObsAnalis" Text='<%# Eval("ObservacionesAnalista") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
+
 														  <asp:TemplateField HeaderText="Atendido por">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblAtencion" Text='<%# Eval("NombreCompleto") %>'  ></asp:Label>
