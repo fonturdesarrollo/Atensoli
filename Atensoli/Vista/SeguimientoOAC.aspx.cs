@@ -245,6 +245,9 @@ namespace Atensoli
                 objetoSeguimientoOAC.GerenciaID = Convert.ToInt32(ddlTipoRemitido.SelectedValue);
                 objetoSeguimientoOAC.ObservacionSeguimiento = txtObservaciones.Text.ToUpper().Trim();
                 objetoSeguimientoOAC.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserID"]);
+                
+                //CAMBIAR ESTATUS A LA SOLICITUD AL NUMERO 2
+                Seguimiento.ActualizarEstatusSolicitud(Convert.ToInt32(Session["SolicitudParaSeguimientoID"]));
 
                 if (SeguimientoOAC.InsertarSeguimiento(objetoSeguimientoOAC) > 0)
                 {

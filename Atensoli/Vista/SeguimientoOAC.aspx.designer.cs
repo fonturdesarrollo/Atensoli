@@ -103,6 +103,15 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoRemitido;
         
         /// <summary>
+        /// rqrValidaTipoRemitido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaTipoRemitido;
+        
+        /// <summary>
         /// txtObservaciones control.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
+        
+        /// <summary>
+        /// rqrValidaObs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaObs;
         
         /// <summary>
         /// txtCedulaPostulante control.

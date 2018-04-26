@@ -303,6 +303,7 @@
     <Compile Include="Controlador\SeguimientoOAC.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controlador\Seguimiento.cs" />
     <Compile Include="Vista\SeguimientoOAC.aspx.cs">
       <DependentUpon>SeguimientoOAC.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

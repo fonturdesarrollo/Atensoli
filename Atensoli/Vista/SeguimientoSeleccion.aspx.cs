@@ -44,35 +44,6 @@ namespace Atensoli
                     break;
             }
         }
-        private string EstablecerEspecialista()
-        {
-            string resultado = "";
-            string codigoObjeto = Request.QueryString["CodigoObjeto"];
-            switch (codigoObjeto)
-            {
-                case "1023":
-                    resultado = "Especialista de Cobranzas";
-                    break;
-                case "1026":
-                    resultado = "Especialista de Financiamiento";
-                    break;
-                case "1027":
-                    resultado = "Especialista de Movilidad Estudiantil";
-                    break;
-                case "1028":
-                    resultado = "Especialista de Asesoria Legal";
-                    break;
-                case "1029":
-                    lblTitulo.Text = "Consulta de Seguimiento Especialista de Tecnica Automotriz";
-                    break;
-                case "1030":
-                    resultado = "Especialista de Control y Seguimiento OAC";
-                    break;
-                default:
-                    break;
-            }
-            return resultado;
-        }
         private void ProcesoSeleccion()
         {
             string codigoObjeto = Request.QueryString["CodigoObjeto"];
@@ -112,7 +83,6 @@ namespace Atensoli
                 Session["SolicitudParaSeguimientoID"] = Convert.ToInt32(e.CommandArgument.ToString());
                 if (e.CommandName == "RealizarSeguimiento")
                 {
-
                     ProcesoSeleccion();
                 }
             }

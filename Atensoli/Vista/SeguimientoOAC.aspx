@@ -27,7 +27,7 @@
 <%--------------------------%>
 	<script type="text/javascript">
 			$(function () {
-			    $('#txtCedulaPostulante').keydown(function (e) {
+				$('#txtCedulaPostulante').keydown(function (e) {
 			if (e.shiftKey || e.ctrlKey || e.altKey) {
 			e.preventDefault();
 			} else {
@@ -60,10 +60,10 @@
 									<p></p>
 											<div class="row uniform">
 												<div class="6u 12u$(xsmall)">
-												    <asp:Button  runat ="server" ID="btnGuardar" Text ="Actualizar seguimiento" CssClass ="special" OnClick="btnGuardar_Click"/>
+													<asp:Button  runat ="server" ID="btnGuardar" Text ="Actualizar seguimiento" CssClass ="special" OnClick="btnGuardar_Click"/>
 												</div>
 												<div class="6u 12u$(xsmall)">
-												    <asp:Button  runat ="server" ID="btnHistorial" Text ="Historial de seguimiento" />
+													<asp:Button  runat ="server" ID="btnHistorial" Text ="Historial de seguimiento" />
 												</div>
 											</div>
 											<p></p>
@@ -162,11 +162,13 @@
 													<div class="select-wrapper">
 														<asp:DropDownList ID="ddlTipoRemitido" runat="server"  AppendDataBoundItems="True"  ></asp:DropDownList>
 													</div>
+													<ASP:RequiredFieldValidator id="rqrValidaTipoRemitido" runat="server" errormessage="Debe seleccionar el remitente"  controltovalidate="ddlTipoRemitido" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											</div>
 											<p></p>
 											<div class="12u$">
 												<asp:TextBox runat="server" ID="txtObservaciones" TextMode="MultiLine" Rows="2" MaxLength="300" placeholder ="Indique las observaciones"></asp:TextBox>
+												<ASP:RequiredFieldValidator id="rqrValidaObs" runat="server" errormessage="Debe colocar las obervaciones"  controltovalidate="txtObservaciones" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
 											<p></p>
 											<div class="posts">
