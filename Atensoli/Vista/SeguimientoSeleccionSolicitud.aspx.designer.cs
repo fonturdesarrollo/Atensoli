@@ -10,7 +10,7 @@
 namespace Atensoli {
     
     
-    public partial class SeguimientoSeleccion {
+    public partial class SeguimientoSeleccionSolicitud {
         
         /// <summary>
         /// messageBox control.
@@ -49,22 +49,22 @@ namespace Atensoli {
         protected global::System.Web.UI.HtmlControls.HtmlForm principal;
         
         /// <summary>
-        /// txtSolicitud control.
+        /// txtCedula control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSolicitud;
+        protected global::System.Web.UI.WebControls.TextBox txtCedula;
         
         /// <summary>
-        /// rqrvalidaSolicitud control.
+        /// rqrvalidaCedula control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaSolicitud;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaCedula;
         
         /// <summary>
         /// btnConsultar control.

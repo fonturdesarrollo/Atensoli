@@ -63,7 +63,7 @@
 													<asp:Button  runat ="server" ID="btnGuardar" Text ="Actualizar seguimiento" CssClass ="special" OnClick="btnGuardar_Click"/>
 												</div>
 												<div class="6u 12u$(xsmall)">
-													<asp:Button  runat ="server" ID="btnHistorial" Text ="Historial de seguimiento" />
+													<asp:Button  runat ="server" ID="btnHistorial" Text ="Historial de seguimiento" CausesValidation="False" OnClick="btnHistorial_Click" />
 												</div>
 											</div>
 											<p></p>

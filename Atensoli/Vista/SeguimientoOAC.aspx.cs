@@ -18,19 +18,52 @@ namespace Atensoli
         {
             if(!IsPostBack)
             {
-                if (dtGrid != null)
-                {
-                    dtGrid.Clear();
-                }
-                DataTable dt = new DataTable();
-                dt.Columns.AddRange(new DataColumn[3] { new DataColumn("CedulaPostulante"), new DataColumn("NombrePostulante"), new DataColumn("Telefono") });
-                ViewState["Soporte"] = dt;
-                this.BindGrid();
+        
                 lblTitulo.Text = "Inicio del seguimiento por parte de la OAC a la solicitud " + Session["SolicitudParaSeguimientoID"].ToString();
+                CargarGridPostulados();
+                if (Session["SolicitudIDParaSeguimiento"] != null)
+                {
+                    CargarPostulados();
+                }
                 CargarConsulta();
                 CargarTipoAccion();
                 CargarTipoRemitido();
             }
+        }
+        private void CargarPostulados()
+        {
+            try
+            {
+                SqlDataReader dr = SeguimientoOAC.ObtenerPostulados(Convert.ToInt32(Session["SolicitudIDParaSeguimiento"].ToString()));
+
+                if(dr.HasRows)
+                {
+                    while(dr.Read())
+                    {
+                        dtGrid = (DataTable)ViewState["Soporte"];
+                        dtGrid.Rows.Add(dr["CedulaPostulado"].ToString(), dr["NombrePostulado"].ToString(), dr["TelefonoPostulado"].ToString());
+                        ViewState["Soporte"] = dtGrid;
+                        this.BindGrid();
+                    }
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+
+                messageBox.ShowMessage(ex.Message + ex.StackTrace);
+            }
+        }
+        private void CargarGridPostulados()
+        {
+            if (dtGrid != null)
+            {
+                dtGrid.Clear();
+            }
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[3] { new DataColumn("CedulaPostulante"), new DataColumn("NombrePostulante"), new DataColumn("Telefono") });
+            ViewState["Soporte"] = dt;
+            this.BindGrid();
         }
         private void CargarTipoAccion()
         {
@@ -265,6 +298,11 @@ namespace Atensoli
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             ProcesoSeguimientoOAC();
+        }
+
+        protected void btnHistorial_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SeguimientoHistorial.aspx");
         }
     }
 }

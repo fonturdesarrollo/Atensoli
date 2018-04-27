@@ -10,7 +10,7 @@
 namespace Atensoli {
     
     
-    public partial class SeguimientoSeleccion {
+    public partial class SeguimientoHistorial {
         
         /// <summary>
         /// messageBox control.
@@ -31,15 +31,6 @@ namespace Atensoli {
         protected global::System.Web.UI.WebControls.Label lblTitulo;
         
         /// <summary>
-        /// lnkInicio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkInicio;
-        
-        /// <summary>
         /// principal control.
         /// </summary>
         /// <remarks>
@@ -47,33 +38,6 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm principal;
-        
-        /// <summary>
-        /// txtSolicitud control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSolicitud;
-        
-        /// <summary>
-        /// rqrvalidaSolicitud control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrvalidaSolicitud;
-        
-        /// <summary>
-        /// btnConsultar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConsultar;
         
         /// <summary>
         /// gridDetalle control.

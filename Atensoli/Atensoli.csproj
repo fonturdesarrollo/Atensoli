@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\Varios.txt" />
+    <Content Include="Vista\SeguimientoHistorial.aspx" />
+    <Content Include="Vista\SeguimientoSeleccionSolicitud.aspx" />
     <Content Include="Vista\SeguimientoOAC.aspx" />
     <Content Include="Vista\SeguimientoSeleccion.aspx" />
     <Content Include="Vista\EstadisticasGenerales.aspx" />
@@ -304,6 +306,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controlador\Seguimiento.cs" />
+    <Compile Include="Vista\SeguimientoHistorial.aspx.cs">
+      <DependentUpon>SeguimientoHistorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguimientoHistorial.aspx.designer.cs">
+      <DependentUpon>SeguimientoHistorial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SeguimientoSeleccionSolicitud.aspx.cs">
+      <DependentUpon>SeguimientoSeleccionSolicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\SeguimientoSeleccionSolicitud.aspx.designer.cs">
+      <DependentUpon>SeguimientoSeleccionSolicitud.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\SeguimientoOAC.aspx.cs">
       <DependentUpon>SeguimientoOAC.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

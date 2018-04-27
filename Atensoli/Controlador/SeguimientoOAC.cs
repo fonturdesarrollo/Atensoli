@@ -52,5 +52,13 @@ namespace Atensoli
             }
             return codigoSeguimientoNuevo;
         }
+        public static SqlDataReader ObtenerPostulados(int solicitudID)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@SolicituID", SqlDbType.Int, 0, solicitudID),
+                };
+            return DBHelper.ExecuteDataReader("usp_SeguimientoOAC_ObtenerPostulados", dbParams);
+        }
     }
 }

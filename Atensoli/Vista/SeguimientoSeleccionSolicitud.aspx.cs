@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Atensoli
 {
-    public partial class SeguimientoSeleccion : Seguridad.SeguridadAuditoria
+    public partial class SeguimientoSeleccionSolicitud : Seguridad.SeguridadAuditoria
     {
         protected new void Page_Load(object sender, EventArgs e)
         {
@@ -23,22 +23,22 @@ namespace Atensoli
             switch (codigoObjeto)
             {
                 case "1023":
-                    lblTitulo.Text = "Consulta de Seguimiento Especialista de Cobranzas";
+                    lblTitulo.Text = "Selección de Solicitud para Seguimiento Especialista de Cobranzas";
                     break;
                 case "1026":
-                    lblTitulo.Text = "Consulta de Seguimiento Especialista de Financiamiento";
+                    lblTitulo.Text = "Selección de Solicitud para Seguimiento Especialista de Financiamiento";
                     break;
                 case "1027":
-                    lblTitulo.Text = "Consulta de Seguimiento Especialista de Movilidad Estudiantil";
+                    lblTitulo.Text = "Selección de Solicitud para Seguimiento Especialista de Movilidad Estudiantil";
                     break;
                 case "1028":
-                    lblTitulo.Text = "Consulta de Seguimiento Especialista de Asesoria Legal";
+                    lblTitulo.Text = "Selección de Solicitud para Seguimiento Especialista de Asesoria Legal";
                     break;
                 case "1029":
-                    lblTitulo.Text = "Consulta de Seguimiento Especialista de Tecnica Automotriz";
+                    lblTitulo.Text = "Selección de Solicitud para Seguimiento Especialista de Tecnica Automotriz";
                     break;
                 case "1030":
-                    lblTitulo.Text = "Consulta de Seguimiento Especialista de Control y Seguimiento OAC";
+                    lblTitulo.Text = "Selección de Solicitud para Seguimiento Especialista de Control y Seguimiento OAC";
                     break;
                 default:
                     break;
@@ -61,7 +61,7 @@ namespace Atensoli
         {
             try
             {
-                DataSet ds = Seguimiento.ObtenerSolicitudEnSeguimiento(Convert.ToInt32(txtSolicitud.Text.Trim()));
+                DataSet ds = ConsultarSolicitud.ObtenerConsultaSolicitud(txtCedula.Text.Trim(), 0);
                 this.gridDetalle.DataSource = ds.Tables[0];
                 this.gridDetalle.DataBind();
             }
@@ -80,9 +80,8 @@ namespace Atensoli
         {
             try
             {
-                Session["SolicitudIDParaSeguimiento"] = Convert.ToInt32(e.CommandArgument.ToString());
                 Session["SolicitudParaSeguimientoID"] = Convert.ToInt32(e.CommandArgument.ToString());
-                if (e.CommandName == "ConsultarSeguimiento")
+                if (e.CommandName == "RealizarSeguimiento")
                 {
                     ProcesoSeleccion();
                 }

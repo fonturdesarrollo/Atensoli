@@ -32,21 +32,21 @@
 												<li><ASP:HyperLink runat="server" ID ="lnkConsultarSolicitud"  navigateurl ="~/Vista/ConsultarSolicitud.aspx"  Text ="Consultar solicitud"></ASP:HyperLink></li>
 											</ul>
 										</li>
-										
+
 										<li>
-											<span class="opener">Seleccionar solicitud para seguimiento</span>
+											<span class="opener">Seleccionar solicitud para comenzar seguimiento</span>
 												<ul>
-													<li><ASP:HyperLink runat="server" ID ="lnkCobranzas"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1023"  Text ="Cobranzas"></ASP:HyperLink></li>
-													<li><ASP:HyperLink runat="server" ID ="lnkFinanciamiento"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1026"  Text ="Financiamiento"></ASP:HyperLink></li>
-													<li><ASP:HyperLink runat="server" ID ="lnkMovilidadEstudiantil"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1027"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
-													<li><ASP:HyperLink runat="server" ID ="lnkAsesoriaLegal"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1028"  Text ="Asesoria Legal"></ASP:HyperLink></li>
-													<li><ASP:HyperLink runat="server" ID ="lnkTecncicaAutomotriz"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1029"  Text ="Tecnica Automotriz"></ASP:HyperLink></li>
-													<li><ASP:HyperLink runat="server" ID ="lnkOAC"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1030"  Text ="Control y Seguimiento OAC"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCobranzas"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1023"  Text ="Cobranzas"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkFinanciamiento"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1026"  Text ="Financiamiento"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkMovilidadEstudiantil"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1027"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkAsesoriaLegal"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1028"  Text ="Asesoria Legal"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkTecncicaAutomotriz"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1029"  Text ="Tecnica Automotriz"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkOAC"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1030"  Text ="Control y Seguimiento OAC"></ASP:HyperLink></li>
 												</ul>
 										</li>
 
 										<li>
-											<span class="opener">Seguimiento</span>
+											<span class="opener">Seleccionar solicitud en seguimiento</span>
 												<ul>
 												
 													<li><ASP:HyperLink runat="server" ID ="HyperLink1"  navigateurl ="~/Vista/SeguimientoSeleccion.aspx?CodigoObjeto=1023"  Text ="Cobranzas"></ASP:HyperLink></li>

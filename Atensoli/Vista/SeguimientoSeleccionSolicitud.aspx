@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeguimientoSeleccion.aspx.cs" Inherits="Atensoli.SeguimientoSeleccion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeguimientoSeleccionSolicitud.aspx.cs" Inherits="Atensoli.SeguimientoSeleccionSolicitud" %>
 
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
 <%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
@@ -17,11 +17,11 @@
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<link rel="stylesheet" href="../Styles/simpleAutoComplete.css"  />
 		<script src="../js/Util.js" type="text/javascript"></script>
-<%--        <script src="../js/jquery.js"></script>--%>
-		<script  src="../js/jquery-ui-1.8rc3.custom.min.js"></script>
+<%--        <script src="../js/jquery.js"></script>--%>      
+		
 		<script src="../assets/js/skel.min.js"></script>
 		<script src="../assets/js/util.js"></script>
-		<script src="../assets/js/main.js"></script>       
+		<script src="../assets/js/main.js"></script>      
 
 <%--------------------------%>
 
@@ -62,8 +62,8 @@
 										<p></p>
 											<div class="row uniform">
 												<div class="6u 12u$(xsmall)">
-													<asp:TextBox runat ="server" ID ="txtSolicitud" placeholder ="Indique el número solicitud"></asp:TextBox>
-													<ASP:RequiredFieldValidator id="rqrvalidaSolicitud" runat="server" errormessage="Debe indicar el número solicitud"  controltovalidate="txtSolicitud" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+													<asp:TextBox runat ="server" ID ="txtCedula" placeholder ="Indique el número de cedula del solicitante"></asp:TextBox>
+													<ASP:RequiredFieldValidator id="rqrvalidaCedula" runat="server" errormessage="Debe colocar el número de cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 												</div>
 											   <div class="6u 12u$(xsmall)">
 													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />
@@ -94,13 +94,26 @@
 																  <asp:Label runat="server" ID="lblFechaSolicitud" Text='<%# Eval("FechaRegistroSolicitud") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Fecha Seguimiento" >
+														  <asp:TemplateField HeaderText="Estado" >
 															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblEstado" Text='<%# Eval("FechaUltimoSeguimiento") %>'  ></asp:Label>
+																  <asp:Label runat="server" ID="lblEstado" Text='<%# Eval("NombreEstado") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-
-
+														  <asp:TemplateField HeaderText="Remitido">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblRemitido" Text='<%# Eval("NombreTipoRemitido") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Tipo Solicitud" >
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblTipoSolicitud" Text='<%# Eval("NombreTipoSolicitud") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Tipo Solicitante">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblTipoSolicitante" Text='<%# Eval("NombreTipoSolicitante") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Cedula Solicitante">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblCedulaSolicitante" Text='<%# Eval("CedulaSolicitante") %>'  ></asp:Label>
@@ -136,9 +149,19 @@
 																  <asp:Label runat="server" ID="lblTipoInsumoDetalle" Text='<%# Eval("NombreTipoInsumoDetalle") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Observaciones Solicitante">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblObsSol" Text='<%# Eval("ObservacionesSolicitante") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Observaciones Analista">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblObsAnalis" Text='<%# Eval("ObservacionesAnalista") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
 														   <asp:TemplateField HeaderText="Acciones" HeaderStyle-Width="100">
 															  <ItemTemplate>
-																<asp:ImageButton runat="server" ID="btnSeguimiento" AlternateText="Consultar seguimiento" ToolTip="Consultar seguimiento" ImageUrl="~/images/asignar_estatus_icono.png"  CommandName="ConsultarSeguimiento"  CommandArgument='<%# Eval("SolicitudID") %>'  CausesValidation ="false"/> 
+																<asp:ImageButton runat="server" ID="btnSeguimiento" AlternateText="Realizar seguimiento" ToolTip="Realizar seguimiento" ImageUrl="~/images/asignar_estatus_icono.png"  CommandName="RealizarSeguimiento"  CommandArgument='<%# Eval("SolicitudID") %>'  OnClientClick="return ConfirmacionSeguimiento();" CausesValidation ="false"/> 
 															  </ItemTemplate>
 														  </asp:TemplateField>
 													  </Columns>
