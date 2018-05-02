@@ -231,8 +231,7 @@
 																		DataSourceID="SqlDataSource4" 
 																		DataTextField ="NombreEstatusFichaSocial"
 																		DataValueField ="EstatusFichaSocialID"
-																		SelectedValue ='<%# Bind("EstatusFichaSocialID") %>'
-																		>
+																		SelectedValue ='<%# Bind("EstatusFichaSocialID") %>'>
 																  </asp:DropDownList>
 																<asp:SqlDataSource 
 																	ID="SqlDataSource4" 
@@ -243,7 +242,7 @@
 														  </asp:TemplateField>
 														<asp:TemplateField HeaderText="Quitar">
 															<ItemTemplate>
-																<asp:ImageButton runat="server" ID="btnEliminar" AlternateText="Eliminar Detalle" CausesValidation="false"  ToolTip="Eliminar Detalle"  ImageUrl="~/Images/eliminar.png"  CommandName="EliminarDetalle" CommandArgument='<%# Eval("CedulaPostulante") %>' />
+																<asp:ImageButton runat="server" ID="btnEliminar" AlternateText="Eliminar Detalle" CausesValidation="false"  ToolTip="Eliminar Detalle"  ImageUrl="~/Images/eliminar.png"  CommandName="EliminarDetalle" CommandArgument='<%# Bind("CedulaPostulante") %>' />
 															</ItemTemplate>
 														</asp:TemplateField>
 													</Columns>

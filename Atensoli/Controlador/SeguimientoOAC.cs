@@ -42,7 +42,6 @@ namespace Atensoli
                 {
                     
                     DataRow dr = dtGrid.Rows[i];
-                    var x = dr["EstatusFichaSocialID"].ToString();
                     SqlParameter[] dbParams3 = new SqlParameter[]
                     {
                         DBHelper.MakeParam("@SolicitudID", SqlDbType.Int, 0, objetoSeguimientoOAC.SolicitudID),

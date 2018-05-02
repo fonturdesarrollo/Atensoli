@@ -23,11 +23,8 @@ namespace Atensoli
                 lblTitulo.Text = Session["NombreGerenciaSeguimiento"].ToString() + " seguimiento a la solicitud " + Session["SolicitudParaSeguimientoID"].ToString();
                 CargarGridPostulados();
                 CargarGridDocumentos();
-                if (Session["SolicitudIDParaSeguimiento"] != null)
-                {
-                    CargarPostulados();
-                    CargarDocumentos();
-                }
+                CargarPostulados();
+                CargarDocumentos();
                 CargarConsulta();
                 CargarTipoAccion();
                 CargarTipoRemitido();
@@ -53,12 +50,22 @@ namespace Atensoli
                     break;
             }
         }
-
+        private void CargarGridPostulados()
+        {
+            if (dtGrid != null)
+            {
+                dtGrid.Clear();
+            }
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[4] { new DataColumn("CedulaPostulante"), new DataColumn("NombrePostulante"), new DataColumn("Telefono"), new DataColumn("EstatusFichaSocialID") });
+            ViewState["Soporte"] = dt;
+            this.BindGrid();
+        }
         private void CargarPostulados()
         {
             try
             {
-                SqlDataReader dr = SeguimientoOAC.ObtenerPostulados(Convert.ToInt32(Session["SolicitudIDParaSeguimiento"].ToString()));
+                SqlDataReader dr = SeguimientoOAC.ObtenerPostulados(Convert.ToInt32(Session["SolicitudParaSeguimientoID"].ToString()));
 
                 if(dr.HasRows)
                 {
@@ -100,17 +107,7 @@ namespace Atensoli
                 messageBox.ShowMessage(ex.Message + ex.StackTrace);
             }
         }
-        private void CargarGridPostulados()
-        {
-            if (dtGrid != null)
-            {
-                dtGrid.Clear();
-            }
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[4] { new DataColumn("CedulaPostulante"), new DataColumn("NombrePostulante"), new DataColumn("Telefono") , new DataColumn("EstatusFichaSocialID") });
-            ViewState["Soporte"] = dt;
-            this.BindGrid();
-        }
+
         private void CargarGridDocumentos()
         {
             if (dtGridDocumentos != null)
@@ -326,16 +323,19 @@ namespace Atensoli
             {
                 resultado = false;
                 messageBox.ShowMessage("Debe indicar el numero de cedula del postulado");
+                return resultado;
             }
             if (txtTelefonoPostulante.Text == "")
             {
                 resultado = false;
                 messageBox.ShowMessage("Debe indicar el numero de telefono del postulado");
+                return resultado;
             }
             if(SeguimientoOAC.EsPostuladoEnOtraSolicitud(Convert.ToInt32(Session["SolicitudParaSeguimientoID"]),Convert.ToInt32(txtCedulaPostulante.Text)))
             {
                 resultado = false;
                 messageBox.ShowMessage("Este postulado ya fue asignado a otra solicitud");
+                return resultado;
             }
             return resultado;
         }
@@ -392,17 +392,25 @@ namespace Atensoli
 
         protected void grdSoporte_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            for (int i = dtGrid.Rows.Count - 1; i >= 0; i--)
+            if (Session["NombreGerenciaSeguimiento"].ToString() == "OAC")
             {
-                DataRow dr = dtGrid.Rows[i];
-                if (dr["CedulaPostulante"].ToString() == e.CommandArgument.ToString())
+                for (int i = dtGrid.Rows.Count - 1; i >= 0; i--)
                 {
-                    dr.Delete();
-                    ViewState["Soporte"] = dtGrid;
-                    this.BindGrid();
-                    grdSoporte.DataBind();
+                    DataRow dr = dtGrid.Rows[i];
+                    if (dr["CedulaPostulante"].ToString() == e.CommandArgument.ToString())
+                    {
+                        dr.Delete();
+                        ViewState["Soporte"] = dtGrid;
+                        this.BindGrid();
+                        grdSoporte.DataBind();
+                    }
                 }
             }
+            else
+            {
+                messageBox.ShowMessage("Solo OAC puede eliminar postulados.");
+            }
+
         }
     private void ProcesoSeguimientoOAC()
     {
@@ -419,6 +427,8 @@ namespace Atensoli
 
                 //CAMBIAR ESTATUS A LA SOLICITUD AL NUMERO 2
                 Seguimiento.ActualizarEstatusSolicitud(Convert.ToInt32(Session["SolicitudParaSeguimientoID"]));
+                
+                ActualizarDtgrid();
                 if (SeguimientoOAC.InsertarSeguimiento(objetoSeguimientoOAC) > 0)
                 {
                     AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nuevo seguimiento a la solicitud: " + Convert.ToInt32(Session["SolicitudParaSeguimientoID"]) , System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
@@ -485,6 +495,20 @@ namespace Atensoli
                 messageBox.ShowMessage("Ya agregó a la lista este tipo de documento [" + ddlTipoSoporte.SelectedItem + "]");
             }
 
+        }
+        private void ActualizarDtgrid()
+        {
+            int contador = 0;
+            foreach (GridViewRow dr in grdSoporte.Rows)
+            {
+                
+                int estatusID;
+                estatusID = Utils.utils.ToInt(((DropDownList)dr.FindControl("ddlEstatus")).SelectedValue);
+                DataRow r = dtGrid.Rows[contador];
+                contador++;
+
+                r["EstatusFichaSocialID"] = estatusID;
+            }
         }
 
     }
