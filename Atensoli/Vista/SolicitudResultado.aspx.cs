@@ -47,7 +47,11 @@ namespace Atensoli
                     while (dr.Read())
                     {
                         lblNumeroSOlicitud.Text = dr["SolicitudID"].ToString();
-                        lblSolicitante.Text = dr["SolicitanteNombre"].ToString();
+                        lblRemitido.Text = dr["NombreTipoRemitido"].ToString();
+                        lblCedulaSolicitante.Text = dr["CedulaSolicitante"].ToString();
+                        lblSolicitanteNombre.Text = dr["SolicitanteNombre"].ToString();
+                        lblRifOrganizacion.Text = dr["RifOrganizacion"].ToString();
+                        lblNombreOrganizacion.Text = dr["NombreOrganizacion"].ToString();
                     }
                 }
                 dr.Close();

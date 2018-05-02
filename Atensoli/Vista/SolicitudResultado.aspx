@@ -56,10 +56,34 @@
 												<asp:Label runat ="server" ID ="lblNumeroSOlicitud" Text=""></asp:Label>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:Label runat ="server" ID ="Label2" Text="Solicitante"></asp:Label>
+												<asp:Label runat ="server" ID ="Label6" Text="Remitido"></asp:Label>
 											</div>
 											<div class="6u 12u$(xsmall)">
-												<asp:Label runat ="server" ID ="lblSolicitante" Text=""></asp:Label>
+												<asp:Label runat ="server" ID ="lblRemitido" Text=""></asp:Label>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="Label2" Text="Cedula"></asp:Label>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="lblCedulaSolicitante" Text=""></asp:Label>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="Label3" Text="Nombre Solicitante"></asp:Label>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="lblSolicitanteNombre" Text=""></asp:Label>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="Label4" Text="Rif Organización"></asp:Label>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="lblRifOrganizacion" Text=""></asp:Label>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="Label5" Text="Nombre Organización"></asp:Label>
+											</div>
+											<div class="6u 12u$(xsmall)">
+												<asp:Label runat ="server" ID ="lblNombreOrganizacion"></asp:Label>
 											</div>
 
 											<div class="12u$">
