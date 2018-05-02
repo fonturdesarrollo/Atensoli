@@ -60,19 +60,14 @@
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
-											<div class="row uniform">
-												<div class="6u 12u$(xsmall)">
-													<asp:TextBox runat ="server" ID ="txtSolicitud" placeholder ="Indique el número solicitud"></asp:TextBox>
-													<ASP:RequiredFieldValidator id="rqrvalidaSolicitud" runat="server" errormessage="Debe indicar el número solicitud"  controltovalidate="txtSolicitud" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
-												</div>
-											   <div class="6u 12u$(xsmall)">
+											<div class="posts">
+												<article>
+													<asp:TextBox runat ="server" ID ="txtSolicitud" placeholder ="Número solicitud"></asp:TextBox>
+												</article>
+												<article>
 													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />
-											   </div>
-	
-												<div class="6u 12u$(xsmall)">
-													
-												</div>
-										   </div>
+												</article>
+											</div>
 											<p></p>
 											<div class="table-wrapper">
 												  <asp:GridView ID="gridDetalle" runat="server" 

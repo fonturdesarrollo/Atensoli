@@ -8,13 +8,15 @@ using System.Web.UI.WebControls;
 
 namespace Atensoli
 {
-    public partial class SeguimientoHistorial : System.Web.UI.Page
+    public partial class SeguimientoHistorial : Seguridad.SeguridadAuditoria
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
+                lblTitulo.Text = "Historial del seguimiento solicitud número [" + Convert.ToInt32(Session["SolicitudParaSeguimientoID"].ToString()) +"]";
                 CargarSeguimientoHistorial();
+                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Consultó historial de seguimiento a la solicitud: " + Convert.ToInt32(Session["SolicitudParaSeguimientoID"]), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
             }
         }
         private void CargarSeguimientoHistorial()

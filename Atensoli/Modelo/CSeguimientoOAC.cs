@@ -17,8 +17,9 @@ namespace Atensoli
         private int _gerenciaID;
         private string _observacionSeguimiento;
         private int _seguridadUsuarioDatosID;
-
-        public CSeguimientoOAC(int _solicitudSeguimientoID, int _solicitudID, int _tipoAccionID, int _gerenciaID, string _observacionSeguimiento, int _seguridadUsuarioDatosID)
+        private int _tipoRemitidoID;
+        private int _tipoInstruccionSeguimientoID;
+        public CSeguimientoOAC(int _solicitudSeguimientoID, int _solicitudID, int _tipoAccionID, int _gerenciaID, string _observacionSeguimiento, int _seguridadUsuarioDatosID, int _tipoRemitidoID, int _tipoInstruccionSeguimientoID)
         {
             this.SolicitudSeguimientoID = _solicitudSeguimientoID;
             this.SolicitudID = _solicitudID;
@@ -26,8 +27,10 @@ namespace Atensoli
             this.GerenciaID = _gerenciaID;
             this.ObservacionSeguimiento = _observacionSeguimiento;
             this.SeguridadUsuarioDatosID = _seguridadUsuarioDatosID;
-        }
+            this.TipoRemitidoID = _tipoRemitidoID;
+            this.TipoInstruccionSeguimientoID = _tipoInstruccionSeguimientoID;
 
+        }
 
 
         public int SolicitudSeguimientoID
@@ -105,6 +108,30 @@ namespace Atensoli
             set
             {
                 _seguridadUsuarioDatosID = value;
+            }
+        }
+        public int TipoRemitidoID
+        {
+            get
+            {
+                return _tipoRemitidoID;
+            }
+
+            set
+            {
+                _tipoRemitidoID = value;
+            }
+        }
+        public int TipoInstruccionSeguimientoID
+        {
+            get
+            {
+                return _tipoInstruccionSeguimientoID;
+            }
+
+            set
+            {
+                _tipoInstruccionSeguimientoID = value;
             }
         }
     }

@@ -49,13 +49,26 @@ namespace Atensoli
             string codigoObjeto = Request.QueryString["CodigoObjeto"];
             switch (codigoObjeto)
             {
-                case "1030":
-                    Response.Redirect("SeguimientoOAC.aspx");
+                case "1023":
+                    Session["NombreGerenciaSeguimiento"] = "Cobranzas";
                     break;
-                default:
-                    Response.Redirect("EnConstruccion.aspx");
+                case "1026":
+                    Session["NombreGerenciaSeguimiento"] = "Financiamiento";
+                    break;
+                case "1027":
+                    Session["NombreGerenciaSeguimiento"] = "Movilidad";
+                    break;
+                case "1028":
+                    Session["NombreGerenciaSeguimiento"] = "Legal";
+                    break;
+                case "1029":
+                    Session["NombreGerenciaSeguimiento"] = "TecnicaAutomotriz";
+                    break;
+                case "1030":
+                    Session["NombreGerenciaSeguimiento"] = "OAC";
                     break;
             }
+            Response.Redirect("SeguimientoOAC.aspx");
         }
         private void CargarConsulta()
         {

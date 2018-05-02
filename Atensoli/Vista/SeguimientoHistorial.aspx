@@ -52,6 +52,7 @@
 										<strong><asp:Label runat ="server" ID ="lblTitulo" Text="Seguimiento Historial"></asp:Label></strong>
 									</a>
 									<ul class="icons">
+										<asp:HyperLink runat ="server" ID="lnkAtras" NavigateUrl="~/Vista/SeguimientoOAC.aspx" Text="Volver"></asp:HyperLink>
 									</ul>
 								</header>
 
@@ -90,9 +91,19 @@
 																  <asp:Label runat="server" ID="lblTipoUnidad" Text='<%# Eval("NombreTipoAccion") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Remitente">
+															  <ItemTemplate>    
+																  <asp:Label runat="server" ID="lblRemitente" Text='<%# Eval("NombreTipoRemitido") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Instruccion">
+															  <ItemTemplate>    
+																  <asp:Label runat="server" ID="lblIntruccion" Text='<%# Eval("NombreTipoInstruccionSeguimiento") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Remitido">
 															  <ItemTemplate>    
-																  <asp:Label runat="server" ID="lblTipoInsumo" Text='<%# Eval("NombreGerencia") %>'  ></asp:Label>
+																  <asp:Label runat="server" ID="lblTipoInsumo" Text='<%# Eval("Remitido") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Usuario">

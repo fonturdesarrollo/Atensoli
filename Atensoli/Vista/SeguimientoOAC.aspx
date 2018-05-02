@@ -151,54 +151,105 @@
 														  </Columns>
 													  </asp:GridView>
 											</div>
-											<div class="row uniform">
-												<div class="6u 12u$(xsmall)">
+											<div class="posts">
+												<article>
 													<div class="select-wrapper">
-														<asp:DropDownList ID="ddlAccionTramite" runat="server"  AppendDataBoundItems="True"  ></asp:DropDownList>
+														<asp:DropDownList ID="ddlTipoSoporte" runat="server"  AppendDataBoundItems="True"  ></asp:DropDownList>
 													</div>
-													<ASP:RequiredFieldValidator id="rqrvalidaAccionTramite" runat="server" errormessage="Debe seleccionar la acción a tomar"  controltovalidate="ddlAccionTramite" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
-												</div>
-												<div class="6u 12u$(xsmall)">
-													<div class="select-wrapper">
-														<asp:DropDownList ID="ddlTipoRemitido" runat="server"  AppendDataBoundItems="True"  ></asp:DropDownList>
+												</article>
+												<article>
+														<asp:Button runat ="server" Text ="Agregar documento" ID ="btnAgregar" CausesValidation ="false" OnClick="btnAgregar_Click" />
+											  </article>
+												<article>
+													<div class="table-wrapper">
+														<asp:GridView ID ="grdDocumentos" runat ="server" CssClass ="Grid" AutoGenerateColumns ="False" EmptyDataText ="No existen registros" OnRowCommand="grdDocumentos_RowCommand">
+															<Columns>
+																<asp:BoundField  DataField ="NombreTipoSoporte" HeaderText ="Documentos entregados"/>
+																<asp:BoundField DataField ="TipoSoporteID" HeaderText ="Codigo" Visible ="false" />
+																<asp:TemplateField HeaderText="Quitar">
+																	<ItemTemplate>
+																	<asp:ImageButton runat="server" ID="btnEliminar" AlternateText="Eliminar Detalle" CausesValidation="false"  ToolTip="Eliminar Detalle"  ImageUrl="~/Images/eliminar.png"  CommandName="EliminarDetalle" CommandArgument='<%# Eval("TipoSoporteID") %>' />
+																	</ItemTemplate>
+																</asp:TemplateField>
+															</Columns>
+														</asp:GridView>
 													</div>
-													<ASP:RequiredFieldValidator id="rqrValidaTipoRemitido" runat="server" errormessage="Debe seleccionar el remitente"  controltovalidate="ddlTipoRemitido" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+											</article>
+										</div>
+
+										<div class="posts">
+											<article>
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlAccionTramite" runat="server"  AppendDataBoundItems="True"  ></asp:DropDownList>
 												</div>
-											</div>
-											<p></p>
+												<ASP:RequiredFieldValidator id="rqrvalidaAccionTramite" runat="server" errormessage="Debe seleccionar la acción a tomar"  controltovalidate="ddlAccionTramite" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+
+											</article>
+											<article>
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlInstruccion" runat="server"  AppendDataBoundItems="True"  ></asp:DropDownList>
+												</div>
+													<ASP:RequiredFieldValidator id="rqrValidaInstruccion" runat="server" errormessage="Debe indicar la instrucción"  controltovalidate="ddlInstruccion" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+											</article>
+											<article>
+												<div class="select-wrapper">
+													<asp:DropDownList ID="ddlTipoRemitido" runat="server"  AppendDataBoundItems="True"  ></asp:DropDownList>
+												</div>
+												<ASP:RequiredFieldValidator id="rqrValidaTipoRemitido" runat="server" errormessage="Debe seleccionar el remitente"  controltovalidate="ddlTipoRemitido" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+
+											</article>
+										</div>
+										<div class="row uniform">
 											<div class="12u$">
 												<asp:TextBox runat="server" ID="txtObservaciones" TextMode="MultiLine" Rows="2" MaxLength="300" placeholder ="Indique las observaciones"></asp:TextBox>
 												<ASP:RequiredFieldValidator id="rqrValidaObs" runat="server" errormessage="Debe colocar las obervaciones"  controltovalidate="txtObservaciones" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
 											</div>
-											<p></p>
-											<div class="posts">
-												<article>
-													<asp:TextBox runat ="server" placeholder ="Cedula postulado" ID ="txtCedulaPostulante"  MaxLength="9"/>
-												</article>
-												<article>
-													<asp:TextBox runat ="server" placeholder ="Telefono postulado" ID ="txtTelefonoPostulante"   MaxLength="32"/>
-												</article>
-												<article>
-													<asp:Button runat ="server" Text ="Agregar postulado" ID ="Button1" OnClick="btnAgregarPostulante_Click"  />
-												</article>
-
-											</div>
-											<div class="12u$">
-												<div class="table-wrapper">
-													<asp:GridView ID ="grdSoporte" runat ="server" CssClass ="Grid" AutoGenerateColumns ="False" EmptyDataText ="No existen registros" OnRowCommand="grdSoporte_RowCommand" >
-														<Columns>
-															<asp:BoundField  DataField ="CedulaPostulante" HeaderText ="Cedula Postulado"/>
-															<asp:BoundField DataField ="NombrePostulante" HeaderText ="Nombre Postulado" />
-															<asp:BoundField DataField ="Telefono" HeaderText ="Telefono" />
-															<asp:TemplateField HeaderText="Quitar">
-																<ItemTemplate>
-																	<asp:ImageButton runat="server" ID="btnEliminar" AlternateText="Eliminar Detalle" CausesValidation="false"  ToolTip="Eliminar Detalle"  ImageUrl="~/Images/eliminar.png"  CommandName="EliminarDetalle" CommandArgument='<%# Eval("CedulaPostulante") %>' />
-																</ItemTemplate>
-															</asp:TemplateField>
-														</Columns>
-													</asp:GridView>
-												</div>
 										</div>
+										<p></p>														
+										<div class="posts">
+											<article>
+												<asp:TextBox runat ="server" placeholder ="Cedula postulado" ID ="txtCedulaPostulante"  MaxLength="9"/>
+											</article>
+											<article>
+												<asp:TextBox runat ="server" placeholder ="Telefono postulado" ID ="txtTelefonoPostulante"   MaxLength="32"/>
+											</article>
+											<article>
+												<asp:Button runat ="server" Text ="Agregar postulado" ID ="Button1" OnClick="btnAgregarPostulante_Click"  />
+											</article>
+										</div>
+  
+										<div class="12u$">
+											<div class="table-wrapper">
+												<asp:GridView ID ="grdSoporte" runat ="server" CssClass ="Grid" AutoGenerateColumns ="False" EmptyDataText ="No existen registros" OnRowCommand="grdSoporte_RowCommand" >
+													<Columns>
+														<asp:BoundField  DataField ="CedulaPostulante"   HeaderText ="Cedula Postulado" />
+														<asp:BoundField DataField ="NombrePostulante" HeaderText ="Nombre Postulado" />
+														<asp:BoundField DataField ="Telefono" HeaderText ="Telefono" />
+														 <asp:TemplateField HeaderText="Ficha Social">
+															  <ItemTemplate>
+																  <asp:DropDownList runat="server" ID="ddlEstatus"
+																		DataSourceID="SqlDataSource4" 
+																		DataTextField ="NombreEstatusFichaSocial"
+																		DataValueField ="EstatusFichaSocialID"
+																		SelectedValue ='<%# Bind("EstatusFichaSocialID") %>'
+																		>
+																  </asp:DropDownList>
+																<asp:SqlDataSource 
+																	ID="SqlDataSource4" 
+																	runat="server" ConnectionString="<%$ ConnectionStrings:CallCenterConnectionString %>" 
+																	SelectCommand="SELECT *  FROM [EstatusFichaSocial] ">
+																</asp:SqlDataSource>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														<asp:TemplateField HeaderText="Quitar">
+															<ItemTemplate>
+																<asp:ImageButton runat="server" ID="btnEliminar" AlternateText="Eliminar Detalle" CausesValidation="false"  ToolTip="Eliminar Detalle"  ImageUrl="~/Images/eliminar.png"  CommandName="EliminarDetalle" CommandArgument='<%# Eval("CedulaPostulante") %>' />
+															</ItemTemplate>
+														</asp:TemplateField>
+													</Columns>
+												</asp:GridView>
+											</div>
+									</div>
 								</section>
 						   </form>
 						</div>

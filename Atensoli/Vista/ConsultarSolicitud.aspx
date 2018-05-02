@@ -56,7 +56,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a class="logo"><strong>Consultar Solicitud</strong></a>
+									<a class="logo"><strong>Consultar Solicitud en Seguimiento</strong></a>
 									<ul class="icons">
 										<asp:HyperLink runat="server" ID="lnkInicio" Text ="Inicio" NavigateUrl="~/Vista/Principal.aspx" ></asp:HyperLink>
 									</ul>
@@ -67,18 +67,14 @@
 								<section>
 										<p></p>
 										<div class="row uniform">
-											<div class="6u 12u$(xsmall)">
-												<asp:TextBox runat="server" ID="txtCedula" MaxLength="9" placeholder ="Indique el número de cedula del solicitante"/>  
-												<ASP:RequiredFieldValidator id="rqrValidaCedula" runat="server" errormessage="Debe colocar el número de cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
-											</div>
-											<div class="6u 12u$(xsmall)"> 
-												<asp:CheckBox runat="server" ID ="chkPendientes" Checked ="true" Text ="Solo solicitudes pendientes" />
-											</div>
-											<div class="12u$">
-												<ul class="actions">
-													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click" />
-												</ul>
-											</div>
+										    <div class="posts">
+											    <article>
+												    <asp:TextBox runat="server" ID="txtCedula" MaxLength="9" placeholder ="Número de cedula del solicitante"/>  
+											    </article>
+												    <article>
+													    <asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click" />
+												    </article>
+											    </div>
 											<div class="table-wrapper">
 												  <asp:GridView ID="gridDetalle" runat="server" 
 													  CssClass="subtitulo" 
@@ -94,34 +90,9 @@
 																  <asp:Label runat="server" ID="lblNumero" Text='<%# Eval("SolicitudID") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Fecha Solicitud" >
+														  <asp:TemplateField HeaderText="Cedula Solicitante">
 															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblFechaSolicitud" Text='<%# Eval("FechaRegistroSolicitud") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Estatus Solicitud" >
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblEstatusSolicitud" Text='<%# Eval("NombreSolicitudEstatus") %>' Font-Bold ="true" ForeColor = '<%# Eval("SolicitudEstatusID").ToString() == "6"?System.Drawing.Color.Blue:System.Drawing.Color.Red %>' ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Observaciones Analista">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblObsAnalis" Text='<%# Eval("ObservacionesAnalista") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Remitido">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblRemitido" Text='<%# Eval("NombreTipoRemitido") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Solicitud" >
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoSolicitud" Text='<%# Eval("NombreTipoSolicitud") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Solicitante">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoSolicitante" Text='<%# Eval("NombreTipoSolicitante") %>'  ></asp:Label>
+																  <asp:Label runat="server" ID="lblCedulaSolicitante" Text='<%# Eval("CedulaSolicitante") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Nombre Solicitante">
@@ -129,14 +100,14 @@
 																  <asp:Label runat="server" ID="lblNombreSolicitante" Text='<%# Eval("SolicitanteNombre") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Rif Organización">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblRifOrganizacion" Text='<%# Eval("RifOrganizacion") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Nombre Organización">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNombreOrganizacion" Text='<%# Eval("NombreOrganizacion") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Atención">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoAtencion" Text='<%# Eval("NombreTipoAtencionBrindada") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="Tipo Unidad">
@@ -144,23 +115,43 @@
 																  <asp:Label runat="server" ID="lblTipoUnidad" Text='<%# Eval("NombreTipoUnidad") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Tipo Insumo">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoInsumo" Text='<%# Eval("NombreTipoInsumo") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Detalle Tipo Insumo">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblTipoInsumoDetalle" Text='<%# Eval("NombreTipoInsumoDetalle") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
-														  <asp:TemplateField HeaderText="Observaciones Solicitante">
-															  <ItemTemplate>
-																  <asp:Label runat="server" ID="lblObsSol" Text='<%# Eval("ObservacionesSolicitante") %>'  ></asp:Label>
-															  </ItemTemplate>
-														  </asp:TemplateField>
 
-														  <asp:TemplateField HeaderText="Atendido por">
+														  <asp:TemplateField HeaderText="Fecha Solicitud" >
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblFechaSolicitud" Text='<%# Eval("FechaRegistroSolicitud") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Fecha Ultimo Seguimiento" >
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblFechaSeguimiento" Text='<%# Eval("FechaUltimoSeguimiento") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Remitente">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblRemitente" Text='<%# Eval("Remitente") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Accion">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblAccion" Text='<%# Eval("NombreTipoAccion") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Instruccion">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblTipoInsumoDetalle" Text='<%# Eval("NombreTipoInstruccionSeguimiento") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Observaciones">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblObsSol" Text='<%# Eval("ObservacionSeguimiento") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Remitido">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblRemitido" Text='<%# Eval("Remitido") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Analista">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblAtencion" Text='<%# Eval("NombreCompleto") %>'  ></asp:Label>
 															  </ItemTemplate>

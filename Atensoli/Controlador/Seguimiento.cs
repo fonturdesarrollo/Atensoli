@@ -18,11 +18,12 @@ namespace Atensoli
             };
             return Convert.ToInt32(DBHelper.ExecuteScalar("usp_SeguimientoSeleccion_ActualizarEstatus", dbParams));
         }
-        public static DataSet ObtenerSolicitudEnSeguimiento(int numeroSolicitud)
+        public static DataSet ObtenerSolicitudEnSeguimiento(int numeroSolicitud, int codigoRemitido)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    DBHelper.MakeParam("@SolicitudID", SqlDbType.Int, 0, numeroSolicitud)
+                    DBHelper.MakeParam("@SolicitudID", SqlDbType.Int, 0, numeroSolicitud),
+                    DBHelper.MakeParam("@TipoRemitidoID", SqlDbType.Int, 0, codigoRemitido)
                 };
             return DBHelper.ExecuteDataSet("usp_SeguimientoSeleccion_ObtenerSolicitud", dbParams);
         }

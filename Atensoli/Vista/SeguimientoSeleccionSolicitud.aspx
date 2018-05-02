@@ -60,18 +60,14 @@
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
-											<div class="row uniform">
-												<div class="6u 12u$(xsmall)">
-													<asp:TextBox runat ="server" ID ="txtCedula" placeholder ="Indique el número de cedula del solicitante"></asp:TextBox>
+											<div class="posts">
+												<article>
+													<asp:TextBox runat ="server" ID ="txtCedula" placeholder ="Número de cedula del solicitante"></asp:TextBox>
 													<ASP:RequiredFieldValidator id="rqrvalidaCedula" runat="server" errormessage="Debe colocar el número de cedula del solicitante"  controltovalidate="txtCedula" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
-												</div>
-											   <div class="6u 12u$(xsmall)">
+												</article>
+											   <article>
 													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />
-											   </div>
-	
-												<div class="6u 12u$(xsmall)">
-													
-												</div>
+											   </article>
 										   </div>
 											<p></p>
 											<div class="table-wrapper">

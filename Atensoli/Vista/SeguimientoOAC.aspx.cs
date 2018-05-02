@@ -13,23 +13,47 @@ namespace Atensoli
     public partial class SeguimientoOAC : Seguridad.SeguridadAuditoria
     {
         private static DataTable dtGrid;
+        private static DataTable dtGridDocumentos;
         private static string nombreValidoPostulante ="";
         protected new void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
-        
-                lblTitulo.Text = "Inicio del seguimiento por parte de la OAC a la solicitud " + Session["SolicitudParaSeguimientoID"].ToString();
+                EstablecerVistaSegunGerencia();
+                lblTitulo.Text = Session["NombreGerenciaSeguimiento"].ToString() + " seguimiento a la solicitud " + Session["SolicitudParaSeguimientoID"].ToString();
                 CargarGridPostulados();
+                CargarGridDocumentos();
                 if (Session["SolicitudIDParaSeguimiento"] != null)
                 {
                     CargarPostulados();
+                    CargarDocumentos();
                 }
                 CargarConsulta();
                 CargarTipoAccion();
                 CargarTipoRemitido();
+                CargarTipoSoporte();
+                CargarTipoInstruccion();
             }
         }
+
+        private void EstablecerVistaSegunGerencia()
+        {
+            switch (Session["NombreGerenciaSeguimiento"].ToString())
+            {
+                case "OAC":
+                    txtCedulaPostulante.Visible = true;
+                    txtTelefonoPostulante.Visible = true;
+                    Button1.Visible = true;
+                    break;
+                default:
+                    txtCedulaPostulante.Visible = false;
+                    txtTelefonoPostulante.Visible = false;
+                    Button1.Visible = false;
+                    grdSoporte.Columns[3].Visible = false;
+                    break;
+            }
+        }
+
         private void CargarPostulados()
         {
             try
@@ -41,12 +65,34 @@ namespace Atensoli
                     while(dr.Read())
                     {
                         dtGrid = (DataTable)ViewState["Soporte"];
-                        dtGrid.Rows.Add(dr["CedulaPostulado"].ToString(), dr["NombrePostulado"].ToString(), dr["TelefonoPostulado"].ToString());
+                        dtGrid.Rows.Add(dr["CedulaPostulado"].ToString(), dr["NombrePostulado"].ToString(), dr["TelefonoPostulado"].ToString(), dr["EstatusFichaSocialID"].ToString());
                         ViewState["Soporte"] = dtGrid;
                         this.BindGrid();
                     }
                 }
                 dr.Close();
+            }
+            catch (Exception ex)
+            {
+
+                messageBox.ShowMessage(ex.Message + ex.StackTrace);
+            }
+        }
+        private void CargarDocumentos()
+        {
+            try
+            {
+                SqlDataReader dr = SeguimientoOAC.ObtenerDocumentosSolicitud(Convert.ToInt32(Session["SolicitudParaSeguimientoID"].ToString()));
+
+                while (dr.Read())
+                {
+                    dtGridDocumentos = (DataTable)ViewState["Documentos"];
+                    dtGridDocumentos.Rows.Add(dr["NombreTipoSoporte"].ToString(), dr["TipoSoporteID"].ToString());
+                    ViewState["Documentos"] = dtGridDocumentos;
+                    this.BindGridDocumentos();
+                }
+                dr.Close();
+
             }
             catch (Exception ex)
             {
@@ -61,9 +107,46 @@ namespace Atensoli
                 dtGrid.Clear();
             }
             DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[3] { new DataColumn("CedulaPostulante"), new DataColumn("NombrePostulante"), new DataColumn("Telefono") });
+            dt.Columns.AddRange(new DataColumn[4] { new DataColumn("CedulaPostulante"), new DataColumn("NombrePostulante"), new DataColumn("Telefono") , new DataColumn("EstatusFichaSocialID") });
             ViewState["Soporte"] = dt;
             this.BindGrid();
+        }
+        private void CargarGridDocumentos()
+        {
+            if (dtGridDocumentos != null)
+            {
+                dtGridDocumentos.Clear();
+            }
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[2] { new DataColumn("NombreTipoSoporte"), new DataColumn("TipoSoporteID") });
+            ViewState["Documentos"] = dt;
+            this.BindGridDocumentos();
+        }
+        private void CargarTipoSoporte()
+        {
+            ddlTipoSoporte.Items.Clear();
+            ddlTipoSoporte.Items.Add(new ListItem("--Seleccione el tipo de soporte fisico--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            strQuery = "select * From TipoSoporte ORDER BY TipoSoporteID";
+
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlTipoSoporte.DataSource = cmd.ExecuteReader();
+                    ddlTipoSoporte.DataTextField = "NombreTipoSoporte";
+                    ddlTipoSoporte.DataValueField = "TipoSoporteID";
+                    ddlTipoSoporte.DataBind();
+                    con.Close();
+                }
+            }
         }
         private void CargarTipoAccion()
         {
@@ -99,7 +182,7 @@ namespace Atensoli
             .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
             String strQuery = "";
 
-            strQuery = "SELECT * FROM Gerencia ORDER BY GerenciaID";
+            strQuery = "SELECT TipoRemitidoID, NombreTipoRemitido FROM dbo.TipoRemitido WHERE(TipoRemitidoID > 1) ORDER BY TipoRemitidoID";
 
             using (SqlConnection con = new SqlConnection(strConnString))
             {
@@ -110,9 +193,35 @@ namespace Atensoli
                     cmd.Connection = con;
                     con.Open();
                     ddlTipoRemitido.DataSource = cmd.ExecuteReader();
-                    ddlTipoRemitido.DataTextField = "NombreGerencia";
-                    ddlTipoRemitido.DataValueField = "GerenciaID";
+                    ddlTipoRemitido.DataTextField = "NombreTipoRemitido";
+                    ddlTipoRemitido.DataValueField = "TipoRemitidoID";
                     ddlTipoRemitido.DataBind();
+                    con.Close();
+                }
+            }
+        }
+        private void CargarTipoInstruccion()
+        {
+            ddlInstruccion.Items.Clear();
+            ddlInstruccion.Items.Add(new ListItem("--Seleccione la instrucción--", ""));
+            String strConnString = ConfigurationManager
+            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
+            String strQuery = "";
+
+            strQuery = "SELECT * FROM TipoInstruccionSeguimiento ORDER BY TipoInstruccionSeguimientoID";
+
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQuery;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddlInstruccion.DataSource = cmd.ExecuteReader();
+                    ddlInstruccion.DataTextField = "NombreTipoInstruccionSeguimiento";
+                    ddlInstruccion.DataValueField = "TipoInstruccionSeguimientoID";
+                    ddlInstruccion.DataBind();
                     con.Close();
                 }
             }
@@ -136,7 +245,12 @@ namespace Atensoli
             grdSoporte.DataSource = (DataTable)ViewState["Soporte"];
             grdSoporte.DataBind();
         }
-        private bool EsSoporteFisicoAgregado()
+        protected void BindGridDocumentos()
+        {
+            grdDocumentos.DataSource = (DataTable)ViewState["Documentos"];
+            grdDocumentos.DataBind();
+        }
+        private bool EsSoportePostuladoAgregado()
         {
             bool resultado = false;
             if (dtGrid != null)
@@ -153,18 +267,35 @@ namespace Atensoli
 
             return resultado;
         }
+        private bool EsSoporteDocumentoAgregado()
+        {
+            bool resultado = false;
+            if (dtGridDocumentos != null)
+            {
+                for (int i = 0; i < dtGridDocumentos.Rows.Count; i++)
+                {
+                    DataRow dr = dtGridDocumentos.Rows[i];
+                    if (dr["TipoSoporteID"].ToString() == ddlTipoSoporte.SelectedValue)
+                    {
+                        resultado = true;
+                    }
+                }
+            }
+
+            return resultado;
+        }
         private void AgregarPostulante()
         {
             if(EsTodoCorrectoPostulante())
             {
-                if (EsSoporteFisicoAgregado() == false)
+                if (EsSoportePostuladoAgregado() == false)
                 {
                     if (txtCedulaPostulante.Text != "")
                     {
                         if (EsSolicitanteEnsaime())
                         {
                             dtGrid = (DataTable)ViewState["Soporte"];
-                            dtGrid.Rows.Add(txtCedulaPostulante.Text, nombreValidoPostulante, txtTelefonoPostulante.Text);
+                            dtGrid.Rows.Add(txtCedulaPostulante.Text, nombreValidoPostulante, txtTelefonoPostulante.Text,"1");
                             ViewState["Soporte"] = dtGrid;
                             this.BindGrid();
                             grdSoporte.DataBind();
@@ -194,12 +325,17 @@ namespace Atensoli
             if(txtCedulaPostulante.Text == "")
             {
                 resultado = false;
-                messageBox.ShowMessage("Debe indicar el numero de cedula del postulante");
+                messageBox.ShowMessage("Debe indicar el numero de cedula del postulado");
             }
             if (txtTelefonoPostulante.Text == "")
             {
                 resultado = false;
-                messageBox.ShowMessage("Debe indicar el numero de telefono del postulante");
+                messageBox.ShowMessage("Debe indicar el numero de telefono del postulado");
+            }
+            if(SeguimientoOAC.EsPostuladoEnOtraSolicitud(Convert.ToInt32(Session["SolicitudParaSeguimientoID"]),Convert.ToInt32(txtCedulaPostulante.Text)))
+            {
+                resultado = false;
+                messageBox.ShowMessage("Este postulado ya fue asignado a otra solicitud");
             }
             return resultado;
         }
@@ -278,12 +414,14 @@ namespace Atensoli
                 objetoSeguimientoOAC.GerenciaID = Convert.ToInt32(ddlTipoRemitido.SelectedValue);
                 objetoSeguimientoOAC.ObservacionSeguimiento = txtObservaciones.Text.ToUpper().Trim();
                 objetoSeguimientoOAC.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserID"]);
-                
+                objetoSeguimientoOAC.TipoRemitidoID = ModuloGeneral.CodigoTipoRemitenteSegunNombre(Session["NombreGerenciaSeguimiento"].ToString());
+                objetoSeguimientoOAC.TipoInstruccionSeguimientoID = Convert.ToInt32(ddlInstruccion.SelectedValue);
+
                 //CAMBIAR ESTATUS A LA SOLICITUD AL NUMERO 2
                 Seguimiento.ActualizarEstatusSolicitud(Convert.ToInt32(Session["SolicitudParaSeguimientoID"]));
-
                 if (SeguimientoOAC.InsertarSeguimiento(objetoSeguimientoOAC) > 0)
                 {
+                    AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó nuevo seguimiento a la solicitud: " + Convert.ToInt32(Session["SolicitudParaSeguimientoID"]) , System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                     messageBox.ShowMessage("Registro actualizado");
                 }
             }
@@ -304,5 +442,50 @@ namespace Atensoli
         {
             Response.Redirect("SeguimientoHistorial.aspx");
         }
+
+        protected void grdDocumentos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            for (int i = dtGridDocumentos.Rows.Count - 1; i >= 0; i--)
+            {
+                DataRow dr = dtGridDocumentos.Rows[i];
+                if (dr["TipoSoporteID"].ToString() == e.CommandArgument.ToString())
+                {
+                    dr.Delete();
+                    ViewState["Documentos"] = dtGridDocumentos;
+                    this.BindGridDocumentos();
+                    grdDocumentos.DataBind();
+                }
+            }
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarTipoSoporteFisico();
+        }
+        private void AgregarTipoSoporteFisico()
+        {
+
+            if (EsSoporteDocumentoAgregado() == false)
+            {
+                if (ddlTipoSoporte.SelectedValue != "")
+                {
+                    dtGridDocumentos = (DataTable)ViewState["Documentos"];
+                    dtGridDocumentos.Rows.Add(ddlTipoSoporte.SelectedItem, ddlTipoSoporte.SelectedValue);
+                    ViewState["Documentos"] = dtGridDocumentos;
+                    this.BindGridDocumentos();
+                    grdDocumentos.DataBind();
+                }
+                else
+                {
+                    messageBox.ShowMessage("Debe seleccionar de la lista un tipo de soporte");
+                }
+            }
+            else
+            {
+                messageBox.ShowMessage("Ya agregó a la lista este tipo de documento [" + ddlTipoSoporte.SelectedItem + "]");
+            }
+
+        }
+
     }
 }

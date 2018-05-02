@@ -37,5 +37,14 @@ namespace Atensoli
                 };
             return DBHelper.ExecuteDataSet("usp_ConsultaSolicitud_ObtenerSolicitudPorID", dbParams);
         }
+        public static DataSet ObtenerConsultaSolicitudSeguimientoAbierto(int cedulaSolicitante)
+        {
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@CedulaSolicitante", SqlDbType.Int, 0, cedulaSolicitante)
+                };
+            return DBHelper.ExecuteDataSet("usp_ConsultaSolicitud_ObtenerSolicitudSeguimiento", dbParams);
+
+        }
     }
 }
