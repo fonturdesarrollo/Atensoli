@@ -115,6 +115,12 @@ namespace Seguridad
                 case "/Vista/SeguimientoSeleccion.aspx":
                     codigoObjeto = Convert.ToInt32(Request.QueryString["CodigoObjeto"]);
                     break;
+                case "/Vista/SeguimientoOAC.aspx":
+                    codigoObjeto = 1031;
+                    break;
+                case "/Vista/SeguimientoHistorial.aspx":
+                    codigoObjeto = 1032;
+                    break;
                 default:
                     break;
             }
