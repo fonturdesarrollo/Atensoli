@@ -85,58 +85,58 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HyperLink lnkOAC;
         
         /// <summary>
-        /// HyperLink1 control.
+        /// lnkCobranzasSeguimiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.HyperLink lnkCobranzasSeguimiento;
         
         /// <summary>
-        /// HyperLink2 control.
+        /// lnkFinanciamientoSeguimiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+        protected global::System.Web.UI.WebControls.HyperLink lnkFinanciamientoSeguimiento;
         
         /// <summary>
-        /// HyperLink3 control.
+        /// lnkMovilidadEstudiantilSeguimiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
+        protected global::System.Web.UI.WebControls.HyperLink lnkMovilidadEstudiantilSeguimiento;
         
         /// <summary>
-        /// HyperLink4 control.
+        /// lnkAsesoriaLegalSeguimiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
+        protected global::System.Web.UI.WebControls.HyperLink lnkAsesoriaLegalSeguimiento;
         
         /// <summary>
-        /// HyperLink5 control.
+        /// lnkTecncicaAutomotrizSeguimiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink5;
+        protected global::System.Web.UI.WebControls.HyperLink lnkTecncicaAutomotrizSeguimiento;
         
         /// <summary>
-        /// HyperLink6 control.
+        /// lnkOACSeguimiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink6;
+        protected global::System.Web.UI.WebControls.HyperLink lnkOACSeguimiento;
         
         /// <summary>
         /// lnkTipoSolicitante control.

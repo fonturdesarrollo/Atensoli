@@ -123,6 +123,11 @@
 																	  <asp:Label runat="server" ID="lblNombreOrganizacion" Text='<%# Eval("NombreOrganizacion") %>'  ></asp:Label>
 																  </ItemTemplate>
 															  </asp:TemplateField>
+															  <asp:TemplateField HeaderText="Telefono Organizacion">
+																  <ItemTemplate>
+																	  <asp:Label runat="server" ID="lblTelefonoOrganizacion" Text='<%# Eval("TelefonoOrganizacion") %>'  ></asp:Label>
+																  </ItemTemplate>
+															  </asp:TemplateField>
 															  <asp:TemplateField HeaderText="Tipo Unidad">
 																  <ItemTemplate>
 																	  <asp:Label runat="server" ID="lblTipoUnidad" Text='<%# Eval("NombreTipoUnidad") %>'  ></asp:Label>
@@ -211,7 +216,7 @@
 												<asp:TextBox runat ="server" placeholder ="Cedula postulado" ID ="txtCedulaPostulante"  MaxLength="9"/>
 											</article>
 											<article>
-												<asp:TextBox runat ="server" placeholder ="Telefono postulado" ID ="txtTelefonoPostulante"   MaxLength="32"/>
+												<asp:TextBox runat ="server" placeholder ="Celular postulado" ID ="txtTelefonoPostulante"   pattern="^([0-9]{11})$" title="Debe colocar el codigo seguido del numero sin espacios ni guiones 04127654321" MaxLength="11"/>
 											</article>
 											<article>
 												<asp:Button runat ="server" Text ="Agregar postulado" ID ="Button1" OnClick="btnAgregarPostulante_Click"  />

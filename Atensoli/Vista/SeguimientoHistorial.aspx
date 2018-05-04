@@ -71,7 +71,7 @@
 														<AlternatingRowStyle Font-Size="10px" />
 														  <RowStyle  Font-Size="10px" />
 													  <Columns>
-														  <asp:TemplateField HeaderText="N" HeaderStyle-Width="50">
+														  <asp:TemplateField HeaderText="N° Solicitud" HeaderStyle-Width="50">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNumero" Text='<%# Eval("SolicitudID") %>'  ></asp:Label>
 															  </ItemTemplate>

@@ -66,7 +66,7 @@ namespace Atensoli.Vista
                 }
 
                 //=============================================================
-                //SEGUIMIENTO
+                //SEGUIMIENTO SELECCIONAR SOLICITUD 
                 //=============================================================
                 if (objetoSeguridad.EsAccesoPermitido(1023) == true)
                 {
@@ -94,6 +94,38 @@ namespace Atensoli.Vista
                     lnkOAC.Visible = true;
                 }
                 //=============================================================
+
+                //=============================================================
+                //SEGUIMIENTO SELECCIONAR SOLICITUD YA CON SEGUIMIENTO ASIGNADO
+                //=============================================================
+                if (objetoSeguridad.EsAccesoPermitido(1023) == true)
+                {
+                    lnkCobranzasSeguimiento.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1026) == true)
+                {
+                    lnkFinanciamientoSeguimiento.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1027) == true)
+                {
+                    lnkMovilidadEstudiantilSeguimiento.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1028) == true)
+                {
+                    lnkAsesoriaLegalSeguimiento.Visible = true;
+                }
+
+                if (objetoSeguridad.EsAccesoPermitido(1029) == true)
+                {
+                    lnkTecncicaAutomotrizSeguimiento.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1030) == true)
+                {
+                    lnkOACSeguimiento.Visible = true;
+                }
+                //=============================================================
+
+
 
                 if (objetoSeguridad.EsAccesoPermitido(1024) == true)
                 {

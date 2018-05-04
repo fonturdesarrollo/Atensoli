@@ -297,6 +297,8 @@ namespace Atensoli
                             this.BindGrid();
                             grdSoporte.DataBind();
                             nombreValidoPostulante = string.Empty;
+                            txtCedulaPostulante.Text = string.Empty;
+                            txtTelefonoPostulante.Text = string.Empty;
                         }
                         else
                         {
