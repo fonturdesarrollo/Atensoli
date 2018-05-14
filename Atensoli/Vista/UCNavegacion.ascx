@@ -37,7 +37,7 @@
 											<span class="opener">Seleccionar solicitud para comenzar seguimiento</span>
 												<ul>
 													<li><ASP:HyperLink runat="server" ID ="lnkCobranzas"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1023"  Text ="Cobranzas"></ASP:HyperLink></li>
-													<li><ASP:HyperLink runat="server" ID ="lnkFinanciamiento"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1026"  Text ="Financiamiento"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkFinanciamiento"  navigateurl ="~/Vista/SeguimientoSelCorrespondenciaRecepcionGerenciaeccionSolicitud.aspx?CodigoObjeto=1026"  Text ="Financiamiento"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkMovilidadEstudiantil"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1027"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkAsesoriaLegal"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1028"  Text ="Asesoria Legal"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkTecncicaAutomotriz"  navigateurl ="~/Vista/SeguimientoSeleccionSolicitud.aspx?CodigoObjeto=1029"  Text ="Tecnica Automotriz"></ASP:HyperLink></li>
@@ -59,6 +59,28 @@
 											
 										</li>
 										
+										<li>
+											<span class="opener">Correspondencia</span>
+												<ul>
+													<li><ASP:HyperLink runat="server" ID ="lnkRecepcionCorrespondencia"  navigateurl ="~/Vista/CorrespondenciaExternaRecepcion.aspx"  Text ="Recepción correspondencia externa"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaPresidencia"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1034"  Text ="Presidencia"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaAuditoria"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1035"  Text ="Auditoria"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaGestion"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1036"  Text ="Gestión Comunicacional"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaPlanificacion"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1037"  Text ="Planificación y Presupuesto" ></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaTecnologia"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1038"  Text ="Tecnología"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaOAC"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1039"  Text ="Atención al Ciudadano"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaAdministracion"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1040"  Text ="Administración"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaRH"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1041"  Text ="Gestión Humana"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaSeguridad"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1042"  Text ="Seguridad"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaComercializacion"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1043"  Text ="Comercialización"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaFinanciamiento"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1044"  Text ="Financiamiento"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaTecnica"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1045"  Text ="Técnica Automotriz"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaMovilidad"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1046"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaCobranzas"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1047"  Text ="Cobranzas"></ASP:HyperLink></li>
+
+												</ul>
+										</li>
+
 										<li>
 											<span class="opener">Opciones especiales</span>
 											<ul>

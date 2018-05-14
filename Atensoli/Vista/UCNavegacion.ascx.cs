@@ -125,6 +125,75 @@ namespace Atensoli.Vista
                 }
                 //=============================================================
 
+                //=============================================================
+                //CORRESPONDENCIA
+                //=============================================================
+
+                if (objetoSeguridad.EsAccesoPermitido(1033) == true)
+                {
+                   lnkRecepcionCorrespondencia.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1034) == true)
+                {
+                    lnkCorrespondenciaPresidencia.Visible = true;
+                }
+
+                if (objetoSeguridad.EsAccesoPermitido(1035) == true)
+                {
+                    lnkCorrespondenciaAuditoria.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1036) == true)
+                {
+                    lnkCorrespondenciaGestion.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1037) == true)
+                {
+                    lnkCorrespondenciaPlanificacion.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1038) == true)
+                {
+                    lnkCorrespondenciaTecnologia.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1039) == true)
+                {
+                    lnkCorrespondenciaOAC.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1040) == true)
+                {
+                    lnkCorrespondenciaAdministracion.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1041) == true)
+                {
+                    lnkCorrespondenciaRH.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1042) == true)
+                {
+                    lnkCorrespondenciaSeguridad.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1043) == true)
+                {
+                    lnkCorrespondenciaComercializacion.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1044) == true)
+                {
+                    lnkCorrespondenciaFinanciamiento.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1045) == true)
+                {
+                    lnkCorrespondenciaTecnica.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1046) == true)
+                {
+                    lnkCorrespondenciaMovilidad.Visible = true;
+                }
+                if (objetoSeguridad.EsAccesoPermitido(1047) == true)
+                {
+                    lnkCorrespondenciaCobranzas.Visible = true;
+                }
+
+                //=============================================================
+                //FIN CORRESPONDENCIA
+                //=============================================================
 
 
                 if (objetoSeguridad.EsAccesoPermitido(1024) == true)

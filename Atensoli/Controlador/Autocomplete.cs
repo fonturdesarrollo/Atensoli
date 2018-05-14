@@ -9,14 +9,13 @@ namespace Admin
     {
 
 
-        public static DataSet ObtenerCedulaSolicitante(string sQuery, int codigoSucursal)
+        public static DataSet ObtenerCorrespondenciaRemitente(string sQuery)
         {
             SqlParameter[] dbParams = new SqlParameter[]
                 {
-                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery),
-                    DBHelper.MakeParam("@EmpresaSucursalID", SqlDbType.Int, 0, codigoSucursal)
+                    DBHelper.MakeParam("@Query", SqlDbType.VarChar, 0, sQuery)
                 };
-            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerCedulaSolicitante", dbParams);
+            return DBHelper.ExecuteDataSet("usp_Autocomplete_ObtenerCorrespondenciaRemitente", dbParams);
         }
         public static DataSet ObtenerRifOrganizacion(string sQuery, int codigoSucursal)
         {

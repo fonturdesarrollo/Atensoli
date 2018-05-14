@@ -13,9 +13,9 @@ namespace Admin
             {
 
 
-                if (Request.QueryString["identifier"] == "Solicitante")
+                if (Request.QueryString["identifier"] == "CorrespondenciaRemitente")
                 {
-                    DataSet ds = Autocomplete.ObtenerCedulaSolicitante(Request.QueryString["query"],  Convert.ToInt32(Session["CodigoSucursalEmpresa"]));
+                    DataSet ds = Autocomplete.ObtenerCorrespondenciaRemitente(Request.QueryString["query"]);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         Response.Write("<ul>" + "\n");
@@ -23,10 +23,10 @@ namespace Admin
                         foreach (DataRow dr in ds.Tables[0].Rows)
                         {
                             item = new paginaBase.AutoCompleteResult();
-                            item.value = dr["DescripcionSolicitante"].ToString();
-                            item.id = dr["SolicitanteID"].ToString();
+                            item.value = dr["NombreCorrespondenciaRemitente"].ToString();
+                            item.id = dr["CorrespondenciaRemitenteID"].ToString();
                             item.value = item.value.Replace(Request.QueryString["query"].ToString(), "<span style='font-weight:bold;'>" + Request.QueryString["query"].ToString() + "</span>");
-                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["CedulaSolicitante"].ToString() + "_" + dr["SolicitanteID"].ToString() + "_" + dr["NombreSolicitante"].ToString() + "_" + dr["ApellidoSolicitante"].ToString() + "_" + dr["Sexo"].ToString() + "'>" + item.value + "</li>" + "\n");
+                            Response.Write("\t" + "<li id=autocomplete_" + item.id + " rel='" + item.id + "_" + dr["NombreCorrespondenciaRemitente"].ToString() + "_" + dr["CorrespondenciaRemitenteID"].ToString() + "'>" + item.value + "</li>" + "\n");
                         }
                         Response.Write("</ul>");
                         Response.End();

@@ -73,6 +73,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\CorrespondenciaHistorial.aspx" />
+    <Content Include="Vista\CorrespondenciaRecepcionGerencia.aspx" />
+    <Content Include="Vista\CorrespondenciaSeleccionGerencia.aspx" />
+    <Content Include="Vista\CorrespondenciaExternaRecepcion.aspx" />
     <Content Include="Docs\Varios.txt" />
     <Content Include="Vista\SeguimientoHistorial.aspx" />
     <Content Include="Vista\SeguimientoSeleccionSolicitud.aspx" />
@@ -297,10 +301,46 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vista\CorrespondenciaHistorial.aspx.cs">
+      <DependentUpon>CorrespondenciaHistorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaHistorial.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaHistorial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\CCorrespondenciaRecepcionGerencia.cs" />
+    <Compile Include="Controlador\CorrespondenciaExternaRecepcion.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controlador\CorrespondenciaRecepcionGerencia.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaRecepcionGerencia.aspx.cs">
+      <DependentUpon>CorrespondenciaRecepcionGerencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaRecepcionGerencia.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaRecepcionGerencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaSeleccionGerencia.aspx.cs">
+      <DependentUpon>CorrespondenciaSeleccionGerencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaSeleccionGerencia.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaSeleccionGerencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\CCorrespondenciaExternaRecepcion.cs" />
     <Compile Include="Controlador\EmpresaSucursal.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controlador\Estadisticas.cs" />
+    <Compile Include="Vista\CorrespondenciaExternaRecepcion.aspx.cs">
+      <DependentUpon>CorrespondenciaExternaRecepcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaExternaRecepcion.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaExternaRecepcion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\CSeguimientoOAC.cs" />
     <Compile Include="Controlador\SeguimientoOAC.cs">
       <SubType>ASPXCodeBehind</SubType>
