@@ -12,12 +12,11 @@ namespace Atensoli
 {
     public partial class CorrespondenciaExternaRecepcion : Seguridad.SeguridadAuditoria
     {
-        private static int codigoCorrespondencia = 0;
         protected new void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
-                codigoCorrespondencia = 0;
+                Session["codigoCorrespondenciaAgregada"] = "0";
                 CargarTipoCorrespondencia();
                 CargarEstado();
                 CargarGerencia();
@@ -143,7 +142,7 @@ namespace Atensoli
             try
             {
                 CCorrespondenciaExternaRecepcion objetoCorrespondencia = new CCorrespondenciaExternaRecepcion();
-                objetoCorrespondencia.CorrespondenciaID = codigoCorrespondencia;
+                objetoCorrespondencia.CorrespondenciaID = Convert.ToInt32(Session["codigoCorrespondenciaAgregada"]);
                 objetoCorrespondencia.TipoCorrespondenciaID = Convert.ToInt32(ddlTipoCorrespondencia.SelectedValue);
                 objetoCorrespondencia.CorrespondenciaRemitenteID = Convert.ToInt32(hdnRemitenteID.Value);
                 objetoCorrespondencia.NombreCorrespondenciaRemitente = txtNombreRemitente.Text.ToUpper().Trim();
@@ -154,13 +153,14 @@ namespace Atensoli
                 objetoCorrespondencia.GerenciaID = Convert.ToInt32(ddlGerencia.SelectedValue);
                 objetoCorrespondencia.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"].ToString());
 
-                codigoCorrespondencia = CorrespondenciaExternaRecepcion.InsertarRecepcionCorrespondenciaExterna(objetoCorrespondencia);
-                if (codigoCorrespondencia > 0)
+
+                Session["codigoCorrespondenciaAgregada"]  = CorrespondenciaExternaRecepcion.InsertarRecepcionCorrespondenciaExterna(objetoCorrespondencia);
+                if (Convert.ToInt32(Session["codigoCorrespondenciaAgregada"].ToString()) > 0)
                     {
-                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó correspondencia externa número: " + codigoCorrespondencia, System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó correspondencia externa número: " + Session["codigoCorrespondenciaAgregada"].ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         messageBox.ShowMessage("Correspondencia registrada exitosamente.");
                         txtNombreRemitente.Text = string.Empty;
-                        CargarCorrespondencia(codigoCorrespondencia);
+                        CargarCorrespondencia(Convert.ToInt32(Session["codigoCorrespondenciaAgregada"].ToString()));
                     }
                 }
             catch (Exception ex)
@@ -189,7 +189,7 @@ namespace Atensoli
         private void LimpiarTodo()
         {
             hdnRemitenteID.Value = "0";
-            codigoCorrespondencia = 0;
+            Session["codigoCorrespondenciaAgregada"] = 0;
             CargarTipoCorrespondencia();
             CargarEstado();
             CargarGerencia();
@@ -225,7 +225,7 @@ namespace Atensoli
         private void ProcesoEliminar(int idCorrespondencia)
         {
             CorrespondenciaExternaRecepcion.EliminarCorrespondenciaExterna(idCorrespondencia);
-            codigoCorrespondencia = 0;
+            Session["codigoCorrespondenciaAgregada"] = "0";
             gridDetalle.DataSource = null;
             gridDetalle.DataBind();
             txtNombreRemitente.Text = string.Empty;

@@ -56,6 +56,10 @@
 				dateFormat: 'dd/mm/yy',  buttonImageOnly: false, changeMonth: true,
 				changeYear: true, gotoCurrent: true, yearRange: "1900:2020"
 			});
+			$("#txtFechaHasta").datepicker({
+				dateFormat: 'dd/mm/yy', buttonImageOnly: false, changeMonth: true,
+				changeYear: true, gotoCurrent: true, yearRange: "1900:2020"
+			});
 		});
 	</script>
 
@@ -83,27 +87,47 @@
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
-										<div class="row uniform">
-											<div class="6u 12u$(xsmall)">
-													<asp:TextBox runat="server" ID="txtFechaRegistro"  MaxLength="200" placeholder ="Fecha de nacimiento"/>
-													<ASP:RequiredFieldValidator id="rqrValidaFechaRegistro" runat="server" errormessage="Debe colocar la fecha"  controltovalidate="txtFechaRegistro" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+											<div class="posts">
+												<article>
+														<asp:TextBox runat="server" ID="txtFechaRegistro"  MaxLength="20" placeholder ="Fecha desde"/>
+														<ASP:RequiredFieldValidator id="rqrValidaFechaRegistro" runat="server" errormessage="Debe colocar la fecha desde"  controltovalidate="txtFechaRegistro" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+												</article>
+			
+												<article>
+														<asp:TextBox runat="server" ID="txtFechaHasta"  MaxLength="20" placeholder ="Fecha hasta"/>
+														<ASP:RequiredFieldValidator id="rqrValidaFechaHasta" runat="server" errormessage="Debe colocar la fecha hasta"  controltovalidate="txtFechaHasta" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+												</article>
+											
+												<article>
+													<asp:Button runat ="server" ID ="btnConsultar"   Text ="Consultar"  CssClass  ="special" OnClick="btnConsultar_Click"/>
+												</article>											
 											</div>
-											<div class="6u 12u$(xsmall)">
-												<asp:Button runat ="server" ID ="btnConsultar"   Text ="Consultar"  CssClass  ="special" OnClick="btnConsultar_Click"/>
-											</div>
-											<div class="6u 12u$(xsmall)">
-												<asp:Label runat ="server" ID ="lblTituloEstado" Text ="Total solicitudes por estado" Font-Bold ="true" ForeColor ="Red"></asp:Label>
 												<div class="table-wrapper">
-												  <asp:GridView ID="gridDetalle" runat="server" 
-													  CssClass="subtitulo" 
-													  EmptyDataText="No existen Registros" 
-													  GridLines="Horizontal" 
-													  AutoGenerateColumns="False">
-														<HeaderStyle  Font-Size="10px" />
-														<AlternatingRowStyle Font-Size="10px" />
-														  <RowStyle  Font-Size="10px" />
+												<asp:Label runat ="server" ID ="Label2" Text ="Total transportistas atendidos" Font-Bold ="true" ForeColor ="Red"></asp:Label>
+												  <asp:GridView ID="gridDetalle4" runat="server" 
+													  ShowFooter ="true" 
+													  AutoGenerateColumns="False" OnRowDataBound="gridDetalle4_RowDataBound">
 														  <Columns>
-															  <asp:TemplateField HeaderText="Estado">
+															  <asp:TemplateField HeaderText="Estado" HeaderStyle-Width ="1500">
+																  <ItemTemplate>
+													            <asp:Label runat="server" ID="lblNomEstado" Text='<%# Eval("NombreEstado") %>'  ></asp:Label>
+																  </ItemTemplate>
+															  </asp:TemplateField>
+															  <asp:TemplateField HeaderText="Total" >
+																  <ItemTemplate>
+																	  <asp:Label runat="server" ID="lblFechaSolicitud" Text='<%# Eval("Total") %>'  ></asp:Label>
+																  </ItemTemplate>
+															  </asp:TemplateField>
+														 </Columns>
+												  </asp:GridView>
+												</div>
+												<div class="table-wrapper">
+												<asp:Label runat ="server" ID ="lblTituloEstado" Text ="Total solicitudes por estado" Font-Bold ="true" ForeColor ="Red"></asp:Label>
+												  <asp:GridView ID="gridDetalle" runat="server" 
+													  ShowFooter ="true" 
+													  AutoGenerateColumns="False" OnRowDataBound="gridDetalle_RowDataBound">
+														  <Columns>
+															  <asp:TemplateField HeaderText="Estado" HeaderStyle-Width ="1500">
 																  <ItemTemplate>
 																	  <asp:Label runat="server" ID="lblEstado" Text='<%# Eval("NombreEstado") %>'  ></asp:Label>
 																  </ItemTemplate>
@@ -116,20 +140,14 @@
 														 </Columns>
 												  </asp:GridView>
 												</div>
-											</div>
-											<div class="6u 12u$(xsmall)">
+
 												<div class="table-wrapper">
 												<asp:Label runat ="server" ID ="lblTituloSolicitud" Text ="Total solicitudes por tipo solicitud" Font-Bold ="true" ForeColor ="Red"></asp:Label>
-												  <asp:GridView ID="gridDetalle2" runat="server" 
-													  CssClass="subtitulo" 
-													  EmptyDataText="No existen Registros" 
-													  GridLines="Horizontal" 
-													  AutoGenerateColumns="False">
-														<HeaderStyle  Font-Size="10px" />
-														<AlternatingRowStyle Font-Size="10px" />
-														  <RowStyle  Font-Size="10px" />
+												  <asp:GridView ID="gridDetalle2" runat="server"
+														  ShowFooter ="true" 
+														  AutoGenerateColumns="False" OnRowDataBound="gridDetalle2_RowDataBound">
 														  <Columns>
-															  <asp:TemplateField HeaderText="Tipo de Solicitud">
+															  <asp:TemplateField HeaderText="Tipo de Solicitud" HeaderStyle-Width ="1500">
 																  <ItemTemplate>
 																	  <asp:Label runat="server" ID="lblNombreTipoSol" Text='<%# Eval("NombreTipoSolicitud") %>'  ></asp:Label>
 																  </ItemTemplate>
@@ -142,21 +160,14 @@
 														 </Columns>
 												  </asp:GridView>
 												</div>
-											</div>
-										</div>
 
 												<div class="table-wrapper">
-												<asp:Label runat ="server" ID ="Label1" Text ="Total solicitudes por tipo remitido" Font-Bold ="true" ForeColor ="Red"></asp:Label>
-												  <asp:GridView ID="gridDetalle3" runat="server" 
-													  CssClass="subtitulo" 
-													  EmptyDataText="No existen Registros" 
-													  GridLines="Horizontal" 
-													  AutoGenerateColumns="False">
-														<HeaderStyle  Font-Size="10px" />
-														<AlternatingRowStyle Font-Size="10px" />
-														  <RowStyle  Font-Size="10px" />
+													<asp:Label runat ="server" ID ="Label1" Text ="Total solicitudes por tipo remitido" Font-Bold ="true" ForeColor ="Red"></asp:Label>
+													<asp:GridView ID="gridDetalle3" runat="server" 
+													  ShowFooter ="true" 
+													  AutoGenerateColumns="False" OnRowDataBound="gridDetalle3_RowDataBound">
 														  <Columns>
-															  <asp:TemplateField HeaderText="Tipo de remitido">
+															  <asp:TemplateField HeaderText="Tipo de remitido" HeaderStyle-Width ="1500">
 																  <ItemTemplate>
 																	  <asp:Label runat="server" ID="lblNombreTipoRem" Text='<%# Eval("NombreTipoRemitido") %>'  ></asp:Label>
 																  </ItemTemplate>
