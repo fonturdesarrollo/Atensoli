@@ -31,9 +31,16 @@ namespace Atensoli
                 {
                     AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Consultó todas las solicitudes en seguimiento", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                 }
+
+                Label1.Text = "Solictudes cargadas sin seguimiento";
+                Label2.Text = "Solictudes en seguimiento";
                 DataSet ds = ConsultarSolicitud.ObtenerConsultaSolicitudSeguimientoAbierto(cedulaConsulta);
-                this.gridDetalle.DataSource = ds.Tables[0];
-                this.gridDetalle.DataBind();
+                gridDetalle.DataSource = ds.Tables[0];
+                gridDetalle.DataBind();
+
+                DataSet ds2 = ConsultarSolicitud.ObtenerConsultaSolicitud(cedulaConsulta.ToString(),0);
+                gridDetalle2.DataSource = ds2.Tables[0];
+                gridDetalle2.DataBind();
             }
             catch (Exception ex)
             {
@@ -51,7 +58,7 @@ namespace Atensoli
         {
             try
             {
-
+                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Actualizó la consulta de la solicitud en seguimiento a la cedula numero: " + txtCedula.Text, System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                 Solicitud.ActualizarConsultaSolicitud(Convert.ToInt32(e.CommandArgument.ToString()), Convert.ToInt32(Session["UserID"]));
                 CargarConsulta();
                 messageBox.ShowMessage("Consulta actualizada");
@@ -62,6 +69,22 @@ namespace Atensoli
                 messageBox.ShowMessage(ex.Message + ex.StackTrace);
             }
 
+        }
+
+        protected void gridDetalle2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Actualizó la consulta de la solicitud sin seguimiento a la cedula numero: " + txtCedula.Text, System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                Solicitud.ActualizarConsultaSolicitud(Convert.ToInt32(e.CommandArgument.ToString()), Convert.ToInt32(Session["UserID"]));
+                CargarConsulta();
+                messageBox.ShowMessage("Consulta actualizada");
+
+            }
+            catch (Exception ex)
+            {
+                messageBox.ShowMessage(ex.Message + ex.StackTrace);
+            }
         }
     }
 }
