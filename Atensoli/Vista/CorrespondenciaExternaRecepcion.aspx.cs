@@ -59,8 +59,15 @@ namespace Atensoli
             .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
             String strQuery = "";
 
-            strQuery = "Select * From Gerencia ORDER BY GerenciaID";
-
+            if (Seguridad.SeguridadUsuario.GrupoIDUsuarioLogin(Convert.ToInt32(this.Session["UserId"].ToString())) ==34)
+            {
+                strQuery = "Select * From Gerencia WHERE GerenciaID = 1 ORDER BY GerenciaID";
+            }
+            else
+            {
+                strQuery = "Select * From Gerencia ORDER BY GerenciaID";
+            }
+            
             using (SqlConnection con = new SqlConnection(strConnString))
             {
                 using (SqlCommand cmd = new SqlCommand())

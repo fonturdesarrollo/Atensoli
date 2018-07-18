@@ -13,7 +13,15 @@ namespace Seguridad
         {
             try
             {
-                this.Session.Clear();
+                if (Request.Cookies["login"] != null)
+                {
+                    Response.Cookies["login"].Value = "";
+                    Response.Cookies["password"].Value = "";
+
+                    Response.Cookies["login"].Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies["password"].Expires = DateTime.Now.AddDays(-1);
+                }
+                Session.Clear();
                 Session.Abandon();
                 Response.Redirect("../Index.aspx");
     }

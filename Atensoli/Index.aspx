@@ -54,6 +54,9 @@
 										-
 									</div>
 									<div class="6u 12u$(xsmall)">
+										<asp:CheckBox  runat ="server" ID="chkSesion" Text="Mantener sesión iniciada"/>
+									</div>
+									<div class="6u 12u$(xsmall)">
 									   <asp:DropDownList ID="ddlEmpresa" CssClass ="ol"  runat="server" AppendDataBoundItems="true"  Visible="false" >  </asp:DropDownList>
 									</div>
 									<div class="12u$">

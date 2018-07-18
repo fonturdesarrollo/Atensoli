@@ -1,8 +1,12 @@
 ﻿using Database.Classes;
 using Seguridad.Clases;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
+using System.Web;
+using System.Web.Security;
 using System.Web.SessionState;
 
 namespace Seguridad
@@ -136,6 +140,54 @@ namespace Seguridad
                 };
 
             return DBHelper.ExecuteDataSet("usp_SeguridadUsuario_EliminarSucursalUsuario", dbParams);
+        }
+
+        public static int GrupoIDUsuarioLogin(int codigoUsuario)
+        {
+            SqlDataReader dr;
+            int codigoGrupo = 0;
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@SeguridadUsuarioDatosID", SqlDbType.Int, 0, codigoUsuario),
+                };
+
+            dr= DBHelper.ExecuteDataReader("usp_SeguridadUsuario_ObtenerNombreGrupoPorIDUsuario", dbParams);
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    codigoGrupo = Convert.ToInt32(dr["SeguridadGrupoID"]);
+                }
+            }
+            dr.Close();
+            return  codigoGrupo;
+        }
+
+
+        public void MantenerSesionEnCookie(string textoACifrar, string nombreCookie)
+        {
+
+            var textoCookie = Encoding.UTF8.GetBytes(textoACifrar);
+            var valorCifrado = Convert.ToBase64String(MachineKey.Protect(textoCookie, "CookieProtegida"));
+
+            //Create cookie object and pass name of the cookie and value to be stored
+            HttpCookie cookieObject = new HttpCookie(nombreCookie, valorCifrado);
+
+            //Set expiry time cookie
+            cookieObject.Expires.AddDays(360);
+
+            //Add cookie to cookie collection
+            Response.Cookies.Add(cookieObject);
+        }
+        public string CookieDecifrada(string nombreCookie)
+        {
+            //Decode from Base 64 with the hash ProetectedCookie
+            var bytes = Convert.FromBase64String(Request.Cookies[nombreCookie].Value);
+            var output = MachineKey.Unprotect(bytes, "CookieProtegida");
+
+            string result = Encoding.UTF8.GetString(output);
+
+            return result;
         }
 
     }

@@ -5,7 +5,9 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,7 +17,16 @@ namespace Seguridad
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if(Request.Cookies["login"] != null)
+                {
+                    if (Request.Cookies["login"].Value != "")
+                    {
+                        ProcesoLogin();
+                    }
+                }
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -26,10 +37,28 @@ namespace Seguridad
         {
             if (Convert.ToInt32(hdnCodigoUsuario.Value) == 0)
             {
-
+                string loginName = "";
+                string passwordText = "";
                 try
                 {
-                    DataSet ds = Login.ValidarLogin(txtLogin.Text, txtClave.Text);
+
+                    //If Logged In decodes login and password
+                    if (Request.Cookies["login"] != null)
+                    {
+                        if (Request.Cookies["login"].Value != "")
+                        {
+                            loginName = CookieDecoded("login");
+                            passwordText = CookieDecoded("password");
+                        }
+                    }
+                    else
+                    {
+                        loginName = txtLogin.Text.Trim();
+                        passwordText = txtClave.Text.Trim();
+                    }
+
+
+                    DataSet ds = Login.ValidarLogin(loginName, passwordText);
                     DataTable dt = ds.Tables[0];
                     if (dt.Rows.Count == 0)
                     {
@@ -37,17 +66,25 @@ namespace Seguridad
                     }
                     else
                     {
+                        if(chkSesion.Checked)
+                        {
+                            KeepLoggedIn(txtLogin.Text.Trim(),"login");
+                            KeepLoggedIn(txtClave.Text.Trim(), "password");
+                        }
                         this.Session["UserId"] = dt.Rows[0]["SeguridadUsuarioDatosID"].ToString();
                         this.Session["UserName"] = dt.Rows[0]["LoginUsuario"].ToString();
                         this.Session["NombreCompletoUsuario"] = dt.Rows[0]["NombreCompleto"].ToString();
                         this.Session["ClaveUsuario"] = dt.Rows[0]["ClaveUsuario"].ToString();
                         hdnCodigoUsuario.Value = dt.Rows[0]["SeguridadUsuarioDatosID"].ToString();
                         CargarEmpresa(Convert.ToInt32(dt.Rows[0]["SeguridadUsuarioDatosID"].ToString()));
+                        txtLogin.Text = loginName;
+                        txtClave.Text = passwordText;
                     }
 
                 }
                 catch (Exception ex)
                 {
+                    var x = ex.Message;
                     messageBox.ShowMessage(ex.Message);
                 }
             }
@@ -76,8 +113,6 @@ namespace Seguridad
 
                     messageBox.ShowMessage(ex.StackTrace);
                 }
-
-
             }
         }
         private void CargarEmpresa(int codigoUsuario)
@@ -205,6 +240,34 @@ namespace Seguridad
                     con.Close();
                 }
             }
+        }
+
+        //Para mantener la sesion iniciada
+        private void KeepLoggedIn(string textToEncrypt, string cookieName)
+        {
+
+            var cookieText = Encoding.UTF8.GetBytes(textToEncrypt);
+            var encryptedValue = Convert.ToBase64String(MachineKey.Protect(cookieText, "ProtectCookie"));
+
+            //Create cookie object and pass name of the cookie and value to be stored
+            HttpCookie cookieObject = new HttpCookie(cookieName, encryptedValue);
+
+            //Set expiry time cookie
+            cookieObject.Expires.AddDays(100);
+
+            //Add cookie to cookie collection
+            Response.Cookies.Add(cookieObject);
+        }
+        private string CookieDecoded(string cookieName)
+        {
+            //Decode from Base 64 with the hash ProetectedCookie
+
+            var bytes = Convert.FromBase64String(Request.Cookies[cookieName].Value);
+            var output = MachineKey.Unprotect(bytes, "ProtectCookie");
+
+            string result = Encoding.UTF8.GetString(output);
+
+            return result;
         }
     }
 }
