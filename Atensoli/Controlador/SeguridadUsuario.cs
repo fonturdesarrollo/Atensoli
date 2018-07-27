@@ -163,6 +163,26 @@ namespace Seguridad
             return  codigoGrupo;
         }
 
+        public static int ObjetoIDUsuarioLogin(int codigoUsuario)
+        {
+            SqlDataReader dr;
+            int codigoObjeto = 0;
+            SqlParameter[] dbParams = new SqlParameter[]
+                {
+                    DBHelper.MakeParam("@SeguridadUsuarioDatosID", SqlDbType.Int, 0, codigoUsuario),
+                };
+
+            dr = DBHelper.ExecuteDataReader("usp_SeguridadUsuario_ObtenerNombreObjetoPorIDUsuario", dbParams);
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    codigoObjeto = Convert.ToInt32(dr["SeguridadObjetoID"]);
+                }
+            }
+            dr.Close();
+            return codigoObjeto;
+        }
 
         public void MantenerSesionEnCookie(string textoACifrar, string nombreCookie)
         {

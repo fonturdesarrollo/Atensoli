@@ -65,8 +65,15 @@ namespace Atensoli
             }
             else
             {
-                strQuery = "Select * From Gerencia ORDER BY GerenciaID";
-            }
+                if (Seguridad.SeguridadUsuario.ObjetoIDUsuarioLogin(Convert.ToInt32(this.Session["UserId"].ToString())) == 1033)
+                {
+                    strQuery = "Select * From Gerencia WHERE GerenciaID = 1 ORDER BY GerenciaID";
+                }
+                else
+                {
+                    strQuery = "Select * From Gerencia ORDER BY GerenciaID";
+                }
+              }
             
             using (SqlConnection con = new SqlConnection(strConnString))
             {
