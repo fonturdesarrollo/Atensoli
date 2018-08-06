@@ -364,6 +364,15 @@ namespace Atensoli.Vista {
         protected global::System.Web.UI.WebControls.HyperLink lnkEstadisticasGenerales;
         
         /// <summary>
+        /// lnkSolicitudesSeguimiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkSolicitudesSeguimiento;
+        
+        /// <summary>
         /// lnkSeguridad control.
         /// </summary>
         /// <remarks>

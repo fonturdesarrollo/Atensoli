@@ -133,6 +133,9 @@ namespace Seguridad
                 case "/Vista/CorrespondenciaHistorial.aspx":
                     codigoObjeto = 1050;
                     break;
+                case "/Vista/EstadisticaSeguimiento.aspx":
+                    codigoObjeto = 1051;
+                    break;
                 default:
                     break;
             }

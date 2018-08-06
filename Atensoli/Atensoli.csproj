@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\EstadisticaSeguimiento.aspx" />
     <Content Include="Vista\CorrespondenciaHistorial.aspx" />
     <Content Include="Vista\CorrespondenciaRecepcionGerencia.aspx" />
     <Content Include="Vista\CorrespondenciaSeleccionGerencia.aspx" />
@@ -302,6 +303,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vista\EstadisticaSeguimiento.aspx.cs">
+      <DependentUpon>EstadisticaSeguimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\EstadisticaSeguimiento.aspx.designer.cs">
+      <DependentUpon>EstadisticaSeguimiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\CorrespondenciaHistorial.aspx.cs">
       <DependentUpon>CorrespondenciaHistorial.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

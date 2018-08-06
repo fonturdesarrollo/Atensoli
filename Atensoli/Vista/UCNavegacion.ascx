@@ -99,6 +99,7 @@
 											<ul>
 												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudesCargadas"  navigateurl ="~/Vista/ConsultarSolicitudesCargadas.aspx"  Text ="Solicitudes cargadas"></ASP:HyperLink></li>												
 												<li><ASP:HyperLink runat="server" ID ="lnkEstadisticasGenerales"  navigateurl ="~/Vista/EstadisticasGenerales.aspx"  Text ="Estadísticas generales"></ASP:HyperLink></li>
+                                                <li><ASP:HyperLink runat="server" ID ="lnkSolicitudesSeguimiento"  navigateurl ="~/Vista/EstadisticaSeguimiento.aspx"  Text ="Solicitudes seguimiento"></ASP:HyperLink></li>
 											</ul>
 										</li>
 										<li>

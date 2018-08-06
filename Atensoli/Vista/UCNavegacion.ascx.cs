@@ -204,6 +204,10 @@ namespace Atensoli.Vista
                 {
                     lnkEstadisticasGenerales.Visible = true;
                 }
+                if (objetoSeguridad.EsAccesoPermitido(1051) == true)
+                {
+                    lnkSolicitudesSeguimiento.Visible = true;
+                }
             }
         }
         private void ColocarEnlacesInvisibles()
