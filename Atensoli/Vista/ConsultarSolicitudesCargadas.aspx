@@ -116,6 +116,16 @@
 																  <asp:Label runat="server" ID="lblNombreSolicitante" Text='<%# Eval("SolicitanteNombre") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Email Solicitante">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblEmailSolicitante" Text='<%# Eval("CorreoElectronicoSolicitante") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Celular Solicitante">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblCelularSolicitante" Text='<%# Eval("CelularSolicitante") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
 														  <asp:TemplateField HeaderText="RIF Organizacion">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblRifOrganizacion" Text='<%# Eval("RifOrganizacion") %>'  ></asp:Label>
