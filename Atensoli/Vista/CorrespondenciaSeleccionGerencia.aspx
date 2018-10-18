@@ -87,6 +87,11 @@
 														        <asp:Label runat="server" ID="lblFechaCarga" Text='<%# Eval("FechaCargaCorrespondencia") %>'  ></asp:Label>
 													        </ItemTemplate>
 												        </asp:TemplateField>
+												        <asp:TemplateField HeaderText="Usuario">
+													        <ItemTemplate>
+														        <asp:Label runat="server" ID="lblUsuario" Text='<%# Eval("Usuario") %>'  ></asp:Label>
+													        </ItemTemplate>
+												        </asp:TemplateField>
 												        <asp:TemplateField HeaderText="Tipo" >
 													        <ItemTemplate>
 														        <asp:Label runat="server" ID="lblTipo" Text='<%# Eval("NombreTipoCorrespondencia") %>'  ></asp:Label>
