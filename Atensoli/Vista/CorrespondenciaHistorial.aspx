@@ -63,11 +63,22 @@
 														<AlternatingRowStyle Font-Size="10px" />
 														  <RowStyle  Font-Size="10px" />
 													  <Columns>
-														  <asp:TemplateField HeaderText="Fecha">
+														  <asp:TemplateField HeaderText="Fecha Correspondencia">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblFechaCorrespondencia" Text='<%# Eval("FechaCortaCorrespondencia") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Fecha Carga Correspondencia">
+															  <ItemTemplate>
+																  <asp:Label runat="server" ID="lblFechaCargaCorrespondencia" Text='<%# Eval("FechaCargaCorrespondencia") %>'  ></asp:Label>
+															  </ItemTemplate>
+														  </asp:TemplateField>
+														  <asp:TemplateField HeaderText="Fecha Seguimiento Correspondencia">
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblFecha" Text='<%# Eval("FechaSeguimientoCorrespondencia") %>'  ></asp:Label>
 															  </ItemTemplate>
 														  </asp:TemplateField>
+
 														  <asp:TemplateField HeaderText="N° Correspondencia" >
 															  <ItemTemplate>
 																  <asp:Label runat="server" ID="lblNumeroCorr" Text='<%# Eval("CorrespondenciaID") %>'  ></asp:Label>
