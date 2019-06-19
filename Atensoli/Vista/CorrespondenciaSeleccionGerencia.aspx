@@ -79,7 +79,17 @@
 												        </asp:TemplateField>
 												        <asp:TemplateField HeaderText="Fecha Correspondencia">
 													        <ItemTemplate>
-														        <asp:Label runat="server" ID="lblFecha" Text='<%# Eval("FechaCorrespondencia") %>'  ></asp:Label>
+														        <asp:Label runat="server" ID="lblFecha" Text='<%# Eval("FechaCortaCorrespondencia") %>'  ></asp:Label>
+													        </ItemTemplate>
+												        </asp:TemplateField>
+												        <asp:TemplateField HeaderText="Fecha Carga Correspondencia">
+													        <ItemTemplate>
+														        <asp:Label runat="server" ID="lblFechaCarga" Text='<%# Eval("FechaCargaCorrespondencia") %>'  ></asp:Label>
+													        </ItemTemplate>
+												        </asp:TemplateField>
+												        <asp:TemplateField HeaderText="Usuario">
+													        <ItemTemplate>
+														        <asp:Label runat="server" ID="lblUsuario" Text='<%# Eval("Usuario") %>'  ></asp:Label>
 													        </ItemTemplate>
 												        </asp:TemplateField>
 												        <asp:TemplateField HeaderText="Tipo" >
