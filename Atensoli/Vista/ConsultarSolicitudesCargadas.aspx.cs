@@ -16,6 +16,8 @@ namespace Atensoli
         {
             if (!IsPostBack)
             {
+                txtFechaRegistro.Text = DateTime.Now.ToShortDateString();
+                txtFechaHasta.Text = DateTime.Now.ToShortDateString();
                 CargarSolicitudes();
             }
         }
@@ -23,12 +25,10 @@ namespace Atensoli
         {
             try
             {
-                string fechaSolicitud = "";
-                if(chkDelDia.Checked == true)
-                {
-                    fechaSolicitud = DateTime.Now.ToString("dd/MM/yyyy");
-                }
-                DataSet ds = ConsultarSolicitud.ObtenerSolicitudesCargadas(fechaSolicitud);
+                DateTime fechaDesde = Convert.ToDateTime(txtFechaRegistro.Text);
+                DateTime fechaHasta = Convert.ToDateTime(txtFechaHasta.Text);
+
+                DataSet ds = ConsultarSolicitud.ObtenerSolicitudesCargadas(fechaDesde, fechaHasta);
                 this.gridDetalle.DataSource = ds.Tables[0];
                 this.gridDetalle.DataBind();
             }
@@ -38,18 +38,10 @@ namespace Atensoli
                 messageBox.ShowMessage(ex.Message + ex.StackTrace);
             }
         }
-        protected void ExportToExcel(object sender, EventArgs e)
+        protected void ExportToExcel()
         {
-            string nombreArchivo;
-            if (chkDelDia.Checked == true)
-            {
-                nombreArchivo = "SolicitantesAtendidosElDia" + System.DateTime.Now.ToString("dd-MM-yyyy") + ".xls";
-            }
-            else
-            {
-                nombreArchivo = "SolicitantesAtendidosTodos" + ".xls";
-            }
-            
+            string nombreArchivo = "SolicitantesAtendidosElDia_Desde_" + txtFechaRegistro.Text + "_Hasta_" + txtFechaHasta.Text + ".xls";
+
             Response.Clear();
             Response.Buffer = true;
             Response.AddHeader("content-disposition", "attachment;filename=" + nombreArchivo);
@@ -108,7 +100,7 @@ namespace Atensoli
 
         protected void btnExportar_Click(object sender, EventArgs e)
         {
-
+            ExportToExcel();
         }
     }
 }

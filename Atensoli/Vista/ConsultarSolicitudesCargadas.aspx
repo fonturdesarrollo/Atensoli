@@ -24,6 +24,41 @@
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>      
 
+	<script type ="text/javascript">
+
+		$(function () {
+
+			//Array para dar formato en español
+			$.datepicker.regional['es'] =
+			{
+				closeText: 'Cerrar',
+				prevText: 'Previo',
+				nextText: 'Próximo',
+
+				monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+				'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+				monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+				'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+				monthStatus: 'Ver otro mes', yearStatus: 'Ver otro año',
+				dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+				dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb'],
+				dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+				dateFormat: 'dd/mm/yy', firstDay: 0,
+				initStatus: 'Selecciona la fecha', isRTL: false
+			};
+			$.datepicker.setDefaults($.datepicker.regional['es']);
+
+			$("#txtFechaRegistro").datepicker({
+				dateFormat: 'dd/mm/yy',  buttonImageOnly: false, changeMonth: true,
+				changeYear: true, gotoCurrent: true, yearRange: "1900:2020"
+			});
+			$("#txtFechaHasta").datepicker({
+				dateFormat: 'dd/mm/yy', buttonImageOnly: false, changeMonth: true,
+				changeYear: true, gotoCurrent: true, yearRange: "1900:2020"
+			});
+		});
+	</script>
+
 <%--------------------------%>
 
 	</head>
@@ -48,18 +83,23 @@
 							<form runat ="server" id ="principal">	
 								<section>
 										<p></p>
-											<div class="row uniform">
-											   <div class="6u 12u$(xsmall)">
+                                           <div class="posts">
+												<article>
+                                                    Desde
+													<asp:TextBox runat="server" ID="txtFechaRegistro"  MaxLength="20" placeholder ="Fecha desde"/>
+													<ASP:RequiredFieldValidator id="rqrValidaFechaRegistro" runat="server" errormessage="Debe colocar la fecha desde"  controltovalidate="txtFechaRegistro" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+												</article>
+												<article>
+                                                    Hasta
+													<asp:TextBox runat="server" ID="txtFechaHasta"  MaxLength="20" placeholder ="Fecha hasta"/>
+													<ASP:RequiredFieldValidator id="rqrValidaFechaHasta" runat="server" errormessage="Debe colocar la fecha hasta"  controltovalidate="txtFechaHasta" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+                                                    
+												</article>
+	     										<article>
 													<asp:Button Text="Consultar" runat="server" ID ="btnConsultar"  CssClass ="special" OnClick="btnConsultar_Click"  />
-											   </div>
-												<div class="6u 12u$(xsmall)"> 
-													<asp:Button ID="btnExportar" runat="server"  Text="Exportar a Excel" OnClick = "ExportToExcel" />
-													<asp:CheckBox runat="server" ID ="chkDelDia" Checked ="true" Text ="Solo solicitudes de hoy" />
-												</div>
-												<div class="6u 12u$(xsmall)">
-													
-												</div>
-										   </div>
+                                                    <asp:Button ID="btnExportar" runat="server"  Text="Exportar a Excel" OnClick="btnExportar_Click" />
+   												</article>	
+											</div>
 											<p></p>
 											<div class="table-wrapper">
 												  <asp:GridView ID="gridDetalle" runat="server" 

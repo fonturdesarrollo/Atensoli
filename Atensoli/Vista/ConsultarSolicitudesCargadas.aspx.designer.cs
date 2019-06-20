@@ -40,6 +40,42 @@ namespace Atensoli {
         protected global::System.Web.UI.HtmlControls.HtmlForm principal;
         
         /// <summary>
+        /// txtFechaRegistro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaRegistro;
+        
+        /// <summary>
+        /// rqrValidaFechaRegistro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaFechaRegistro;
+        
+        /// <summary>
+        /// txtFechaHasta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaHasta;
+        
+        /// <summary>
+        /// rqrValidaFechaHasta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqrValidaFechaHasta;
+        
+        /// <summary>
         /// btnConsultar control.
         /// </summary>
         /// <remarks>
@@ -56,15 +92,6 @@ namespace Atensoli {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnExportar;
-        
-        /// <summary>
-        /// chkDelDia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkDelDia;
         
         /// <summary>
         /// gridDetalle control.
