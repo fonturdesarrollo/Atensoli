@@ -21,48 +21,48 @@ namespace Atensoli.Vista
                 lnkCambiarClave.Visible = true;
                 if (objetoSeguridad.EsAccesoPermitido(9) == true)
                 {
-                    lnkSolicitudes.Visible = true;
+                    //lnkSolicitudes.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(12) == true)
                 {
-                    lnkTipoSolicitante.Visible = true;
+                    //lnkTipoSolicitante.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(13) == true)
                 {
-                    lnkTipoSolicitud.Visible = true;
+                    //lnkTipoSolicitud.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(14) == true)
                 {
-                    lnkTipoOrganizacion.Visible = true;
+                    //lnkTipoOrganizacion.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(15) == true)
                 {
-                    lnkTipoAtencion.Visible = true;
+                   // lnkTipoAtencion.Visible = true;
 
                 }
 
                 if (objetoSeguridad.EsAccesoPermitido(16) == true)
                 {
-                    lnkReferido.Visible = true;
+                    //lnkReferido.Visible = true;
 
                 }
 
                 if (objetoSeguridad.EsAccesoPermitido(17) == true)
                 {
-                    lnkTipoRemitido.Visible = true;
+                    //lnkTipoRemitido.Visible = true;
 
                 }
                 if (objetoSeguridad.EsAccesoPermitido(18) == true)
                 {
-                    lnkTipoInsumo.Visible = true;
+                    //lnkTipoInsumo.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(22) == true)
                 {
-                    lnkConsultarSolicitud.Visible = true;
+                    //lnkConsultarSolicitud.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(23) == true)
                 {
-                    lnkTipoSoporteFIsico.Visible = true;
+                    //lnkTipoSoporteFIsico.Visible = true;
                 }
 
                 //=============================================================
@@ -70,28 +70,28 @@ namespace Atensoli.Vista
                 //=============================================================
                 if (objetoSeguridad.EsAccesoPermitido(1023) == true)
                 {
-                    lnkCobranzas.Visible = true;
+                    //lnkCobranzas.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1026) == true)
                 {
-                    lnkFinanciamiento.Visible = true;
+                    //lnkFinanciamiento.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1027) == true)
                 {
-                    lnkMovilidadEstudiantil.Visible = true;
+                    //lnkMovilidadEstudiantil.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1028) == true)
                 {
-                    lnkAsesoriaLegal.Visible = true;
+                    //lnkAsesoriaLegal.Visible = true;
                 }
 
                 if (objetoSeguridad.EsAccesoPermitido(1029) == true)
                 {
-                    lnkTecncicaAutomotriz.Visible = true;
+                   // lnkTecncicaAutomotriz.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1030) == true)
                 {
-                    lnkOAC.Visible = true;
+                    //lnkOAC.Visible = true;
                 }
                 //=============================================================
 
@@ -100,28 +100,28 @@ namespace Atensoli.Vista
                 //=============================================================
                 if (objetoSeguridad.EsAccesoPermitido(1023) == true)
                 {
-                    lnkCobranzasSeguimiento.Visible = true;
+                    //lnkCobranzasSeguimiento.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1026) == true)
                 {
-                    lnkFinanciamientoSeguimiento.Visible = true;
+                    //lnkFinanciamientoSeguimiento.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1027) == true)
                 {
-                    lnkMovilidadEstudiantilSeguimiento.Visible = true;
+                    //lnkMovilidadEstudiantilSeguimiento.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1028) == true)
                 {
-                    lnkAsesoriaLegalSeguimiento.Visible = true;
+                    //lnkAsesoriaLegalSeguimiento.Visible = true;
                 }
 
                 if (objetoSeguridad.EsAccesoPermitido(1029) == true)
                 {
-                    lnkTecncicaAutomotrizSeguimiento.Visible = true;
+                    //lnkTecncicaAutomotrizSeguimiento.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1030) == true)
                 {
-                    lnkOACSeguimiento.Visible = true;
+                    //lnkOACSeguimiento.Visible = true;
                 }
                 //=============================================================
 
@@ -198,15 +198,15 @@ namespace Atensoli.Vista
 
                 if (objetoSeguridad.EsAccesoPermitido(1024) == true)
                 {
-                    lnkSolicitudesCargadas.Visible = true;
+                    //lnkSolicitudesCargadas.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1025) == true)
                 {
-                    lnkEstadisticasGenerales.Visible = true;
+                    //lnkEstadisticasGenerales.Visible = true;
                 }
                 if (objetoSeguridad.EsAccesoPermitido(1051) == true)
                 {
-                    lnkSolicitudesSeguimiento.Visible = true;
+                    //lnkSolicitudesSeguimiento.Visible = true;
                 }
             }
         }

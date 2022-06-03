@@ -38,7 +38,7 @@
                                 <section id="banner">
                                     <div class="content">
                                         <header>
-                                            <h1>Bienvenid@ <%:Session["NombreCompletoUsuario"]%> al sistema Atensoli.<br /></h1>
+                                            <h1>Bienvenid@ <%:Session["NombreCompletoUsuario"]%> al sistema de Correspondencia.<br /></h1>
                                             <p><%:Session["NombreEmpresa"]%></p>
                                         </header>
                                     </div>
@@ -54,15 +54,15 @@
                                         <article>
                                             <span class="icon fa-diamond"></span>
                                             <div class="content">
-                                                <h3>Registro de solicitudes</h3>
-                                                <p>Seleccione el tipo de necesidad de atención ingrese al solicitante y registre según sea requerido.</p>
+                                                <h3>Registro de Correspondencia Externa</h3>
+                                                <p>Realice el la carga inicial de la correspondencia que luego será revisada.</p>
                                             </div>
                                         </article>
                                         <article>
                                             <span class="icon fa-paper-plane"></span>
                                             <div class="content">
-                                                <h3>Seguimiento de solicitudes</h3>
-                                                <p>Mantenga el control de estatus de las necesidades del solicitante.</p>
+                                                <h3>Asignación y respuesta</h3>
+                                                <p>Dirija la correspondencia a la gerencia que le corresponde.</p>
                                             </div>
                                         </article>
                                     </div>
