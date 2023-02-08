@@ -31,7 +31,7 @@
 					<section id="main">
 						<header>
 							<span class="avatar"><img src="images/avatar.png" alt="" /></span>
-							<h1>Bienvenido al sistema Atensoli</h1>
+							<h1>Bienvenido al sistema de Correspondencia</h1>
 							<p>Indique sus credenciales de acceso</p>
 						</header>
 
