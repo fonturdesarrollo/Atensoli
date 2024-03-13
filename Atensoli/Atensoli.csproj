@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,6 +75,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Scripts\jquery-1.7-vsdoc.js" />
+    <Content Include="Plugins\datatables.min.css" />
+    <Content Include="Plugins\datatables.min.js" />
+    <Content Include="Scripts\jquery-1.7.js" />
+    <Content Include="Scripts\jquery-1.7.min.js" />
+    <Content Include="Vista\CorrespondenciaDetalleHistorial.aspx" />
+    <Content Include="Vista\CorrespondenciaEstadisticasPorGerencia.aspx" />
     <Content Include="Vista\EstadisticaSeguimiento.aspx" />
     <Content Include="Vista\CorrespondenciaHistorial.aspx" />
     <Content Include="Vista\CorrespondenciaRecepcionGerencia.aspx" />
@@ -303,6 +311,24 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlador\CorrespondenciaDetalleHistorial.cs" />
+    <Compile Include="Controlador\CorrespondenciaEstadisticasPorGerencia.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaDetalleHistorial.aspx.cs">
+      <DependentUpon>CorrespondenciaDetalleHistorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaDetalleHistorial.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaDetalleHistorial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaEstadisticasPorGerencia.aspx.cs">
+      <DependentUpon>CorrespondenciaEstadisticasPorGerencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaEstadisticasPorGerencia.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaEstadisticasPorGerencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\EstadisticaSeguimiento.aspx.cs">
       <DependentUpon>EstadisticaSeguimiento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -728,6 +754,7 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

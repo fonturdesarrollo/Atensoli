@@ -81,9 +81,9 @@
 												</ul>
 										</li>
 
-										<li>
-											<span class="opener">Opciones especiales</span>
-											<ul>
+										<%--<li>--%>
+											<%--<span class="opener">Opciones especiales</span>--%>
+											<%--<ul>--%>
 <%--												<li><ASP:HyperLink runat="server" ID ="lnkTipoSolicitante"  navigateurl ="~/Vista/TipoSolicitante.aspx" Text ="Tipo de solicitante"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoSolicitud"  navigateurl ="~/Vista/TipoSolicitud.aspx" Text ="Tipo de solicitud"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoOrganizacion"  navigateurl ="~/Vista/TipoOrganizacion.aspx" Text ="Tipo de organización"></ASP:HyperLink></li>
@@ -92,11 +92,12 @@
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoRemitido"  navigateurl ="~/Vista/TipoRemitido.aspx" Text ="Tipo de remitido"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoInsumo"  navigateurl ="~/Vista/TipoInsumo.aspx" Text ="Tipo de insumo"></ASP:HyperLink></li>
 												<li><ASP:HyperLink runat="server" ID ="lnkTipoSoporteFIsico"  navigateurl ="~/Vista/TipoSoporte.aspx" Text ="Tipo de soporte físico"></ASP:HyperLink></li>--%>
-											</ul>
-										</li>
+											<%--</ul>--%>
+										<%--</li>--%>
 										<li>
 											<span class="opener">Estadísticas</span>
 											<ul>
+												<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaHistorialPorGerencia"  navigateurl ="~/Vista/CorrespondenciaEstadisticasPorGerencia.aspx"  Text ="Historial de Correspondencias"></ASP:HyperLink></li>
 <%--												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudesCargadas"  navigateurl ="~/Vista/ConsultarSolicitudesCargadas.aspx"  Text ="Solicitudes cargadas"></ASP:HyperLink></li>												
 												<li><ASP:HyperLink runat="server" ID ="lnkEstadisticasGenerales"  navigateurl ="~/Vista/EstadisticasGenerales.aspx"  Text ="Estadísticas generales"></ASP:HyperLink></li>
                                                 <li><ASP:HyperLink runat="server" ID ="lnkSolicitudesSeguimiento"  navigateurl ="~/Vista/EstadisticaSeguimiento.aspx"  Text ="Solicitudes seguimiento"></ASP:HyperLink></li>--%>
