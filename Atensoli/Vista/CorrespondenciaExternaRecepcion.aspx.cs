@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,7 +14,9 @@ namespace Atensoli
 {
     public partial class CorrespondenciaExternaRecepcion : Seguridad.SeguridadAuditoria
     {
-        protected new void Page_Load(object sender, EventArgs e)
+
+		private string ftpServerUrl = ConfigurationManager.AppSettings.Get("ftpServer");
+		protected new void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
@@ -21,7 +25,9 @@ namespace Atensoli
                 CargarEstado();
                 CargarGerencia();
                 CargarPrioridad();
-            }
+				UploadButton.Visible = false;
+                FileUploadControl.Visible = false;
+			}
         }
 
         private void CargarPrioridad()
@@ -175,7 +181,11 @@ namespace Atensoli
                         messageBox.ShowMessage("Correspondencia registrada exitosamente.");
                         txtNombreRemitente.Text = string.Empty;
                         CargarCorrespondencia(Convert.ToInt32(Session["codigoCorrespondenciaAgregada"].ToString()));
-                    }
+					    btnGuardar.Visible = false;
+						UploadButton.Visible = true;    
+                        FileUploadControl.Visible = true;
+					    StatusLabel.Visible = true;
+				}
                 }
             catch (Exception ex)
             {
@@ -212,8 +222,13 @@ namespace Atensoli
             txtFechaCorrespondencia.Text = string.Empty;
             txtContenido.Text = string.Empty;
             gridDetalle.DataSource = null;
-            gridDetalle.DataBind();
-        }
+			UploadButton.Visible = false;
+			FileUploadControl.Visible = false;
+            StatusLabel.Text = string.Empty;
+			StatusLabel.Visible = false;
+			gridDetalle.DataBind();
+			btnGuardar.Visible = true;
+		}
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -239,11 +254,148 @@ namespace Atensoli
         private void ProcesoEliminar(int idCorrespondencia)
         {
             CorrespondenciaExternaRecepcion.EliminarCorrespondenciaExterna(idCorrespondencia);
-            Session["codigoCorrespondenciaAgregada"] = "0";
+			
+            EliminarArchivosEnCarpeta(Session["codigoCorrespondenciaAgregada"].ToString());
+
+			Session["codigoCorrespondenciaAgregada"] = "0";
             gridDetalle.DataSource = null;
             gridDetalle.DataBind();
             txtNombreRemitente.Text = string.Empty;
-            AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Eliminó la correspondencia externa número: " + idCorrespondencia, System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+			UploadButton.Visible = false;
+			FileUploadControl.Visible = false;
+			StatusLabel.Text = string.Empty;
+			StatusLabel.Visible = false;
+			btnGuardar.Visible = true;
+			AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Eliminó la correspondencia externa número: " + idCorrespondencia, System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
         }
-    }
+		protected void UploadButton_Click(object sender, EventArgs e)
+		{
+			if (FileUploadControl.HasFiles)
+			{
+				try
+				{
+					string folderName = "";
+
+					if (Session["codigoCorrespondenciaAgregada"] != null)
+                    {
+                        folderName = Session["codigoCorrespondenciaAgregada"].ToString();
+					}
+
+					string folderPath = ftpServerUrl + "/" + folderName;
+
+					if (!ExisteCarpeta(folderPath))
+                    {
+
+						FtpWebRequest createFolderRequest = (FtpWebRequest)WebRequest.Create(folderPath);
+						createFolderRequest.Method = WebRequestMethods.Ftp.MakeDirectory;
+						createFolderRequest.Credentials = new NetworkCredential(string.Empty, string.Empty);
+						createFolderRequest.GetResponse();
+					}
+
+					foreach (var file in FileUploadControl.PostedFiles)
+					{
+						string fileName = Path.GetFileName(file.FileName);
+						string ftpFilePath = folderPath + "/" + fileName;
+
+						FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpFilePath);
+						ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
+						ftpRequest.Credentials = new NetworkCredential(string.Empty, string.Empty);
+                        ftpRequest.ReadWriteTimeout = 360000;
+
+						using (Stream ftpStream = ftpRequest.GetRequestStream())
+						{
+							file.InputStream.CopyTo(ftpStream);
+						}
+
+						StatusLabel.Text += $"Archivo '{fileName}' adjuntado correctamente<br />";
+					}
+				}
+				catch (Exception ex)
+				{
+					StatusLabel.Text = "Error adjuntando archivos: " + ex.Message;
+				}
+			}
+			else
+			{
+				StatusLabel.Text = "Por favor seleccione un archivo para adjuntar.";
+            }
+        }
+        bool ExisteCarpeta(string folderPath)
+        {
+            try
+            {
+                FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(folderPath);
+                ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+                ftpRequest.Credentials = new NetworkCredential(string.Empty, string.Empty);
+
+                using (FtpWebResponse ftpResponse = (FtpWebResponse)ftpRequest.GetResponse())
+                {
+                    return true;
+                }
+            }
+            catch (WebException ex)
+            {
+                FtpWebResponse response = (FtpWebResponse)ex.Response;
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+    private bool EliminarArchivosEnCarpeta(string folderName)
+		{
+			bool archivosEliminados = false;
+			try
+			{
+				string folderPath = ftpServerUrl + "/" + folderName;
+
+				string[] files = ObtenerAchivosEnCarpeta(folderPath, string.Empty, string.Empty);
+
+				foreach (string file in files)
+				{
+					string filePath = folderPath + "/" + file;
+					FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(filePath);
+					ftpRequest.Method = WebRequestMethods.Ftp.DeleteFile;
+					ftpRequest.Credentials = new NetworkCredential(string.Empty, string.Empty);
+
+					using (FtpWebResponse ftpResponse = (FtpWebResponse)ftpRequest.GetResponse())
+					{
+						archivosEliminados = true;
+					}
+				}
+			}
+			catch (Exception)
+			{
+                //
+			}
+
+			return archivosEliminados;
+		}
+
+		private string[] ObtenerAchivosEnCarpeta(string folderPath, string username, string password)
+		{
+			try
+			{
+				FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(folderPath);
+				ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+				ftpRequest.Credentials = new NetworkCredential(username, password);
+
+				using (FtpWebResponse ftpResponse = (FtpWebResponse)ftpRequest.GetResponse())
+				using (StreamReader reader = new StreamReader(ftpResponse.GetResponseStream()))
+				{
+					string directoryListing = reader.ReadToEnd();
+					return directoryListing.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+				}
+			}
+			catch (Exception ex)
+			{
+				return new string[0];
+			}
+		}
+	}
 }

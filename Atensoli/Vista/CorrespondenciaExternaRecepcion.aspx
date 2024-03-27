@@ -67,7 +67,7 @@
 
 			$("#txtFechaCorrespondencia").datepicker({
 				dateFormat: 'dd/mm/yy',  buttonImageOnly: false, changeMonth: true,
-				changeYear: true, gotoCurrent: true, yearRange: "1900:2020"
+				changeYear: true, gotoCurrent: true, yearRange: "2000:2030"
 			});
 		});
 
@@ -150,6 +150,9 @@
 											<ul class="actions">
 												<li><asp:Button Text="Registrar correspondencia externa" runat="server" ID ="btnGuardar"  CssClass ="special" OnClick="btnGuardar_Click"  /></li>
 												<li><asp:Button  runat="server" ID="btnNuevo" Text ="Nuevo registro"  CausesValidation ="false" OnClick="btnNuevo_Click" /></li>
+												<asp:FileUpload ID="FileUploadControl"  runat="server" AllowMultiple="true" />
+												<asp:Button ID="UploadButton" runat="server" Text="Adjuntar documentos" OnClick="UploadButton_Click" CausesValidation = "false" />
+												<li><asp:Label ID="StatusLabel" runat="server" Text=""></asp:Label></li>												
 											</ul>
 										</div>
 									

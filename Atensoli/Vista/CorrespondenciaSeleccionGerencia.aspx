@@ -28,7 +28,7 @@
 	<script type="text/javascript">
 
 
-		 </script>
+ </script>
 
 	</head>
 	<body>

@@ -26,7 +26,7 @@ namespace Atensoli.Vista
 		{
 			try
 			{
-				string historialUrl = "/Vista/CorrespondenciaDetalleHistorial.aspx";
+				string historialUrl = "~/Vista/CorrespondenciaDetalleHistorial.aspx";
 				int codigoGerenciaSeleccionada = 0;
 
 				if(!string.IsNullOrEmpty(ddlGerencia.SelectedValue))

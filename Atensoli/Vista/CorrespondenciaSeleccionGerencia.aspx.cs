@@ -99,7 +99,7 @@ namespace Atensoli
                 AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Seleccionó la correspondencia número: " + e.CommandArgument.ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                 if (e.CommandName == "SeleccionarCorrespondencia")
                 {
-                    Response.Redirect("CorrespondenciaRecepcionGerencia.aspx");
+                    Response.Redirect("CorrespondenciaRecepcionGerencia.aspx", false);
                 }
             }
             catch (Exception ex)

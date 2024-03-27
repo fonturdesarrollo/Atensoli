@@ -190,13 +190,17 @@ namespace Atensoli.Vista
                 {
                     lnkCorrespondenciaCobranzas.Visible = true;
                 }
+				if (objetoSeguridad.EsAccesoPermitido(1052) == true)
+				{
+					lnkCorrespondenciaHistorialPorGerencia.Visible = true;
+				}
 
-                //=============================================================
-                //FIN CORRESPONDENCIA
-                //=============================================================
+				//=============================================================
+				//FIN CORRESPONDENCIA
+				//=============================================================
 
 
-                if (objetoSeguridad.EsAccesoPermitido(1024) == true)
+				if (objetoSeguridad.EsAccesoPermitido(1024) == true)
                 {
                     //lnkSolicitudesCargadas.Visible = true;
                 }

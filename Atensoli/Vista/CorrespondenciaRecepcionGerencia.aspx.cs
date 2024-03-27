@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Atensoli
 {
-    public partial class CorrespondenciaRecepcionGerencia : Seguridad.SeguridadAuditoria
+    public partial class CorrespondenciaRecepcionGerencia : System.Web.UI.Page
     {
-        protected new void Page_Load(object sender, EventArgs e)
+        private string ftpServerUrl = ConfigurationManager.AppSettings.Get("ftpServer");
+        protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 CargarCorrespondencia();
                 CargarInstruccion();
                 CargarGerencia();
                 CargarEstatus();
+                CargarArchivosAdjuntos();
             }
         }
 
@@ -126,7 +132,7 @@ namespace Atensoli
             int codigoSeguimientoCorrespondencia = 0;
             try
             {
-                if(EsTodoCorrecto() == true)
+                if (EsTodoCorrecto() == true)
                 {
                     CCorrespondenciaRecepcionGerencia objetoCorrespondencia = new CCorrespondenciaRecepcionGerencia();
 
@@ -141,7 +147,7 @@ namespace Atensoli
                     codigoSeguimientoCorrespondencia = CorrespondenciaRecepcionGerencia.InsertarSeguimientoCorrespondencia(objetoCorrespondencia);
                     if (codigoSeguimientoCorrespondencia > 0)
                     {
-                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó seguimiento a la correspondencia número: " + codigoSeguimientoCorrespondencia, System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                        //AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó seguimiento a la correspondencia número: " + codigoSeguimientoCorrespondencia, System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
                         messageBox.ShowMessage("Recepción de correspondencia agregada");
                         CargarCorrespondencia();
                         LimpiarTodo();
@@ -176,7 +182,199 @@ namespace Atensoli
 
         protected void btnHistorial_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CorrespondenciaHistorial.aspx");
+            Response.Redirect("CorrespondenciaHistorial.aspx", false);
         }
-    }
+
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+            if (FileUploadControl.HasFiles)
+            {
+                try
+                {
+                    string folderName = "";
+
+                    if (Session["CodigoCorrespondenciaSeleccionada"] != null)
+                    {
+                        folderName = Session["CodigoCorrespondenciaSeleccionada"].ToString();
+                    }
+
+                    string folderPath = ftpServerUrl + "/" + folderName;
+
+                    if (!ExisteCarpeta(folderPath))
+                    {
+
+                        FtpWebRequest createFolderRequest = (FtpWebRequest)WebRequest.Create(folderPath);
+                        createFolderRequest.Method = WebRequestMethods.Ftp.MakeDirectory;
+                        createFolderRequest.Credentials = new NetworkCredential(string.Empty, string.Empty);
+                        createFolderRequest.GetResponse();
+                    }
+
+                    StatusLabel.Text = string.Empty;
+
+                    foreach (var file in FileUploadControl.PostedFiles)
+                    {
+                        string fileName = Path.GetFileName(file.FileName);
+                        string ftpFilePath = folderPath + "/" + fileName;
+
+                        FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpFilePath);
+                        ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
+                        ftpRequest.Credentials = new NetworkCredential(string.Empty, string.Empty);
+                        ftpRequest.ReadWriteTimeout = 360000;
+
+                        using (Stream ftpStream = ftpRequest.GetRequestStream())
+                        {
+                            file.InputStream.CopyTo(ftpStream);
+                        }
+
+                        StatusLabel.Text += $"Archivo '{fileName}' adjuntado correctamente a la correspondencia<br />";
+                    }
+
+                    CargarArchivosAdjuntos();
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "Error adjuntando archivos: " + ex.Message;
+                }
+            }
+            else
+            {
+                StatusLabel.Text = "Por favor seleccione un archivo para adjuntar.";
+            }
+        }
+
+        bool ExisteCarpeta(string folderPath)
+        {
+            try
+            {
+                FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(folderPath);
+                ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+                ftpRequest.Credentials = new NetworkCredential(string.Empty, string.Empty);
+
+                using (FtpWebResponse ftpResponse = (FtpWebResponse)ftpRequest.GetResponse())
+                {
+                    return true;
+                }
+            }
+            catch (WebException ex)
+            {
+                FtpWebResponse response = (FtpWebResponse)ex.Response;
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        private void CargarArchivosAdjuntos()
+        {
+            string ftpDirectory = "";
+            if (Session["CodigoCorrespondenciaSeleccionada"] != null)
+            {
+                try
+                {
+					ftpDirectory = Session["CodigoCorrespondenciaSeleccionada"].ToString();
+
+					FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpServerUrl + "/" + ftpDirectory);
+					ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+					ftpRequest.Credentials = new NetworkCredential(string.Empty, string.Empty);
+
+					using (FtpWebResponse ftpResponse = (FtpWebResponse)ftpRequest.GetResponse())
+					using (StreamReader reader = new StreamReader(ftpResponse.GetResponseStream()))
+					{
+						string directoryListing = reader.ReadToEnd();
+						var ftpFiles = directoryListing.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+						List<DetalleDelArchivo> files = new List<DetalleDelArchivo>();
+						foreach (var item in ftpFiles)
+						{
+							files.Add(new DetalleDelArchivo { Name = item });
+						}
+
+						rptFiles.DataSource = files;
+						rptFiles.DataBind();
+						reader.Close();
+					}
+				}
+                catch (Exception)
+                {
+                    //
+                }
+			}
+        }
+
+		protected void DescargarArchivo(object sender, EventArgs e)
+		{
+			string fileName = ((Button)sender).CommandArgument;
+			string ftpServer = ftpServerUrl;
+			string ftpUsername = string.Empty;
+			string ftpPassword = string.Empty;
+
+            if (Session["CodigoCorrespondenciaSeleccionada"] != null)
+            {
+				string ftpDirectory = Session["CodigoCorrespondenciaSeleccionada"].ToString();
+
+				string fileUrl = $"{ftpServer}/{ftpDirectory}/{fileName}";
+
+				FtpWebRequest request = (FtpWebRequest)WebRequest.Create(fileUrl);
+				request.Method = WebRequestMethods.Ftp.DownloadFile;
+				request.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
+
+				using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+				{
+					Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+
+					using (Stream ftpStream = response.GetResponseStream())
+					{
+						byte[] buffer = new byte[4096];
+						int bytesRead;
+						while ((bytesRead = ftpStream.Read(buffer, 0, buffer.Length)) > 0)
+						{
+							Response.OutputStream.Write(buffer, 0, bytesRead);
+						}
+					}
+				}
+
+				Response.End();
+			}
+		}
+
+		protected void EliminarArchivo(object sender, EventArgs e)
+		{
+			string fileName = ((Button)sender).CommandArgument;
+			string ftpServer = ftpServerUrl;
+			string ftpUsername = string.Empty;
+			string ftpPassword = string.Empty;
+
+            if (Session["CodigoCorrespondenciaSeleccionada"] != null)
+            {
+				string ftpDirectory = Session["CodigoCorrespondenciaSeleccionada"].ToString();
+				string fileUrl = $"{ftpServer}/{ftpDirectory}/{fileName}";
+
+				try
+				{
+					FtpWebRequest request = (FtpWebRequest)WebRequest.Create(fileUrl);
+					request.Method = WebRequestMethods.Ftp.DeleteFile;
+					request.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
+
+					using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+					{
+						CargarArchivosAdjuntos();
+					}
+				}
+				catch (WebException ex)
+				{
+					// 
+				}
+			}
+		}
+
+		public class DetalleDelArchivo
+	    {
+		    public string Name { get; set; }
+
+		}
+	}
 }

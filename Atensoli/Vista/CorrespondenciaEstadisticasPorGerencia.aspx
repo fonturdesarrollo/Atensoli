@@ -21,8 +21,8 @@
 				<script src="../js/Util.js" type="text/javascript"></script>
 				<script src="../assets/js/skel.min.js"></script>
 				<script src="../assets/js/util.js"></script>
-				<script src="../assets/js/main.js"></script>      
-		<%--------------------------%>
+				<script src="../assets/js/main.js"></script>   	
+			<%--------------------------%>
 
 
 		<script type="text/javascript">
@@ -33,7 +33,8 @@
                     "bSort": false,
                     "bInfo": true,
                     "bAutoWidth": false,
-                    "bPaginate": true,
+					"bPaginate": true,
+                    "lengthChange": false,
                     "aaSorting": [[6, "desc"]],
                     "aoColumns": [
                         null,

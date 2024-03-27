@@ -95,9 +95,9 @@
 											<%--</ul>--%>
 										<%--</li>--%>
 										<li>
-											<span class="opener">Estadísticas</span>
+											<span class="opener">Consultas</span>
 											<ul>
-												<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaHistorialPorGerencia"  navigateurl ="~/Vista/CorrespondenciaEstadisticasPorGerencia.aspx"  Text ="Historial de Correspondencias"></ASP:HyperLink></li>
+												<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaHistorialPorGerencia"  navigateurl ="~/Vista/CorrespondenciaEstadisticasPorGerencia.aspx"  Text ="`Correspondencias por Gerencia"></ASP:HyperLink></li>
 <%--												<li><ASP:HyperLink runat="server" ID ="lnkSolicitudesCargadas"  navigateurl ="~/Vista/ConsultarSolicitudesCargadas.aspx"  Text ="Solicitudes cargadas"></ASP:HyperLink></li>												
 												<li><ASP:HyperLink runat="server" ID ="lnkEstadisticasGenerales"  navigateurl ="~/Vista/EstadisticasGenerales.aspx"  Text ="Estadísticas generales"></ASP:HyperLink></li>
                                                 <li><ASP:HyperLink runat="server" ID ="lnkSolicitudesSeguimiento"  navigateurl ="~/Vista/EstadisticaSeguimiento.aspx"  Text ="Solicitudes seguimiento"></ASP:HyperLink></li>--%>

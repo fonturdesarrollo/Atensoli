@@ -26,8 +26,22 @@
 		<script src="../assets/js/main.js"></script>      
 <%--------------------------%>
 	<script type="text/javascript">
+        function confirmDelete(fileName) {
+            if (confirm('¿Desea eliminar el archivo? ' + fileName + '?')) {
+                return true;
+            } else {
+                return false;
+            }
+		}
 
-	</script>
+        function confirmDownload(fileName) {
+            if (confirm('¿Desea descargar el archivo? ' + fileName + '?')) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
 	</head>
 	<body>
 		<MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
@@ -48,9 +62,6 @@
 								<section>
 									<p></p>
 											<div class="row uniform">
-												<div class="6u 12u$(xsmall)">
-													<asp:Button  runat ="server" ID="btnGuardar" Text ="Actualizar correspondencia" CssClass ="special" OnClick="btnGuardar_Click"/>
-												</div>
 												<div class="6u 12u$(xsmall)">
 													<asp:Button  runat ="server" ID="btnHistorial" Text ="Historial" CausesValidation="False" OnClick="btnHistorial_Click"/>
 												</div>
@@ -136,10 +147,43 @@
 											</article>
 										</div>
 										<div class="row uniform">
-											   <div class="12u$">
-													<asp:TextBox runat="server" ID="txtObservaciones" TextMode="MultiLine" Rows="3" MaxLength="3000"  placeholder="Observaciones a la correspondencia"/> 
-													<ASP:RequiredFieldValidator id="rqrValidaContenido" runat="server" errormessage="Debe colocar las observaciones"  controltovalidate="txtObservaciones" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
-												</div>
+											<div class="12u$">
+												<asp:TextBox runat="server" ID="txtObservaciones" TextMode="MultiLine" Rows="3" MaxLength="3000"  placeholder="Observaciones a la correspondencia"/> 
+												<ASP:RequiredFieldValidator id="rqrValidaContenido" runat="server" errormessage="Debe colocar las observaciones"  controltovalidate="txtObservaciones" display="Dynamic" ForeColor ="Red"></ASP:RequiredFieldValidator>
+											</div>
+										</div>
+										<div class="row uniform">
+											<div class="12u$">
+												<asp:Button  runat ="server" ID="btnGuardar" Text ="Actualizar correspondencia" CssClass ="special" OnClick="btnGuardar_Click"/>
+												<asp:Button ID="UploadButton" runat="server" Text="Adjuntar archivos" OnClick="UploadButton_Click" CausesValidation = "false" />
+												<asp:FileUpload ID="FileUploadControl"  runat="server" AllowMultiple="true" />
+												<br />
+												<asp:Label ID="StatusLabel" runat="server" Text=""></asp:Label>
+											</div>
+										</div>
+										<div class="row uniform">
+											<div class="12u$">
+												<p>Documentos adjuntos:</p>
+												<table border="1">
+													<tr>
+														<th>Nombre del Archivo</th>
+														<th>Acciones</th>
+													</tr>
+													<asp:Repeater ID="rptFiles" runat="server">
+														<ItemTemplate>
+															<tr>
+																<td>
+																	<%# Eval("Name") %>
+																</td>
+																<td>
+																	<asp:Button ID="btnDescargar" runat="server" Text="Descargar" OnClientClick='<%# "return confirmDownload(\"" + Eval("Name") + "\");" %>' OnClick="DescargarArchivo" CommandArgument='<%# Eval("Name") %>' CausesValidation ="false"/>																														
+																	<asp:Button ID="btnDelete" runat="server" Text="Eliminar" OnClientClick='<%# "return confirmDelete(\"" + Eval("Name") + "\");" %>' OnClick="EliminarArchivo" CommandArgument='<%# Eval("Name") %>' CausesValidation ="false"/>																														
+																</td>
+															</tr>
+														</ItemTemplate>
+													</asp:Repeater>
+												</table>
+											</div>
 										</div>
 								</section>
 						   </form>
