@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Atensoli/Web.config
+/Atensoli/Web.Debug.config
+/Atensoli/Web.Release.config
