@@ -9,8 +9,7 @@
 <body>
      <MsgBox:UCMessageBox ID="messageBox" runat="server" ></MsgBox:UCMessageBox>
     <form id="form1" runat="server">
-    <div>
-    
+    <div>  
     </div>
     </form>
 </body>
