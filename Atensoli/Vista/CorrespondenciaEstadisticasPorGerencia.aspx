@@ -15,8 +15,8 @@
 				<script src="../assets/js/jquery.min.js"></script>
 				<link rel="stylesheet" href="../assets/css/main.css" />
 				<link rel="stylesheet" href="../Styles/simpleAutoComplete.css"  />
-				<link href="../Plugins/datatables.min.css" rel="stylesheet" /> 
-				<script src="../Plugins/datatables.min.js"></script>
+				<link href="../Plugins/datatables.css" rel="stylesheet" /> 
+				<script src="../Plugins/datatables.js"></script>
 
 				<script src="../js/Util.js" type="text/javascript"></script>
 				<script src="../assets/js/skel.min.js"></script>

@@ -11,7 +11,7 @@ namespace Atensoli.Vista
 {
 
 
-	public partial class CorrespondenciaDetalleHistorial
+	public partial class CorrespondenciaInterna
 	{
 
 		/// <summary>
@@ -33,13 +33,13 @@ namespace Atensoli.Vista
 		protected global::System.Web.UI.WebControls.Label lblTitulo;
 
 		/// <summary>
-		/// lnkAtras control.
+		/// lnkInicio control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.HyperLink lnkAtras;
+		protected global::System.Web.UI.WebControls.HyperLink lnkInicio;
 
 		/// <summary>
 		/// principal control.
@@ -51,22 +51,40 @@ namespace Atensoli.Vista
 		protected global::System.Web.UI.HtmlControls.HtmlForm principal;
 
 		/// <summary>
-		/// gridDetalle control.
+		/// ddlGerencia control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView gridDetalle;
+		protected global::System.Web.UI.WebControls.DropDownList ddlGerencia;
 
 		/// <summary>
-		/// rptFiles control.
+		/// btnConsultar control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Repeater rptFiles;
+		protected global::System.Web.UI.WebControls.Button btnConsultar;
+
+		/// <summary>
+		/// dataTableRecibidas control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlTable dataTableRecibidas;
+
+		/// <summary>
+		/// dataTableRemitidas control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlTable dataTableRemitidas;
 
 		/// <summary>
 		/// ControlMenu control.

@@ -126,7 +126,7 @@ namespace Atensoli.Vista
                 //=============================================================
 
                 //=============================================================
-                //CORRESPONDENCIA
+                //CORRESPONDENCIA EXTERNA
                 //=============================================================
 
                 if (objetoSeguridad.EsAccesoPermitido(1033) == true)
@@ -196,7 +196,82 @@ namespace Atensoli.Vista
 				}
 
 				//=============================================================
-				//FIN CORRESPONDENCIA
+				//FIN CORRESPONDENCIA EXTERNA
+				//=============================================================
+
+
+				//=============================================================
+				//CORRESPONDENCIA INTERNA
+				//=============================================================
+
+				if (objetoSeguridad.EsAccesoPermitido(1053) == true)
+				{
+					lnkCorrespondenciaInternaPresidencia.Visible = true;
+				}
+
+				if (objetoSeguridad.EsAccesoPermitido(1054) == true)
+				{
+					lnkCorrespondenciaInternaAuditoria.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1055) == true)
+				{
+					lnkCorrespondenciaInternaGestionComunicacional.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1056) == true)
+				{
+					lnkCorrespondenciaInternaPlanificacion.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1057) == true)
+				{
+					lnkCorrespondenciaInternaTecnologia.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1058) == true)
+				{
+					lnkCorrespondenciaInternaAtencion.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1059) == true)
+				{
+					lnkCorrespondenciaInternaAdministracion.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1060) == true)
+				{
+					lnkCorrespondenciaInternaRH.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1061) == true)
+				{
+					lnkCorrespondenciaInternaSeguridad.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1062) == true)
+				{
+					lnkCorrespondenciaInternaComercializacion.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1063) == true)
+				{
+					lnkCorrespondenciaInternaFinanciamiento.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1064) == true)
+				{
+					lnkCorrespondenciaInternaTecnica.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1065) == true)
+				{
+					lnkCorrespondenciaInternaMovilidad.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1066) == true)
+				{
+					lnkCorrespondenciaCobranzas.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1067) == true)
+				{
+					lnkCorrespondenciaInternaConsultoria.Visible = true;
+				}
+				if (objetoSeguridad.EsAccesoPermitido(1068) == true)
+				{
+					lnkCorrespondenciaHistorialPorGerencia.Visible = true;
+				}
+
+				//=============================================================
+				//FIN CORRESPONDENCIA INTERNA
 				//=============================================================
 
 

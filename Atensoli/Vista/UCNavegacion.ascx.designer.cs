@@ -150,6 +150,141 @@ namespace Atensoli.Vista
 		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaCobranzas;
 
 		/// <summary>
+		/// lnkCorrespondenciaConsultoria control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaConsultoria;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaPresidencia control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaPresidencia;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaAuditoria control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaAuditoria;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaGestionComunicacional control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaGestionComunicacional;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaPlanificacion control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaPlanificacion;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaTecnologia control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaTecnologia;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaAtencion control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaAtencion;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaAdministracion control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaAdministracion;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaRH control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaRH;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaSeguridad control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaSeguridad;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaComercializacion control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaComercializacion;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaFinanciamiento control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaFinanciamiento;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaTecnica control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaTecnica;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaMovilidad control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaMovilidad;
+
+		/// <summary>
+		/// lnkCorrespondenciaInternaConsultoria control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkCorrespondenciaInternaConsultoria;
+
+		/// <summary>
 		/// lnkCorrespondenciaHistorialPorGerencia control.
 		/// </summary>
 		/// <remarks>

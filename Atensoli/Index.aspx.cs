@@ -104,8 +104,8 @@ namespace Seguridad
                         this.Session["CodigoSucursalEmpresa"] = ddlEmpresa.SelectedValue;
                         this.Session["NombreEmpresa"] = ddlEmpresa.SelectedItem;
                         this.Session["LogoEmpresa"] = LogoEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue));
-                        Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Inicio de sesión exitoso", System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
-                        Response.Redirect("~/Vista/Principal.aspx", false);
+						Seguridad.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Inicio de sesión exitoso", string.Empty, Convert.ToInt32(this.Session["UserId"].ToString()));
+						Response.Redirect("~/Vista/Principal.aspx", false);
                     }
                 }
                 catch (Exception ex)

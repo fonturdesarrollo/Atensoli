@@ -81,8 +81,11 @@ namespace Atensoli
                 case "1047":
                     codigoGerencia = 14;
                     break;
+				case "1069":
+					codigoGerencia = 15;
+					break;
 
-            }
+			}
             return codigoGerencia;
         }
         protected void btnConsultar_Click(object sender, EventArgs e)
@@ -96,7 +99,7 @@ namespace Atensoli
             {
                 Session["CodigoCorrespondenciaSeleccionada"] = Convert.ToInt32(e.CommandArgument.ToString());
                 Session["CodigoGerenciaEnSeleccion"] = codigoGerenciaSegunObjeto();
-                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Seleccionó la correspondencia número: " + e.CommandArgument.ToString(), System.Net.Dns.GetHostEntry(Request.ServerVariables["REMOTE_HOST"]).HostName, Convert.ToInt32(this.Session["UserId"].ToString()));
+                AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Seleccionó la correspondencia número: " + e.CommandArgument.ToString(), string.Empty, Convert.ToInt32(this.Session["UserId"].ToString()));
                 if (e.CommandName == "SeleccionarCorrespondencia")
                 {
                     Response.Redirect("CorrespondenciaRecepcionGerencia.aspx", false);

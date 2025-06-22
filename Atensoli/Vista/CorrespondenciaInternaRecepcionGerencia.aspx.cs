@@ -14,7 +14,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Atensoli
 {
-    public partial class CorrespondenciaRecepcionGerencia : System.Web.UI.Page
+    public partial class CorrespondenciaInternaRecepcionGerencia : System.Web.UI.Page
     {
         private string ftpServerUrl = ConfigurationManager.AppSettings.Get("ftpServer");
         protected void Page_Load(object sender, EventArgs e)
@@ -111,9 +111,12 @@ namespace Atensoli
         {
             try
             {
-                DataSet ds = CorrespondenciaRecepcionGerencia.ObtenerCorrespondenciaExterna(Convert.ToInt32(Session["CodigoCorrespondenciaSeleccionada"].ToString()), Convert.ToInt32(Session["CodigoGerenciaEnSeleccion"].ToString()));
-                this.gridDetalle.DataSource = ds.Tables[0];
-                this.gridDetalle.DataBind();
+                if (Request.QueryString["codigoCorrespondencia"] != null && Request.QueryString["codigoGerencia"] != null)
+				{
+					DataSet ds = CorrespondenciaInternaRecepcionGerencia.ObtenerCorrespondenciaInterna(Convert.ToInt32(Request.QueryString["codigoCorrespondencia"].ToString()), Convert.ToInt32(Request.QueryString["codigoGerencia"].ToString()));
+					this.gridDetalle.DataSource = ds.Tables[0];
+					this.gridDetalle.DataBind();
+				}
             }
             catch (Exception ex)
             {
@@ -136,22 +139,25 @@ namespace Atensoli
                 {
                     CCorrespondenciaRecepcionGerencia objetoCorrespondencia = new CCorrespondenciaRecepcionGerencia();
 
-                    objetoCorrespondencia.CorrespondenciaID = Convert.ToInt32(Session["CodigoCorrespondenciaSeleccionada"].ToString());
-                    objetoCorrespondencia.TipoInstruccionCorrespondenciaID = Convert.ToInt32(ddlInstruccion.SelectedValue);
-                    objetoCorrespondencia.ObservacionesSeguimientoCorrespondencia = txtObservaciones.Text.ToUpper().Trim();
-                    objetoCorrespondencia.CorrespondenciaEstatusID = Convert.ToInt32(ddlEstatus.SelectedValue);
-                    objetoCorrespondencia.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"].ToString());
-                    objetoCorrespondencia.GerenciaID = Convert.ToInt32(ddlGerencia.SelectedValue);
-                    objetoCorrespondencia.GerenciaRemitenteID = Convert.ToInt32(Session["CodigoGerenciaEnSeleccion"].ToString());
-
-                    codigoSeguimientoCorrespondencia = CorrespondenciaRecepcionGerencia.InsertarSeguimientoCorrespondencia(objetoCorrespondencia);
-                    if (codigoSeguimientoCorrespondencia > 0)
+                    if (Request.QueryString["codigoCorrespondencia"] != null && Request.QueryString["codigoGerencia"] != null)
                     {
-						Seguridad.SeguridadAuditoria.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó seguimiento a la correspondencia número: " + codigoSeguimientoCorrespondencia, string.Empty, Convert.ToInt32(this.Session["UserId"].ToString()));
-                        messageBox.ShowMessage("Recepción de correspondencia agregada");
-                        CargarCorrespondencia();
-                        LimpiarTodo();
-                    }
+						objetoCorrespondencia.CorrespondenciaID = Convert.ToInt32(Request.QueryString["codigoCorrespondencia"].ToString());
+						objetoCorrespondencia.TipoInstruccionCorrespondenciaID = Convert.ToInt32(ddlInstruccion.SelectedValue);
+						objetoCorrespondencia.ObservacionesSeguimientoCorrespondencia = txtObservaciones.Text.ToUpper().Trim();
+						objetoCorrespondencia.CorrespondenciaEstatusID = Convert.ToInt32(ddlEstatus.SelectedValue);
+						objetoCorrespondencia.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"].ToString());
+						objetoCorrespondencia.GerenciaID = Convert.ToInt32(ddlGerencia.SelectedValue);
+						objetoCorrespondencia.GerenciaRemitenteID = Convert.ToInt32(Request.QueryString["codigoGerencia"].ToString());
+
+						codigoSeguimientoCorrespondencia = CorrespondenciaRecepcionGerencia.InsertarSeguimientoCorrespondencia(objetoCorrespondencia);
+						if (codigoSeguimientoCorrespondencia > 0)
+						{
+							Seguridad.SeguridadAuditoria.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó seguimiento a la correspondencia número: " + codigoSeguimientoCorrespondencia, string.Empty, Convert.ToInt32(this.Session["UserId"].ToString()));
+							messageBox.ShowMessage("Recepción de correspondencia agregada");
+							CargarCorrespondencia();
+							LimpiarTodo();
+						}
+					}
                 }
 
             }
@@ -182,7 +188,11 @@ namespace Atensoli
 
         protected void btnHistorial_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CorrespondenciaHistorial.aspx", false);
+            if(Request.QueryString["codigoGerencia"] != null && Request.QueryString["codigoCorrespondencia"] != null)
+            {
+				this.Session["CodigoCorrespondenciaSeleccionada"] = Request.QueryString["codigoCorrespondencia"].ToString();
+				Response.Redirect("CorrespondenciaInternaHistorial.aspx", false);
+			}
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)
@@ -193,9 +203,9 @@ namespace Atensoli
                 {
                     string folderName = "";
 
-                    if (Session["CodigoCorrespondenciaSeleccionada"] != null)
+                    if (Request.QueryString["codigoCorrespondencia"] != null)
                     {
-                        folderName = Session["CodigoCorrespondenciaSeleccionada"].ToString();
+                        folderName = Request.QueryString["codigoCorrespondencia"].ToString();
                     }
 
                     string folderPath = ftpServerUrl + "/" + folderName;
@@ -272,11 +282,11 @@ namespace Atensoli
         private void CargarArchivosAdjuntos()
         {
             string ftpDirectory = "";
-            if (Session["CodigoCorrespondenciaSeleccionada"] != null)
+            if (Request.QueryString["codigoCorrespondencia"] != null)
             {
                 try
                 {
-					ftpDirectory = Session["CodigoCorrespondenciaSeleccionada"].ToString();
+					ftpDirectory = Request.QueryString["codigoCorrespondencia"].ToString();
 
 					FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpServerUrl + "/" + ftpDirectory);
 					ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
@@ -312,9 +322,9 @@ namespace Atensoli
 			string ftpUsername = string.Empty;
 			string ftpPassword = string.Empty;
 
-            if (Session["CodigoCorrespondenciaSeleccionada"] != null)
+            if (Request.QueryString["codigoCorrespondencia"] != null)
             {
-				string ftpDirectory = Session["CodigoCorrespondenciaSeleccionada"].ToString();
+				string ftpDirectory = Request.QueryString["codigoCorrespondencia"].ToString();
 
 				string fileUrl = $"{ftpServer}/{ftpDirectory}/{fileName}";
 
@@ -348,9 +358,9 @@ namespace Atensoli
 			string ftpUsername = string.Empty;
 			string ftpPassword = string.Empty;
 
-            if (Session["CodigoCorrespondenciaSeleccionada"] != null)
+            if (Request.QueryString["codigoCorrespondencia"] != null)
             {
-				string ftpDirectory = Session["CodigoCorrespondenciaSeleccionada"].ToString();
+				string ftpDirectory = Request.QueryString["codigoCorrespondencia"].ToString();
 				string fileUrl = $"{ftpServer}/{ftpDirectory}/{fileName}";
 
 				try

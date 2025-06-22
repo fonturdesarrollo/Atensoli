@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CorrespondenciaDetalleHistorial.aspx.cs" Inherits="Atensoli.Vista.CorrespondenciaDetalleHistorial" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CorrespondenciaInternaHistorial.aspx.cs" Inherits="Atensoli.CorrespondenciaInternaHistorial" %>
 
 <%@ Register TagPrefix="uc2" TagName="UCNavegacion" Src="~/Vista/UCNavegacion.ascx" %>
 <%@ Register TagPrefix="MsgBox" Src="~/Vista/UCMessageBox.ascx" TagName="UCMessageBox" %>
@@ -7,7 +7,7 @@
 
 <html>
 	<head>
-		<title>Correspondencia | Correspondencia Historial</title>
+		<title>Atensoli | Correspondencia Historial</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -27,7 +27,7 @@
 
 	<script type="text/javascript">
 
-    </script>
+   </script>
 
 	</head>
 	<body>
@@ -43,9 +43,6 @@
 									<a class="logo">
 										<strong><asp:Label runat ="server" ID ="lblTitulo" Text="Correspondencia Historial"></asp:Label></strong>
 									</a>
-									<ul class="icons">
-										<asp:HyperLink runat ="server" ID="lnkAtras" NavigateUrl="~/Vista/CorrespondenciaEstadisticasPorGerencia.aspx" Text="Volver"></asp:HyperLink>
-									</ul>
 								</header>
 
 							<!-- Content -->
@@ -117,29 +114,6 @@
 													  </Columns>
 												  </asp:GridView>
 											</div>
-										<div class="row uniform">
-											<div class="12u$">
-												<p>Documentos adjuntos:</p>
-												<table border="1">
-													<tr>
-														<th>Nombre del Archivo</th>
-														<th>Acciones</th>
-													</tr>
-													<asp:Repeater ID="rptFiles" runat="server">
-														<ItemTemplate>
-															<tr>
-																<td>
-																	<%# Eval("Name") %>
-																</td>
-																<td>
-																	<asp:Button ID="btnDescargar" runat="server" Text="Descargar" OnClientClick='<%# "return confirmDownload(\"" + Eval("Name") + "\");" %>' OnClick="DescargarArchivo" CommandArgument='<%# Eval("Name") %>' CausesValidation ="false"/>																																																									
-																</td>
-															</tr>
-														</ItemTemplate>
-													</asp:Repeater>
-												</table>
-											</div>
-										</div>
 								</section>
 							</form>
 						</div>
@@ -148,4 +122,3 @@
 				</div>
 	</body>
 </html>
-

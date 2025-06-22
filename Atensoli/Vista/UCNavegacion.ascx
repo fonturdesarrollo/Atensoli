@@ -60,7 +60,7 @@
 										</li>--%>
 										
 										<li>
-											<span class="opener">Correspondencia</span>
+											<span class="opener">Correspondencia Externa</span>
 												<ul>
 													<li><ASP:HyperLink runat="server" ID ="lnkRecepcionCorrespondencia"  navigateurl ="~/Vista/CorrespondenciaExternaRecepcion.aspx"  Text ="Recepción correspondencia externa"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaPresidencia"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1034"  Text ="Presidencia"></ASP:HyperLink></li>
@@ -77,7 +77,27 @@
 													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaTecnica"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1045"  Text ="Técnica Automotriz"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaMovilidad"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1046"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
 													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaCobranzas"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoObjetoCorrespondencia=1047"  Text ="Consultoría Júridica"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaConsultoria"  navigateurl ="~/Vista/CorrespondenciaSeleccionGerencia.aspx?CodigoGerencia=1069"  Text ="Consultoría Júridica"></ASP:HyperLink></li>
+												</ul>
+										</li>
 
+										<li>
+											<span class="opener">Correspondencia Interna</span>
+												<ul>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaPresidencia"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=1"  Text ="Presidencia"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaAuditoria"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=2"  Text ="Auditoria"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaGestionComunicacional"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=3"  Text ="Gestión Comunicacional"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaPlanificacion"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=4"  Text ="Planificación y Presupuesto" ></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaTecnologia"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=5"  Text ="Tecnología"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaAtencion"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=6"  Text ="Atención al Ciudadano"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaAdministracion"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=7"  Text ="Administración"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaRH"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=8"  Text ="Gestión Humana"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaSeguridad"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=9"  Text ="Seguridad"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaComercializacion"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=10"  Text ="Comercialización"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaFinanciamiento"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=11"  Text ="Financiamiento"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaTecnica"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=12"  Text ="Técnica Automotriz"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaMovilidad"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=13"  Text ="Movilidad Estudiantil"></ASP:HyperLink></li>
+													<li><ASP:HyperLink runat="server" ID ="lnkCorrespondenciaInternaConsultoria"  navigateurl ="~/Vista/CorrespondenciaInterna.aspx?CodigoGerencia=14"  Text ="Consultoría Júridica"></ASP:HyperLink></li>
 												</ul>
 										</li>
 

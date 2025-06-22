@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atensoli</RootNamespace>
     <AssemblyName>Atensoli</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +50,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql">
       <HintPath>..\packages\Npgsql.3.2.6\lib\net451\Npgsql.dll</HintPath>
     </Reference>
@@ -76,12 +80,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.7-vsdoc.js" />
-    <Content Include="Plugins\datatables.min.css" />
-    <Content Include="Plugins\datatables.min.js" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="Plugins\datatables.css" />
+    <Content Include="Plugins\datatables.js" />
     <Content Include="Scripts\jquery-1.7.js" />
     <Content Include="Scripts\jquery-1.7.min.js" />
     <Content Include="Vista\CorrespondenciaDetalleHistorial.aspx" />
+    <Content Include="Vista\CorrespondenciaInternaHistorial.aspx" />
+    <Content Include="Vista\CorrespondenciaInternaCreacion.aspx" />
+    <Content Include="Vista\CorrespondenciaInterna.aspx" />
     <Content Include="Vista\CorrespondenciaEstadisticasPorGerencia.aspx" />
+    <Content Include="Vista\CorrespondenciaInternaRecepcionGerencia.aspx" />
     <Content Include="Vista\EstadisticaSeguimiento.aspx" />
     <Content Include="Vista\CorrespondenciaHistorial.aspx" />
     <Content Include="Vista\CorrespondenciaRecepcionGerencia.aspx" />
@@ -312,9 +322,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controlador\CorrespondenciaDetalleHistorial.cs" />
+    <Compile Include="Controlador\CorrespondenciaInterna.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controlador\CorrespondenciaEstadisticasPorGerencia.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controlador\CorrespondenciaInternaRecepcionGerencia.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modelo\CCorrespondenciaInterna.cs" />
+    <Compile Include="Modelo\CCorrespondenciaInternaRecepcionGerencia.cs" />
     <Compile Include="Vista\CorrespondenciaDetalleHistorial.aspx.cs">
       <DependentUpon>CorrespondenciaDetalleHistorial.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -322,12 +340,40 @@
     <Compile Include="Vista\CorrespondenciaDetalleHistorial.aspx.designer.cs">
       <DependentUpon>CorrespondenciaDetalleHistorial.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vista\CorrespondenciaInternaHistorial.aspx.cs">
+      <DependentUpon>CorrespondenciaInternaHistorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaInternaHistorial.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaInternaHistorial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaInternaCreacion.aspx.cs">
+      <DependentUpon>CorrespondenciaInternaCreacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaInternaCreacion.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaInternaCreacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaInterna.aspx.cs">
+      <DependentUpon>CorrespondenciaInterna.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaInterna.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaInterna.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\CorrespondenciaEstadisticasPorGerencia.aspx.cs">
       <DependentUpon>CorrespondenciaEstadisticasPorGerencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vista\CorrespondenciaEstadisticasPorGerencia.aspx.designer.cs">
       <DependentUpon>CorrespondenciaEstadisticasPorGerencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaInternaRecepcionGerencia.aspx.cs">
+      <DependentUpon>CorrespondenciaInternaRecepcionGerencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CorrespondenciaInternaRecepcionGerencia.aspx.designer.cs">
+      <DependentUpon>CorrespondenciaInternaRecepcionGerencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\EstadisticaSeguimiento.aspx.cs">
       <DependentUpon>EstadisticaSeguimiento.aspx</DependentUpon>

@@ -35,9 +35,10 @@ namespace Atensoli.Vista
 				}
 
 				SqlDataReader reader = Atensoli.Controlador.CorrespondenciaEstadisticasPorGerencia.ObtenerCorrespondenciasExternas(0, codigoGerenciaSeleccionada);
-				HtmlTableRow row = new HtmlTableRow();
+				
 				while (reader.Read())
 				{
+					HtmlTableRow row = new HtmlTableRow();
 					row = new HtmlTableRow();
 					HtmlTableCell cell = new HtmlTableCell();
 

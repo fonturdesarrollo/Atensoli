@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Atensoli.Controlador;
+using Seguridad;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -12,17 +14,17 @@ using System.Web.UI.WebControls;
 
 namespace Atensoli
 {
-    public partial class CorrespondenciaExternaRecepcion : Seguridad.SeguridadAuditoria
-    {
+    public partial class CorrespondenciaInternaCreacion : System.Web.UI.Page
+	{
 
 		private string ftpServerUrl = ConfigurationManager.AppSettings.Get("ftpServer");
-		protected new void Page_Load(object sender, EventArgs e)
+        private string nombreGerenciaRemitente = string.Empty;
+		protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
                 Session["codigoCorrespondenciaAgregada"] = "0";
                 CargarTipoCorrespondencia();
-                CargarEstado();
                 CargarGerencia();
                 CargarPrioridad();
 				UploadButton.Visible = false;
@@ -98,33 +100,6 @@ namespace Atensoli
             }
         }
 
-        private void CargarEstado()
-        {
-            ddlEstado.Items.Clear();
-            ddlEstado.Items.Add(new ListItem("--Seleccione el estado--", ""));
-            String strConnString = ConfigurationManager
-            .ConnectionStrings["CallCenterConnectionString"].ConnectionString;
-            String strQuery = "";
-
-            strQuery = "Select * From Estado ORDER BY NombreEstado";
-
-            using (SqlConnection con = new SqlConnection(strConnString))
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = strQuery;
-                    cmd.Connection = con;
-                    con.Open();
-                    ddlEstado.DataSource = cmd.ExecuteReader();
-                    ddlEstado.DataTextField = "NombreEstado";
-                    ddlEstado.DataValueField = "EstadoID";
-                    ddlEstado.DataBind();
-                    con.Close();
-                }
-            }
-        }
-
         private void CargarTipoCorrespondencia()
         {
             ddlTipoCorrespondencia.Items.Clear();
@@ -161,12 +136,12 @@ namespace Atensoli
         {
             try
             {
-                CCorrespondenciaExternaRecepcion objetoCorrespondencia = new CCorrespondenciaExternaRecepcion();
+                CCorrespondenciaInterna objetoCorrespondencia = new CCorrespondenciaInterna();
                 objetoCorrespondencia.CorrespondenciaID = Convert.ToInt32(Session["codigoCorrespondenciaAgregada"]);
                 objetoCorrespondencia.TipoCorrespondenciaID = Convert.ToInt32(ddlTipoCorrespondencia.SelectedValue);
-                objetoCorrespondencia.CorrespondenciaRemitenteID = Convert.ToInt32(hdnRemitenteID.Value);
-                objetoCorrespondencia.NombreCorrespondenciaRemitente = txtNombreRemitente.Text.ToUpper().Trim();
-                objetoCorrespondencia.EstadoID = Convert.ToInt32(ddlEstado.SelectedValue);
+                objetoCorrespondencia.CorrespondenciaRemitenteID = ObtenerCodigoGerenciaPorRemitente();
+                objetoCorrespondencia.NombreCorrespondenciaRemitente = nombreGerenciaRemitente;
+                objetoCorrespondencia.EstadoID = 24;
                 objetoCorrespondencia.FechaCorrespondencia = txtFechaCorrespondencia.Text.Trim();
                 objetoCorrespondencia.ContenidoCorrespondencia = txtContenido.Text.ToUpper().Trim();
                 objetoCorrespondencia.CorrespondenciaPrioridadID = Convert.ToInt32(ddlPrioridad.SelectedValue);
@@ -174,19 +149,18 @@ namespace Atensoli
                 objetoCorrespondencia.SeguridadUsuarioDatosID = Convert.ToInt32(Session["UserId"].ToString());
 
 
-                Session["codigoCorrespondenciaAgregada"]  = CorrespondenciaExternaRecepcion.InsertarRecepcionCorrespondenciaExterna(objetoCorrespondencia);
+                Session["codigoCorrespondenciaAgregada"]  = CorrespondenciaInterna.InsertarCorrespondenciaInterna(objetoCorrespondencia);
                 if (Convert.ToInt32(Session["codigoCorrespondenciaAgregada"].ToString()) > 0)
                     {
-                        AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó correspondencia externa número: " + Session["codigoCorrespondenciaAgregada"].ToString(), string.Empty, Convert.ToInt32(this.Session["UserId"].ToString()));
+                       SeguridadAuditoria.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Agregó correspondencia externa número: " + Session["codigoCorrespondenciaAgregada"].ToString(), string.Empty, Convert.ToInt32(this.Session["UserId"].ToString()));
                         messageBox.ShowMessage("Correspondencia registrada exitosamente.");
-                        txtNombreRemitente.Text = string.Empty;
                         CargarCorrespondencia(Convert.ToInt32(Session["codigoCorrespondenciaAgregada"].ToString()));
 					    btnGuardar.Visible = false;
 						UploadButton.Visible = true;    
                         FileUploadControl.Visible = true;
 					    StatusLabel.Visible = true;
 				}
-                }
+            }
             catch (Exception ex)
             {
 
@@ -199,7 +173,7 @@ namespace Atensoli
         {
             try
             {
-                DataSet ds = CorrespondenciaExternaRecepcion.ObtenerCorrespondenciaExterna(codCorrespondencia);
+                DataSet ds = CorrespondenciaInterna.ObtenerCorrespondenciaInterna(codCorrespondencia);
                 this.gridDetalle.DataSource = ds.Tables[0];
                 this.gridDetalle.DataBind();
             }
@@ -212,13 +186,10 @@ namespace Atensoli
 
         private void LimpiarTodo()
         {
-            hdnRemitenteID.Value = "0";
             Session["codigoCorrespondenciaAgregada"] = 0;
             CargarTipoCorrespondencia();
-            CargarEstado();
             CargarGerencia();
             CargarPrioridad();
-            txtNombreRemitente.Text = string.Empty;
             txtFechaCorrespondencia.Text = string.Empty;
             txtContenido.Text = string.Empty;
             gridDetalle.DataSource = null;
@@ -260,13 +231,12 @@ namespace Atensoli
 			Session["codigoCorrespondenciaAgregada"] = "0";
             gridDetalle.DataSource = null;
             gridDetalle.DataBind();
-            txtNombreRemitente.Text = string.Empty;
 			UploadButton.Visible = false;
 			FileUploadControl.Visible = false;
 			StatusLabel.Text = string.Empty;
 			StatusLabel.Visible = false;
 			btnGuardar.Visible = true;
-			AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Eliminó la correspondencia externa número: " + idCorrespondencia, string.Empty, Convert.ToInt32(this.Session["UserId"].ToString()));
+			SeguridadAuditoria.AuditarMovimiento(HttpContext.Current.Request.Url.AbsolutePath, "Eliminó la correspondencia externa número: " + idCorrespondencia, string.Empty, Convert.ToInt32(this.Session["UserId"].ToString()));
         }
 		protected void UploadButton_Click(object sender, EventArgs e)
 		{
@@ -397,5 +367,63 @@ namespace Atensoli
 				return new string[0];
 			}
 		}
+
+        private int ObtenerCodigoGerenciaPorRemitente()
+        {
+            if (Request.QueryString["CodigoGerencia"] != null)
+            {
+                switch (Request.QueryString["CodigoGerencia"].ToString())
+                {
+                    case "1":
+                        nombreGerenciaRemitente = "Presidencia";
+						return 1;
+					case "2":
+						nombreGerenciaRemitente = "Auditoria Interna";
+						return 2;
+                    case "3":
+						nombreGerenciaRemitente = "Gestion Comunicacional";
+						return 3;
+                    case "4":
+						nombreGerenciaRemitente = "Planifiacion y Presupuesto";
+						return 4;
+                    case "5":
+						nombreGerenciaRemitente = "Tecnologia de la Informacion";
+						return 5;
+                    case "6":
+						nombreGerenciaRemitente = "Atencion al Ciudadano";
+						return 6;
+                    case "7":
+						nombreGerenciaRemitente = "Gestion Administrativa";
+						return 7;
+                    case "8":
+						nombreGerenciaRemitente = "Gestion Humana";
+						return 8;
+                    case "9":
+						nombreGerenciaRemitente = "Seguridad";
+						return 9;
+                    case "10":
+						nombreGerenciaRemitente = "Comercializacion";
+						return 10;
+                    case "11":
+						nombreGerenciaRemitente = "Financiamiento";
+						return 11;
+                    case "12":
+						nombreGerenciaRemitente = "Tecnica Automotriz";
+						return 12;
+                    case "13":
+						nombreGerenciaRemitente = "Movilidad Estudiantil";
+						return 13;
+					case "14":
+						nombreGerenciaRemitente = "Consultoría Jurídica";
+						return 13;
+					default:
+                        return 0;
+                }
+            }
+            else
+            {
+                return 0;
+			}
+        }
 	}
 }

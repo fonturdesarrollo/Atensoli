@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Atensoli.Vista
+namespace Atensoli
 {
 
 
-	public partial class CorrespondenciaDetalleHistorial
+	public partial class CorrespondenciaInternaHistorial
 	{
 
 		/// <summary>
@@ -33,15 +33,6 @@ namespace Atensoli.Vista
 		protected global::System.Web.UI.WebControls.Label lblTitulo;
 
 		/// <summary>
-		/// lnkAtras control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.HyperLink lnkAtras;
-
-		/// <summary>
 		/// principal control.
 		/// </summary>
 		/// <remarks>
@@ -58,15 +49,6 @@ namespace Atensoli.Vista
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.GridView gridDetalle;
-
-		/// <summary>
-		/// rptFiles control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Repeater rptFiles;
 
 		/// <summary>
 		/// ControlMenu control.

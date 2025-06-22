@@ -15,25 +15,11 @@ namespace Teach
 
             if (!Page.IsPostBack)
             {
-
-
-                //ORIGINAL CAMBIADO A LOCAL POR CARLOS CEBALLOS
-                //scripts.Text = @"<link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'/>
-                //    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js' type='text/javascript'></script>
-                //    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js' type='text/javascript'></script>
-                //    <script src='../js/simpleAutoComplete.js' type='text/javascript'></script>
-
-                //        ";
-
-                //LOCAL POR CARLOS CEBALLOS
                 scripts.Text = @"<link href='../js/jquery-ui.css' rel='stylesheet' type='text/css'/>
                     <script src='../js/jquery.min.js' type='text/javascript'></script>
                     <script src='../js/jquery-ui.min.js' type='text/javascript'></script>
-                    <script src='../js/simpleAutoComplete.js' type='text/javascript'></script>
-
-                        ";
+                    <script src='../js/simpleAutoComplete.js' type='text/javascript'></script>";
             }
-
         }
 
         public void SetEnableRegisters(bool enabled)
@@ -80,10 +66,6 @@ namespace Teach
 
         public void ShowMessage(string mesagge, paginaBase.MessageType type, bool enabledRegisters)
         {
- //           scripts.Text = @"<link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'/>
- //<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js' type='text/javascript'></script>
- // <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js' type='text/javascript'></script>";
-
 
             scripts.Text = @"<link href='../js/jquery-ui.css' rel='stylesheet' type='text/css'/>
                     <script src='../js/jquery.min.js' type='text/javascript'></script>
